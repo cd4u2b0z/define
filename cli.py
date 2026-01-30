@@ -74,6 +74,8 @@ Examples / Примеры:
                         help="Show word origin / Показать этимологию")
     display.add_argument("-i", "--idioms", action="store_true",
                         help="Show idioms and expressions / Показать идиомы")
+    display.add_argument("-g", "--grammar", action="store_true",
+                        help="Show full grammar (tenses, declensions, participles) / Полная грамматика")
     display.add_argument("-f", "--full", action="store_true",
                         help="Full mode: show everything / Полный режим")
     display.add_argument("-j", "--json", action="store_true",
@@ -119,7 +121,7 @@ Examples / Примеры:
     parser.add_argument("--no-color", action="store_true",
                        help="Disable colors / Отключить цвета")
     parser.add_argument("-v", "--version", action="version",
-                       version="define 2.1.0")
+                       version="define 2.2.0")
     
     return parser.parse_args()
 
@@ -214,6 +216,7 @@ def main() -> int:
         show_synonyms = args.synonyms or args.full
         show_etymology = args.etymology or args.full
         show_idioms = args.idioms or args.full
+        show_grammar = args.grammar or args.full
         short_mode = args.short
         
         formatter.display_result(
@@ -223,7 +226,8 @@ def main() -> int:
             show_synonyms=show_synonyms,
             show_etymology=show_etymology,
             show_idioms=show_idioms,
-            short_mode=short_mode
+            short_mode=short_mode,
+            show_grammar=show_grammar
         )
     
     # Play audio if requested

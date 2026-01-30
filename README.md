@@ -34,7 +34,7 @@ English | [Русский](#русский)
 | 󱗃 Verb Aspects | `писать` (impf) ↔ `написать` (pf) | Вид глагола |
 | 󰛺 Conjugation | Full present tense tables | Спряжение |
 | 󰏪 Idioms | 50+ English, 25+ Russian idioms | Идиомы |
-| 󰖚 Register | Formal/informal/vulgar markers | Регистр |
+| 󰖚 Register | Formal/informal/colloquial markers | Регистр |
 
 ### 󰗊 Vocabulary Database (v2.1)
 
@@ -342,9 +342,9 @@ Original work by Dr. Baklava • [github.com/cd4u2b0z](https://github.com/cd4u2b
 - **Падежи** — все 6 падежей с вопросами (кто? что? кого? чего? и т.д.)
 - **Вид глагола** — совершенный/несовершенный с видовыми парами
 - **Спряжение** — полные таблицы настоящего времени
-- **Идиомы** — 25+ русских идиом включая мат
+- **Идиомы** — 25+ русских идиом и выражений
 - **Фразы** — 936 русских и 845 английских фраз с переводами
-- **Регистр** — формальный/неформальный/вульгарный
+- **Регистр** — формальный/неформальный/разговорный
 
 ## 󰏗 Установка
 
@@ -375,8 +375,36 @@ define privet
 # Полная информация
 define -f писать    # спряжение, вид, пара
 define -f книга     # род, падежи
-define -i хуй       # идиомы (мат)
+define -i время     # идиомы и выражения
 ```
+
+---
+
+## 󰙨 Testing / Тестирование
+
+Run the test suite to verify dictionary health after making changes:
+
+```bash
+# Run all tests (115 tests)
+python3 tests/run_tests.py
+
+# Run specific test modules
+python3 tests/test_grammar.py -v     # Grammar tests (38)
+python3 tests/test_data.py -v        # Data integrity tests (18)
+python3 tests/test_languages.py -v   # Language detection tests (20)
+python3 tests/test_vocabulary.py -v  # SM-2 & vocabulary tests (17)
+python3 tests/test_dictionary.py -v  # Dictionary tests (14)
+python3 tests/test_cache.py -v       # Cache tests (8)
+
+# Quick sanity check
+./define привет && ./define hello && ./define знать --grammar
+```
+
+**When adding new data:**
+- After adding words to `ru_definitions.json`, run `test_data.py`
+- After adding phrases to `ru_phrases.json` or `en_phrases.json`, run `test_data.py`
+- After modifying grammar in `ru_grammar.json`, run `test_grammar.py`
+- After changing language detection, run `test_languages.py`
 
 ---
 

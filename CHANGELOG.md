@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-01-30
+
+### Added
+- **Enhanced Grammar System** with comprehensive Russian verb and noun support
+- `--grammar` / `-g` flag to display extended grammatical information
+- **Past Tense Conjugation** for all verbs (я писал, ты писал, etc.)
+- **Future Tense Conjugation** for perfective and imperfective verbs
+- **Imperative Mood** for commands (пиши!, напиши!, идите!)
+- **Participles** — active, passive, present, past forms
+- **Plural Declensions** — all 6 cases in plural form
+- **Stress Marks** — automatic stress placement for Russian words
+- New `core/grammar.py` module with:
+  - StressMarker class for stress mark utilities
+  - VerbConjugator class for tense generation
+  - NounDecliner class for case/number declension
+  - GrammarEngine class orchestrating all grammar features
+- `languages/data/ru_grammar.json` with:
+  - 30+ verbs with full conjugation (all tenses, imperative, participles)
+  - 20+ nouns with singular and plural declensions
+  - Irregular forms (идти→шёл, человек→люди, ребёнок→дети)
+- **38 new unit tests** for grammar features (115 total tests)
+
+### Changed
+- Formatter now displays extended grammar when `--grammar` flag is used
+- Russian handler prioritizes definitions over phrase lookups
+- Version bumped to 2.2.0
+
+### Technical
+- Added `tests/test_grammar.py` with comprehensive grammar tests
+- Grammar data loaded lazily from JSON files
+- Velar consonant handling for genitive plural (-ов → -ей)
+
 ## [2.1.0] - 2026-01-30
 
 ### Added
@@ -61,7 +93,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Idiom Databases**
   - 50+ English idioms
   - 25+ Russian idioms
-- Register markers (formal/informal/vulgar)
+- Register markers (formal/informal/colloquial)
 
 ## [1.0.0] - 2026-01-30
 

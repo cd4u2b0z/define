@@ -10,7 +10,21 @@ English | [Русский](#русский-1)
 
 ## 󰗡 Version History / История версий
 
-### v2.1.0 — Current / Текущая (January 2026)
+### v2.2.0 — Current / Текущая (January 2026)
+
+**Enhanced Grammar / Расширенная грамматика**
+
+- ✅ **Past/Future Conjugation** — Full verb tenses beyond present
+- ✅ **Plural Declensions** — Noun cases in both singular and plural
+- ✅ **Stress Marks** — Automatic stress placement for all Russian words
+- ✅ **Imperative Mood** — Command forms for verbs (пиши!, напиши!)
+- ✅ **Participles** — Active, passive, present, past verbal adjectives
+- ✅ **Grammar Engine** — New `core/grammar.py` module
+- ✅ **Grammar Data** — 30+ verbs, 20+ nouns with full forms
+- ✅ **38 new unit tests** (115 total)
+- ✅ `--grammar` / `-g` flag for extended grammar display
+
+### v2.1.0 — Previous (January 2026)
 
 **SM-2 Spaced Repetition + Vocabulary Expansion + Unit Tests**
 
@@ -35,7 +49,7 @@ English | [Русский](#русский-1)
 - ✅ Verb conjugation tables (present tense)
 - ✅ English idioms database (50+ idioms)
 - ✅ Russian idioms database (25+ expressions)
-- ✅ Register markers (formal/informal/vulgar)
+- ✅ Register markers (formal/informal/colloquial)
 
 ### v1.0.0 — Initial Python Release (January 2026)
 
@@ -52,18 +66,6 @@ English | [Русский](#русский-1)
 ---
 
 ## 󰜎 Planned / Запланировано
-
-### v2.2.0 — Enhanced Grammar
-
-**Target: Q1 2026**
-
-| Feature | Description | Priority |
-|---------|-------------|----------|
-| 󱗃 Past/Future Conjugation | Verb tenses beyond present | High |
-| 󰆥 Plural Declensions | Noun cases in plural form | High |
-| 󰗊 Stress Marks | Show stress on all Russian words | Medium |
-| 󰛺 Imperative Mood | Command forms for verbs | Medium |
-| 󰎁 Participles | Verbal adjectives | Low |
 
 ### v2.3.0 — Even More Vocabulary
 
@@ -84,6 +86,8 @@ English | [Русский](#русский-1)
 |---------|-------------|----------|
 | 󰃀 Spaced Repetition | SM-2 algorithm for review | ✅ Done |
 | 󰄎 Progress Tracking | Statistics and streaks | ✅ Done |
+| 󱗃 Past/Future Conjugation | Full verb tenses | ✅ Done |
+| 󰆥 Plural Declensions | Singular and plural cases | ✅ Done |
 | 󰙨 Grammar Drills | Practice cases/conjugation | Medium |
 | 󰎈 Word of the Day | Daily vocabulary | Low |
 
@@ -114,7 +118,7 @@ English | [Русский](#русский-1)
 
 | Task | Description | Status |
 |------|-------------|--------|
-| 󰉨 Unit Tests | pytest test suite (77 tests) | ✅ Done |
+| 󰉨 Unit Tests | pytest test suite (115 tests) | ✅ Done |
 | 󰙨 Type Hints | Full mypy compliance | Planned |
 | 󰈙 Man Page | Unix manual page | Planned |
 

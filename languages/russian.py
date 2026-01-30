@@ -48,6 +48,10 @@ class Russian(Language):
         # Local definitions
         self.local_definitions = self._load_json(data_dir / "ru_definitions.json")
         
+        # Grammar data (verbs with all tenses, nouns with declensions)
+        self.grammar_data = self._load_json(data_dir / "ru_grammar.json")
+        self.grammar_data.pop("_meta", None)
+        
         # Phrases database
         self.phrases = self._load_json(data_dir / "ru_phrases.json")
         # Remove meta key if present
@@ -203,13 +207,13 @@ class Russian(Language):
     
     def lookup(self, word: str) -> Optional[dict]:
         """Look up a Russian word or phrase."""
-        # Check phrases database first (for translations)
-        if word in self.phrases:
-            return self._format_phrase(word, self.phrases[word])
-        
-        # Check local definitions
+        # Check local definitions first (has richer grammar data)
         if word in self.local_definitions:
             return self._format_local(word, self.local_definitions[word])
+        
+        # Check phrases database (for translations)
+        if word in self.phrases:
+            return self._format_phrase(word, self.phrases[word])
         
         # Fall back to Wiktionary for single words
         if ' ' not in word:
@@ -280,14 +284,47 @@ class Russian(Language):
             "source": "local dictionary (word breakdown)"
         }
     
+    def _get_grammar_data(self, word: str, pos: str) -> dict:
+        """Get enhanced grammar data for verbs and nouns."""
+        grammar = {}
+        
+        # Check for verb grammar data
+        if pos == "verb":
+            verb_data = self.grammar_data.get("verbs", {}).get(word)
+            if verb_data:
+                grammar["past"] = verb_data.get("past")
+                grammar["future"] = verb_data.get("future")
+                grammar["imperative"] = verb_data.get("imperative")
+                grammar["participles"] = verb_data.get("participles")
+                grammar["stress_pattern"] = verb_data.get("stress_pattern")
+                grammar["conjugation_class"] = verb_data.get("conjugation_class")
+        
+        # Check for noun grammar data
+        elif pos in ("noun", "pronoun"):
+            noun_data = self.grammar_data.get("nouns", {}).get(word)
+            if noun_data:
+                grammar["singular_cases"] = noun_data.get("singular")
+                grammar["plural_cases"] = noun_data.get("plural")
+                grammar["animate"] = noun_data.get("animate")
+                grammar["stress_position"] = noun_data.get("stress_position")
+                if noun_data.get("note"):
+                    grammar["grammar_note"] = noun_data.get("note")
+        
+        return grammar
+    
     def _format_local(self, word: str, data: dict) -> dict:
         """Format local definition to standard format."""
-        return {
+        pos = data.get("pos", "")
+        
+        # Get enhanced grammar data
+        grammar = self._get_grammar_data(word, pos)
+        
+        result = {
             "word": word,
             "phonetic": data.get("phonetic", ""),
             "audio": None,
             "meanings": [{
-                "partOfSpeech": data.get("pos", ""),
+                "partOfSpeech": pos,
                 "definitions": [{
                     "definition": data.get("definition", ""),
                     "example": data.get("example"),
@@ -307,6 +344,26 @@ class Russian(Language):
             "idioms": self._get_idioms(word),
             "source": "local dictionary"
         }
+        
+        # Add enhanced grammar
+        if grammar.get("past"):
+            result["past"] = grammar["past"]
+        if grammar.get("future"):
+            result["future"] = grammar["future"]
+        if grammar.get("imperative"):
+            result["imperative"] = grammar["imperative"]
+        if grammar.get("participles"):
+            result["participles"] = grammar["participles"]
+        if grammar.get("singular_cases"):
+            result["singular_cases"] = grammar["singular_cases"]
+        if grammar.get("plural_cases"):
+            result["plural_cases"] = grammar["plural_cases"]
+        if grammar.get("animate") is not None:
+            result["animate"] = grammar["animate"]
+        if grammar.get("grammar_note"):
+            result["grammar_note"] = grammar["grammar_note"]
+        
+        return result
     
     def _detect_register(self, data: dict) -> str:
         """Detect formality register from definition."""

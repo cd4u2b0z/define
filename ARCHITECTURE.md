@@ -20,6 +20,7 @@ define/
 │   ├── 󰌠 dictionary.py         # Multi-language dictionary orchestrator
 │   ├── 󰌠 cache.py              # XDG-compliant caching system
 │   ├── 󰌠 vocabulary.py         # Learning features + SM-2 spaced repetition
+│   ├── 󰌠 grammar.py            # Russian grammar engine (conjugation, declension)
 │   └── 󰌠 audio.py              # Pronunciation playback
 │
 ├── 󰉋 languages/                # Language handlers (plugin architecture)
@@ -31,6 +32,7 @@ define/
 │       ├── 󰘦 ru_translit.json      # 640+ transliteration mappings
 │       ├── 󰘦 ru_definitions.json   # 212 local definitions + grammar
 │       ├── 󰘦 ru_phrases.json       # 936 Russian→English phrases
+│       ├── 󰘦 ru_grammar.json       # 30+ verbs, 20+ nouns with full grammar
 │       ├── 󰘦 en_phrases.json       # 845 English→Russian phrases
 │       ├── 󰘦 en_idioms.json        # 50+ English idioms
 │       ├── 󰘦 en_variations.json    # Text speak, abbreviations
@@ -40,12 +42,13 @@ define/
 │   ├── 󰌠 __init__.py
 │   └── 󰌠 formatter.py          # Terminal output formatting & colors
 │
-├── 󰉋 tests/                    # Unit test suite (77 tests)
+├── 󰉋 tests/                    # Unit test suite (115 tests)
 │   ├── 󰌠 __init__.py
 │   ├── 󰌠 run_tests.py          # Test runner script
 │   ├── 󰌠 test_cache.py         # Cache tests (8)
 │   ├── 󰌠 test_data.py          # Data integrity tests (18)
 │   ├── 󰌠 test_dictionary.py    # Dictionary tests (14)
+│   ├── 󰌠 test_grammar.py       # Grammar engine tests (38)
 │   ├── 󰌠 test_languages.py     # Language detection tests (20)
 │   └── 󰌠 test_vocabulary.py    # SM-2 & vocabulary tests (17)
 │
@@ -279,7 +282,53 @@ cache_key = hashlib.md5(f"{lang}:{word}".encode()).hexdigest()
 cache_file = cache_dir / f"{cache_key}.json"
 ```
 
-### 󰗅 Formatter (`ui/formatter.py`)
+### � Grammar Engine (`core/grammar.py`)
+
+**Components:**
+
+| Class | Purpose |
+|-------|---------|
+| `StressMarker` | Handle Russian stress marks (а́, е́, etc.) |
+| `VerbConjugator` | Generate all verb tenses |
+| `NounDecliner` | Generate noun case forms |
+| `GrammarEngine` | Orchestrate grammar lookups |
+
+**Verb Tense Generation:**
+
+```python
+# Past tense (changes by gender, not person)
+past = {
+    "masc": "писа́л",      # он писал
+    "fem": "писа́ла",      # она писала
+    "neut": "писа́ло",     # оно писало
+    "plural": "писа́ли"    # они писали
+}
+
+# Future tense (imperfective = compound, perfective = simple)
+future_impf = {"я": "бу́ду писа́ть", ...}   # compound
+future_perf = {"я": "напишу́", ...}         # simple
+
+# Imperative mood
+imperative = {"singular": "пиши́!", "plural": "пиши́те!"}
+
+# Participles
+participles = {
+    "present_active": "пи́шущий",   # one who writes
+    "past_active": "писа́вший",     # one who wrote
+    "present_passive": "пи́шемый",  # being written
+    "past_passive": "напи́санный"   # having been written
+}
+```
+
+**Noun Declension:**
+
+```python
+# Generates all 6 cases for singular and plural
+singular = {"nominative": "дом", "genitive": "до́ма", ...}
+plural = {"nominative": "дома́", "genitive": "домо́в", ...}
+```
+
+### �󰗅 Formatter (`ui/formatter.py`)
 
 **Color Scheme:**
 
@@ -289,7 +338,7 @@ cache_file = cache_dir / f"{cache_key}.json"
 | POS | Yellow | Part of speech |
 | Definition | Default | Definition text |
 | Example | Dim | Usage examples |
-| Register | Red | Vulgar markers |
+| Register | Red | Colloquial markers |
 | Idiom | Magenta | Idiom headers |
 
 **Grammar Display:**
@@ -414,6 +463,48 @@ languages/data/
 
 ---
 
+## 󰙨 Testing / Тестирование
+
+### Running Tests
+
+```bash
+# Run full test suite (115 tests)
+python3 tests/run_tests.py
+
+# Run individual test modules
+python3 tests/test_grammar.py -v     # Grammar engine (38 tests)
+python3 tests/test_data.py -v        # Data file integrity (18 tests)
+python3 tests/test_languages.py -v   # Language detection (20 tests)
+python3 tests/test_vocabulary.py -v  # SM-2 algorithm (17 tests)
+python3 tests/test_dictionary.py -v  # Dictionary orchestration (14 tests)
+python3 tests/test_cache.py -v       # Caching system (8 tests)
+```
+
+### Test Coverage by Module
+
+| Test File | Tests | Covers |
+|-----------|-------|--------|
+| `test_grammar.py` | 38 | Grammar engine, conjugation, declension |
+| `test_languages.py` | 20 | Language detection, transliteration |
+| `test_data.py` | 18 | JSON data files integrity |
+| `test_vocabulary.py` | 17 | SM-2 algorithm, vocabulary storage |
+| `test_dictionary.py` | 14 | Multi-language lookup orchestration |
+| `test_cache.py` | 8 | XDG caching, TTL expiration |
+
+### When to Run Tests
+
+| Change Type | Run These Tests |
+|-------------|-----------------|
+| Modified `ru_definitions.json` | `test_data.py` |
+| Modified `ru_phrases.json` / `en_phrases.json` | `test_data.py` |
+| Modified `ru_grammar.json` | `test_grammar.py`, `test_data.py` |
+| Modified `core/grammar.py` | `test_grammar.py` |
+| Modified language detection | `test_languages.py` |
+| Modified `core/vocabulary.py` | `test_vocabulary.py` |
+| Any significant change | Full suite: `run_tests.py` |
+
+---
+
 # Русский
 
 ## 󰉋 Структура проекта
@@ -434,12 +525,12 @@ languages/data/
 ### Грамматика
 
 - **Существительные**: род + все 6 падежей с вопросами
-- **Глаголы**: вид + видовая пара + спряжение
-- **Идиомы**: включая мат с транслитерацией
+- **Глаголы**: вид + видовая пара + спряжение (все времена)
+- **Идиомы**: 25+ выражений с транслитерацией
 
 ### Локальный словарь
 
-177+ слов с полной грамматикой для офлайн-режима.
+212+ слов с полной грамматикой для офлайн-режима.
 
 ---
 

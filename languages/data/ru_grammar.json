@@ -1,0 +1,1637 @@
+{
+  "_meta": {
+    "description": "Russian grammar data for verbs and nouns",
+    "version": "2.2.0",
+    "features": ["past_tense", "future_tense", "imperative", "participles", "plural_declension"]
+  },
+  "verbs": {
+    "знать": {
+      "infinitive": "знать",
+      "aspect": "imperfective",
+      "pair": "узнать",
+      "stress_pattern": "stem",
+      "conjugation_class": 1,
+      "present": {
+        "я": "зна́ю",
+        "ты": "зна́ешь",
+        "он/она": "зна́ет",
+        "мы": "зна́ем",
+        "вы": "зна́ете",
+        "они": "зна́ют"
+      },
+      "past": {
+        "masc": "зна́л",
+        "fem": "зна́ла",
+        "neut": "зна́ло",
+        "plural": "зна́ли"
+      },
+      "future": {
+        "я": "бу́ду знать",
+        "ты": "бу́дешь знать",
+        "он/она": "бу́дет знать",
+        "мы": "бу́дем знать",
+        "вы": "бу́дете знать",
+        "они": "бу́дут знать"
+      },
+      "imperative": {
+        "singular": "зна́й",
+        "plural": "зна́йте"
+      },
+      "participles": {
+        "present_active": "зна́ющий",
+        "past_active": "зна́вший",
+        "present_passive": "зна́емый"
+      }
+    },
+    "делать": {
+      "infinitive": "делать",
+      "aspect": "imperfective",
+      "pair": "сделать",
+      "stress_pattern": "stem",
+      "conjugation_class": 1,
+      "present": {
+        "я": "де́лаю",
+        "ты": "де́лаешь",
+        "он/она": "де́лает",
+        "мы": "де́лаем",
+        "вы": "де́лаете",
+        "они": "де́лают"
+      },
+      "past": {
+        "masc": "де́лал",
+        "fem": "де́лала",
+        "neut": "де́лало",
+        "plural": "де́лали"
+      },
+      "future": {
+        "я": "бу́ду де́лать",
+        "ты": "бу́дешь де́лать",
+        "он/она": "бу́дет де́лать",
+        "мы": "бу́дем де́лать",
+        "вы": "бу́дете де́лать",
+        "они": "бу́дут де́лать"
+      },
+      "imperative": {
+        "singular": "де́лай",
+        "plural": "де́лайте"
+      },
+      "participles": {
+        "present_active": "де́лающий",
+        "past_active": "де́лавший",
+        "present_passive": "де́лаемый"
+      }
+    },
+    "сделать": {
+      "infinitive": "сделать",
+      "aspect": "perfective",
+      "pair": "делать",
+      "stress_pattern": "stem",
+      "conjugation_class": 1,
+      "future": {
+        "я": "сде́лаю",
+        "ты": "сде́лаешь",
+        "он/она": "сде́лает",
+        "мы": "сде́лаем",
+        "вы": "сде́лаете",
+        "они": "сде́лают"
+      },
+      "past": {
+        "masc": "сде́лал",
+        "fem": "сде́лала",
+        "neut": "сде́лало",
+        "plural": "сде́лали"
+      },
+      "imperative": {
+        "singular": "сде́лай",
+        "plural": "сде́лайте"
+      },
+      "participles": {
+        "past_active": "сде́лавший",
+        "past_passive": "сде́ланный"
+      }
+    },
+    "хотеть": {
+      "infinitive": "хотеть",
+      "aspect": "imperfective",
+      "pair": "захотеть",
+      "stress_pattern": "mobile",
+      "conjugation_class": "mixed",
+      "present": {
+        "я": "хочу́",
+        "ты": "хо́чешь",
+        "он/она": "хо́чет",
+        "мы": "хоти́м",
+        "вы": "хоти́те",
+        "они": "хотя́т"
+      },
+      "past": {
+        "masc": "хоте́л",
+        "fem": "хоте́ла",
+        "neut": "хоте́ло",
+        "plural": "хоте́ли"
+      },
+      "future": {
+        "я": "бу́ду хоте́ть",
+        "ты": "бу́дешь хоте́ть",
+        "он/она": "бу́дет хоте́ть",
+        "мы": "бу́дем хоте́ть",
+        "вы": "бу́дете хоте́ть",
+        "они": "бу́дут хоте́ть"
+      },
+      "imperative": {
+        "singular": "-",
+        "plural": "-",
+        "note": "Rarely used; use захоти instead"
+      },
+      "participles": {
+        "present_active": "хотя́щий",
+        "past_active": "хоте́вший"
+      }
+    },
+    "мочь": {
+      "infinitive": "мочь",
+      "aspect": "imperfective",
+      "pair": "смочь",
+      "stress_pattern": "mobile",
+      "conjugation_class": 1,
+      "present": {
+        "я": "могу́",
+        "ты": "мо́жешь",
+        "он/она": "мо́жет",
+        "мы": "мо́жем",
+        "вы": "мо́жете",
+        "они": "мо́гут"
+      },
+      "past": {
+        "masc": "мог",
+        "fem": "могла́",
+        "neut": "могло́",
+        "plural": "могли́"
+      },
+      "future": {
+        "я": "бу́ду мочь",
+        "ты": "бу́дешь мочь",
+        "он/она": "бу́дет мочь",
+        "мы": "бу́дем мочь",
+        "вы": "бу́дете мочь",
+        "они": "бу́дут мочь"
+      },
+      "imperative": {
+        "singular": "-",
+        "plural": "-",
+        "note": "No imperative; use сможешь/смоги"
+      },
+      "participles": {
+        "present_active": "могу́щий",
+        "past_active": "мо́гший"
+      }
+    },
+    "идти": {
+      "infinitive": "идти",
+      "aspect": "imperfective (unidirectional)",
+      "pair": "пойти",
+      "stress_pattern": "stem",
+      "conjugation_class": "irregular",
+      "present": {
+        "я": "иду́",
+        "ты": "идёшь",
+        "он/она": "идёт",
+        "мы": "идём",
+        "вы": "идёте",
+        "они": "иду́т"
+      },
+      "past": {
+        "masc": "шёл",
+        "fem": "шла",
+        "neut": "шло",
+        "plural": "шли"
+      },
+      "future": {
+        "я": "бу́ду идти́",
+        "ты": "бу́дешь идти́",
+        "он/она": "бу́дет идти́",
+        "мы": "бу́дем идти́",
+        "вы": "бу́дете идти́",
+        "они": "бу́дут идти́"
+      },
+      "imperative": {
+        "singular": "иди́",
+        "plural": "иди́те"
+      },
+      "participles": {
+        "present_active": "иду́щий",
+        "past_active": "ше́дший"
+      }
+    },
+    "пойти": {
+      "infinitive": "пойти",
+      "aspect": "perfective",
+      "pair": "идти",
+      "stress_pattern": "mobile",
+      "conjugation_class": "irregular",
+      "future": {
+        "я": "пойду́",
+        "ты": "пойдёшь",
+        "он/она": "пойдёт",
+        "мы": "пойдём",
+        "вы": "пойдёте",
+        "они": "пойду́т"
+      },
+      "past": {
+        "masc": "пошёл",
+        "fem": "пошла́",
+        "neut": "пошло́",
+        "plural": "пошли́"
+      },
+      "imperative": {
+        "singular": "пойди́",
+        "plural": "пойди́те"
+      },
+      "participles": {
+        "past_active": "поше́дший"
+      }
+    },
+    "понимать": {
+      "infinitive": "понимать",
+      "aspect": "imperfective",
+      "pair": "понять",
+      "stress_pattern": "stem",
+      "conjugation_class": 1,
+      "present": {
+        "я": "понима́ю",
+        "ты": "понима́ешь",
+        "он/она": "понима́ет",
+        "мы": "понима́ем",
+        "вы": "понима́ете",
+        "они": "понима́ют"
+      },
+      "past": {
+        "masc": "понима́л",
+        "fem": "понима́ла",
+        "neut": "понима́ло",
+        "plural": "понима́ли"
+      },
+      "future": {
+        "я": "бу́ду понима́ть",
+        "ты": "бу́дешь понима́ть",
+        "он/она": "бу́дет понима́ть",
+        "мы": "бу́дем понима́ть",
+        "вы": "бу́дете понима́ть",
+        "они": "бу́дут понима́ть"
+      },
+      "imperative": {
+        "singular": "понима́й",
+        "plural": "понима́йте"
+      },
+      "participles": {
+        "present_active": "понима́ющий",
+        "past_active": "понима́вший",
+        "present_passive": "понима́емый"
+      }
+    },
+    "понять": {
+      "infinitive": "понять",
+      "aspect": "perfective",
+      "pair": "понимать",
+      "stress_pattern": "mobile",
+      "conjugation_class": 1,
+      "future": {
+        "я": "пойму́",
+        "ты": "поймёшь",
+        "он/она": "поймёт",
+        "мы": "поймём",
+        "вы": "поймёте",
+        "они": "пойму́т"
+      },
+      "past": {
+        "masc": "по́нял",
+        "fem": "поняла́",
+        "neut": "по́няло",
+        "plural": "по́няли"
+      },
+      "imperative": {
+        "singular": "пойми́",
+        "plural": "пойми́те"
+      },
+      "participles": {
+        "past_active": "поня́вший",
+        "past_passive": "по́нятый"
+      }
+    },
+    "говорить": {
+      "infinitive": "говорить",
+      "aspect": "imperfective",
+      "pair": "сказать",
+      "stress_pattern": "ending",
+      "conjugation_class": 2,
+      "present": {
+        "я": "говорю́",
+        "ты": "говори́шь",
+        "он/она": "говори́т",
+        "мы": "говори́м",
+        "вы": "говори́те",
+        "они": "говоря́т"
+      },
+      "past": {
+        "masc": "говори́л",
+        "fem": "говори́ла",
+        "neut": "говори́ло",
+        "plural": "говори́ли"
+      },
+      "future": {
+        "я": "бу́ду говори́ть",
+        "ты": "бу́дешь говори́ть",
+        "он/она": "бу́дет говори́ть",
+        "мы": "бу́дем говори́ть",
+        "вы": "бу́дете говори́ть",
+        "они": "бу́дут говори́ть"
+      },
+      "imperative": {
+        "singular": "говори́",
+        "plural": "говори́те"
+      },
+      "participles": {
+        "present_active": "говоря́щий",
+        "past_active": "говори́вший"
+      }
+    },
+    "сказать": {
+      "infinitive": "сказать",
+      "aspect": "perfective",
+      "pair": "говорить",
+      "stress_pattern": "mobile",
+      "conjugation_class": 1,
+      "future": {
+        "я": "скажу́",
+        "ты": "ска́жешь",
+        "он/она": "ска́жет",
+        "мы": "ска́жем",
+        "вы": "ска́жете",
+        "они": "ска́жут"
+      },
+      "past": {
+        "masc": "сказа́л",
+        "fem": "сказа́ла",
+        "neut": "сказа́ло",
+        "plural": "сказа́ли"
+      },
+      "imperative": {
+        "singular": "скажи́",
+        "plural": "скажи́те"
+      },
+      "participles": {
+        "past_active": "сказа́вший",
+        "past_passive": "ска́занный"
+      }
+    },
+    "любить": {
+      "infinitive": "любить",
+      "aspect": "imperfective",
+      "pair": "полюбить",
+      "stress_pattern": "ending",
+      "conjugation_class": 2,
+      "present": {
+        "я": "люблю́",
+        "ты": "лю́бишь",
+        "он/она": "лю́бит",
+        "мы": "лю́бим",
+        "вы": "лю́бите",
+        "они": "лю́бят"
+      },
+      "past": {
+        "masc": "люби́л",
+        "fem": "люби́ла",
+        "neut": "люби́ло",
+        "plural": "люби́ли"
+      },
+      "future": {
+        "я": "бу́ду люби́ть",
+        "ты": "бу́дешь люби́ть",
+        "он/она": "бу́дет люби́ть",
+        "мы": "бу́дем люби́ть",
+        "вы": "бу́дете люби́ть",
+        "они": "бу́дут люби́ть"
+      },
+      "imperative": {
+        "singular": "люби́",
+        "plural": "люби́те"
+      },
+      "participles": {
+        "present_active": "лю́бящий",
+        "past_active": "люби́вший",
+        "present_passive": "люби́мый"
+      }
+    },
+    "жить": {
+      "infinitive": "жить",
+      "aspect": "imperfective",
+      "pair": "прожить",
+      "stress_pattern": "ending",
+      "conjugation_class": 1,
+      "present": {
+        "я": "живу́",
+        "ты": "живёшь",
+        "он/она": "живёт",
+        "мы": "живём",
+        "вы": "живёте",
+        "они": "живу́т"
+      },
+      "past": {
+        "masc": "жил",
+        "fem": "жила́",
+        "neut": "жи́ло",
+        "plural": "жи́ли"
+      },
+      "future": {
+        "я": "бу́ду жить",
+        "ты": "бу́дешь жить",
+        "он/она": "бу́дет жить",
+        "мы": "бу́дем жить",
+        "вы": "бу́дете жить",
+        "они": "бу́дут жить"
+      },
+      "imperative": {
+        "singular": "живи́",
+        "plural": "живи́те"
+      },
+      "participles": {
+        "present_active": "живу́щий",
+        "past_active": "жи́вший"
+      }
+    },
+    "работать": {
+      "infinitive": "работать",
+      "aspect": "imperfective",
+      "stress_pattern": "stem",
+      "conjugation_class": 1,
+      "present": {
+        "я": "рабо́таю",
+        "ты": "рабо́таешь",
+        "он/она": "рабо́тает",
+        "мы": "рабо́таем",
+        "вы": "рабо́таете",
+        "они": "рабо́тают"
+      },
+      "past": {
+        "masc": "рабо́тал",
+        "fem": "рабо́тала",
+        "neut": "рабо́тало",
+        "plural": "рабо́тали"
+      },
+      "future": {
+        "я": "бу́ду рабо́тать",
+        "ты": "бу́дешь рабо́тать",
+        "он/она": "бу́дет рабо́тать",
+        "мы": "бу́дем рабо́тать",
+        "вы": "бу́дете рабо́тать",
+        "они": "бу́дут рабо́тать"
+      },
+      "imperative": {
+        "singular": "рабо́тай",
+        "plural": "рабо́тайте"
+      },
+      "participles": {
+        "present_active": "рабо́тающий",
+        "past_active": "рабо́тавший"
+      }
+    },
+    "думать": {
+      "infinitive": "думать",
+      "aspect": "imperfective",
+      "pair": "подумать",
+      "stress_pattern": "stem",
+      "conjugation_class": 1,
+      "present": {
+        "я": "ду́маю",
+        "ты": "ду́маешь",
+        "он/она": "ду́мает",
+        "мы": "ду́маем",
+        "вы": "ду́маете",
+        "они": "ду́мают"
+      },
+      "past": {
+        "masc": "ду́мал",
+        "fem": "ду́мала",
+        "neut": "ду́мало",
+        "plural": "ду́мали"
+      },
+      "future": {
+        "я": "бу́ду ду́мать",
+        "ты": "бу́дешь ду́мать",
+        "он/она": "бу́дет ду́мать",
+        "мы": "бу́дем ду́мать",
+        "вы": "бу́дете ду́мать",
+        "они": "бу́дут ду́мать"
+      },
+      "imperative": {
+        "singular": "ду́май",
+        "plural": "ду́майте"
+      },
+      "participles": {
+        "present_active": "ду́мающий",
+        "past_active": "ду́мавший"
+      }
+    },
+    "видеть": {
+      "infinitive": "видеть",
+      "aspect": "imperfective",
+      "pair": "увидеть",
+      "stress_pattern": "stem",
+      "conjugation_class": 2,
+      "present": {
+        "я": "ви́жу",
+        "ты": "ви́дишь",
+        "он/она": "ви́дит",
+        "мы": "ви́дим",
+        "вы": "ви́дите",
+        "они": "ви́дят"
+      },
+      "past": {
+        "masc": "ви́дел",
+        "fem": "ви́дела",
+        "neut": "ви́дело",
+        "plural": "ви́дели"
+      },
+      "future": {
+        "я": "бу́ду ви́деть",
+        "ты": "бу́дешь ви́деть",
+        "он/она": "бу́дет ви́деть",
+        "мы": "бу́дем ви́деть",
+        "вы": "бу́дете ви́деть",
+        "они": "бу́дут ви́деть"
+      },
+      "imperative": {
+        "singular": "-",
+        "plural": "-",
+        "note": "Rarely used; use смотри instead"
+      },
+      "participles": {
+        "present_active": "ви́дящий",
+        "past_active": "ви́девший",
+        "present_passive": "ви́димый"
+      }
+    },
+    "слышать": {
+      "infinitive": "слышать",
+      "aspect": "imperfective",
+      "pair": "услышать",
+      "stress_pattern": "stem",
+      "conjugation_class": 2,
+      "present": {
+        "я": "слы́шу",
+        "ты": "слы́шишь",
+        "он/она": "слы́шит",
+        "мы": "слы́шим",
+        "вы": "слы́шите",
+        "они": "слы́шат"
+      },
+      "past": {
+        "masc": "слы́шал",
+        "fem": "слы́шала",
+        "neut": "слы́шало",
+        "plural": "слы́шали"
+      },
+      "future": {
+        "я": "бу́ду слы́шать",
+        "ты": "бу́дешь слы́шать",
+        "он/она": "бу́дет слы́шать",
+        "мы": "бу́дем слы́шать",
+        "вы": "бу́дете слы́шать",
+        "они": "бу́дут слы́шать"
+      },
+      "imperative": {
+        "singular": "-",
+        "plural": "-",
+        "note": "Rarely used; use слушай instead"
+      },
+      "participles": {
+        "present_active": "слы́шащий",
+        "past_active": "слы́шавший",
+        "present_passive": "слы́шимый"
+      }
+    },
+    "писать": {
+      "infinitive": "писать",
+      "aspect": "imperfective",
+      "pair": "написать",
+      "stress_pattern": "ending",
+      "conjugation_class": 1,
+      "present": {
+        "я": "пишу́",
+        "ты": "пи́шешь",
+        "он/она": "пи́шет",
+        "мы": "пи́шем",
+        "вы": "пи́шете",
+        "они": "пи́шут"
+      },
+      "past": {
+        "masc": "писа́л",
+        "fem": "писа́ла",
+        "neut": "писа́ло",
+        "plural": "писа́ли"
+      },
+      "future": {
+        "я": "бу́ду писа́ть",
+        "ты": "бу́дешь писа́ть",
+        "он/она": "бу́дет писа́ть",
+        "мы": "бу́дем писа́ть",
+        "вы": "бу́дете писа́ть",
+        "они": "бу́дут писа́ть"
+      },
+      "imperative": {
+        "singular": "пиши́",
+        "plural": "пиши́те"
+      },
+      "participles": {
+        "present_active": "пи́шущий",
+        "past_active": "писа́вший",
+        "present_passive": "пи́шемый"
+      }
+    },
+    "читать": {
+      "infinitive": "читать",
+      "aspect": "imperfective",
+      "pair": "прочитать",
+      "stress_pattern": "stem",
+      "conjugation_class": 1,
+      "present": {
+        "я": "чита́ю",
+        "ты": "чита́ешь",
+        "он/она": "чита́ет",
+        "мы": "чита́ем",
+        "вы": "чита́ете",
+        "они": "чита́ют"
+      },
+      "past": {
+        "masc": "чита́л",
+        "fem": "чита́ла",
+        "neut": "чита́ло",
+        "plural": "чита́ли"
+      },
+      "future": {
+        "я": "бу́ду чита́ть",
+        "ты": "бу́дешь чита́ть",
+        "он/она": "бу́дет чита́ть",
+        "мы": "бу́дем чита́ть",
+        "вы": "бу́дете чита́ть",
+        "они": "бу́дут чита́ть"
+      },
+      "imperative": {
+        "singular": "чита́й",
+        "plural": "чита́йте"
+      },
+      "participles": {
+        "present_active": "чита́ющий",
+        "past_active": "чита́вший",
+        "present_passive": "чита́емый"
+      }
+    },
+    "есть": {
+      "infinitive": "есть",
+      "aspect": "imperfective",
+      "pair": "съесть",
+      "stress_pattern": "irregular",
+      "conjugation_class": "irregular",
+      "present": {
+        "я": "ем",
+        "ты": "ешь",
+        "он/она": "ест",
+        "мы": "еди́м",
+        "вы": "еди́те",
+        "они": "едя́т"
+      },
+      "past": {
+        "masc": "ел",
+        "fem": "е́ла",
+        "neut": "е́ло",
+        "plural": "е́ли"
+      },
+      "future": {
+        "я": "бу́ду есть",
+        "ты": "бу́дешь есть",
+        "он/она": "бу́дет есть",
+        "мы": "бу́дем есть",
+        "вы": "бу́дете есть",
+        "они": "бу́дут есть"
+      },
+      "imperative": {
+        "singular": "ешь",
+        "plural": "е́шьте"
+      },
+      "participles": {
+        "present_active": "едя́щий",
+        "past_active": "е́вший"
+      }
+    },
+    "пить": {
+      "infinitive": "пить",
+      "aspect": "imperfective",
+      "pair": "выпить",
+      "stress_pattern": "ending",
+      "conjugation_class": 1,
+      "present": {
+        "я": "пью",
+        "ты": "пьёшь",
+        "он/она": "пьёт",
+        "мы": "пьём",
+        "вы": "пьёте",
+        "они": "пьют"
+      },
+      "past": {
+        "masc": "пил",
+        "fem": "пила́",
+        "neut": "пи́ло",
+        "plural": "пи́ли"
+      },
+      "future": {
+        "я": "бу́ду пить",
+        "ты": "бу́дешь пить",
+        "он/она": "бу́дет пить",
+        "мы": "бу́дем пить",
+        "вы": "бу́дете пить",
+        "они": "бу́дут пить"
+      },
+      "imperative": {
+        "singular": "пей",
+        "plural": "пе́йте"
+      },
+      "participles": {
+        "present_active": "пью́щий",
+        "past_active": "пи́вший"
+      }
+    },
+    "быть": {
+      "infinitive": "быть",
+      "aspect": "imperfective",
+      "stress_pattern": "mobile",
+      "conjugation_class": "irregular",
+      "note": "No present tense in modern Russian (except есть for 'there is')",
+      "present": {
+        "note": "Not used in modern Russian"
+      },
+      "past": {
+        "masc": "был",
+        "fem": "была́",
+        "neut": "бы́ло",
+        "plural": "бы́ли"
+      },
+      "future": {
+        "я": "бу́ду",
+        "ты": "бу́дешь",
+        "он/она": "бу́дет",
+        "мы": "бу́дем",
+        "вы": "бу́дете",
+        "они": "бу́дут"
+      },
+      "imperative": {
+        "singular": "будь",
+        "plural": "бу́дьте"
+      },
+      "participles": {
+        "past_active": "бы́вший"
+      }
+    },
+    "ходить": {
+      "infinitive": "ходить",
+      "aspect": "imperfective (multidirectional)",
+      "pair": "пойти",
+      "stress_pattern": "ending",
+      "conjugation_class": 2,
+      "present": {
+        "я": "хожу́",
+        "ты": "хо́дишь",
+        "он/она": "хо́дит",
+        "мы": "хо́дим",
+        "вы": "хо́дите",
+        "они": "хо́дят"
+      },
+      "past": {
+        "masc": "ходи́л",
+        "fem": "ходи́ла",
+        "neut": "ходи́ло",
+        "plural": "ходи́ли"
+      },
+      "future": {
+        "я": "бу́ду ходи́ть",
+        "ты": "бу́дешь ходи́ть",
+        "он/она": "бу́дет ходи́ть",
+        "мы": "бу́дем ходи́ть",
+        "вы": "бу́дете ходи́ть",
+        "они": "бу́дут ходи́ть"
+      },
+      "imperative": {
+        "singular": "ходи́",
+        "plural": "ходи́те"
+      },
+      "participles": {
+        "present_active": "ходя́щий",
+        "past_active": "ходи́вший"
+      }
+    },
+    "брать": {
+      "infinitive": "брать",
+      "aspect": "imperfective",
+      "pair": "взять",
+      "stress_pattern": "mobile",
+      "conjugation_class": 1,
+      "present": {
+        "я": "беру́",
+        "ты": "берёшь",
+        "он/она": "берёт",
+        "мы": "берём",
+        "вы": "берёте",
+        "они": "беру́т"
+      },
+      "past": {
+        "masc": "брал",
+        "fem": "брала́",
+        "neut": "бра́ло",
+        "plural": "бра́ли"
+      },
+      "future": {
+        "я": "бу́ду брать",
+        "ты": "бу́дешь брать",
+        "он/она": "бу́дет брать",
+        "мы": "бу́дем брать",
+        "вы": "бу́дете брать",
+        "они": "бу́дут брать"
+      },
+      "imperative": {
+        "singular": "бери́",
+        "plural": "бери́те"
+      },
+      "participles": {
+        "present_active": "беру́щий",
+        "past_active": "бра́вший"
+      }
+    },
+    "взять": {
+      "infinitive": "взять",
+      "aspect": "perfective",
+      "pair": "брать",
+      "stress_pattern": "mobile",
+      "conjugation_class": 1,
+      "future": {
+        "я": "возьму́",
+        "ты": "возьмёшь",
+        "он/она": "возьмёт",
+        "мы": "возьмём",
+        "вы": "возьмёте",
+        "они": "возьму́т"
+      },
+      "past": {
+        "masc": "взял",
+        "fem": "взяла́",
+        "neut": "взя́ло",
+        "plural": "взя́ли"
+      },
+      "imperative": {
+        "singular": "возьми́",
+        "plural": "возьми́те"
+      },
+      "participles": {
+        "past_active": "взя́вший",
+        "past_passive": "взя́тый"
+      }
+    },
+    "давать": {
+      "infinitive": "давать",
+      "aspect": "imperfective",
+      "pair": "дать",
+      "stress_pattern": "ending",
+      "conjugation_class": 1,
+      "present": {
+        "я": "даю́",
+        "ты": "даёшь",
+        "он/она": "даёт",
+        "мы": "даём",
+        "вы": "даёте",
+        "они": "даю́т"
+      },
+      "past": {
+        "masc": "дава́л",
+        "fem": "дава́ла",
+        "neut": "дава́ло",
+        "plural": "дава́ли"
+      },
+      "future": {
+        "я": "бу́ду дава́ть",
+        "ты": "бу́дешь дава́ть",
+        "он/она": "бу́дет дава́ть",
+        "мы": "бу́дем дава́ть",
+        "вы": "бу́дете дава́ть",
+        "они": "бу́дут дава́ть"
+      },
+      "imperative": {
+        "singular": "дава́й",
+        "plural": "дава́йте"
+      },
+      "participles": {
+        "present_active": "даю́щий",
+        "past_active": "дава́вший",
+        "present_passive": "дава́емый"
+      }
+    },
+    "дать": {
+      "infinitive": "дать",
+      "aspect": "perfective",
+      "pair": "давать",
+      "stress_pattern": "irregular",
+      "conjugation_class": "irregular",
+      "future": {
+        "я": "дам",
+        "ты": "дашь",
+        "он/она": "даст",
+        "мы": "дади́м",
+        "вы": "дади́те",
+        "они": "даду́т"
+      },
+      "past": {
+        "masc": "дал",
+        "fem": "дала́",
+        "neut": "да́ло",
+        "plural": "да́ли"
+      },
+      "imperative": {
+        "singular": "дай",
+        "plural": "да́йте"
+      },
+      "participles": {
+        "past_active": "да́вший",
+        "past_passive": "да́нный"
+      }
+    },
+    "ждать": {
+      "infinitive": "ждать",
+      "aspect": "imperfective",
+      "pair": "подождать",
+      "stress_pattern": "mobile",
+      "conjugation_class": 1,
+      "present": {
+        "я": "жду",
+        "ты": "ждёшь",
+        "он/она": "ждёт",
+        "мы": "ждём",
+        "вы": "ждёте",
+        "они": "жду́т"
+      },
+      "past": {
+        "masc": "ждал",
+        "fem": "ждала́",
+        "neut": "жда́ло",
+        "plural": "жда́ли"
+      },
+      "future": {
+        "я": "бу́ду ждать",
+        "ты": "бу́дешь ждать",
+        "он/она": "бу́дет ждать",
+        "мы": "бу́дем ждать",
+        "вы": "бу́дете ждать",
+        "они": "бу́дут ждать"
+      },
+      "imperative": {
+        "singular": "жди",
+        "plural": "жди́те"
+      },
+      "participles": {
+        "present_active": "жду́щий",
+        "past_active": "жда́вший"
+      }
+    },
+    "спать": {
+      "infinitive": "спать",
+      "aspect": "imperfective",
+      "pair": "поспать",
+      "stress_pattern": "ending",
+      "conjugation_class": 2,
+      "present": {
+        "я": "сплю",
+        "ты": "спишь",
+        "он/она": "спит",
+        "мы": "спим",
+        "вы": "спи́те",
+        "они": "спят"
+      },
+      "past": {
+        "masc": "спал",
+        "fem": "спала́",
+        "neut": "спа́ло",
+        "plural": "спа́ли"
+      },
+      "future": {
+        "я": "бу́ду спать",
+        "ты": "бу́дешь спать",
+        "он/она": "бу́дет спать",
+        "мы": "бу́дем спать",
+        "вы": "бу́дете спать",
+        "они": "бу́дут спать"
+      },
+      "imperative": {
+        "singular": "спи",
+        "plural": "спи́те"
+      },
+      "participles": {
+        "present_active": "спя́щий",
+        "past_active": "спа́вший"
+      }
+    },
+    "стоять": {
+      "infinitive": "стоять",
+      "aspect": "imperfective",
+      "stress_pattern": "ending",
+      "conjugation_class": 2,
+      "present": {
+        "я": "стою́",
+        "ты": "стои́шь",
+        "он/она": "стои́т",
+        "мы": "стои́м",
+        "вы": "стои́те",
+        "они": "стоя́т"
+      },
+      "past": {
+        "masc": "стоя́л",
+        "fem": "стоя́ла",
+        "neut": "стоя́ло",
+        "plural": "стоя́ли"
+      },
+      "future": {
+        "я": "бу́ду стоя́ть",
+        "ты": "бу́дешь стоя́ть",
+        "он/она": "бу́дет стоя́ть",
+        "мы": "бу́дем стоя́ть",
+        "вы": "бу́дете стоя́ть",
+        "они": "бу́дут стоя́ть"
+      },
+      "imperative": {
+        "singular": "стой",
+        "plural": "сто́йте"
+      },
+      "participles": {
+        "present_active": "стоя́щий",
+        "past_active": "стоя́вший"
+      }
+    },
+    "сидеть": {
+      "infinitive": "сидеть",
+      "aspect": "imperfective",
+      "stress_pattern": "ending",
+      "conjugation_class": 2,
+      "present": {
+        "я": "сижу́",
+        "ты": "сиди́шь",
+        "он/она": "сиди́т",
+        "мы": "сиди́м",
+        "вы": "сиди́те",
+        "они": "сидя́т"
+      },
+      "past": {
+        "masc": "сиде́л",
+        "fem": "сиде́ла",
+        "neut": "сиде́ло",
+        "plural": "сиде́ли"
+      },
+      "future": {
+        "я": "бу́ду сиде́ть",
+        "ты": "бу́дешь сиде́ть",
+        "он/она": "бу́дет сиде́ть",
+        "мы": "бу́дем сиде́ть",
+        "вы": "бу́дете сиде́ть",
+        "они": "бу́дут сиде́ть"
+      },
+      "imperative": {
+        "singular": "сиди́",
+        "plural": "сиди́те"
+      },
+      "participles": {
+        "present_active": "сидя́щий",
+        "past_active": "сиде́вший"
+      }
+    },
+    "лежать": {
+      "infinitive": "лежать",
+      "aspect": "imperfective",
+      "stress_pattern": "ending",
+      "conjugation_class": 2,
+      "present": {
+        "я": "лежу́",
+        "ты": "лежи́шь",
+        "он/она": "лежи́т",
+        "мы": "лежи́м",
+        "вы": "лежи́те",
+        "они": "лежа́т"
+      },
+      "past": {
+        "masc": "лежа́л",
+        "fem": "лежа́ла",
+        "neut": "лежа́ло",
+        "plural": "лежа́ли"
+      },
+      "future": {
+        "я": "бу́ду лежа́ть",
+        "ты": "бу́дешь лежа́ть",
+        "он/она": "бу́дет лежа́ть",
+        "мы": "бу́дем лежа́ть",
+        "вы": "бу́дете лежа́ть",
+        "они": "бу́дут лежа́ть"
+      },
+      "imperative": {
+        "singular": "лежи́",
+        "plural": "лежи́те"
+      },
+      "participles": {
+        "present_active": "лежа́щий",
+        "past_active": "лежа́вший"
+      }
+    }
+  },
+  "nouns": {
+    "дом": {
+      "nominative": "дом",
+      "gender": "masculine",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "дом",
+        "genitive": "до́ма",
+        "dative": "до́му",
+        "accusative": "дом",
+        "instrumental": "до́мом",
+        "prepositional": "до́ме"
+      },
+      "plural": {
+        "nominative": "дома́",
+        "genitive": "домо́в",
+        "dative": "дома́м",
+        "accusative": "дома́",
+        "instrumental": "дома́ми",
+        "prepositional": "дома́х"
+      }
+    },
+    "книга": {
+      "nominative": "книга",
+      "gender": "feminine",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "кни́га",
+        "genitive": "кни́ги",
+        "dative": "кни́ге",
+        "accusative": "кни́гу",
+        "instrumental": "кни́гой",
+        "prepositional": "кни́ге"
+      },
+      "plural": {
+        "nominative": "кни́ги",
+        "genitive": "книг",
+        "dative": "кни́гам",
+        "accusative": "кни́ги",
+        "instrumental": "кни́гами",
+        "prepositional": "кни́гах"
+      }
+    },
+    "слово": {
+      "nominative": "слово",
+      "gender": "neuter",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "сло́во",
+        "genitive": "сло́ва",
+        "dative": "сло́ву",
+        "accusative": "сло́во",
+        "instrumental": "сло́вом",
+        "prepositional": "сло́ве"
+      },
+      "plural": {
+        "nominative": "слова́",
+        "genitive": "слов",
+        "dative": "слова́м",
+        "accusative": "слова́",
+        "instrumental": "слова́ми",
+        "prepositional": "слова́х"
+      }
+    },
+    "человек": {
+      "nominative": "человек",
+      "gender": "masculine",
+      "animate": true,
+      "stress_position": 3,
+      "singular": {
+        "nominative": "челове́к",
+        "genitive": "челове́ка",
+        "dative": "челове́ку",
+        "accusative": "челове́ка",
+        "instrumental": "челове́ком",
+        "prepositional": "челове́ке"
+      },
+      "plural": {
+        "nominative": "лю́ди",
+        "genitive": "люде́й",
+        "dative": "лю́дям",
+        "accusative": "люде́й",
+        "instrumental": "людьми́",
+        "prepositional": "лю́дях"
+      },
+      "note": "Irregular plural: люди"
+    },
+    "женщина": {
+      "nominative": "женщина",
+      "gender": "feminine",
+      "animate": true,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "же́нщина",
+        "genitive": "же́нщины",
+        "dative": "же́нщине",
+        "accusative": "же́нщину",
+        "instrumental": "же́нщиной",
+        "prepositional": "же́нщине"
+      },
+      "plural": {
+        "nominative": "же́нщины",
+        "genitive": "же́нщин",
+        "dative": "же́нщинам",
+        "accusative": "же́нщин",
+        "instrumental": "же́нщинами",
+        "prepositional": "же́нщинах"
+      }
+    },
+    "мужчина": {
+      "nominative": "мужчина",
+      "gender": "masculine",
+      "animate": true,
+      "stress_position": 2,
+      "singular": {
+        "nominative": "мужчи́на",
+        "genitive": "мужчи́ны",
+        "dative": "мужчи́не",
+        "accusative": "мужчи́ну",
+        "instrumental": "мужчи́ной",
+        "prepositional": "мужчи́не"
+      },
+      "plural": {
+        "nominative": "мужчи́ны",
+        "genitive": "мужчи́н",
+        "dative": "мужчи́нам",
+        "accusative": "мужчи́н",
+        "instrumental": "мужчи́нами",
+        "prepositional": "мужчи́нах"
+      }
+    },
+    "ребёнок": {
+      "nominative": "ребёнок",
+      "gender": "masculine",
+      "animate": true,
+      "stress_position": 2,
+      "singular": {
+        "nominative": "ребёнок",
+        "genitive": "ребёнка",
+        "dative": "ребёнку",
+        "accusative": "ребёнка",
+        "instrumental": "ребёнком",
+        "prepositional": "ребёнке"
+      },
+      "plural": {
+        "nominative": "де́ти",
+        "genitive": "дете́й",
+        "dative": "де́тям",
+        "accusative": "дете́й",
+        "instrumental": "детьми́",
+        "prepositional": "де́тях"
+      },
+      "note": "Irregular plural: дети"
+    },
+    "друг": {
+      "nominative": "друг",
+      "gender": "masculine",
+      "animate": true,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "друг",
+        "genitive": "дру́га",
+        "dative": "дру́гу",
+        "accusative": "дру́га",
+        "instrumental": "дру́гом",
+        "prepositional": "дру́ге"
+      },
+      "plural": {
+        "nominative": "друзья́",
+        "genitive": "друзе́й",
+        "dative": "друзья́м",
+        "accusative": "друзе́й",
+        "instrumental": "друзья́ми",
+        "prepositional": "друзья́х"
+      }
+    },
+    "город": {
+      "nominative": "город",
+      "gender": "masculine",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "го́род",
+        "genitive": "го́рода",
+        "dative": "го́роду",
+        "accusative": "го́род",
+        "instrumental": "го́родом",
+        "prepositional": "го́роде"
+      },
+      "plural": {
+        "nominative": "города́",
+        "genitive": "городо́в",
+        "dative": "города́м",
+        "accusative": "города́",
+        "instrumental": "города́ми",
+        "prepositional": "города́х"
+      }
+    },
+    "страна": {
+      "nominative": "страна",
+      "gender": "feminine",
+      "animate": false,
+      "stress_position": 2,
+      "singular": {
+        "nominative": "страна́",
+        "genitive": "страны́",
+        "dative": "стране́",
+        "accusative": "страну́",
+        "instrumental": "страно́й",
+        "prepositional": "стране́"
+      },
+      "plural": {
+        "nominative": "стра́ны",
+        "genitive": "стран",
+        "dative": "стра́нам",
+        "accusative": "стра́ны",
+        "instrumental": "стра́нами",
+        "prepositional": "стра́нах"
+      }
+    },
+    "время": {
+      "nominative": "время",
+      "gender": "neuter",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "вре́мя",
+        "genitive": "вре́мени",
+        "dative": "вре́мени",
+        "accusative": "вре́мя",
+        "instrumental": "вре́менем",
+        "prepositional": "вре́мени"
+      },
+      "plural": {
+        "nominative": "времена́",
+        "genitive": "времён",
+        "dative": "времена́м",
+        "accusative": "времена́",
+        "instrumental": "времена́ми",
+        "prepositional": "времена́х"
+      },
+      "note": "Irregular neuter noun ending in -мя"
+    },
+    "имя": {
+      "nominative": "имя",
+      "gender": "neuter",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "и́мя",
+        "genitive": "и́мени",
+        "dative": "и́мени",
+        "accusative": "и́мя",
+        "instrumental": "и́менем",
+        "prepositional": "и́мени"
+      },
+      "plural": {
+        "nominative": "имена́",
+        "genitive": "имён",
+        "dative": "имена́м",
+        "accusative": "имена́",
+        "instrumental": "имена́ми",
+        "prepositional": "имена́х"
+      },
+      "note": "Irregular neuter noun ending in -мя"
+    },
+    "день": {
+      "nominative": "день",
+      "gender": "masculine",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "день",
+        "genitive": "дня",
+        "dative": "дню",
+        "accusative": "день",
+        "instrumental": "днём",
+        "prepositional": "дне"
+      },
+      "plural": {
+        "nominative": "дни",
+        "genitive": "дней",
+        "dative": "дням",
+        "accusative": "дни",
+        "instrumental": "дня́ми",
+        "prepositional": "днях"
+      }
+    },
+    "ночь": {
+      "nominative": "ночь",
+      "gender": "feminine",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "ночь",
+        "genitive": "но́чи",
+        "dative": "но́чи",
+        "accusative": "ночь",
+        "instrumental": "но́чью",
+        "prepositional": "но́чи"
+      },
+      "plural": {
+        "nominative": "но́чи",
+        "genitive": "ноче́й",
+        "dative": "ноча́м",
+        "accusative": "но́чи",
+        "instrumental": "ноча́ми",
+        "prepositional": "ноча́х"
+      }
+    },
+    "работа": {
+      "nominative": "работа",
+      "gender": "feminine",
+      "animate": false,
+      "stress_position": 2,
+      "singular": {
+        "nominative": "рабо́та",
+        "genitive": "рабо́ты",
+        "dative": "рабо́те",
+        "accusative": "рабо́ту",
+        "instrumental": "рабо́той",
+        "prepositional": "рабо́те"
+      },
+      "plural": {
+        "nominative": "рабо́ты",
+        "genitive": "рабо́т",
+        "dative": "рабо́там",
+        "accusative": "рабо́ты",
+        "instrumental": "рабо́тами",
+        "prepositional": "рабо́тах"
+      }
+    },
+    "место": {
+      "nominative": "место",
+      "gender": "neuter",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "ме́сто",
+        "genitive": "ме́ста",
+        "dative": "ме́сту",
+        "accusative": "ме́сто",
+        "instrumental": "ме́стом",
+        "prepositional": "ме́сте"
+      },
+      "plural": {
+        "nominative": "места́",
+        "genitive": "мест",
+        "dative": "места́м",
+        "accusative": "места́",
+        "instrumental": "места́ми",
+        "prepositional": "места́х"
+      }
+    },
+    "вопрос": {
+      "nominative": "вопрос",
+      "gender": "masculine",
+      "animate": false,
+      "stress_position": 2,
+      "singular": {
+        "nominative": "вопро́с",
+        "genitive": "вопро́са",
+        "dative": "вопро́су",
+        "accusative": "вопро́с",
+        "instrumental": "вопро́сом",
+        "prepositional": "вопро́се"
+      },
+      "plural": {
+        "nominative": "вопро́сы",
+        "genitive": "вопро́сов",
+        "dative": "вопро́сам",
+        "accusative": "вопро́сы",
+        "instrumental": "вопро́сами",
+        "prepositional": "вопро́сах"
+      }
+    },
+    "ответ": {
+      "nominative": "ответ",
+      "gender": "masculine",
+      "animate": false,
+      "stress_position": 2,
+      "singular": {
+        "nominative": "отве́т",
+        "genitive": "отве́та",
+        "dative": "отве́ту",
+        "accusative": "отве́т",
+        "instrumental": "отве́том",
+        "prepositional": "отве́те"
+      },
+      "plural": {
+        "nominative": "отве́ты",
+        "genitive": "отве́тов",
+        "dative": "отве́там",
+        "accusative": "отве́ты",
+        "instrumental": "отве́тами",
+        "prepositional": "отве́тах"
+      }
+    },
+    "рука": {
+      "nominative": "рука",
+      "gender": "feminine",
+      "animate": false,
+      "stress_position": 2,
+      "singular": {
+        "nominative": "рука́",
+        "genitive": "руки́",
+        "dative": "руке́",
+        "accusative": "ру́ку",
+        "instrumental": "руко́й",
+        "prepositional": "руке́"
+      },
+      "plural": {
+        "nominative": "ру́ки",
+        "genitive": "рук",
+        "dative": "рука́м",
+        "accusative": "ру́ки",
+        "instrumental": "рука́ми",
+        "prepositional": "рука́х"
+      }
+    },
+    "нога": {
+      "nominative": "нога",
+      "gender": "feminine",
+      "animate": false,
+      "stress_position": 2,
+      "singular": {
+        "nominative": "нога́",
+        "genitive": "ноги́",
+        "dative": "ноге́",
+        "accusative": "но́гу",
+        "instrumental": "ного́й",
+        "prepositional": "ноге́"
+      },
+      "plural": {
+        "nominative": "но́ги",
+        "genitive": "ног",
+        "dative": "нога́м",
+        "accusative": "но́ги",
+        "instrumental": "нога́ми",
+        "prepositional": "нога́х"
+      }
+    },
+    "голова": {
+      "nominative": "голова",
+      "gender": "feminine",
+      "animate": false,
+      "stress_position": 3,
+      "singular": {
+        "nominative": "голова́",
+        "genitive": "головы́",
+        "dative": "голове́",
+        "accusative": "го́лову",
+        "instrumental": "голово́й",
+        "prepositional": "голове́"
+      },
+      "plural": {
+        "nominative": "го́ловы",
+        "genitive": "голо́в",
+        "dative": "голова́м",
+        "accusative": "го́ловы",
+        "instrumental": "голова́ми",
+        "prepositional": "голова́х"
+      }
+    },
+    "глаз": {
+      "nominative": "глаз",
+      "gender": "masculine",
+      "animate": false,
+      "stress_position": 1,
+      "singular": {
+        "nominative": "глаз",
+        "genitive": "гла́за",
+        "dative": "гла́зу",
+        "accusative": "глаз",
+        "instrumental": "гла́зом",
+        "prepositional": "гла́зе"
+      },
+      "plural": {
+        "nominative": "глаза́",
+        "genitive": "глаз",
+        "dative": "глаза́м",
+        "accusative": "глаза́",
+        "instrumental": "глаза́ми",
+        "prepositional": "глаза́х"
+      }
+    }
+  }
+}

@@ -78,7 +78,8 @@ class Formatter:
         show_synonyms: bool = False,
         show_etymology: bool = False,
         show_idioms: bool = False,
-        short_mode: bool = False
+        short_mode: bool = False,
+        show_grammar: bool = False
     ) -> None:
         """Display a dictionary result."""
         
@@ -188,9 +189,60 @@ class Formatter:
                 print(f"  {person}: {form}")
             print()
         
-        # Cases (for Russian nouns)
+        # Past tense (for Russian verbs with grammar data)
+        past = result.get("past")
+        if past and (show_grammar or not short_mode):
+            print(f"{self.c.MAGENTA}Past tense (прошедшее время):{self.c.NC}")
+            past_labels = {"masc": "он (m)", "fem": "она (f)", "neut": "оно (n)", "plural": "они (pl)"}
+            for gender, form in past.items():
+                label = past_labels.get(gender, gender)
+                print(f"  {label}: {form}")
+            print()
+        
+        # Future tense (for Russian verbs with grammar data)
+        future = result.get("future")
+        if future and (show_grammar or not short_mode):
+            aspect_str = result.get("aspect", "")
+            if "imperfective" in aspect_str.lower():
+                print(f"{self.c.MAGENTA}Future tense (будущее время, compound):{self.c.NC}")
+            else:
+                print(f"{self.c.MAGENTA}Future tense (будущее время, simple):{self.c.NC}")
+            for person, form in future.items():
+                if person != "note":
+                    print(f"  {person}: {form}")
+            print()
+        
+        # Imperative mood (for Russian verbs with grammar data)
+        imperative = result.get("imperative")
+        if imperative and show_grammar:
+            print(f"{self.c.MAGENTA}Imperative (повелительное наклонение):{self.c.NC}")
+            sg = imperative.get("singular", "-")
+            pl = imperative.get("plural", "-")
+            note = imperative.get("note")
+            print(f"  ты: {sg}")
+            print(f"  вы: {pl}")
+            if note:
+                print(f"  {self.c.DIM}Note: {note}{self.c.NC}")
+            print()
+        
+        # Participles (for Russian verbs with grammar data)
+        participles = result.get("participles")
+        if participles and show_grammar:
+            print(f"{self.c.MAGENTA}Participles (причастия):{self.c.NC}")
+            participle_labels = {
+                "present_active": "present active (наст. действ.)",
+                "past_active": "past active (прош. действ.)",
+                "present_passive": "present passive (наст. страд.)",
+                "past_passive": "past passive (прош. страд.)"
+            }
+            for ptype, form in participles.items():
+                label = participle_labels.get(ptype, ptype)
+                print(f"  {label}: {form}")
+            print()
+        
+        # Cases (for Russian nouns - singular)
         if cases and not short_mode:
-            print(f"{self.c.MAGENTA}Cases:{self.c.NC}")
+            print(f"{self.c.MAGENTA}Cases (singular):{self.c.NC}")
             case_labels = {
                 "nom": "nominative (кто? что?)",
                 "gen": "genitive (кого? чего?)",
@@ -208,6 +260,46 @@ class Formatter:
             for case_name, case_form in cases.items():
                 label = case_labels.get(case_name, case_name)
                 print(f"  {label}: {case_form}")
+            print()
+        
+        # Singular cases from grammar data
+        singular_cases = result.get("singular_cases")
+        if singular_cases and not short_mode and not cases:
+            print(f"{self.c.MAGENTA}Cases (singular / единственное):{self.c.NC}")
+            case_labels = {
+                "nominative": "им. (кто? что?)",
+                "genitive": "род. (кого? чего?)",
+                "dative": "дат. (кому? чему?)",
+                "accusative": "вин. (кого? что?)",
+                "instrumental": "тв. (кем? чем?)",
+                "prepositional": "пр. (о ком? о чём?)"
+            }
+            for case_name, case_form in singular_cases.items():
+                label = case_labels.get(case_name, case_name)
+                print(f"  {label}: {case_form}")
+            print()
+        
+        # Plural cases from grammar data
+        plural_cases = result.get("plural_cases")
+        if plural_cases and (show_grammar or not short_mode):
+            print(f"{self.c.MAGENTA}Cases (plural / множественное):{self.c.NC}")
+            case_labels = {
+                "nominative": "им. (кто? что?)",
+                "genitive": "род. (кого? чего?)",
+                "dative": "дат. (кому? чему?)",
+                "accusative": "вин. (кого? что?)",
+                "instrumental": "тв. (кем? чем?)",
+                "prepositional": "пр. (о ком? о чём?)"
+            }
+            for case_name, case_form in plural_cases.items():
+                label = case_labels.get(case_name, case_name)
+                print(f"  {label}: {case_form}")
+            print()
+        
+        # Grammar note
+        grammar_note = result.get("grammar_note")
+        if grammar_note and show_grammar:
+            print(f"{self.c.DIM}Grammar note: {grammar_note}{self.c.NC}")
             print()
         
         # Idioms
