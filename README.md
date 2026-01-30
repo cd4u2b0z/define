@@ -60,9 +60,9 @@ Built-in SM-2 algorithm for optimal vocabulary learning:
 
 | Status | Meaning | Icon |
 |--------|---------|------|
-| New | Never reviewed | 🆕 |
-| Learning | 1-20 day interval | 📚 |
-| Mastered | 21+ day interval | ✅ |
+| New | Never reviewed | 󰎔 |
+| Learning | 1-20 day interval | 󱓷 |
+| Mastered | 21+ day interval | 󰘽 |
 
 **Quality Ratings (0-5):**
 - 0-2: Failed recall → Reset to 1 day
@@ -408,4 +408,4 @@ python3 tests/test_cache.py -v       # Cache tests (8)
 
 ---
 
-"Слово — серебро, молчание — золото." 🗣️
+"Слово — серебро, молчание — золото." 󰗋
