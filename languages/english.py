@@ -23,6 +23,15 @@ class English(Language):
     
     def __init__(self):
         self._idioms = None
+        self._phrases = None
+        self._variations = None
+    
+    def _load_json(self, path: Path) -> dict:
+        """Load JSON file, return empty dict if not found."""
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except (IOError, json.JSONDecodeError):
+            return {}
     
     @property
     def idioms(self) -> dict:
@@ -35,6 +44,24 @@ class English(Language):
             else:
                 self._idioms = {}
         return self._idioms
+    
+    @property
+    def phrases(self) -> dict:
+        """Load phrases database lazily."""
+        if self._phrases is None:
+            phrase_file = Path(__file__).parent / "data" / "en_phrases.json"
+            self._phrases = self._load_json(phrase_file)
+            self._phrases.pop("_meta", None)
+        return self._phrases
+    
+    @property
+    def variations(self) -> dict:
+        """Load variations (text speak, abbreviations, etc.) lazily."""
+        if self._variations is None:
+            var_file = Path(__file__).parent / "data" / "en_variations.json"
+            self._variations = self._load_json(var_file)
+            self._variations.pop("_meta", None)
+        return self._variations
     
     def detect(self, text: str) -> bool:
         """
@@ -60,7 +87,136 @@ class English(Language):
         return text.lower().strip()
     
     def lookup(self, word: str) -> Optional[dict]:
-        """Look up an English word."""
+        """Look up an English word or phrase."""
+        # Check phrases database first
+        if word in self.phrases:
+            return self._format_phrase(word, self.phrases[word])
+        
+        # Check if it's an abbreviation/text speak
+        abbrev_result = self._lookup_abbreviation(word)
+        if abbrev_result:
+            return abbrev_result
+        
+        # Check for misspellings
+        misspelling = self.variations.get("common_misspellings", {}).get(word)
+        if misspelling:
+            # Look up the correct spelling but note the misspelling
+            result = self._lookup_api(misspelling)
+            if result:
+                result["misspelling_of"] = misspelling
+                result["original_input"] = word
+            return result
+        
+        # For multi-word phrases not in database, try API or breakdown
+        if ' ' in word:
+            # Try the phrase in API first
+            result = self._lookup_api(word)
+            if result:
+                return result
+            # Fall back to phrase lookup in database
+            return self._lookup_phrase_breakdown(word)
+        
+        # Single word: use API
+        return self._lookup_api(word)
+    
+    def _format_phrase(self, phrase: str, data: dict) -> dict:
+        """Format phrase data to standard format."""
+        return {
+            "word": phrase,
+            "phonetic": "",
+            "audio": None,
+            "is_phrase": True,
+            "meanings": [{
+                "partOfSpeech": "phrase",
+                "definitions": [{
+                    "definition": data.get("definition", ""),
+                    "example": data.get("example"),
+                    "synonyms": [],
+                    "antonyms": []
+                }],
+                "synonyms": [],
+                "antonyms": [],
+                "register": data.get("register", "neutral")
+            }],
+            "usage": data.get("usage"),
+            "variants": data.get("variants", []),
+            "responses": data.get("responses", []),
+            "origin": data.get("origin"),
+            "note": data.get("note"),
+            "source": "local phrase database"
+        }
+    
+    def _lookup_abbreviation(self, word: str) -> Optional[dict]:
+        """Look up text speak, abbreviations, etc."""
+        word_lower = word.lower()
+        
+        # Check all variation categories
+        for category in ["abbreviations", "text_speak", "british_american"]:
+            if word_lower in self.variations.get(category, {}):
+                expansion = self.variations[category][word_lower]
+                return {
+                    "word": word,
+                    "phonetic": "",
+                    "audio": None,
+                    "is_abbreviation": True,
+                    "meanings": [{
+                        "partOfSpeech": category.replace("_", " "),
+                        "definitions": [{
+                            "definition": f"→ {expansion}",
+                            "example": None,
+                            "synonyms": [],
+                            "antonyms": []
+                        }],
+                        "synonyms": [],
+                        "antonyms": [],
+                        "register": "informal" if category != "british_american" else "neutral"
+                    }],
+                    "expansion": expansion,
+                    "category": category,
+                    "source": "local variations database"
+                }
+        
+        return None
+    
+    def _lookup_phrase_breakdown(self, phrase: str) -> Optional[dict]:
+        """For unknown phrases, check if individual words are phrases/abbreviations."""
+        words = phrase.split()
+        found = []
+        
+        for w in words:
+            if w in self.phrases:
+                found.append({"word": w, "type": "phrase", "meaning": self.phrases[w].get("definition", "")})
+            else:
+                abbrev = self._lookup_abbreviation(w)
+                if abbrev:
+                    found.append({"word": w, "type": "abbreviation", "meaning": abbrev.get("expansion", "")})
+        
+        if not found:
+            return None
+        
+        return {
+            "word": phrase,
+            "phonetic": "",
+            "audio": None,
+            "is_phrase": True,
+            "is_breakdown": True,
+            "meanings": [{
+                "partOfSpeech": "phrase (breakdown)",
+                "definitions": [{
+                    "definition": f"Contains: {'; '.join(f'{f['word']} ({f['type']}): {f['meaning']}' for f in found)}",
+                    "example": None,
+                    "synonyms": [],
+                    "antonyms": []
+                }],
+                "synonyms": [],
+                "antonyms": []
+            }],
+            "word_breakdown": found,
+            "source": "local dictionary (word breakdown)"
+        }
+    
+    def _lookup_api(self, word: str) -> Optional[dict]:
+        """Look up a word using the Free Dictionary API."""
         url = f"{self.API_URL}/{urllib.request.quote(word)}"
         
         try:

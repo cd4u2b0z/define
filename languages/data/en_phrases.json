@@ -1,0 +1,568 @@
+{
+  "_meta": {
+    "description": "English phrases, expressions, and colloquialisms",
+    "format": "phrase -> translation/explanation data"
+  },
+
+  "how are you": {
+    "definition": "a greeting asking about someone's wellbeing",
+    "register": "neutral",
+    "usage": "greeting",
+    "responses": ["I'm fine, thanks", "Good, and you?", "Not bad"],
+    "variants": ["how are you doing", "how's it going", "how ya doin"]
+  },
+  "what's up": {
+    "definition": "informal greeting; what is happening",
+    "register": "informal",
+    "usage": "greeting/question",
+    "responses": ["Not much", "Nothing much", "Hey"],
+    "variants": ["wassup", "sup", "whaddup"]
+  },
+  "how's it going": {
+    "definition": "informal greeting asking about someone's situation",
+    "register": "informal",
+    "usage": "greeting",
+    "responses": ["Good", "It's going", "Can't complain"]
+  },
+  "nice to meet you": {
+    "definition": "polite phrase when meeting someone for the first time",
+    "register": "neutral",
+    "usage": "introduction",
+    "responses": ["Nice to meet you too", "Likewise", "The pleasure is mine"]
+  },
+  "long time no see": {
+    "definition": "greeting used when you haven't seen someone in a while",
+    "register": "informal",
+    "usage": "greeting",
+    "origin": "pidgin English calque from Chinese"
+  },
+  "see you later": {
+    "definition": "casual farewell",
+    "register": "informal",
+    "usage": "farewell",
+    "variants": ["see ya", "catch you later", "later"]
+  },
+  "take care": {
+    "definition": "farewell expressing concern for someone's wellbeing",
+    "register": "neutral",
+    "usage": "farewell"
+  },
+  "have a good one": {
+    "definition": "casual farewell wishing someone a good day",
+    "register": "informal",
+    "usage": "farewell"
+  },
+  "what do you mean": {
+    "definition": "asking for clarification",
+    "register": "neutral",
+    "usage": "question",
+    "variants": ["what does that mean", "I don't understand"]
+  },
+  "I don't know": {
+    "definition": "expressing lack of knowledge",
+    "register": "neutral",
+    "usage": "response",
+    "variants": ["I dunno", "dunno", "no idea", "beats me"]
+  },
+  "I don't care": {
+    "definition": "expressing indifference",
+    "register": "neutral",
+    "usage": "response",
+    "variants": ["I don't give a damn", "whatever", "who cares"]
+  },
+  "never mind": {
+    "definition": "dismissing something as unimportant; forget about it",
+    "register": "neutral",
+    "usage": "dismissal",
+    "variants": ["nevermind", "forget it", "don't worry about it"]
+  },
+  "no worries": {
+    "definition": "it's okay; don't be concerned; you're welcome",
+    "register": "informal",
+    "usage": "reassurance/response to thanks",
+    "origin": "Australian English"
+  },
+  "my bad": {
+    "definition": "acknowledging a mistake; my fault",
+    "register": "informal",
+    "usage": "apology"
+  },
+  "no problem": {
+    "definition": "you're welcome; it was easy",
+    "register": "informal",
+    "usage": "response to thanks"
+  },
+  "you're welcome": {
+    "definition": "polite response to thanks",
+    "register": "neutral",
+    "usage": "response to thanks"
+  },
+  "excuse me": {
+    "definition": "polite way to get attention or apologize for minor inconvenience",
+    "register": "neutral",
+    "usage": "attention-getting/apology"
+  },
+  "I'm sorry": {
+    "definition": "expressing apology or sympathy",
+    "register": "neutral",
+    "usage": "apology"
+  },
+  "pardon me": {
+    "definition": "formal excuse me; asking for repetition",
+    "register": "formal",
+    "usage": "apology/question"
+  },
+  "bless you": {
+    "definition": "said after someone sneezes",
+    "register": "neutral",
+    "usage": "social convention",
+    "responses": ["Thank you", "Thanks"]
+  },
+  "that's cool": {
+    "definition": "expressing approval or acceptance",
+    "register": "informal",
+    "usage": "approval",
+    "variants": ["that's awesome", "that's great", "nice"]
+  },
+  "no way": {
+    "definition": "expressing disbelief or refusal",
+    "register": "informal",
+    "usage": "disbelief/refusal",
+    "variants": ["no way!", "get out of here", "you're kidding"]
+  },
+  "for real": {
+    "definition": "seriously; is that true?",
+    "register": "informal",
+    "usage": "emphasis/question",
+    "variants": ["for real?", "fr", "seriously?"]
+  },
+  "I feel you": {
+    "definition": "I understand and empathize with you",
+    "register": "informal",
+    "usage": "empathy"
+  },
+  "I got you": {
+    "definition": "I understand; I'll help you",
+    "register": "informal",
+    "usage": "understanding/support",
+    "variants": ["gotcha", "I got your back"]
+  },
+  "it is what it is": {
+    "definition": "accepting an unchangeable situation",
+    "register": "informal",
+    "usage": "resignation/acceptance"
+  },
+  "at the end of the day": {
+    "definition": "ultimately; when all is considered",
+    "register": "neutral",
+    "usage": "concluding thought"
+  },
+  "to be honest": {
+    "definition": "speaking frankly",
+    "register": "neutral",
+    "usage": "preface to honest statement",
+    "variants": ["tbh", "honestly", "to be fair"]
+  },
+  "by the way": {
+    "definition": "incidentally; introducing a related topic",
+    "register": "neutral",
+    "usage": "topic change",
+    "variants": ["btw"]
+  },
+  "in my opinion": {
+    "definition": "expressing personal view",
+    "register": "neutral",
+    "usage": "preface to opinion",
+    "variants": ["imo", "I think", "if you ask me"]
+  },
+  "as far as I know": {
+    "definition": "to the best of my knowledge",
+    "register": "neutral",
+    "usage": "qualifier",
+    "variants": ["afaik"]
+  },
+  "I couldn't care less": {
+    "definition": "I have absolutely no interest",
+    "register": "informal",
+    "usage": "indifference",
+    "note": "often incorrectly said as 'I could care less'"
+  },
+  "that sucks": {
+    "definition": "that's unfortunate/bad",
+    "register": "informal",
+    "usage": "sympathy/disappointment"
+  },
+  "what the hell": {
+    "definition": "expressing shock, confusion, or frustration",
+    "register": "informal",
+    "usage": "exclamation",
+    "variants": ["what the heck", "wth"]
+  },
+  "what the fuck": {
+    "definition": "expressing strong shock, confusion, or frustration",
+    "register": "vulgar",
+    "usage": "exclamation",
+    "variants": ["wtf", "what the actual fuck"]
+  },
+  "holy shit": {
+    "definition": "exclamation of surprise or amazement",
+    "register": "vulgar",
+    "usage": "exclamation",
+    "variants": ["holy crap", "holy cow"]
+  },
+  "oh my god": {
+    "definition": "exclamation of surprise, shock, or excitement",
+    "register": "informal",
+    "usage": "exclamation",
+    "variants": ["omg", "oh my gosh", "oh my goodness"]
+  },
+  "fuck off": {
+    "definition": "go away; leave me alone (rude)",
+    "register": "vulgar",
+    "usage": "dismissal/insult"
+  },
+  "piss off": {
+    "definition": "go away (British, rude)",
+    "register": "vulgar",
+    "usage": "dismissal",
+    "origin": "British English"
+  },
+  "screw you": {
+    "definition": "expression of anger or dismissal",
+    "register": "vulgar",
+    "usage": "insult"
+  },
+  "shut up": {
+    "definition": "stop talking; also used to express disbelief",
+    "register": "informal",
+    "usage": "command/disbelief"
+  },
+  "give me a break": {
+    "definition": "stop being ridiculous; I need relief",
+    "register": "informal",
+    "usage": "frustration/request"
+  },
+  "get out of here": {
+    "definition": "expressing disbelief; or literal command to leave",
+    "register": "informal",
+    "usage": "disbelief/command"
+  },
+  "are you kidding me": {
+    "definition": "expressing disbelief",
+    "register": "informal",
+    "usage": "disbelief",
+    "variants": ["you're kidding", "you gotta be kidding"]
+  },
+  "I can't even": {
+    "definition": "unable to process/deal with something (often humorous)",
+    "register": "informal",
+    "usage": "overwhelm/disbelief",
+    "origin": "internet slang"
+  },
+  "that hits different": {
+    "definition": "something affects you in a unique or profound way",
+    "register": "informal",
+    "usage": "emphasis",
+    "origin": "AAVE/internet slang"
+  },
+  "no cap": {
+    "definition": "no lie; for real; seriously",
+    "register": "informal",
+    "usage": "emphasis/truth",
+    "origin": "AAVE/internet slang"
+  },
+  "on god": {
+    "definition": "I swear; seriously",
+    "register": "informal",
+    "usage": "emphasis",
+    "origin": "AAVE"
+  },
+  "slay": {
+    "definition": "to do something exceptionally well; look amazing",
+    "register": "informal",
+    "usage": "compliment",
+    "origin": "LGBTQ+/ballroom culture"
+  },
+  "lit": {
+    "definition": "exciting, fun, or excellent; also: intoxicated",
+    "register": "informal",
+    "usage": "approval"
+  },
+  "lowkey": {
+    "definition": "secretly; somewhat; to a small degree",
+    "register": "informal",
+    "usage": "qualifier",
+    "antonym": "highkey"
+  },
+  "highkey": {
+    "definition": "openly; very much; intensely",
+    "register": "informal",
+    "usage": "qualifier"
+  },
+  "salty": {
+    "definition": "bitter, upset, or resentful",
+    "register": "informal",
+    "usage": "describing mood"
+  },
+  "throwing shade": {
+    "definition": "subtly insulting or disrespecting someone",
+    "register": "informal",
+    "usage": "description",
+    "origin": "LGBTQ+/ballroom culture"
+  },
+  "spill the tea": {
+    "definition": "share the gossip",
+    "register": "informal",
+    "usage": "request",
+    "origin": "LGBTQ+/ballroom culture",
+    "variants": ["what's the tea", "tea"]
+  },
+  "that's fire": {
+    "definition": "that's really good/cool",
+    "register": "informal",
+    "usage": "approval"
+  },
+  "goat": {
+    "definition": "Greatest Of All Time",
+    "register": "informal",
+    "usage": "compliment",
+    "note": "acronym"
+  },
+  "clutch": {
+    "definition": "performing well under pressure; exactly what's needed",
+    "register": "informal",
+    "usage": "approval"
+  },
+  "bet": {
+    "definition": "okay; agreement; sure",
+    "register": "informal",
+    "usage": "agreement",
+    "origin": "AAVE"
+  },
+  "facts": {
+    "definition": "that's true; I agree",
+    "register": "informal",
+    "usage": "agreement"
+  },
+  "sus": {
+    "definition": "suspicious; questionable",
+    "register": "informal",
+    "usage": "suspicion",
+    "origin": "shortened form, popularized by Among Us"
+  },
+  "vibe": {
+    "definition": "atmosphere; feeling; to relax and enjoy",
+    "register": "informal",
+    "usage": "description/activity"
+  },
+  "vibe check": {
+    "definition": "assessing the mood or energy",
+    "register": "informal",
+    "usage": "assessment"
+  },
+  "dead": {
+    "definition": "extremely amused (dying of laughter)",
+    "register": "informal",
+    "usage": "reaction",
+    "variants": ["I'm dead", "deadass"]
+  },
+  "rent free": {
+    "definition": "constantly thinking about something without wanting to",
+    "register": "informal",
+    "usage": "description",
+    "example": "living in my head rent free"
+  },
+  "touch grass": {
+    "definition": "go outside; take a break from the internet",
+    "register": "informal",
+    "usage": "suggestion/insult",
+    "origin": "internet slang"
+  },
+  "based": {
+    "definition": "having opinions without caring what others think; admirable",
+    "register": "informal",
+    "usage": "compliment",
+    "origin": "internet slang"
+  },
+  "cringe": {
+    "definition": "embarrassing; causing second-hand embarrassment",
+    "register": "informal",
+    "usage": "criticism"
+  },
+  "simp": {
+    "definition": "someone who does too much for someone they like",
+    "register": "informal",
+    "usage": "criticism/teasing"
+  },
+  "stan": {
+    "definition": "obsessive fan; to be an obsessive fan of",
+    "register": "informal",
+    "usage": "description",
+    "origin": "from Eminem song 'Stan'"
+  },
+  "flex": {
+    "definition": "to show off",
+    "register": "informal",
+    "usage": "description"
+  },
+  "big mood": {
+    "definition": "something highly relatable",
+    "register": "informal",
+    "usage": "agreement/relating"
+  },
+  "mood": {
+    "definition": "relatable; that's how I feel",
+    "register": "informal",
+    "usage": "agreement"
+  },
+  "same": {
+    "definition": "I relate to that; me too",
+    "register": "informal",
+    "usage": "agreement"
+  },
+  "period": {
+    "definition": "end of discussion; emphasizing a point",
+    "register": "informal",
+    "usage": "emphasis",
+    "variants": ["periodt"]
+  },
+  "say less": {
+    "definition": "I understand; you don't need to explain more",
+    "register": "informal",
+    "usage": "agreement"
+  },
+  "understood the assignment": {
+    "definition": "did something perfectly; nailed it",
+    "register": "informal",
+    "usage": "compliment"
+  },
+  "main character": {
+    "definition": "someone acting like they're the protagonist of life",
+    "register": "informal",
+    "usage": "description",
+    "example": "main character energy"
+  },
+  "ick": {
+    "definition": "sudden feeling of disgust or turn-off",
+    "register": "informal",
+    "usage": "reaction",
+    "example": "that gave me the ick"
+  },
+  "red flag": {
+    "definition": "warning sign (especially in relationships)",
+    "register": "informal",
+    "usage": "warning"
+  },
+  "green flag": {
+    "definition": "positive sign (especially in relationships)",
+    "register": "informal",
+    "usage": "approval"
+  },
+  "gaslighting": {
+    "definition": "manipulating someone into questioning their reality",
+    "register": "neutral",
+    "usage": "description",
+    "origin": "from 1944 film 'Gaslight'"
+  },
+  "ghosting": {
+    "definition": "suddenly cutting off all communication",
+    "register": "informal",
+    "usage": "description"
+  },
+  "breadcrumbing": {
+    "definition": "giving someone just enough attention to keep them interested",
+    "register": "informal",
+    "usage": "description"
+  },
+  "situationship": {
+    "definition": "romantic relationship without clear commitment",
+    "register": "informal",
+    "usage": "description"
+  },
+  "my two cents": {
+    "definition": "my opinion (humble)",
+    "register": "informal",
+    "usage": "preface to opinion"
+  },
+  "piece of cake": {
+    "definition": "very easy",
+    "register": "informal",
+    "usage": "description"
+  },
+  "break a leg": {
+    "definition": "good luck (especially in theater)",
+    "register": "informal",
+    "usage": "encouragement"
+  },
+  "bite the bullet": {
+    "definition": "accept something difficult",
+    "register": "neutral",
+    "usage": "description"
+  },
+  "cost an arm and a leg": {
+    "definition": "very expensive",
+    "register": "informal",
+    "usage": "description"
+  },
+  "hit the sack": {
+    "definition": "go to bed",
+    "register": "informal",
+    "usage": "description",
+    "variants": ["hit the hay"]
+  },
+  "under the weather": {
+    "definition": "feeling sick or unwell",
+    "register": "informal",
+    "usage": "description"
+  },
+  "on the same page": {
+    "definition": "in agreement; having the same understanding",
+    "register": "neutral",
+    "usage": "description"
+  },
+  "back to square one": {
+    "definition": "starting over from the beginning",
+    "register": "neutral",
+    "usage": "description"
+  },
+  "when pigs fly": {
+    "definition": "never; something that will never happen",
+    "register": "informal",
+    "usage": "disbelief"
+  },
+  "speak of the devil": {
+    "definition": "said when someone you were just talking about appears",
+    "register": "informal",
+    "usage": "exclamation"
+  },
+  "a blessing in disguise": {
+    "definition": "something bad that turns out to be good",
+    "register": "neutral",
+    "usage": "description"
+  },
+  "the best of both worlds": {
+    "definition": "enjoying two different advantages",
+    "register": "neutral",
+    "usage": "description"
+  },
+  "kill two birds with one stone": {
+    "definition": "accomplish two things with one action",
+    "register": "neutral",
+    "usage": "description"
+  },
+  "once in a blue moon": {
+    "definition": "very rarely",
+    "register": "neutral",
+    "usage": "description"
+  },
+  "the elephant in the room": {
+    "definition": "obvious problem no one wants to discuss",
+    "register": "neutral",
+    "usage": "description"
+  },
+  "let the cat out of the bag": {
+    "definition": "reveal a secret",
+    "register": "informal",
+    "usage": "description"
+  }
+}
