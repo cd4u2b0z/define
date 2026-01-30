@@ -4,7 +4,9 @@ Terminal dictionary for English and Russian with deep grammatical support.
 
 Терминальный словарь для английского и русского языков с полной грамматической поддержкой.
 
-![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-blue)
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white) ![Bash](https://img.shields.io/badge/Bash-4.0+-4EAA25?style=flat&logo=gnu-bash&logoColor=white) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-blue)
+
+> **Two versions available:** [Python](#-installation--установка) (recommended, with grammar) | [Bash](bash/) (lightweight, single-file)
 
 English | [Русский](#русский)
 

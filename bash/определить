@@ -1,0 +1,2954 @@
+#!/usr/bin/env bash
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# define - A comprehensive terminal dictionary and learning tool
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Based on the original define script by BreadOnPenguins
+# https://github.com/BreadOnPenguins/scripts/blob/master/shortcuts-menus/define
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+# Usage: define [OPTIONS] [word...]
+#
+# Options:
+#   -a, --all         Show all definitions (not just first 3)
+#   -s, --short       Short mode: definition only, no extras
+#   -e, --examples    Show example sentences
+#   -y, --synonyms    Show synonyms and antonyms
+#   -t, --etymology   Show word origin/etymology
+#   -f, --full        Full mode: show everything
+#   -r, --random      Look up a random word (for learning)
+#   -R, --russian     Force Russian lookup
+#   -E, --english     Force English lookup
+#   -h, --help        Show this help message
+#   -j, --json        Output raw JSON (for scripting)
+#   -p, --pronounce   Play pronunciation audio
+#   -o, --offline     Use cached results only (no network)
+#   --save            Save word to personal vocabulary list
+#   --review          Review saved vocabulary words
+#   --quiz            Quiz yourself on saved words
+#   --export-anki     Export vocabulary to Anki-compatible CSV
+#   --clear-cache     Clear the definition cache
+#
+# Russian support:
+#   Accepts transliteration: chto, privyet, spasibo, ya ne znayu
+#   Auto-detects Russian words and converts to Cyrillic
+#
+# If no word provided, uses clipboard selection
+# ═══════════════════════════════════════════════════════════════════════════════
+
+set -o pipefail
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Configuration
+# ─────────────────────────────────────────────────────────────────────────────
+VOCAB_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/define/vocabulary.json"
+HISTORY_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/define/history.txt"
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/define"
+CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/define/config"
+MAX_HISTORY=500
+CACHE_TTL_DAYS=30
+API_URL="https://api.dictionaryapi.dev/api/v2/entries/en_US"
+RUSSIAN_API_URL="https://en.wiktionary.org/api/rest_v1/page/definition"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Colors and Formatting
+# ─────────────────────────────────────────────────────────────────────────────
+setup_colors() {
+    if [[ -t 1 ]] && [[ -z "${NO_COLOR:-}" ]]; then
+        RED='\033[0;31m'
+        GREEN='\033[0;32m'
+        BLUE='\033[0;34m'
+        YELLOW='\033[0;33m'
+        CYAN='\033[0;36m'
+        MAGENTA='\033[0;35m'
+        BOLD='\033[1m'
+        DIM='\033[2m'
+        ITALIC='\033[3m'
+        UNDERLINE='\033[4m'
+        NC='\033[0m'
+    else
+        RED='' GREEN='' BLUE='' YELLOW='' CYAN='' MAGENTA=''
+        BOLD='' DIM='' ITALIC='' UNDERLINE='' NC=''
+    fi
+}
+setup_colors
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Default Options
+# ─────────────────────────────────────────────────────────────────────────────
+SHOW_ALL=false
+SHORT_MODE=false
+SHOW_EXAMPLES=false
+SHOW_SYNONYMS=false
+SHOW_ETYMOLOGY=false
+SHOW_JSON=false
+SAVE_WORD=false
+RANDOM_WORD=false
+FORCE_RUSSIAN=false
+FORCE_ENGLISH=false
+IS_RUSSIAN=false
+PLAY_AUDIO=false
+OFFLINE_MODE=false
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Dependency Check (deferred - only runs when needed)
+# ─────────────────────────────────────────────────────────────────────────────
+check_dependencies() {
+    local missing=()
+    command -v curl &>/dev/null || missing+=("curl")
+    command -v jq &>/dev/null || missing+=("jq")
+    
+    if [[ ${#missing[@]} -gt 0 ]]; then
+        echo "Error: Missing required dependencies: ${missing[*]}" >&2
+        # Detect package manager
+        if command -v pacman &>/dev/null; then
+            echo "Install with: sudo pacman -S ${missing[*]}" >&2
+        elif command -v apt &>/dev/null; then
+            echo "Install with: sudo apt install ${missing[*]}" >&2
+        elif command -v dnf &>/dev/null; then
+            echo "Install with: sudo dnf install ${missing[*]}" >&2
+        elif command -v brew &>/dev/null; then
+            echo "Install with: brew install ${missing[*]}" >&2
+        elif command -v zypper &>/dev/null; then
+            echo "Install with: sudo zypper install ${missing[*]}" >&2
+        elif command -v apk &>/dev/null; then
+            echo "Install with: sudo apk add ${missing[*]}" >&2
+        else
+            echo "Please install: ${missing[*]}" >&2
+        fi
+        exit 1
+    fi
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Helper Functions
+# ─────────────────────────────────────────────────────────────────────────────
+
+error() {
+    echo -e "${RED}${BOLD}Error:${NC} $1" >&2
+}
+
+info() {
+    echo -e "${DIM}$1${NC}"
+}
+
+header() {
+    echo -e "\n${BLUE}${BOLD}━━━ $1 ━━━${NC}\n"
+}
+
+ensure_dirs() {
+    mkdir -p "$(dirname "$VOCAB_FILE")" "$CACHE_DIR" "$(dirname "$CONFIG_FILE")"
+    [[ -f "$VOCAB_FILE" ]] || echo '[]' > "$VOCAB_FILE"
+    touch "$HISTORY_FILE"
+}
+
+# Trim whitespace (portable)
+trim() {
+    local var="$*"
+    var="${var#"${var%%[![:space:]]*}"}"
+    var="${var%"${var##*[![:space:]]}"}"
+    printf '%s' "$var"
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Caching Functions
+# ─────────────────────────────────────────────────────────────────────────────
+
+cache_hash() {
+    local word="$1"
+    local lang="${2:-en}"
+    # Use md5sum if available, otherwise cksum
+    if command -v md5sum &>/dev/null; then
+        echo -n "${lang}:${word}" | md5sum | cut -d' ' -f1
+    elif command -v md5 &>/dev/null; then
+        echo -n "${lang}:${word}" | md5
+    else
+        echo -n "${lang}:${word}" | cksum | cut -d' ' -f1
+    fi
+}
+
+cache_get() {
+    local word="$1"
+    local lang="${2:-en}"
+    local hash
+    hash=$(cache_hash "$word" "$lang")
+    local cache_file="$CACHE_DIR/${hash}.json"
+    
+    if [[ -f "$cache_file" ]]; then
+        # Check if cache is still valid (not older than CACHE_TTL_DAYS)
+        local file_age
+        if [[ "$(uname)" == "Darwin" ]]; then
+            file_age=$(( ($(date +%s) - $(stat -f %m "$cache_file")) / 86400 ))
+        else
+            file_age=$(( ($(date +%s) - $(stat -c %Y "$cache_file")) / 86400 ))
+        fi
+        
+        if [[ $file_age -lt $CACHE_TTL_DAYS ]]; then
+            cat "$cache_file"
+            return 0
+        fi
+    fi
+    return 1
+}
+
+cache_set() {
+    local word="$1"
+    local data="$2"
+    local lang="${3:-en}"
+    
+    ensure_dirs
+    local hash
+    hash=$(cache_hash "$word" "$lang")
+    local cache_file="$CACHE_DIR/${hash}.json"
+    echo "$data" > "$cache_file"
+}
+
+clear_cache() {
+    if [[ -d "$CACHE_DIR" ]]; then
+        local count
+        count=$(find "$CACHE_DIR" -name "*.json" -type f 2>/dev/null | wc -l)
+        rm -f "$CACHE_DIR"/*.json 2>/dev/null
+        echo -e "${GREEN}✓${NC} Cleared $count cached definitions."
+    else
+        echo -e "${DIM}Cache directory does not exist.${NC}"
+    fi
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Audio Playback
+# ─────────────────────────────────────────────────────────────────────────────
+
+play_audio() {
+    local url="$1"
+    [[ -z "$url" ]] && return 1
+    
+    # Try various audio players
+    if command -v mpv &>/dev/null; then
+        mpv --no-video --really-quiet "$url" 2>/dev/null &
+    elif command -v ffplay &>/dev/null; then
+        ffplay -nodisp -autoexit -loglevel quiet "$url" 2>/dev/null &
+    elif command -v cvlc &>/dev/null; then
+        cvlc --play-and-exit --quiet "$url" 2>/dev/null &
+    elif command -v afplay &>/dev/null; then
+        # macOS: need to download first
+        local tmp_file
+        tmp_file=$(mktemp /tmp/define_audio.XXXXXX.mp3)
+        curl -sL "$url" -o "$tmp_file" && afplay "$tmp_file" && rm -f "$tmp_file" &
+    elif command -v paplay &>/dev/null; then
+        # PulseAudio: need to download first
+        local tmp_file
+        tmp_file=$(mktemp /tmp/define_audio.XXXXXX.mp3)
+        curl -sL "$url" -o "$tmp_file" && paplay "$tmp_file" && rm -f "$tmp_file" &
+    else
+        info "No audio player found. Install mpv, ffplay, or vlc to play pronunciations."
+        info "Audio URL: $url"
+        return 1
+    fi
+    return 0
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Russian Transliteration (Latin → Cyrillic)
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Common Russian words in transliteration for auto-detection
+# Includes mat (мат) and colloquial/slang terms
+RUSSIAN_PATTERNS="^(chto|kto|gde|kogda|pochemu|kak|ya|ty|on|ona|ono|my|vy|oni|da|net|niet|spasibo|pozhaluysta|privet|privyet|poka|khorosho|harasho|horosho|plokho|ochen|eto|vot|tak|zdes|tam|seychas|sevodnya|zavtra|vchera|vsegda|nikogda|mozhet|mozhno|nado|nuzhno|dolzhen|khotyet|hotet|lyubit|znat|ponimat|govorit|skazat|videt|slyshat|delat|rabotat|zhit|yest|pit|spat|idti|yekhat|byt|imet|dumat|chitat|pisat|uchit|dom|rabota|chelovek|zhenshchina|muzhchina|rebenok|drug|semya|vremya|den|noch|utro|vecher|god|nedelya|mesyats|slovo|vopros|otvet|mir|strana|gorod|ulitsa|bolshoy|malenkiy|novyy|staryy|khoroshiy|plokhoy|krasivyy|odin|dva|tri|chetyre|pyat|shest|sem|vosem|devyat|desyat|sto|tysyacha|pervyy|vtoroy|tretiy|mnogo|malo|vse|kazhdyy|drugoy|samyy|etot|tot|takoj|kakoj|ves|lyubov|schastye|zdorovye|zhizn|smert|pravda|lozh|dobro|zlo|blyad|blya|suka|huy|hui|khuy|pizd|yob|ebat|nahuy|nahui|nakhuy|nakhui|pohuy|pohui|pokhuy|pokhui|huynya|huinya|khuynya|pizdet|pizdets|pizda|mudak|dolboyob|dolboeb|yoban|eblan|uebok|mraz|urod|gandon|zaebis|zaebis|ohuet|okhuet|ohuenno|okhuenno|ebash|khuyar|huyar|ebanyy|ebaniy|херня|херни|хуйня|хуйни|пиздец|блядь|сука|нахуй|нахуя|похуй|ебать|ёбтвоюмать)$"
+
+# Lookup table for common words that need special handling
+# Includes mat (мат), slang, and colloquial Russian
+declare -A WORD_LOOKUP=(
+    # ═══════════════════════════════════════════════════════════════════════════
+    # BASIC VOCABULARY
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["lyubov"]="любовь"
+    ["lubov"]="любовь"
+    ["noch"]="ночь"
+    ["doch"]="дочь"
+    ["mat"]="мать"
+    ["rech"]="речь"
+    ["vesh"]="вещь"
+    ["mysh"]="мышь"
+    ["lozh"]="ложь"
+    ["rozh"]="рожь"
+    ["krov"]="кровь"
+    ["brov"]="бровь"
+    ["tsviet"]="цвет"
+    ["tsvet"]="цвет"
+    ["zhizn"]="жизнь"
+    ["bolezn"]="болезнь"
+    ["pesn"]="песнь"
+    ["osen"]="осень"
+    ["pesen"]="песен"
+    ["semya"]="семья"
+    ["semja"]="семья"
+    ["schastye"]="счастье"
+    ["schastie"]="счастье"
+    ["zdorovye"]="здоровье"
+    ["zdorovie"]="здоровье"
+    ["pozhaluysta"]="пожалуйста"
+    ["spasibo"]="спасибо"
+    ["privet"]="привет"
+    ["poka"]="пока"
+    ["khorosho"]="хорошо"
+    ["horosho"]="хорошо"
+    ["harasho"]="хорошо"
+    ["plokho"]="плохо"
+    ["zdrastvuyte"]="здравствуйте"
+    ["zdravstvuyte"]="здравствуйте"
+    ["izvinite"]="извините"
+    ["prostite"]="простите"
+    ["bolshoy"]="большой"
+    ["malenkiy"]="маленький"
+    ["krasivyy"]="красивый"
+    ["krasiviy"]="красивый"
+    ["horoshiy"]="хороший"
+    ["khoroshiy"]="хороший"
+    ["plohoy"]="плохой"
+    ["plokhoy"]="плохой"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # CONVERSATIONAL WORDS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["ladno"]="ладно"
+    ["davay"]="давай"
+    ["davai"]="давай"
+    ["konechno"]="конечно"
+    ["voobsche"]="вообще"
+    ["voobshe"]="вообще"
+    ["nichego"]="ничего"
+    ["nichevo"]="ничего"
+    ["normalno"]="нормально"
+    ["otlichno"]="отлично"
+    ["prekrasno"]="прекрасно"
+    ["uzhasno"]="ужасно"
+    ["stranno"]="странно"
+    ["interesno"]="интересно"
+    ["prosto"]="просто"
+    ["tochno"]="точно"
+    ["pravda"]="правда"
+    ["seriyozno"]="серьёзно"
+    ["serezno"]="серьёзно"
+    ["seryozno"]="серьёзно"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # QUESTION WORDS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["pochemu"]="почему"
+    ["zachem"]="зачем"
+    ["skolko"]="сколько"
+    ["kogda"]="когда"
+    ["gde"]="где"
+    ["kuda"]="куда"
+    ["otkuda"]="откуда"
+    ["kak"]="как"
+    ["chto"]="что"
+    ["shto"]="что"
+    ["kto"]="кто"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMMON VERBS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["mogu"]="могу"
+    ["hochu"]="хочу"
+    ["khochu"]="хочу"
+    ["znayu"]="знаю"
+    ["dumayu"]="думаю"
+    ["ponimayu"]="понимаю"
+    ["lyublyu"]="люблю"
+    ["ljublju"]="люблю"
+    ["govoryu"]="говорю"
+    ["rabotayu"]="работаю"
+    ["delau"]="делаю"
+    ["delayu"]="делаю"
+    ["idu"]="иду"
+    ["edu"]="еду"
+    ["vizhu"]="вижу"
+    ["slyshu"]="слышу"
+    # 2nd person singular (-ешь/-ишь verbs)
+    ["delayesh"]="делаешь"
+    ["delaesh"]="делаешь"
+    ["rabotaesh"]="работаешь"
+    ["rabotayesh"]="работаешь"
+    ["dumayesh"]="думаешь"
+    ["dumaesh"]="думаешь"
+    ["znayesh"]="знаешь"
+    ["znaesh"]="знаешь"
+    ["ponimayesh"]="понимаешь"
+    ["ponimaesh"]="понимаешь"
+    ["govorish"]="говоришь"
+    ["vidish"]="видишь"
+    ["slyshish"]="слышишь"
+    ["hochesh"]="хочешь"
+    ["khochesh"]="хочешь"
+    ["mozhesh"]="можешь"
+    ["idyosh"]="идёшь"
+    ["idesh"]="идёшь"
+    ["edesh"]="едешь"
+    ["yedesh"]="едешь"
+    ["lyubish"]="любишь"
+    ["zhivyosh"]="живёшь"
+    ["zhivesh"]="живёшь"
+    ["chitayesh"]="читаешь"
+    ["chitaesh"]="читаешь"
+    ["pishesh"]="пишешь"
+    ["pisesh"]="пишешь"
+    ["yesh"]="ешь"
+    ["piyosh"]="пьёшь"
+    ["pyosh"]="пьёшь"
+    ["spish"]="спишь"
+    # 3rd person singular (-ет/-ит verbs)
+    ["delayet"]="делает"
+    ["delaet"]="делает"
+    ["rabotayet"]="работает"
+    ["rabotaet"]="работает"
+    ["dumayet"]="думает"
+    ["dumaet"]="думает"
+    ["znayet"]="знает"
+    ["znaet"]="знает"
+    ["ponimayet"]="понимает"
+    ["ponimaet"]="понимает"
+    ["govorit"]="говорит"
+    ["vidit"]="видит"
+    ["slyshit"]="слышит"
+    ["hochet"]="хочет"
+    ["khochet"]="хочет"
+    ["mozhet"]="может"
+    ["idyot"]="идёт"
+    ["idet"]="идёт"
+    ["edet"]="едет"
+    ["yedet"]="едет"
+    ["lyubit"]="любит"
+    ["zhivyot"]="живёт"
+    ["zhivet"]="живёт"
+    ["chitayet"]="читает"
+    ["chitaet"]="читает"
+    ["pishet"]="пишет"
+    ["yest"]="ест"
+    ["pyot"]="пьёт"
+    ["piyot"]="пьёт"
+    ["spit"]="спит"
+    # Plural forms
+    ["delayem"]="делаем"
+    ["delayete"]="делаете"
+    ["delayut"]="делают"
+    ["rabotayem"]="работаем"
+    ["rabotayete"]="работаете"
+    ["rabotayut"]="работают"
+    # Infinitives
+    ["delat"]="делать"
+    ["rabotat"]="работать"
+    ["dumat"]="думать"
+    ["znat"]="знать"
+    ["ponimat"]="понимать"
+    ["govorit"]="говорить"
+    ["videt"]="видеть"
+    ["slyshat"]="слышать"
+    ["hotet"]="хотеть"
+    ["khotet"]="хотеть"
+    ["moch"]="мочь"
+    ["idti"]="идти"
+    ["ehat"]="ехать"
+    ["yekhat"]="ехать"
+    ["lyubit"]="любить"
+    ["zhit"]="жить"
+    ["chitat"]="читать"
+    ["pisat"]="писать"
+    ["est"]="есть"
+    ["pit"]="пить"
+    ["spat"]="спать"
+    # Past tense
+    ["delal"]="делал"
+    ["delala"]="делала"
+    ["delali"]="делали"
+    ["rabotal"]="работал"
+    ["rabotala"]="работала"
+    ["rabotali"]="работали"
+    ["dumal"]="думал"
+    ["dumala"]="думала"
+    ["dumali"]="думали"
+    ["znal"]="знал"
+    ["znala"]="знала"
+    ["znali"]="знали"
+    ["ponimal"]="понимал"
+    ["ponimala"]="понимала"
+    ["ponimali"]="понимали"
+    ["govoril"]="говорил"
+    ["govorila"]="говорила"
+    ["govorili"]="говорили"
+    ["videl"]="видел"
+    ["videla"]="видела"
+    ["videli"]="видели"
+    ["slyshal"]="слышал"
+    ["slyshala"]="слышала"
+    ["slyshali"]="слышали"
+    ["hotel"]="хотел"
+    ["khotel"]="хотел"
+    ["hotela"]="хотела"
+    ["khotela"]="хотела"
+    ["hoteli"]="хотели"
+    ["khoteli"]="хотели"
+    ["mog"]="мог"
+    ["mogla"]="могла"
+    ["mogli"]="могли"
+    ["shol"]="шёл"
+    ["shyol"]="шёл"
+    ["shla"]="шла"
+    ["shli"]="шли"
+    ["ehal"]="ехал"
+    ["yekhal"]="ехал"
+    ["ehala"]="ехала"
+    ["yekhala"]="ехала"
+    ["ehali"]="ехали"
+    ["yekhali"]="ехали"
+    ["lyubil"]="любил"
+    ["lyubila"]="любила"
+    ["lyubili"]="любили"
+    ["zhil"]="жил"
+    ["zhila"]="жила"
+    ["zhili"]="жили"
+    ["chital"]="читал"
+    ["chitala"]="читала"
+    ["chitali"]="читали"
+    ["pisal"]="писал"
+    ["pisala"]="писала"
+    ["pisali"]="писали"
+    ["el"]="ел"
+    ["ela"]="ела"
+    ["eli"]="ели"
+    ["pil"]="пил"
+    ["pila"]="пила"
+    ["pili"]="пили"
+    ["spal"]="спал"
+    ["spala"]="спала"
+    ["spali"]="спали"
+    ["byl"]="был"
+    ["byla"]="была"
+    ["byli"]="были"
+    ["bylo"]="было"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PRONOUNS & BASICS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["ya"]="я"
+    ["ty"]="ты"
+    ["on"]="он"
+    ["ona"]="она"
+    ["ono"]="оно"
+    ["my"]="мы"
+    ["vy"]="вы"
+    ["oni"]="они"
+    ["mne"]="мне"
+    ["tebe"]="тебе"
+    ["emu"]="ему"
+    ["ey"]="ей"
+    ["nam"]="нам"
+    ["vam"]="вам"
+    ["im"]="им"
+    ["menya"]="меня"
+    ["tebya"]="тебя"
+    ["ego"]="его"
+    ["yeyo"]="её"
+    ["eyo"]="её"
+    ["nas"]="нас"
+    ["vas"]="вас"
+    ["ih"]="их"
+    ["ikh"]="их"
+    ["moy"]="мой"
+    ["tvoy"]="твой"
+    ["nash"]="наш"
+    ["vash"]="ваш"
+    ["etot"]="этот"
+    ["tot"]="тот"
+    ["eto"]="это"
+    ["to"]="то"
+    ["vse"]="все"
+    ["vsyo"]="всё"
+    ["vsё"]="всё"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMMON WORDS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["da"]="да"
+    ["net"]="нет"
+    ["niet"]="нет"
+    ["ne"]="не"
+    ["i"]="и"
+    ["a"]="а"
+    ["no"]="но"
+    ["ili"]="или"
+    ["yesli"]="если"
+    ["esli"]="если"
+    ["kogda"]="когда"
+    ["togda"]="тогда"
+    ["teper"]="теперь"
+    ["uzhe"]="уже"
+    ["eshchyo"]="ещё"
+    ["yeshchyo"]="ещё"
+    ["eshche"]="ещё"
+    ["ochen"]="очень"
+    ["tak"]="так"
+    ["vot"]="вот"
+    ["tam"]="там"
+    ["tut"]="тут"
+    ["zdes"]="здесь"
+    ["seychas"]="сейчас"
+    ["segodnya"]="сегодня"
+    ["sevodnya"]="сегодня"
+    ["zavtra"]="завтра"
+    ["vchera"]="вчера"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ (MAT) - INTERJECTIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["blyad"]="блядь"
+    ["bliad"]="блядь"
+    ["blya"]="блядь"
+    ["blia"]="блядь"
+    ["blyat"]="блядь"
+    ["bliat"]="блядь"
+    ["suka"]="сука"
+    ["yobtvoyumat"]="ёб твою мать"
+    ["yob"]="ёб"
+    ["yeb"]="ёб"
+    ["ebtvoyumat"]="ёб твою мать"
+    ["tvoyumat"]="твою мать"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - QUESTIONS (какого хера, нахуя, etc.)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["kakogo"]="какого"
+    ["hera"]="хера"
+    ["khera"]="хера"
+    ["her"]="хер"
+    ["kher"]="хер"
+    ["huya"]="хуя"
+    ["huia"]="хуя"
+    ["khuya"]="хуя"
+    ["khuia"]="хуя"
+    ["hui"]="хуй"
+    ["huy"]="хуй"
+    ["khui"]="хуй"
+    ["khuy"]="хуй"
+    ["nahera"]="нахера"
+    ["nakhera"]="нахера"
+    ["zahera"]="захера"
+    ["zakhera"]="захера"
+    ["nahuya"]="нахуя"
+    ["nakhuya"]="нахуя"
+    ["nahuia"]="нахуя"
+    ["nakhuia"]="нахуя"
+    ["nahuy"]="нахуй"
+    ["nakhuy"]="нахуй"
+    ["nahui"]="нахуй"
+    ["nakhui"]="нахуй"
+    ["hernya"]="херня"
+    ["khernya"]="херня"
+    ["huynya"]="хуйня"
+    ["khuynya"]="хуйня"
+    ["huinya"]="хуйня"
+    ["khuinya"]="хуйня"
+    ["huynu"]="хуйню"
+    ["khuynu"]="хуйню"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - REACTIONS (охуеть, заебись, etc.)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["ohuet"]="охуеть"
+    ["okhuet"]="охуеть"
+    ["ohuyet"]="охуеть"
+    ["okhuyet"]="охуеть"
+    ["ohuel"]="охуел"
+    ["okhuel"]="охуел"
+    ["ohueli"]="охуели"
+    ["okhueli"]="охуели"
+    ["ohuenno"]="охуенно"
+    ["okhuenno"]="охуенно"
+    ["ohuenniy"]="охуенный"
+    ["okhuenniy"]="охуенный"
+    ["zaebis"]="заебись"
+    ["zayebis"]="заебись"
+    ["zaibis"]="заебись"
+    ["zaebok"]="заебок"
+    ["nunahuy"]="ну нахуй"
+    ["nunakhuy"]="ну нахуй"
+    ["danunahuy"]="да ну нахуй"
+    ["danunakhuy"]="да ну нахуй"
+    ["huyasebe"]="хуя себе"
+    ["khuyasebe"]="хуя себе"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - INTENSIFIERS (ебать, ебаный)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["ebat"]="ебать"
+    ["yebat"]="ебать"
+    ["ebaniy"]="ебаный"
+    ["yebaniy"]="ебаный"
+    ["ebanyy"]="ебаный"
+    ["yebanyyy"]="ебаный"
+    ["ebanut"]="ебануть"
+    ["yebanut"]="ебануть"
+    ["ebanutiy"]="ебанутый"
+    ["yebanutiy"]="ебанутый"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - VERBS (пиздеть, хуярить, ебашить, etc.)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["pizdet"]="пиздеть"
+    ["pizdit"]="пиздит"
+    ["pizdish"]="пиздишь"
+    ["pizdzhu"]="пизжу"
+    ["pizdel"]="пиздел"
+    ["pizdela"]="пиздела"
+    ["huyarit"]="хуярить"
+    ["khuyarit"]="хуярить"
+    ["huyariu"]="хуярю"
+    ["khuyariu"]="хуярю"
+    ["huyarit"]="хуярит"
+    ["khuyarit"]="хуярит"
+    ["ebashit"]="ебашить"
+    ["yebashit"]="ебашить"
+    ["ebashiu"]="ебашу"
+    ["yebashiu"]="ебашу"
+    ["ebashit"]="ебашит"
+    ["yebashit"]="ебашит"
+    ["razyebat"]="разъебать"
+    ["razebat"]="разъебать"
+    ["razyobal"]="разъебал"
+    ["razъebat"]="разъебать"
+    ["raspizdetsya"]="распиздеться"
+    ["raspizdelsa"]="распиздеться"
+    ["raspizdelas"]="распизделась"
+    ["razhuyaritsya"]="разхуяриться"
+    ["razkhuyaritsya"]="разхуяриться"
+    ["razhuyarilsa"]="разхуярился"
+    ["proebal"]="проебал"
+    ["proyebal"]="проебал"
+    ["proebat"]="проебать"
+    ["proyebat"]="проебать"
+    ["uebal"]="уебал"
+    ["uyebal"]="уебал"
+    ["naebat"]="наебать"
+    ["nayebat"]="наебать"
+    ["naebal"]="наебал"
+    ["nayebal"]="наебал"
+    ["naebalsya"]="наебался"
+    ["naebali"]="наебали"
+    ["zaebal"]="заебал"
+    ["zayebal"]="заебал"
+    ["zaebala"]="заебала"
+    ["zayebala"]="заебала"
+    ["zaebali"]="заебали"
+    ["zayebali"]="заебали"
+    ["zaebalsya"]="заебался"
+    ["zayebalsya"]="заебался"
+    ["otъebis"]="отъебись"
+    ["otyebis"]="отъебись"
+    ["otebis"]="отъебись"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - VERB PHRASES (хуйню нести, etc.)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["nesti"]="нести"
+    ["nesyosh"]="несёшь"
+    ["nesesh"]="несёшь"
+    ["dich"]="дичь"
+    ["vtiraesh"]="втираешь"
+    ["chush"]="чушь"
+    ["purgu"]="пургу"
+    ["gonish"]="гонишь"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - NOUNS (пиздобол, хуйня, etc.)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["pizdobol"]="пиздобол"
+    ["pizdabol"]="пиздабол"
+    ["pizdun"]="пиздун"
+    ["pizda"]="пизда"
+    ["pizdoy"]="пиздой"
+    ["pizde"]="пизде"
+    ["pizdu"]="пизду"
+    ["pizdy"]="пизды"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - ADJECTIVES (хуёвый, etc.)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["huyoviy"]="хуёвый"
+    ["khuyoviy"]="хуёвый"
+    ["huyovyy"]="хуёвый"
+    ["khuyovyy"]="хуёвый"
+    ["hueviy"]="хуёвый"
+    ["khueviy"]="хуёвый"
+    ["huyovo"]="хуёво"
+    ["khuyovo"]="хуёво"
+    ["huevo"]="хуёво"
+    ["khuevo"]="хуёво"
+    ["pizdatiy"]="пиздатый"
+    ["pizdatyy"]="пиздатый"
+    ["pizdato"]="пиздато"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - STATES (пиздец, жопа, etc.)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["pizdets"]="пиздец"
+    ["pizdec"]="пиздец"
+    ["pizdos"]="пиздос"
+    ["pipets"]="пипец"
+    ["pipec"]="пипец"
+    ["zhest"]="жесть"
+    ["zhopa"]="жопа"
+    ["zhopy"]="жопы"
+    ["zhope"]="жопе"
+    ["zhopu"]="жопу"
+    ["zhopoy"]="жопой"
+    ["sraka"]="срака"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - ATTITUDE (похуй, насрать, поебать)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["pohuy"]="похуй"
+    ["pokhuy"]="похуй"
+    ["pohui"]="похуй"
+    ["pokhui"]="похуй"
+    ["nasrat"]="насрать"
+    ["nasral"]="насрал"
+    ["nasrala"]="насрала"
+    ["poebat"]="поебать"
+    ["poyebat"]="поебать"
+    ["pofig"]="пофиг"
+    ["pofik"]="пофиг"
+    ["vpadlu"]="в падлу"
+    ["padlu"]="падлу"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - COMMANDS (иди нахуй, заткнись, etc.)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["idi"]="иди"
+    ["poshol"]="пошёл"
+    ["poshyol"]="пошёл"
+    ["poshel"]="пошёл"
+    ["poshla"]="пошла"
+    ["poshli"]="пошли"
+    ["zakroy"]="закрой"
+    ["ebalo"]="ебало"
+    ["yebalo"]="ебало"
+    ["zatknis"]="заткнись"
+    ["zatknites"]="заткнитесь"
+    ["otstan"]="отстань"
+    ["otstante"]="отстаньте"
+    ["valiy"]="вали"
+    ["vali"]="вали"
+    ["valite"]="валите"
+    ["ubiraisa"]="убирайся"
+    ["ubiraytes"]="убирайтесь"
+    ["sosi"]="соси"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - INSULTS (мудак, долбоёб, etc.)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["mudak"]="мудак"
+    ["mudila"]="мудила"
+    ["mudlo"]="мудло"
+    ["dolboyob"]="долбоёб"
+    ["dolboeb"]="долбоёб"
+    ["dolboyeb"]="долбоёб"
+    ["dolboeb"]="долбоёб"
+    ["eblan"]="еблан"
+    ["yeblan"]="еблан"
+    ["uebok"]="уёбок"
+    ["uyebok"]="уёбок"
+    ["ueban"]="уёбан"
+    ["uyeban"]="уёбан"
+    ["mraz"]="мразь"
+    ["mrazi"]="мрази"
+    ["urod"]="урод"
+    ["urodina"]="уродина"
+    ["gandon"]="гандон"
+    ["prezervativ"]="презерватив"
+    ["koziol"]="козёл"
+    ["kozel"]="козёл"
+    ["kozly"]="козлы"
+    ["svoloch"]="сволочь"
+    ["padla"]="падла"
+    ["gadina"]="гадина"
+    ["tvar"]="тварь"
+    ["skotina"]="скотина"
+    ["ublyudok"]="ублюдок"
+    ["vyrodok"]="выродок"
+    ["debil"]="дебил"
+    ["idiot"]="идиот"
+    ["kretin"]="кретин"
+    ["durak"]="дурак"
+    ["dura"]="дура"
+    ["duraki"]="дураки"
+    ["loh"]="лох"
+    ["lokh"]="лох"
+    ["lohi"]="лохи"
+    ["lokhi"]="лохи"
+    ["terpit"]="терпит"
+    ["terpila"]="терпила"
+    ["chmo"]="чмо"
+    ["chort"]="чёрт"
+    ["chyort"]="чёрт"
+    ["blyadin"]="блядин"
+    ["blyad"]="блядь"
+    ["blyadina"]="блядина"
+    ["shlyuha"]="шлюха"
+    ["shliukha"]="шлюха"
+    ["kurva"]="курва"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # AFFECTIONATE TEASING
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["lyubimiy"]="любимый"
+    ["lyubimyy"]="любимый"
+    ["lyubimaya"]="любимая"
+    ["rodnoy"]="родной"
+    ["rodnaya"]="родная"
+    ["skazochnik"]="сказочник"
+    ["vrun"]="врун"
+    ["vrusha"]="вруша"
+    ["vrunishka"]="врунишка"
+    ["durachok"]="дурачок"
+    ["dura"]="дура"
+    ["durochka"]="дурочка"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PHRASES & EXPRESSIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["cherez"]="через"
+    ["blin"]="блин"
+    ["yolki"]="ёлки"
+    ["yolkipalki"]="ёлки-палки"
+    ["yoprst"]="ёпрст"
+    ["yomaio"]="ё-моё"
+    ["yomayo"]="ё-моё"
+    ["yomoyo"]="ё-моё"
+    ["fignya"]="фигня"
+    ["figoviy"]="фиговый"
+    ["figovo"]="фигово"
+    ["kapets"]="капец"
+    ["kapec"]="капец"
+    ["ahuet"]="ахуеть"
+    ["akhuet"]="ахуеть"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # FILLERS & SLANG
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["tipa"]="типа"
+    ["tipo"]="типо"
+    ["koroche"]="короче"
+    ["koroce"]="короче"
+    ["prikol"]="прикол"
+    ["prikolno"]="прикольно"
+    ["kruто"]="круто"
+    ["kruto"]="круто"
+    ["klassno"]="классно"
+    ["klasno"]="классно"
+    ["klass"]="класс"
+    ["supеr"]="супер"
+    ["super"]="супер"
+    ["zhestko"]="жёстко"
+    ["zhyostko"]="жёстко"
+    ["pryam"]="прям"
+    ["pryamo"]="прямо"
+    ["vosche"]="вообще"
+    ["voshe"]="вообще"
+    ["vsyo"]="всё"
+    ["vsё"]="всё"
+    ["nu"]="ну"
+    ["zhe"]="же"
+    ["zh"]="ж"
+    ["li"]="ли"
+    ["by"]="бы"
+    ["ved"]="ведь"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # MISC USEFUL WORDS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["klyuchi"]="ключи"
+    ["telefon"]="телефон"
+    ["komp"]="комп"
+    ["kompyuter"]="компьютер"
+    ["nout"]="ноут"
+    ["noutbuk"]="ноутбук"
+    ["printer"]="принтер"
+    ["mashina"]="машина"
+    ["rabota"]="работа"
+    ["dom"]="дом"
+    ["kvartira"]="квартира"
+    ["dengi"]="деньги"
+    ["babki"]="бабки"
+    ["kesh"]="кэш"
+    ["lava"]="лава"
+    ["chelovek"]="человек"
+    ["muzhik"]="мужик"
+    ["baba"]="баба"
+    ["paren"]="парень"
+    ["devushka"]="девушка"
+    ["drug"]="друг"
+    ["brat"]="брат"
+    ["bratан"]="братан"
+    ["bratan"]="братан"
+    ["koreш"]="кореш"
+    ["koresh"]="кореш"
+    ["tovarish"]="товарищ"
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Local Russian-English Dictionary
+# ─────────────────────────────────────────────────────────────────────────────
+# Provides actual English meanings for words where Wiktionary fails
+# Format: ["cyrillic"]="part_of_speech|definition|example (optional)"
+
+declare -A RUSSIAN_DEFINITIONS=(
+    # ═══════════════════════════════════════════════════════════════════════════
+    # PRONOUNS & BASICS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["я"]="pronoun|I|Я не знаю — I don't know"
+    ["ты"]="pronoun|you (informal, singular)|Ты где? — Where are you?"
+    ["он"]="pronoun|he|Он здесь — He's here"
+    ["она"]="pronoun|she|Она дома — She's at home"
+    ["оно"]="pronoun|it|Оно работает — It works"
+    ["мы"]="pronoun|we|Мы идём — We're going"
+    ["вы"]="pronoun|you (formal or plural)|Вы готовы? — Are you ready?"
+    ["они"]="pronoun|they|Они знают — They know"
+    ["мне"]="pronoun|to me, for me (dative of я)|Мне похуй — I don't give a fuck"
+    ["тебе"]="pronoun|to you, for you (dative of ты)|Тебе нравится? — Do you like it?"
+    ["меня"]="pronoun|me (accusative/genitive of я)|Меня зовут... — My name is..."
+    ["тебя"]="pronoun|you (accusative/genitive of ты)|Я тебя люблю — I love you"
+    ["это"]="pronoun|this, it|Это хорошо — This is good"
+    ["что"]="pronoun|what; that|Что это? — What is this?"
+    ["кто"]="pronoun|who|Кто там? — Who's there?"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMMON WORDS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["да"]="particle|yes|Да, конечно — Yes, of course"
+    ["нет"]="particle|no|Нет, спасибо — No, thanks"
+    ["не"]="particle|not|Я не знаю — I don't know"
+    ["хорошо"]="adverb|good, well, okay|Всё хорошо — Everything is fine"
+    ["плохо"]="adverb|bad, badly|Мне плохо — I feel bad"
+    ["очень"]="adverb|very|Очень хорошо — Very good"
+    ["сейчас"]="adverb|now, right now|Я сейчас приду — I'll come right now"
+    ["здесь"]="adverb|here|Я здесь — I'm here"
+    ["там"]="adverb|there|Он там — He's there"
+    ["тут"]="adverb|here (colloquial)|Я тут — I'm here"
+    ["ещё"]="adverb|still, yet, more|Ещё раз — One more time"
+    ["уже"]="adverb|already|Уже поздно — It's already late"
+    ["всё"]="pronoun|everything, all|Всё понятно — Everything is clear"
+    ["ничего"]="pronoun|nothing; it's okay|Ничего страшного — It's nothing serious"
+    ["почему"]="adverb|why|Почему нет? — Why not?"
+    ["потому что"]="conjunction|because|Потому что я так хочу — Because I want to"
+    ["как"]="adverb|how; like, as|Как дела? — How are you?"
+    ["где"]="adverb|where|Где ты? — Where are you?"
+    ["когда"]="adverb|when|Когда ты придёшь? — When will you come?"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMMON VERBS (infinitive and conjugated)
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["знать"]="verb|to know|Я хочу знать — I want to know"
+    ["знаю"]="verb|I know|Я знаю — I know"
+    ["знаешь"]="verb|you know|Ты знаешь? — Do you know?"
+    ["знает"]="verb|he/she knows|Он знает — He knows"
+    ["делать"]="verb|to do, to make|Что делать? — What to do?"
+    ["делаю"]="verb|I do, I'm doing|Я делаю — I'm doing"
+    ["делаешь"]="verb|you do, you're doing|Что ты делаешь? — What are you doing?"
+    ["делает"]="verb|he/she does|Он делает — He's doing"
+    ["хотеть"]="verb|to want|Я хочу знать — I want to know"
+    ["хочу"]="verb|I want|Я хочу — I want"
+    ["хочешь"]="verb|you want|Ты хочешь? — Do you want?"
+    ["хочет"]="verb|he/she wants|Она хочет — She wants"
+    ["мочь"]="verb|to be able, can|Я могу помочь — I can help"
+    ["могу"]="verb|I can|Я могу — I can"
+    ["можешь"]="verb|you can|Ты можешь? — Can you?"
+    ["может"]="verb|he/she can; maybe|Может быть — Maybe"
+    ["идти"]="verb|to go (on foot)|Куда ты идёшь? — Where are you going?"
+    ["иду"]="verb|I'm going|Я иду — I'm going"
+    ["идёшь"]="verb|you're going|Куда идёшь? — Where are you going?"
+    ["понимать"]="verb|to understand|Я не понимаю — I don't understand"
+    ["понимаю"]="verb|I understand|Я понимаю — I understand"
+    ["понимаешь"]="verb|you understand|Ты понимаешь? — Do you understand?"
+    ["говорить"]="verb|to speak, to say|Говори! — Speak!"
+    ["говорю"]="verb|I say, I speak|Я говорю — I'm speaking"
+    ["говоришь"]="verb|you say|Что ты говоришь? — What are you saying?"
+    ["любить"]="verb|to love|Я тебя люблю — I love you"
+    ["люблю"]="verb|I love|Я люблю — I love"
+    ["любишь"]="verb|you love|Ты любишь? — Do you love?"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - INTERJECTIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["блядь"]="interjection|fuck, damn, shit (emotional emphasis)|Блядь, ну серьёзно? — Fuck, seriously?"
+    ["сука"]="interjection/noun|bitch; damn (pain/frustration)|Сука, больно! — Shit, that hurts!"
+    ["ёб твою мать"]="interjection|fuck! motherfucker! (extreme frustration)|Ёб твою мать, опять! — For fuck's sake, again!"
+    ["твою мать"]="interjection|damn it, for fuck's sake|Твою мать, я забыл — Damn it, I forgot"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - QUESTIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["какого хера"]="phrase|what the hell, what the fuck|Какого хера это не работает? — Why the hell isn't this working?"
+    ["какого хуя"]="phrase|what the fuck (stronger)|Какого хуя ты это сделал? — What the fuck did you do that for?"
+    ["нахера"]="adverb|why the fuck, what for|Нахера ты туда полез? — Why the fuck did you go there?"
+    ["нахуя"]="adverb|why the fuck (rougher)|Нахуя ты это купил? — Why the fuck did you buy that?"
+    ["нахуй"]="adverb|the fuck (direction/emphasis)|Иди нахуй — Go fuck yourself"
+    ["что за херня"]="phrase|what the hell is this, what bullshit|Что за херня происходит? — What the hell is going on?"
+    ["что за хуйня"]="phrase|what kind of shit is this (rough)|Что за хуйню ты несёшь? — What shit are you saying?"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - REACTIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["охуеть"]="verb|to be shocked/amazed, holy shit|Я просто охуел — I was just fucking shocked"
+    ["охуел"]="verb|was shocked, holy shit (past, masc)|Я охуел — I was fucking shocked"
+    ["охуела"]="verb|was shocked (past, fem)|Она охуела — She was fucking shocked"
+    ["охуели"]="verb|were shocked (past, plural)|Они охуели — They were fucking shocked"
+    ["охуенно"]="adverb|fucking great, amazingly|Охуенно получилось — It turned out fucking great"
+    ["охуенный"]="adjective|fucking awesome|Охуенный фильм — Awesome fucking movie"
+    ["заебись"]="adverb|awesome, fucking great|Заебись! — Fucking awesome!"
+    ["ну нахуй"]="phrase|fuck that, no fucking way|Ну нахуй, я туда не пойду — Fuck that, I'm not going there"
+    ["да ну нахуй"]="phrase|no fucking way (disbelief)|Да ну нахуй, серьёзно? — No fucking way, seriously?"
+    ["хуя себе"]="interjection|holy shit, wow|Хуя себе! — Holy shit!"
+    ["ни хуя себе"]="interjection|holy fucking shit|Ни хуя себе! — Holy fucking shit!"
+    ["пиздец"]="noun/interjection|total disaster, we're fucked, holy shit|Вот это пиздец — This is a total disaster"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - INTENSIFIERS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["ебать"]="verb/interjection|to fuck; holy fuck (exclamation)|Ебать, вот это скорость — Holy fuck, that's fast"
+    ["ебаный"]="adjective|fucking, goddamn|Этот ебаный принтер — This fucking printer"
+    ["ёбаный"]="adjective|fucking, goddamn (alt spelling)|Ёбаный в рот — Fucking hell"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - VERBS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["пиздеть"]="verb|to lie, to bullshit, to talk nonsense|Хватит пиздеть — Stop bullshitting"
+    ["пиздит"]="verb|he/she lies, bullshits|Он опять пиздит — He's bullshitting again"
+    ["пиздишь"]="verb|you're lying/bullshitting|Ты пиздишь! — You're bullshitting!"
+    ["хуярить"]="verb|to hit hard, to work intensely|Он хуярит по клаве — He's pounding the keyboard"
+    ["ебашить"]="verb|to work/hit relentlessly|Он ебашит без остановки — He works nonstop"
+    ["разъебать"]="verb|to wreck, to destroy|Он разъебал телефон — He wrecked the phone"
+    ["заебал"]="verb|you've pissed me off, I'm sick of you (past)|Ты меня заебал — I'm fucking sick of you"
+    ["заебала"]="verb|she's pissed me off (past, fem)|Она меня заебала — I'm fucking sick of her"
+    ["заебали"]="verb|they've pissed me off (past, pl)|Они заебали — They're pissing me off"
+    ["заебался"]="verb|I'm fucking exhausted (past, masc)|Я заебался — I'm fucking exhausted"
+    ["заебалась"]="verb|I'm fucking exhausted (past, fem)|Я заебалась — I'm fucking exhausted"
+    ["наебать"]="verb|to scam, to deceive, to fuck over|Меня наебали — I got fucked over"
+    ["проебать"]="verb|to fuck up, to miss/lose|Я проебал дедлайн — I fucked up the deadline"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - VERB PHRASES
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["хуйню нести"]="phrase|to talk nonsense, verbal diarrhea|Ты хуйню несёшь — You're talking shit"
+    ["несёшь"]="verb|you're carrying; you're spouting (nonsense)|Что ты несёшь? — What are you on about?"
+    ["втираешь"]="verb|you're trying to convince/sell (bullshit)|Ты мне втираешь дичь — You're feeding me nonsense"
+    ["гонишь"]="verb|you're spouting (nonsense)|Ты пургу гонишь — You're spouting nonsense"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - NOUNS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["пиздобол"]="noun|bullshitter, someone who talks shit (often comedic)|Он полный пиздобол — He's a total bullshitter"
+    ["пиздун"]="noun|bullshitter, liar (cruder)|Ну ты и пиздун! — You're such a bullshitter!"
+    ["херня"]="noun|nonsense, crap, bullshit|Это полная херня — This is total crap"
+    ["хуйня"]="noun|bullshit, crap (stronger)|Какая-то хуйня — Some bullshit"
+    ["хуй"]="noun|dick, cock; nothing (in phrases)|Хуй знает — Who the fuck knows"
+    ["пизда"]="noun|cunt, pussy; disaster (in phrases)|Пизда рулю — The steering is fucked"
+    ["жопа"]="noun|ass; deep trouble|Теперь у нас жопа — Now we're in deep shit"
+    ["мудак"]="noun|asshole|Он полный мудак — He's a total asshole"
+    ["дичь"]="noun|nonsense, wild bullshit|Это какая-то дичь — This is some wild shit"
+    ["чушь"]="noun|nonsense, rubbish (milder)|Это чушь — That's nonsense"
+    ["пурга"]="noun|nonsense, bullshit (lit: blizzard)|Не гони пургу — Don't talk nonsense"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - ADJECTIVES
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["хуёвый"]="adjective|shitty, crappy|Хуёвый план — A shitty plan"
+    ["хуёво"]="adverb|shitty, badly|Мне хуёво — I feel like shit"
+    ["пиздатый"]="adjective|fucking great, awesome|Пиздатая тачка — Awesome car"
+    ["пиздато"]="adverb|fucking great|Всё пиздато — Everything's fucking great"
+    ["ёбаный"]="adjective|fucking, goddamn|Ёбаный насос — The fucking pump"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - STATES
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["пиздос"]="noun|catastrophic mess, doom|После этого был пиздос — After that it was chaos"
+    ["пипец"]="noun|disaster (softened form of пиздец)|Ну всё, пипец — Well, we're screwed"
+    ["капец"]="noun|disaster (very softened)|Капец, что делать — Crap, what to do"
+    ["жесть"]="noun|brutal, intense, wild (slang)|Жесть, как холодно — Damn, it's cold"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - ATTITUDE
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["похуй"]="predicate|I don't give a fuck, don't care|Мне похуй — I don't give a fuck"
+    ["насрать"]="predicate|I don't give a shit|Мне насрать — I don't give a shit"
+    ["поебать"]="predicate|I don't give a fuck (crude)|Мне поебать — I don't give a fuck"
+    ["пофиг"]="predicate|I don't care (milder)|Мне пофиг — I don't care"
+    ["в падлу"]="phrase|can't be bothered, too lazy|Мне в падлу — I can't be bothered"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - COMMANDS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["иди нахуй"]="phrase|go fuck yourself|Иди нахуй со своими советами — Go fuck yourself with your advice"
+    ["пошёл нахуй"]="phrase|fuck off|Пошёл нахуй — Fuck off"
+    ["пошла нахуй"]="phrase|fuck off (to female)|Пошла нахуй — Fuck off"
+    ["отъебись"]="verb|leave me the fuck alone|Отъебись от меня — Leave me the fuck alone"
+    ["отстань"]="verb|leave me alone (milder)|Отстань, я занят — Leave me alone, I'm busy"
+    ["закрой ебало"]="phrase|shut your fucking mouth|Закрой ебало — Shut your fucking mouth"
+    ["заткнись"]="verb|shut up|Заткнись на секунду — Shut up for a second"
+    ["не пизди"]="phrase|don't bullshit me|Не пизди, я всё знаю — Don't bullshit me, I know everything"
+    ["вали"]="verb|get out, scram|Вали отсюда — Get out of here"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ - INSULTS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["долбоёб"]="noun|fucking idiot|Ты долбоёб? — Are you a fucking idiot?"
+    ["еблан"]="noun|idiot, dumbass|Ну ты еблан — Man, you're an idiot"
+    ["уёбок"]="noun|piece of shit, fucker|Он конченый уёбок — He's a complete piece of shit"
+    ["мразь"]="noun|scum, scumbag|Какая мразь — What scum"
+    ["урод"]="noun|freak, ugly person|Он моральный урод — He's morally repugnant"
+    ["гандон"]="noun|condom; asshole (insult)|Ну ты гандон — You're a real asshole"
+    ["козёл"]="noun|goat; asshole (insult)|Ты козёл — You're an asshole"
+    ["сволочь"]="noun|bastard, scoundrel|Он сволочь — He's a bastard"
+    ["тварь"]="noun|creature; bitch/bastard|Тварь! — You bastard!"
+    ["дебил"]="noun|moron, retard|Ты дебил? — Are you a moron?"
+    ["идиот"]="noun|idiot|Полный идиот — Complete idiot"
+    ["дурак"]="noun|fool, idiot|Ты дурак — You're a fool"
+    ["дура"]="noun|fool, idiot (feminine)|Ты дура — You're a fool"
+    ["лох"]="noun|sucker, loser|Он лох — He's a sucker"
+    ["терпила"]="noun|pushover, someone who takes abuse|Не будь терпилой — Don't be a pushover"
+    ["чмо"]="noun|loser, pathetic person|Он чмо — He's pathetic"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # AFFECTIONATE / PLAYFUL
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["сказочник"]="noun|storyteller; friendly term for liar|Да ты сказочник — You're such a storyteller"
+    ["врун"]="noun|liar (light, teasing)|Ты врун — You're a liar"
+    ["родной"]="adjective/noun|dear, darling (term of endearment)|Ты опять хуйню несёшь, родной — You're talking shit again, dear"
+    ["дурачок"]="noun|silly, dummy (affectionate)|Ну ты дурачок — You silly thing"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMMON PHRASES
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["через жопу"]="phrase|ass-backwards, done badly|Он всё сделал через жопу — He did everything ass-backwards"
+    ["хуй знает"]="phrase|who the fuck knows, no idea|Хуй знает где это — Who the fuck knows where it is"
+    ["до пизды"]="phrase|don't care, couldn't care less|Мне до пизды — I couldn't care less"
+    ["ни хуя"]="phrase|nothing, fuck all|Ни хуя не понял — Didn't understand shit"
+    ["по хую"]="phrase|don't give a fuck|Мне по хую — I don't give a fuck"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # FILLERS & SLANG
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["типа"]="particle|like, kinda, sort of|Я типа не успел — I kinda didn't make it"
+    ["короче"]="particle|anyway, basically, long story short|Короче, я пошёл — Anyway, I'm leaving"
+    ["прикол"]="noun|joke, funny thing|Это прикол — That's funny"
+    ["прикольно"]="adverb|cool, funny|Прикольно! — Cool!"
+    ["круто"]="adverb|cool, awesome|Круто! — Cool!"
+    ["классно"]="adverb|great, nice|Классно! — Great!"
+    ["блин"]="interjection|damn (euphemism for блядь)|Блин, я забыл — Damn, I forgot"
+    ["фигня"]="noun|stuff, nonsense (mild)|Это фигня — That's nothing"
+    ["ладно"]="particle|okay, alright|Ладно, пойдём — Okay, let's go"
+    ["давай"]="particle|come on, let's go; okay bye|Давай! — Let's go! / See ya!"
+    ["конечно"]="adverb|of course|Конечно! — Of course!"
+    ["вообще"]="adverb|in general, at all|Вообще не понимаю — I don't understand at all"
+    ["нормально"]="adverb|normal, fine, okay|Всё нормально — Everything's fine"
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Russian Phrases Dictionary (multi-word expressions)
+# ─────────────────────────────────────────────────────────────────────────────
+# These are set phrases where the meaning ≠ sum of parts
+# Format: ["phrase"]="definition|example"
+
+declare -A RUSSIAN_PHRASES=(
+    # ═══════════════════════════════════════════════════════════════════════════
+    # COMMON EXPRESSIONS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["мне всё равно"]="I don't care, it's all the same to me, I don't mind|Мне всё равно, куда идти — I don't care where we go"
+    ["мне все равно"]="I don't care, it's all the same to me, I don't mind|Мне все равно что есть — I don't care what to eat"
+    ["всё равно"]="anyway, still, nevertheless; all the same|Я всё равно пойду — I'll go anyway"
+    ["все равно"]="anyway, still, nevertheless|Все равно не поможет — It won't help anyway"
+    ["как дела"]="how are you, how's it going|Привет, как дела? — Hi, how are you?"
+    ["что случилось"]="what happened, what's wrong|Что случилось? — What happened?"
+    ["в чём дело"]="what's the matter, what's the problem|В чём дело? — What's the matter?"
+    ["не за что"]="you're welcome, don't mention it|Спасибо! — Не за что! — Thanks! — You're welcome!"
+    ["на здоровье"]="you're welcome (after thanks for food/drink); bless you|На здоровье! — You're welcome! / Enjoy!"
+    ["будь здоров"]="bless you (after sneeze); take care|Будь здоров! — Bless you!"
+    ["ни за что"]="no way, not for anything|Ни за что не пойду — No way I'm going"
+    ["ещё бы"]="of course, you bet, I'll say|Ещё бы! — You bet!"
+    ["ну и что"]="so what|Ну и что? — So what?"
+    ["да ладно"]="come on, no way, really?|Да ладно! Серьёзно? — Come on! Seriously?"
+    ["само собой"]="of course, naturally, goes without saying|Само собой — Of course"
+    ["ни фига"]="nothing, not a thing (mild)|Ни фига не понял — Didn't understand a thing"
+    ["ни фига себе"]="wow, holy cow (mild)|Ни фига себе! — Holy cow!"
+    ["ёлки палки"]="darn, dang (mild expletive)|Ёлки палки! — Darn it!"
+    ["ё моё"]="oh my, geez (mild)|Ё моё, что это? — Oh my, what's this?"
+    ["что ты"]="what do you mean, no way, come on|Что ты! Это неправда — Come on! That's not true"
+    ["то есть"]="that is, I mean|То есть, ты не придёшь? — So you mean you're not coming?"
+    ["на самом деле"]="actually, in fact|На самом деле это не так — Actually that's not true"
+    ["по-моему"]="in my opinion, I think|По-моему, это плохая идея — I think it's a bad idea"
+    ["мало ли"]="who knows, you never know|Мало ли что случится — You never know what might happen"
+    ["так себе"]="so-so, mediocre|Фильм так себе — The movie was so-so"
+    ["туда сюда"]="back and forth, here and there|Бегает туда сюда — Running back and forth"
+    ["более менее"]="more or less|Более менее понял — More or less understood"
+    ["время от времени"]="from time to time|Время от времени звонит — Calls from time to time"
+    ["друг друга"]="each other|Они любят друг друга — They love each other"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # МАТ PHRASES
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["мне похуй"]="I don't give a fuck|Мне похуй на это — I don't give a fuck about that"
+    ["мне насрать"]="I don't give a shit|Мне насрать что они думают — I don't give a shit what they think"
+    ["мне поебать"]="I don't give a fuck (crude)|Мне поебать — I don't give a fuck"
+    ["мне по хую"]="I don't give a fuck|Мне по хую — I don't give a fuck"
+    ["мне пофиг"]="I don't care (mild)|Мне пофиг — I don't care"
+    ["мне в падлу"]="I can't be bothered, too lazy|Мне в падлу вставать — I can't be bothered to get up"
+    ["да ну нахуй"]="no fucking way, get the fuck out (disbelief)|Да ну нахуй, серьёзно? — No fucking way, seriously?"
+    ["ну нахуй"]="fuck that, no way|Ну нахуй это — Fuck that"
+    ["иди нахуй"]="go fuck yourself|Иди нахуй — Go fuck yourself"
+    ["пошёл нахуй"]="fuck off (to male)|Пошёл нахуй — Fuck off"
+    ["пошла нахуй"]="fuck off (to female)|Пошла нахуй — Fuck off"
+    ["хуй знает"]="who the fuck knows, no idea|Хуй знает где он — Who the fuck knows where he is"
+    ["хуй там"]="no way, like hell (dismissive)|Хуй там, не дождёшься — Like hell, don't count on it"
+    ["хуя с два"]="like hell, no fucking way|Хуя с два он придёт — Like hell he'll come"
+    ["ни хуя"]="nothing, fuck all; not at all|Ни хуя не понял — Didn't understand shit"
+    ["ни хуя себе"]="holy shit, holy fuck|Ни хуя себе! — Holy shit!"
+    ["хуя себе"]="holy shit|Хуя себе! — Holy shit!"
+    ["до пизды"]="don't give a fuck|Мне до пизды — I couldn't care less"
+    ["через жопу"]="ass-backwards, done badly|Всё через жопу — Everything is fucked up"
+    ["в жопу"]="up the ass; very (intensifier); fucked|Пьяный в жопу — Drunk as fuck"
+    ["жопа с ручкой"]="complete disaster, clusterfuck|Это жопа с ручкой — This is a complete clusterfuck"
+    ["ебал я"]="fuck that, I don't care|Ебал я это — Fuck that"
+    ["ебал в рот"]="fuck this (strong dismissal)|Ебал в рот эту работу — Fuck this job"
+    ["ёб твою мать"]="motherfucker, for fuck's sake|Ёб твою мать! — For fuck's sake!"
+    ["ебать копать"]="holy shit (surprise)|Ебать копать, это дорого! — Holy shit, that's expensive!"
+    ["ебать колотить"]="holy shit (surprise)|Ебать колотить! — Holy shit!"
+    ["ёбаный в рот"]="fucking hell|Ёбаный в рот! — Fucking hell!"
+    ["ёбаный стыд"]="fucking disgrace|Это ёбаный стыд — This is a fucking disgrace"
+    ["пиздец как"]="fucking (intensifier)|Пиздец как холодно — Fucking cold"
+    ["пиздец какой"]="what a fucking (intensifier)|Пиздец какой идиот — What a fucking idiot"
+    ["полный пиздец"]="complete disaster, totally fucked|Это полный пиздец — This is totally fucked"
+    ["ты охуел"]="are you out of your fucking mind (to male)|Ты охуел? — Are you fucking crazy?"
+    ["ты охуела"]="are you out of your fucking mind (to female)|Ты охуела? — Are you fucking crazy?"
+    ["ты заебал"]="I'm sick of you, you're pissing me off (to male)|Ты меня заебал — I'm fucking sick of you"
+    ["ты заебала"]="I'm sick of you (to female)|Ты меня заебала — I'm fucking sick of you"
+    ["заебали уже"]="I'm so fucking sick of this|Заебали уже! — I'm so fucking sick of this!"
+    ["я заебался"]="I'm fucking exhausted (male)|Я заебался — I'm fucking exhausted"
+    ["я заебалась"]="I'm fucking exhausted (female)|Я заебалась — I'm fucking exhausted"
+    ["не пизди"]="don't bullshit me|Не пизди! — Don't bullshit me!"
+    ["хватит пиздеть"]="stop bullshitting|Хватит пиздеть — Stop bullshitting"
+    ["закрой ебало"]="shut your fucking mouth|Закрой ебало! — Shut your fucking mouth!"
+    ["отъебись от меня"]="leave me the fuck alone|Отъебись от меня! — Leave me the fuck alone!"
+    ["какого хуя"]="what the fuck|Какого хуя? — What the fuck?"
+    ["какого хера"]="what the hell|Какого хера? — What the hell?"
+    ["что за хуйня"]="what the fuck is this|Что за хуйня? — What the fuck is this?"
+    ["что за херня"]="what the hell is this|Что за херня? — What the hell is this?"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # GREETINGS & FAREWELLS
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["доброе утро"]="good morning|Доброе утро! — Good morning!"
+    ["добрый день"]="good afternoon, good day|Добрый день! — Good day!"
+    ["добрый вечер"]="good evening|Добрый вечер! — Good evening!"
+    ["спокойной ночи"]="good night|Спокойной ночи! — Good night!"
+    ["до свидания"]="goodbye (formal)|До свидания! — Goodbye!"
+    ["до скорого"]="see you soon|До скорого! — See you soon!"
+    ["до завтра"]="see you tomorrow|До завтра! — See you tomorrow!"
+    ["всего хорошего"]="all the best|Всего хорошего! — All the best!"
+    ["удачи тебе"]="good luck (informal)|Удачи тебе! — Good luck!"
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # USEFUL PHRASES
+    # ═══════════════════════════════════════════════════════════════════════════
+    ["я не знаю"]="I don't know|Я не знаю — I don't know"
+    ["я не понимаю"]="I don't understand|Я не понимаю — I don't understand"
+    ["я не говорю по-русски"]="I don't speak Russian|Я не говорю по-русски — I don't speak Russian"
+    ["ты говоришь по-английски"]="do you speak English|Ты говоришь по-английски? — Do you speak English?"
+    ["как это сказать"]="how do you say this|Как это сказать? — How do you say this?"
+    ["что это значит"]="what does this mean|Что это значит? — What does this mean?"
+    ["повтори пожалуйста"]="please repeat|Повтори, пожалуйста — Please repeat"
+    ["я тебя люблю"]="I love you (informal)|Я тебя люблю — I love you"
+    ["я вас люблю"]="I love you (formal/plural)|Я вас люблю — I love you"
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Phrase Lookup (for transliterated input)
+# ─────────────────────────────────────────────────────────────────────────────
+# Maps common transliterated phrases to Cyrillic
+declare -A PHRASE_TRANSLITERATION=(
+    ["mne vse ravno"]="мне всё равно"
+    ["mne vsyo ravno"]="мне всё равно"
+    ["mne vsë ravno"]="мне всё равно"
+    ["vse ravno"]="всё равно"
+    ["vsyo ravno"]="всё равно"
+    ["kak dela"]="как дела"
+    ["chto sluchilos"]="что случилось"
+    ["ne za chto"]="не за что"
+    ["na zdorovye"]="на здоровье"
+    ["bud zdorov"]="будь здоров"
+    ["ni za chto"]="ни за что"
+    ["yeshcho by"]="ещё бы"
+    ["eshcho by"]="ещё бы"
+    ["nu i chto"]="ну и что"
+    ["da ladno"]="да ладно"
+    ["samo soboy"]="само собой"
+    ["mne pohuy"]="мне похуй"
+    ["mne pokhuy"]="мне похуй"
+    ["mne nasrat"]="мне насрать"
+    ["mne poebat"]="мне поебать"
+    ["mne poyebat"]="мне поебать"
+    ["mne pofig"]="мне пофиг"
+    ["mne v padlu"]="мне в падлу"
+    ["da nu nahuy"]="да ну нахуй"
+    ["da nu nakhuy"]="да ну нахуй"
+    ["nu nahuy"]="ну нахуй"
+    ["nu nakhuy"]="ну нахуй"
+    ["idi nahuy"]="иди нахуй"
+    ["idi nakhuy"]="иди нахуй"
+    ["poshol nahuy"]="пошёл нахуй"
+    ["poshol nakhuy"]="пошёл нахуй"
+    ["poshel nahuy"]="пошёл нахуй"
+    ["poshla nahuy"]="пошла нахуй"
+    ["huy znaet"]="хуй знает"
+    ["khuy znaet"]="хуй знает"
+    ["hui znaet"]="хуй знает"
+    ["ni huya"]="ни хуя"
+    ["ni khuya"]="ни хуя"
+    ["ni huya sebe"]="ни хуя себе"
+    ["ni khuya sebe"]="ни хуя себе"
+    ["huya sebe"]="хуя себе"
+    ["khuya sebe"]="хуя себе"
+    ["do pizdy"]="до пизды"
+    ["cherez zhopu"]="через жопу"
+    ["v zhopu"]="в жопу"
+    ["yob tvoyu mat"]="ёб твою мать"
+    ["eb tvoyu mat"]="ёб твою мать"
+    ["ebat kopat"]="ебать копать"
+    ["yebat kopat"]="ебать копать"
+    ["ebanyy v rot"]="ёбаный в рот"
+    ["yobanyy v rot"]="ёбаный в рот"
+    ["polnyy pizdets"]="полный пиздец"
+    ["polniy pizdets"]="полный пиздец"
+    ["ty ohuel"]="ты охуел"
+    ["ty okhuel"]="ты охуел"
+    ["ty ohuela"]="ты охуела"
+    ["ty okhuila"]="ты охуела"
+    ["ty zaebal"]="ты заебал"
+    ["ty zaebala"]="ты заебала"
+    ["zaebali uzhe"]="заебали уже"
+    ["ya zaebalsya"]="я заебался"
+    ["ya zaebalas"]="я заебалась"
+    ["ne pizdi"]="не пизди"
+    ["hvatit pizdet"]="хватит пиздеть"
+    ["khvatit pizdet"]="хватит пиздеть"
+    ["zakroy ebalo"]="закрой ебало"
+    ["zakroy yebalo"]="закрой ебало"
+    ["otyebis ot menya"]="отъебись от меня"
+    ["otebis ot menya"]="отъебись от меня"
+    ["kakogo huya"]="какого хуя"
+    ["kakogo khuya"]="какого хуя"
+    ["kakogo hera"]="какого хера"
+    ["kakogo khera"]="какого хера"
+    ["chto za huynya"]="что за хуйня"
+    ["chto za khuynya"]="что за хуйня"
+    ["chto za hernya"]="что за херня"
+    ["chto za khernya"]="что за херня"
+    ["dobroe utro"]="доброе утро"
+    ["dobryy den"]="добрый день"
+    ["dobriy den"]="добрый день"
+    ["dobryy vecher"]="добрый вечер"
+    ["dobriy vecher"]="добрый вечер"
+    ["spokoynoy nochi"]="спокойной ночи"
+    ["spokoinoi nochi"]="спокойной ночи"
+    ["do svidaniya"]="до свидания"
+    ["do svidanija"]="до свидания"
+    ["do skorogo"]="до скорого"
+    ["do zavtra"]="до завтра"
+    ["vsego horoshego"]="всего хорошего"
+    ["vsego khoroshego"]="всего хорошего"
+    ["udachi tebe"]="удачи тебе"
+    ["ya ne znayu"]="я не знаю"
+    ["ya ne ponimayu"]="я не понимаю"
+    ["ya tebya lyublyu"]="я тебя люблю"
+    ["ya tebya ljublju"]="я тебя люблю"
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Local Definition Lookup
+# ─────────────────────────────────────────────────────────────────────────────
+# Returns definition from local dictionary if available
+# Output: "pos|definition|example" or empty if not found
+
+get_local_definition() {
+    local cyrillic="$1"
+    if [[ -n "${RUSSIAN_DEFINITIONS[$cyrillic]:-}" ]]; then
+        echo "${RUSSIAN_DEFINITIONS[$cyrillic]}"
+        return 0
+    fi
+    return 1
+}
+
+# Check if input is a known phrase (returns Cyrillic phrase if found)
+get_phrase_match() {
+    local input="$1"
+    local lower_input="${input,,}"
+    
+    # Check transliteration map first
+    if [[ -n "${PHRASE_TRANSLITERATION[$lower_input]:-}" ]]; then
+        echo "${PHRASE_TRANSLITERATION[$lower_input]}"
+        return 0
+    fi
+    
+    # Check if it's already Cyrillic and in phrases dict
+    if [[ -n "${RUSSIAN_PHRASES[$input]:-}" ]]; then
+        echo "$input"
+        return 0
+    fi
+    
+    return 1
+}
+
+# Get phrase definition
+get_phrase_definition() {
+    local phrase="$1"
+    if [[ -n "${RUSSIAN_PHRASES[$phrase]:-}" ]]; then
+        echo "${RUSSIAN_PHRASES[$phrase]}"
+        return 0
+    fi
+    return 1
+}
+
+display_phrase_definition() {
+    local cyrillic_phrase="$1"
+    local romanized="$2"
+    local def_entry="$3"
+    
+    # Parse: "definition|example"
+    local def example
+    IFS='|' read -r def example <<< "$def_entry"
+    
+    echo
+    echo -e "${BOLD}${UNDERLINE}$cyrillic_phrase${NC}"
+    [[ -n "$romanized" && "$romanized" != "$cyrillic_phrase" ]] && echo -e "${DIM}($romanized)${NC}"
+    echo
+    echo -e "${GREEN}${BOLD}phrase${NC}"
+    echo -e "  ${BOLD}1.${NC} $def"
+    
+    if [[ -n "$example" ]]; then
+        echo -e "     ${DIM}Example: $example${NC}"
+    fi
+    
+    echo -e "\n${DIM}Source: local dictionary${NC}"
+}
+
+display_local_definition() {
+    local cyrillic="$1"
+    local romanized="$2"
+    local def_entry="$3"
+    
+    # Parse: "pos|definition|example"
+    local pos def example
+    IFS='|' read -r pos def example <<< "$def_entry"
+    
+    echo
+    echo -e "${BOLD}${UNDERLINE}$cyrillic${NC}"
+    [[ -n "$romanized" ]] && echo -e "${DIM}($romanized)${NC}"
+    echo
+    echo -e "${GREEN}${BOLD}$pos${NC}"
+    echo -e "  ${BOLD}1.${NC} $def"
+    
+    if [[ -n "$example" && "$SHOW_EXAMPLES" == true ]]; then
+        echo -e "     ${ITALIC}${DIM}\"$example\"${NC}"
+    elif [[ -n "$example" ]]; then
+        # Always show example for mat since it helps understanding
+        echo -e "     ${DIM}Example: $example${NC}"
+    fi
+    
+    echo -e "\n${DIM}Source: local dictionary${NC}"
+}
+
+transliterate_to_cyrillic() {
+    local input="$1"
+    local lower_input
+    lower_input=$(echo "$input" | tr '[:upper:]' '[:lower:]')
+    
+    # Check lookup table first for common words
+    if [[ -n "${WORD_LOOKUP[$lower_input]:-}" ]]; then
+        echo "${WORD_LOOKUP[$lower_input]}"
+        return
+    fi
+    
+    local result="$input"
+    
+    # Multi-character replacements first (order matters!)
+    # Soft/hard signs and combinations
+    result="${result//shch/щ}"
+    result="${result//sch/щ}"
+    result="${result//tch/ч}"
+    
+    # Two-letter combinations
+    result="${result//zh/ж}"
+    result="${result//kh/х}"
+    result="${result//ch/ч}"
+    result="${result//sh/ш}"
+    result="${result//ts/ц}"
+    result="${result//tz/ц}"
+    result="${result//ya/я}"
+    result="${result//ja/я}"
+    result="${result//yu/ю}"
+    result="${result//ju/ю}"
+    result="${result//yo/ё}"
+    result="${result//jo/ё}"
+    result="${result//ye/е}"
+    result="${result//je/е}"
+    
+    # Handle y combinations and word endings
+    result="${result//yi/ый}"
+    result="${result//iy/ий}"
+    result="${result//yy/ый}"
+    result="${result//ey/ей}"
+    result="${result//oy/ой}"
+    result="${result//ay/ай}"
+    result="${result//uy/уй}"
+    
+    # Single letter replacements (careful order)
+    result="${result//a/а}"
+    result="${result//b/б}"
+    result="${result//v/в}"
+    result="${result//w/в}"
+    result="${result//g/г}"
+    result="${result//d/д}"
+    result="${result//e/е}"
+    result="${result//z/з}"
+    result="${result//i/и}"
+    result="${result//k/к}"
+    result="${result//l/л}"
+    result="${result//m/м}"
+    result="${result//n/н}"
+    result="${result//o/о}"
+    result="${result//p/п}"
+    result="${result//r/р}"
+    result="${result//s/с}"
+    result="${result//t/т}"
+    result="${result//u/у}"
+    result="${result//f/ф}"
+    result="${result//x/кс}"
+    result="${result//h/х}"
+    result="${result//c/ц}"
+    
+    # y handling - depends on position
+    result="${result//y/ы}"
+    
+    # Fix common patterns that get mangled
+    result="${result//йа/я}"
+    result="${result//йу/ю}"
+    result="${result//йо/ё}"
+    result="${result//йе/е}"
+    result="${result//ыа/ья}"
+    result="${result//ыо/ьо}"
+    result="${result//ыу/ью}"
+    
+    echo "$result"
+}
+
+is_russian_transliteration() {
+    local input="$1"
+    
+    # For multi-word input, check each word
+    for word in $input; do
+        word=$(echo "$word" | tr '[:upper:]' '[:lower:]')
+        
+        # Check if already Cyrillic
+        if echo "$word" | grep -qP '\p{Cyrillic}' 2>/dev/null; then
+            return 0  # Is Russian (Cyrillic)
+        fi
+        
+        # Check against common Russian words (fast lookup)
+        if [[ "$word" =~ $RUSSIAN_PATTERNS ]]; then
+            return 0  # Matches Russian pattern
+        fi
+        
+        # Check lookup table
+        if [[ -n "${WORD_LOOKUP[$word]:-}" ]]; then
+            return 0
+        fi
+        
+        # Heuristics for Russian transliteration (NO network call - fast)
+        local ru_combos="(zh|kh|shch|sch|tch)"
+        local ru_endings="(ost|stvo|nie|tie|ski|sky|skiy|skaya|ova|eva|enko|chuk|yuk|nya|vat|yat)"
+        
+        # Strong Russian indicators
+        if [[ "$word" =~ $ru_combos ]]; then
+            return 0
+        fi
+        
+        # Russian-style endings with reasonable length
+        if [[ "$word" =~ $ru_endings ]] && [[ ${#word} -ge 5 ]]; then
+            return 0
+        fi
+    done
+    
+    return 1  # Probably not Russian
+}
+
+lookup_russian() {
+    local word="$1"
+    local cyrillic_word="$word"
+    local romanized=""
+    
+    # Convert if Latin input
+    if ! echo "$word" | grep -qP '\p{Cyrillic}' 2>/dev/null; then
+        cyrillic_word=$(transliterate_to_cyrillic "$word")
+        romanized="$word"
+    fi
+    
+    # Check LOCAL DICTIONARY FIRST (has actual English definitions!)
+    local local_def
+    if local_def=$(get_local_definition "$cyrillic_word"); then
+        display_local_definition "$cyrillic_word" "$romanized" "$local_def"
+        return 0
+    fi
+    
+    # Check cache next
+    local cached_response
+    if cached_response=$(cache_get "$cyrillic_word" "ru"); then
+        [[ "$SHORT_MODE" != true && "$SHOW_JSON" != true ]] && info "(cached)"
+        display_russian_response "$cyrillic_word" "$romanized" "$cached_response"
+        return 0
+    fi
+    
+    # Offline mode check
+    if [[ "$OFFLINE_MODE" == true ]]; then
+        error "No cached definition for '$cyrillic_word' (offline mode)"
+        return 1
+    fi
+    
+    # URL encode the Cyrillic word
+    local encoded_word
+    encoded_word=$(printf '%s' "$cyrillic_word" | jq -sRr @uri)
+    
+    # Fetch from English Wiktionary with proper error handling
+    local response
+    local http_code
+    
+    response=$(curl -s -w "\n%{http_code}" --connect-timeout 5 --max-time 10 \
+        -H "Accept: application/json" \
+        "$RUSSIAN_API_URL/$encoded_word" 2>/dev/null)
+    
+    http_code=$(echo "$response" | tail -n1)
+    response=$(echo "$response" | sed '$d')
+    
+    # Connection/timeout check
+    if [[ -z "$response" ]]; then
+        error "Connection failed or timed out."
+        info "Check your internet connection and try again."
+        return 1
+    fi
+    
+    # HTTP error check
+    if [[ "$http_code" -ge 400 ]]; then
+        if [[ "$http_code" == "404" ]]; then
+            # Try fallback
+            lookup_russian_wiktionary "$cyrillic_word" "$word"
+            return $?
+        fi
+        error "API error (HTTP $http_code)"
+        return 1
+    fi
+    
+    # Check if word exists in response
+    if [[ "$response" == *"title\":\"Not found"* ]] || [[ "$response" == *"\"title\":\"Page not found"* ]]; then
+        lookup_russian_wiktionary "$cyrillic_word" "$word"
+        return $?
+    fi
+    
+    # Validate JSON
+    if ! echo "$response" | jq -e '.' &>/dev/null; then
+        error "Invalid response from API"
+        lookup_russian_wiktionary "$cyrillic_word" "$word"
+        return $?
+    fi
+    
+    # Cache the response
+    cache_set "$cyrillic_word" "$response" "ru"
+    
+    # Display the response
+    display_russian_response "$cyrillic_word" "$romanized" "$response"
+    return 0
+}
+
+display_russian_response() {
+    local cyrillic_word="$1"
+    local romanized="$2"
+    local response="$3"
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # SHORT MODE
+    # ─────────────────────────────────────────────────────────────────────────
+    if [[ "$SHORT_MODE" == true ]]; then
+        local first_def
+        first_def=$(echo "$response" | jq -r '
+            (.ru // .other // [])[0].definitions[0].definition // "No definition" |
+            gsub("<[^>]*>"; "")
+        ' 2>/dev/null)
+        echo -e "${BOLD}$cyrillic_word${NC}: $first_def"
+        return 0
+    fi
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # JSON MODE
+    # ─────────────────────────────────────────────────────────────────────────
+    if [[ "$SHOW_JSON" == true ]]; then
+        echo "$response" | jq .
+        return 0
+    fi
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # FULL DISPLAY
+    # ─────────────────────────────────────────────────────────────────────────
+    echo
+    echo -e "${BOLD}${UNDERLINE}$cyrillic_word${NC}"
+    [[ -n "$romanized" ]] && echo -e "${DIM}($romanized)${NC}"
+    echo
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # DEFINITIONS
+    # ─────────────────────────────────────────────────────────────────────────
+    local def_limit=4
+    [[ "$SHOW_ALL" == true ]] && def_limit=20
+    
+    echo "$response" | jq -r --argjson limit "$def_limit" '
+        (.ru // .other // [])[] | 
+        .partOfSpeech as $pos |
+        .definitions[:$limit][] |
+        .definition as $def |
+        # Skip grammar notes and meta-info (starts with "The", "Archaic", "Alternative", etc.)
+        select($def != null) |
+        select(($def | test("^(The |Archaic |Alternative |See |Used |Compare |Related |From |Cf\\.|Note:)"; "i")) | not) |
+        select(($def | test("^[A-Z][a-z]+ (form|case|tense|aspect|mood|person|singular|plural|masculine|feminine|neuter)"; "i")) | not) |
+        "\($pos)§\($def | gsub("<[^>]*>"; "") | gsub("\\.mw-parser-output[^}]*\\}"; "") | gsub("\\{[^}]*\\}"; "") | gsub("\\s+"; " "))§\(.parsedExamples // [] | .[0] | "\(.example // "" | gsub("<[^>]*>"; ""))§\(.translation // "" | gsub("<[^>]*>"; ""))" // "")"
+    ' 2>/dev/null | {
+        current_pos=""
+        count=0
+        while IFS='§' read -r pos def example translation; do
+            [[ -z "$def" || "$def" == " " ]] && continue
+            
+            # Additional bash-level filtering for grammar notes
+            # Skip if it looks like a grammar reference rather than a definition
+            if [[ "$def" =~ ^(second-person|first-person|third-person|singular|plural|nominative|genitive|dative|accusative|instrumental|prepositional|imperfective|perfective) ]]; then
+                # This is a verb conjugation reference - show it but mark it
+                if [[ "$pos" != "$current_pos" ]]; then
+                    [[ -n "$current_pos" ]] && echo
+                    echo -e "${GREEN}${BOLD}$pos${NC}"
+                    current_pos="$pos"
+                    count=0
+                fi
+                ((count++))
+                # Clean up the grammatical reference
+                def=$(echo "$def" | sed 's/\.mw-parser-output[^}]*}//g; s/\[with[^]]*\]//g; s/{[^}]*}//g' | xargs 2>/dev/null || echo "$def")
+                echo -e "  ${DIM}→ $def${NC}"
+                continue
+            fi
+            
+            # Skip lines that are clearly meta/usage notes
+            [[ "$def" =~ ^(The\ letter|Archaic|Alternative\ forms|The\ alternative) ]] && continue
+            
+            if [[ "$pos" != "$current_pos" ]]; then
+                [[ -n "$current_pos" ]] && echo
+                echo -e "${GREEN}${BOLD}$pos${NC}"
+                current_pos="$pos"
+                count=0
+            fi
+            ((count++))
+            
+            def=$(echo "$def" | sed 's/\.mw-parser-output[^}]*}//g; s/\[with[^]]*\]//g; s/{[^}]*}//g' | xargs 2>/dev/null || echo "$def")
+            [[ -n "$def" ]] && echo -e "  ${BOLD}$count.${NC} $def"
+            
+            # Show example if available and requested
+            if [[ "$SHOW_EXAMPLES" == true && -n "$example" && "$example" != " " ]]; then
+                example=$(echo "$example" | xargs 2>/dev/null || echo "$example")
+                translation=$(echo "$translation" | sed 's/^[| ]*//; s/[| ]*$//' | xargs 2>/dev/null || echo "$translation")
+                if [[ -n "$example" ]]; then
+                    echo -e "     ${ITALIC}${DIM}\"$example\"${NC}"
+                    [[ -n "$translation" && "$translation" != "" ]] && echo -e "     ${DIM}→ $translation${NC}"
+                fi
+            fi
+        done
+    }
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # SYNONYMS & RELATED (from Wiktionary if available)
+    # ─────────────────────────────────────────────────────────────────────────
+    if [[ "$SHOW_SYNONYMS" == true ]]; then
+        # Try to extract synonyms from the response
+        local synonyms
+        synonyms=$(echo "$response" | jq -r '
+            [(.ru // .other // [])[]?.definitions[]?.synonyms // [] | .[]] | 
+            unique | .[0:8] | 
+            map(gsub("<[^>]*>"; "")) | 
+            join(", ")
+        ' 2>/dev/null)
+        
+        local antonyms
+        antonyms=$(echo "$response" | jq -r '
+            [(.ru // .other // [])[]?.definitions[]?.antonyms // [] | .[]] | 
+            unique | .[0:8] | 
+            map(gsub("<[^>]*>"; "")) | 
+            join(", ")
+        ' 2>/dev/null)
+        
+        # URL encode for fallback scraping
+        local encoded_word
+        encoded_word=$(printf '%s' "$cyrillic_word" | jq -sRr @uri)
+        
+        # Fallback: scrape synonyms from HTML page if API didn't have them
+        if [[ -z "$synonyms" || "$synonyms" == "null" || "$synonyms" == "" ]] && [[ "$OFFLINE_MODE" != true ]]; then
+            local wiki_page
+            wiki_page=$(curl -s --connect-timeout 3 --max-time 5 \
+                "https://en.wiktionary.org/wiki/$encoded_word" 2>/dev/null)
+            
+            if [[ -n "$wiki_page" ]]; then
+                # Extract synonyms from "nyms synonym" spans
+                synonyms=$(echo "$wiki_page" | \
+                    grep -oP 'class="nyms synonym".*?</span></dd>' | \
+                    grep -oP '(?<=title=")[^"#]+(?=#|")' | \
+                    head -8 | \
+                    tr '\n' ', ' | \
+                    sed 's/, $//')
+                
+                # Extract antonyms from "nyms antonym" spans
+                if [[ -z "$antonyms" || "$antonyms" == "null" || "$antonyms" == "" ]]; then
+                    antonyms=$(echo "$wiki_page" | \
+                        grep -oP 'class="nyms antonym".*?</span></dd>' | \
+                        grep -oP '(?<=title=")[^"#]+(?=#|")' | \
+                        head -8 | \
+                        tr '\n' ', ' | \
+                        sed 's/, $//')
+                fi
+            fi
+        fi
+        
+        if [[ -n "$synonyms" && "$synonyms" != "null" && "$synonyms" != "" ]]; then
+            # Clean up formatting
+            synonyms=$(echo "$synonyms" | sed 's/,/, /g; s/,  /, /g; s/, $//')
+            echo
+            echo -e "${YELLOW}Synonyms:${NC} $synonyms"
+        fi
+        
+        if [[ -n "$antonyms" && "$antonyms" != "null" && "$antonyms" != "" ]]; then
+            antonyms=$(echo "$antonyms" | sed 's/,/, /g; s/,  /, /g; s/, $//')
+            echo -e "${MAGENTA}Antonyms:${NC} $antonyms"
+        fi
+    fi
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # ETYMOLOGY
+    # ─────────────────────────────────────────────────────────────────────────
+    if [[ "$SHOW_ETYMOLOGY" == true ]] && [[ "$OFFLINE_MODE" != true ]]; then
+        local encoded_word
+        encoded_word=$(printf '%s' "$cyrillic_word" | jq -sRr @uri)
+        
+        # Lazy load etymology from Wiktionary HTML page
+        local wiki_page
+        wiki_page=$(curl -s --connect-timeout 3 --max-time 5 \
+            "https://en.wiktionary.org/wiki/$encoded_word" 2>/dev/null)
+        
+        if [[ -n "$wiki_page" ]]; then
+            # Extract etymology section between Etymology header and next h3
+            local etymology
+            etymology=$(echo "$wiki_page" | \
+                sed -n '/<h3 id="Etymology">/,/<h3/p' | \
+                sed 's/<[^>]*>//g' | \
+                sed 's/\[edit\]//g' | \
+                sed 's/Etymology//g' | \
+                grep -v '^Pronunciation' | \
+                sed 's/&#42;/*/g; s/&#[0-9]*;//g' | \
+                tr '\n' ' ' | \
+                sed 's/  */ /g; s/^ *//; s/ *$//' | \
+                head -c 400 | \
+                xargs 2>/dev/null)
+            
+            if [[ -n "$etymology" && ${#etymology} -gt 20 ]]; then
+                echo
+                echo -e "${BLUE}Etymology:${NC}"
+                echo "$etymology" | fold -s -w 70 | sed 's/^/  /' | head -5
+            fi
+        fi
+    fi
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # SOURCE
+    # ─────────────────────────────────────────────────────────────────────────
+    local encoded_word
+    encoded_word=$(printf '%s' "$cyrillic_word" | jq -sRr @uri)
+    echo -e "\n${DIM}Source: https://en.wiktionary.org/wiki/$encoded_word${NC}"
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # SAVE WORD (store for later)
+    # ─────────────────────────────────────────────────────────────────────────
+    if [[ "$SAVE_WORD" == true ]]; then
+        save_russian_word "$cyrillic_word" "$romanized" "$response"
+    fi
+    
+    return 0
+}
+
+save_russian_word() {
+    local cyrillic="$1"
+    local romanized="$2"
+    local data="$3"
+    
+    ensure_dirs
+    
+    # Check if word already exists (using jq arg to properly escape)
+    if jq -e --arg w "$cyrillic" '.[] | select(.word == $w)' "$VOCAB_FILE" > /dev/null 2>&1; then
+        echo -e "${YELLOW}Note:${NC} '$cyrillic' already in vocabulary list."
+        return
+    fi
+    
+    # Extract first definition and clean it
+    local def
+    def=$(echo "$data" | jq -r '
+        (.ru // .other // [])[0].definitions[0].definition // "No definition" |
+        gsub("<[^>]*>"; "") |
+        gsub("\\.mw-parser-output[^}]*}"; "") |
+        gsub("\\[with[^]]*\\]"; "") |
+        gsub("\\s+"; " ")
+    ' 2>/dev/null | xargs 2>/dev/null || echo "No definition")
+    
+    local pos
+    pos=$(echo "$data" | jq -r '
+        (.ru // .other // [])[0].partOfSpeech // "unknown"
+    ' 2>/dev/null)
+    
+    # Add to vocab file with language tag
+    jq --arg word "$cyrillic" \
+       --arg romanized "$romanized" \
+       --arg def "$def" \
+       --arg pos "$pos" \
+       --arg date "$(date +%Y-%m-%d)" \
+       --arg lang "ru" \
+       '. += [{"word": $word, "romanized": $romanized, "definition": $def, "partOfSpeech": $pos, "dateAdded": $date, "language": $lang, "timesReviewed": 0, "correctCount": 0}]' \
+       "$VOCAB_FILE" > "$VOCAB_FILE.tmp" && mv "$VOCAB_FILE.tmp" "$VOCAB_FILE"
+    
+    echo -e "${GREEN}✓${NC} Saved '${BOLD}$cyrillic${NC}' to vocabulary list."
+}
+
+# Reverse transliteration helper (Cyrillic → Latin) for display
+transliterate_to_latin() {
+    local input="$1"
+    echo "$input" | sed \
+        -e 's/а/a/g' -e 's/А/A/g' \
+        -e 's/б/b/g' -e 's/Б/B/g' \
+        -e 's/в/v/g' -e 's/В/V/g' \
+        -e 's/г/g/g' -e 's/Г/G/g' \
+        -e 's/д/d/g' -e 's/Д/D/g' \
+        -e 's/е/e/g' -e 's/Е/E/g' \
+        -e 's/ё/yo/g' -e 's/Ё/Yo/g' \
+        -e 's/ж/zh/g' -e 's/Ж/Zh/g' \
+        -e 's/з/z/g' -e 's/З/Z/g' \
+        -e 's/и/i/g' -e 's/И/I/g' \
+        -e 's/й/y/g' -e 's/Й/Y/g' \
+        -e 's/к/k/g' -e 's/К/K/g' \
+        -e 's/л/l/g' -e 's/Л/L/g' \
+        -e 's/м/m/g' -e 's/М/M/g' \
+        -e 's/н/n/g' -e 's/Н/N/g' \
+        -e 's/о/o/g' -e 's/О/O/g' \
+        -e 's/п/p/g' -e 's/П/P/g' \
+        -e 's/р/r/g' -e 's/Р/R/g' \
+        -e 's/с/s/g' -e 's/С/S/g' \
+        -e 's/т/t/g' -e 's/Т/T/g' \
+        -e 's/у/u/g' -e 's/У/U/g' \
+        -e 's/ф/f/g' -e 's/Ф/F/g' \
+        -e 's/х/kh/g' -e 's/Х/Kh/g' \
+        -e 's/ц/ts/g' -e 's/Ц/Ts/g' \
+        -e 's/ч/ch/g' -e 's/Ч/Ch/g' \
+        -e 's/ш/sh/g' -e 's/Ш/Sh/g' \
+        -e 's/щ/shch/g' -e 's/Щ/Shch/g' \
+        -e 's/ъ//g' -e 's/Ъ//g' \
+        -e "s/ь/'/g" -e "s/Ь/'/g" \
+        -e 's/ы/y/g' -e 's/Ы/Y/g' \
+        -e 's/э/e/g' -e 's/Э/E/g' \
+        -e 's/ю/yu/g' -e 's/Ю/Yu/g' \
+        -e 's/я/ya/g' -e 's/Я/Ya/g'
+}
+
+lookup_russian_wiktionary() {
+    local cyrillic_word="$1"
+    local original="$2"
+    
+    # Direct Wiktionary page parse as fallback
+    local encoded
+    encoded=$(printf '%s' "$cyrillic_word" | jq -sRr @uri)
+    local page
+    
+    page=$(curl -s --connect-timeout 5 --max-time 10 \
+        "https://en.wiktionary.org/wiki/$encoded" 2>/dev/null)
+    
+    # Check for various failure modes
+    if [[ -z "$page" ]]; then
+        error "Connection failed while fetching fallback."
+        return 1
+    fi
+    
+    if [[ "$page" == *"does not have an article"* ]] || \
+       [[ "$page" == *"did not match any"* ]] || \
+       [[ "$page" == *"There is currently no text"* ]]; then
+        error "No definition found for '$cyrillic_word'"
+        [[ "$original" != "$cyrillic_word" ]] && echo -e "${DIM}(transliterated from: $original)${NC}"
+        suggest_similar_russian "$original"
+        return 1
+    fi
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # SHORT MODE (fallback)
+    # ─────────────────────────────────────────────────────────────────────────
+    if [[ "$SHORT_MODE" == true ]]; then
+        local first_def
+        first_def=$(echo "$page" | \
+            grep -oP '(?<=<li>)[^<]+' | \
+            head -1 | \
+            sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g')
+        echo -e "${BOLD}$cyrillic_word${NC}: ${first_def:-No definition found}"
+        return 0
+    fi
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # FULL DISPLAY (fallback)
+    # ─────────────────────────────────────────────────────────────────────────
+    echo
+    echo -e "${BOLD}${UNDERLINE}$cyrillic_word${NC}"
+    [[ "$original" != "$cyrillic_word" ]] && echo -e "${DIM}($original)${NC}"
+    echo
+    
+    # Extract Russian section definitions
+    local count=0
+    local def_limit=4
+    [[ "$SHOW_ALL" == true ]] && def_limit=20
+    
+    # Better parsing: look for definition lists
+    echo "$page" | \
+        grep -oP '(?<=<li>)[^<]+(?=</li>)' | \
+        head -n "$def_limit" | \
+        while read -r line; do
+            # Clean up HTML entities
+            line=$(echo "$line" | sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g; s/&#[0-9]*;//g')
+            line=$(trim "$line")
+            
+            if [[ -n "$line" ]] && [[ ${#line} -gt 3 ]]; then
+                ((count++))
+                echo -e "  ${BOLD}$count.${NC} $line"
+            fi
+        done
+    
+    # If no definitions found, try alternate extraction
+    if [[ $count -eq 0 ]]; then
+        echo -e "  ${DIM}Definition not available in parsed format.${NC}"
+        echo -e "  ${DIM}Visit the source link for full details.${NC}"
+    fi
+    
+    echo -e "\n${DIM}Source: https://en.wiktionary.org/wiki/$encoded${NC}"
+    return 0
+}
+
+suggest_similar_russian() {
+    local word="$1"
+    [[ -z "$word" ]] && return
+    
+    # Suggest based on similar transliterations in lookup table
+    local suggestions=""
+    for key in "${!WORD_LOOKUP[@]}"; do
+        if [[ "$key" == "${word:0:3}"* ]]; then
+            suggestions+="$key (${WORD_LOOKUP[$key]}), "
+        fi
+    done
+    
+    suggestions="${suggestions%, }"
+    [[ -n "$suggestions" ]] && echo -e "${DIM}Similar words: $suggestions${NC}"
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Help and Usage
+# ─────────────────────────────────────────────────────────────────────────────
+
+show_help() {
+    cat << 'EOF'
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                  DEFINE — Terminal Dictionary & Learning Tool                 ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+USAGE
+    define [OPTIONS] <word>         Look up a word
+    define [OPTIONS] <phrase>       Look up each word (Russian)
+    define                          Look up clipboard selection
+
+DISPLAY OPTIONS
+    -s, --short       One-line definition only
+    -a, --all         Show all definitions (default: 3 per part of speech)
+    -e, --examples    Include example sentences
+    -y, --synonyms    Show synonyms and antonyms
+    -t, --etymology   Show word origin/history
+    -f, --full        Show everything (-a -e -y -t combined)
+    -p, --pronounce   Play audio pronunciation
+    -j, --json        Output raw API response as JSON
+
+LANGUAGE OPTIONS
+    -R, --russian     Force Russian/Cyrillic lookup
+    -E, --english     Force English lookup (skip Russian detection)
+
+VOCABULARY & LEARNING
+    -r, --random      Look up a random interesting word
+    --save            Save word to personal vocabulary list
+    --review          Browse saved vocabulary
+    --quiz            Test yourself on saved words
+    --export-anki [file]  Export vocabulary to Anki-compatible CSV
+
+DATA MANAGEMENT
+    --history         Show recent lookup history
+    --stats           Show lookup statistics
+    --clear-cache     Clear cached definitions
+    -o, --offline     Use only cached results (no network)
+
+    -h, --help        Show this help
+
+RUSSIAN SUPPORT
+    Auto-detects Russian words and Latin transliteration.
+    Multi-word phrases are looked up word-by-word.
+
+    Transliteration:
+        zh=ж  kh=х  ch=ч  sh=ш  shch=щ  ts=ц
+        ya=я  yu=ю  yo=ё  ye=е  y=ы/й   '=ь
+
+    Examples:
+        define privet              → привет
+        define ya ne znayu         → я + не + знаю (each word)
+        define -R dom              → дом (force Russian for ambiguous words)
+        define pizdets             → пиздец (mat included!)
+
+EXAMPLES
+    define ephemeral               Basic lookup
+    define -f serendipity          Full details with etymology
+    define -p -e ubiquitous        Play audio, show examples
+    define -e --save ameliorate    Save to vocabulary with examples
+    define -r                      Random word of the day
+    define --quiz                  Test your saved vocabulary
+
+ENVIRONMENT
+    NO_COLOR=1                     Disable colored output
+    XDG_DATA_HOME                  Base for vocabulary/history files
+    XDG_CACHE_HOME                 Base for definition cache
+
+FILES
+    ~/.local/share/define/vocabulary.json    Saved words
+    ~/.local/share/define/history.txt        Lookup history
+    ~/.cache/define/*.json                   Cached definitions (30 days)
+
+EOF
+}
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# History and Stats
+# ─────────────────────────────────────────────────────────────────────────────
+
+add_to_history() {
+    ensure_dirs
+    local word="$1"
+    local timestamp
+    timestamp=$(date +%Y-%m-%d\ %H:%M)
+    # Prepend to history, remove duplicates, limit size
+    { echo "$timestamp|$word"; grep -v "|$word$" "$HISTORY_FILE" 2>/dev/null; } | head -n "$MAX_HISTORY" > "$HISTORY_FILE.tmp"
+    mv "$HISTORY_FILE.tmp" "$HISTORY_FILE"
+}
+
+show_history() {
+    ensure_dirs
+    if [[ ! -s "$HISTORY_FILE" ]]; then
+        echo -e "${DIM}No lookup history yet.${NC}"
+        exit 0
+    fi
+    header "Recent Lookups"
+    head -n 20 "$HISTORY_FILE" | while IFS='|' read -r timestamp word; do
+        echo -e "${DIM}$timestamp${NC}  ${BOLD}$word${NC}"
+    done
+    echo
+    local count
+    count=$(wc -l < "$HISTORY_FILE")
+    echo -e "${DIM}Total lookups: $count${NC}"
+}
+
+show_stats() {
+    ensure_dirs
+    header "Lookup Statistics"
+    
+    local total unique vocab_count cache_count cache_size
+    total=$(wc -l < "$HISTORY_FILE" 2>/dev/null || echo 0)
+    unique=$(cut -d'|' -f2 "$HISTORY_FILE" 2>/dev/null | sort -u | wc -l || echo 0)
+    vocab_count=$(jq 'length' "$VOCAB_FILE" 2>/dev/null || echo 0)
+    cache_count=$(find "$CACHE_DIR" -name "*.json" -type f 2>/dev/null | wc -l || echo 0)
+    
+    if [[ -d "$CACHE_DIR" ]]; then
+        if [[ "$(uname)" == "Darwin" ]]; then
+            cache_size=$(du -sh "$CACHE_DIR" 2>/dev/null | cut -f1 || echo "0")
+        else
+            cache_size=$(du -sh "$CACHE_DIR" 2>/dev/null | cut -f1 || echo "0")
+        fi
+    else
+        cache_size="0"
+    fi
+    
+    echo -e "${CYAN}Total lookups:${NC}     $total"
+    echo -e "${CYAN}Unique words:${NC}      $unique"
+    echo -e "${CYAN}Saved to vocab:${NC}    $vocab_count"
+    echo -e "${CYAN}Cached definitions:${NC} $cache_count ($cache_size)"
+    
+    if [[ -s "$HISTORY_FILE" ]]; then
+        echo
+        echo -e "${CYAN}Most looked up:${NC}"
+        cut -d'|' -f2 "$HISTORY_FILE" | sort | uniq -c | sort -rn | head -5 | while read -r count word; do
+            echo -e "  ${DIM}$count×${NC} $word"
+        done
+    fi
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Vocabulary Functions
+# ─────────────────────────────────────────────────────────────────────────────
+
+save_word() {
+    ensure_dirs
+    local word="$1"
+    local data="$2"
+    
+    # Check if word already exists (using jq arg to properly escape)
+    if jq -e --arg w "$word" '.[] | select(.word == $w)' "$VOCAB_FILE" > /dev/null 2>&1; then
+        echo -e "${YELLOW}Note:${NC} '$word' already in vocabulary list."
+        return
+    fi
+    
+    # Extract first definition for storage
+    local def pos
+    def=$(echo "$data" | jq -r '.[0].meanings[0].definitions[0].definition // "No definition"')
+    pos=$(echo "$data" | jq -r '.[0].meanings[0].partOfSpeech // "unknown"')
+    
+    # Escape any problematic characters in definition
+    def="${def//\"/\\\"}"
+    
+    # Add to vocab file
+    jq --arg word "$word" \
+       --arg def "$def" \
+       --arg pos "$pos" \
+       --arg date "$(date +%Y-%m-%d)" \
+       '. += [{"word": $word, "definition": $def, "partOfSpeech": $pos, "dateAdded": $date, "timesReviewed": 0, "correctCount": 0}]' \
+       "$VOCAB_FILE" > "$VOCAB_FILE.tmp" && mv "$VOCAB_FILE.tmp" "$VOCAB_FILE"
+    
+    echo -e "${GREEN}✓${NC} Saved '${BOLD}$word${NC}' to vocabulary list."
+}
+
+review_vocab() {
+    ensure_dirs
+    local count
+    count=$(jq 'length' "$VOCAB_FILE")
+    
+    if [[ "$count" -eq 0 ]]; then
+        echo -e "${DIM}No words saved yet. Use 'define --save word' to add words.${NC}"
+        exit 0
+    fi
+    
+    header "Vocabulary Review ($count words)"
+    
+    jq -r '.[] | "\(.word)|\(.romanized // "")|\(.partOfSpeech)|\(.definition)|\(.dateAdded)|\(.language // "en")"' "$VOCAB_FILE" | while IFS='|' read -r word romanized pos def date lang; do
+        echo -e "${BOLD}${CYAN}$word${NC} ${DIM}($pos)${NC}"
+        [[ -n "$romanized" && "$romanized" != "null" ]] && echo -e "  ${DIM}[$romanized]${NC}"
+        echo -e "  $def"
+        echo -e "  ${DIM}Added: $date${NC}"
+        [[ "$lang" == "ru" ]] && echo -e "  ${DIM}Language: Russian${NC}"
+        echo
+    done
+}
+
+quiz_vocab() {
+    ensure_dirs
+    local count
+    count=$(jq 'length' "$VOCAB_FILE")
+    
+    if [[ "$count" -lt 4 ]]; then
+        echo -e "${YELLOW}Note:${NC} Need at least 4 saved words for quiz. You have $count."
+        exit 0
+    fi
+    
+    header "Vocabulary Quiz"
+    echo -e "${DIM}Press Enter to reveal answer, 'q' to quit${NC}\n"
+    
+    local correct=0
+    local total=0
+    
+    # Shuffle and quiz (with fallback for systems without shuf)
+    local shuffled
+    if command -v shuf &>/dev/null; then
+        shuffled=$(jq -c '.[]' "$VOCAB_FILE" | shuf | head -10)
+    else
+        # Fallback: use awk for pseudo-random shuffle
+        shuffled=$(jq -c '.[]' "$VOCAB_FILE" | awk 'BEGIN{srand()} {print rand() "\t" $0}' | sort -n | cut -f2- | head -10)
+    fi
+    
+    while read -r line; do
+        local word def pos
+        word=$(echo "$line" | jq -r '.word')
+        def=$(echo "$line" | jq -r '.definition')
+        pos=$(echo "$line" | jq -r '.partOfSpeech')
+        
+        ((total++))
+        echo -e "${BOLD}Question $total:${NC}"
+        echo -e "${DIM}($pos)${NC} $def\n"
+        echo -n "Word: "
+        read -r answer </dev/tty
+        
+        [[ "$answer" == "q" ]] && break
+        
+        if [[ "${answer,,}" == "${word,,}" ]]; then
+            echo -e "${GREEN}✓ Correct!${NC}\n"
+            ((correct++))
+        else
+            echo -e "${RED}✗ The word was: ${BOLD}$word${NC}\n"
+        fi
+        
+        echo "─────────────────────────────────"
+        echo
+    done <<< "$shuffled"
+    
+    echo
+    echo -e "${BOLD}Score: $correct/$total${NC}"
+    [[ $total -gt 0 ]] && echo -e "${DIM}$((correct * 100 / total))% correct${NC}"
+}
+
+export_anki() {
+    ensure_dirs
+    local count
+    count=$(jq 'length' "$VOCAB_FILE")
+    
+    if [[ "$count" -eq 0 ]]; then
+        echo -e "${DIM}No words saved yet. Use 'define --save word' to add words.${NC}"
+        exit 0
+    fi
+    
+    local output_file="${1:-vocabulary_anki.csv}"
+    
+    # Create Anki-compatible CSV (front;back format with semicolon separator)
+    # Format: word;definition (part of speech)
+    {
+        echo "#separator:semicolon"
+        echo "#columns:Front;Back"
+        jq -r '.[] | "\(.word);\(.definition) (\(.partOfSpeech))"' "$VOCAB_FILE"
+    } > "$output_file"
+    
+    echo -e "${GREEN}✓${NC} Exported $count words to ${BOLD}$output_file${NC}"
+    echo -e "${DIM}Import into Anki: File → Import, select the CSV file${NC}"
+}
+
+get_random_word() {
+    # Word list for random learning (common but interesting words)
+    local words=(
+        "ephemeral" "ubiquitous" "serendipity" "eloquent" "pragmatic"
+        "resilient" "ambiguous" "meticulous" "gregarious" "tenacious"
+        "laconic" "sycophant" "perfunctory" "obfuscate" "perspicacious"
+        "ineffable" "loquacious" "magnanimous" "capricious" "recalcitrant"
+        "sagacious" "intrepid" "ebullient" "fastidious" "insidious"
+        "pernicious" "sanguine" "vicarious" "zeitgeist" "paradigm"
+        "esoteric" "idiosyncratic" "quintessential" "anachronism" "antithesis"
+        "juxtaposition" "paradox" "dichotomy" "nuance" "conundrum"
+        "catharsis" "epiphany" "hubris" "nemesis" "pathos"
+        "plethora" "panacea" "euphoria" "apathy" "empathy"
+    )
+    echo "${words[$RANDOM % ${#words[@]}]}"
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Parse Arguments
+# ─────────────────────────────────────────────────────────────────────────────
+
+WORD=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help)
+            show_help
+            exit 0
+            ;;
+        -a|--all)
+            SHOW_ALL=true
+            shift
+            ;;
+        -s|--short)
+            SHORT_MODE=true
+            shift
+            ;;
+        -e|--examples)
+            SHOW_EXAMPLES=true
+            shift
+            ;;
+        -y|--synonyms)
+            SHOW_SYNONYMS=true
+            shift
+            ;;
+        -t|--etymology)
+            SHOW_ETYMOLOGY=true
+            shift
+            ;;
+        -f|--full)
+            SHOW_ALL=true
+            SHOW_EXAMPLES=true
+            SHOW_SYNONYMS=true
+            SHOW_ETYMOLOGY=true
+            shift
+            ;;
+        -j|--json)
+            SHOW_JSON=true
+            shift
+            ;;
+        -r|--random)
+            RANDOM_WORD=true
+            shift
+            ;;
+        -R|--russian)
+            FORCE_RUSSIAN=true
+            shift
+            ;;
+        -E|--english)
+            FORCE_ENGLISH=true
+            shift
+            ;;
+        -p|--pronounce)
+            PLAY_AUDIO=true
+            shift
+            ;;
+        -o|--offline)
+            OFFLINE_MODE=true
+            shift
+            ;;
+        --save)
+            SAVE_WORD=true
+            shift
+            ;;
+        --review)
+            review_vocab
+            exit 0
+            ;;
+        --quiz)
+            check_dependencies
+            quiz_vocab
+            exit 0
+            ;;
+        --stats)
+            show_stats
+            exit 0
+            ;;
+        --history)
+            show_history
+            exit 0
+            ;;
+        --export-anki)
+            shift
+            # Only use next arg as filename if it doesn't start with -
+            if [[ -n "$1" && "$1" != -* ]]; then
+                export_anki "$1"
+            else
+                export_anki
+            fi
+            exit 0
+            ;;
+        --clear-cache)
+            clear_cache
+            exit 0
+            ;;
+        -*)
+            error "Unknown option: $1"
+            echo "Use 'define --help' for usage."
+            exit 1
+            ;;
+        *)
+            # Accumulate positional arguments (fix for multi-word phrases)
+            WORD="${WORD:+$WORD }$1"
+            shift
+            ;;
+    esac
+done
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Main: Get Word
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Check dependencies before network operations
+check_dependencies
+
+if [[ "$RANDOM_WORD" == true ]]; then
+    WORD=$(get_random_word)
+    echo -e "${MAGENTA}🎲 Random word:${NC} ${BOLD}$WORD${NC}\n"
+elif [[ -z "$WORD" ]]; then
+    # Try clipboard (cross-platform)
+    WORD=$(xclip -o -selection primary 2>/dev/null || \
+           xclip -o -selection clipboard 2>/dev/null || \
+           xsel -p 2>/dev/null || \
+           xsel -b 2>/dev/null || \
+           wl-paste -p 2>/dev/null || \
+           wl-paste 2>/dev/null || \
+           pbpaste 2>/dev/null || \
+           echo "")
+fi
+
+# Validate input
+if [[ -z "$WORD" ]]; then
+    error "No word provided."
+    echo "Usage: define [word] or highlight text and run 'define'"
+    exit 1
+fi
+
+# Validate input characters
+# Allow: a-z, A-Z, Cyrillic, space, hyphen, apostrophe, numbers
+validate_word() {
+    local w="$1"
+    # Empty check
+    [[ -z "$w" ]] && return 1
+    # Check for Cyrillic (always valid for Russian)
+    if echo "$w" | grep -qP '\p{Cyrillic}' 2>/dev/null; then
+        return 0
+    fi
+    # For non-Cyrillic, allow: letters, spaces, hyphens, apostrophes, numbers
+    # Reject anything else (URLs, special chars, etc.)
+    if echo "$w" | grep -qE "[^a-zA-Z0-9 '\-]"; then
+        return 1
+    fi
+    return 0
+}
+
+if ! validate_word "$WORD"; then
+    error "Invalid characters in word: '$WORD'"
+    exit 1
+fi
+
+# Clean the word (trim whitespace, lowercase)
+WORD=$(trim "$WORD")
+WORD="${WORD,,}"  # bash 4+ lowercase
+
+# Final empty check after trim
+if [[ -z "$WORD" ]]; then
+    error "No word provided."
+    echo "Usage: define [word] or highlight text and run 'define'"
+    exit 1
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Determine Language and Lookup
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Check if Russian
+if [[ "$FORCE_RUSSIAN" == true ]]; then
+    IS_RUSSIAN=true
+elif [[ "$FORCE_ENGLISH" == true ]]; then
+    IS_RUSSIAN=false
+elif echo "$WORD" | grep -qP '\p{Cyrillic}' 2>/dev/null; then
+    # Contains Cyrillic - definitely Russian
+    IS_RUSSIAN=true
+elif is_russian_transliteration "$WORD"; then
+    IS_RUSSIAN=true
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Russian Lookup
+# ─────────────────────────────────────────────────────────────────────────────
+
+if [[ "$IS_RUSSIAN" == true ]]; then
+    # Check if it's a known PHRASE first (before splitting into words!)
+    if [[ "$WORD" == *" "* ]]; then
+        # Try to match as a phrase
+        cyrillic_phrase=""
+        if cyrillic_phrase=$(get_phrase_match "$WORD"); then
+            # Found a matching phrase
+            phrase_def=$(get_phrase_definition "$cyrillic_phrase")
+            if [[ -n "$phrase_def" ]]; then
+                [[ "$SHORT_MODE" != true && "$SHOW_JSON" != true ]] && info "Looking up Russian phrase: ${BOLD}$WORD${NC}"
+                display_phrase_definition "$cyrillic_phrase" "$WORD" "$phrase_def"
+                add_to_history "$cyrillic_phrase ($WORD)"
+                echo
+                exit 0
+            fi
+        fi
+        
+        # Also try converting the whole phrase to Cyrillic and checking
+        cyrillic_converted=""
+        for w in $WORD; do
+            cyrillic_w=$(transliterate_to_cyrillic "$w")
+            cyrillic_converted+="${cyrillic_converted:+ }$cyrillic_w"
+        done
+        
+        if phrase_def=$(get_phrase_definition "$cyrillic_converted"); then
+            [[ "$SHORT_MODE" != true && "$SHOW_JSON" != true ]] && info "Looking up Russian phrase: ${BOLD}$WORD${NC}"
+            display_phrase_definition "$cyrillic_converted" "$WORD" "$phrase_def"
+            add_to_history "$cyrillic_converted ($WORD)"
+            echo
+            exit 0
+        fi
+        
+        # Not a known phrase - fall through to word-by-word lookup
+        [[ "$SHORT_MODE" != true && "$SHOW_JSON" != true ]] && info "Looking up Russian phrase: ${BOLD}$WORD${NC}"
+        
+        # Split into words and look up each
+        overall_exit=0
+        first_word=true
+        for single_word in $WORD; do
+            [[ -z "$single_word" ]] && continue
+            
+            # Show separator between words (not before first)
+            if [[ "$first_word" == true ]]; then
+                first_word=false
+            else
+                echo -e "${DIM}───────────────────────────────────────${NC}"
+            fi
+            
+            lookup_russian "$single_word"
+            word_exit=$?
+            [[ $word_exit -ne 0 ]] && overall_exit=$word_exit
+            
+            # Add to history if successful
+            if [[ $word_exit -eq 0 ]]; then
+                cyrillic=$(transliterate_to_cyrillic "$single_word")
+                add_to_history "$cyrillic ($single_word)"
+            fi
+            echo
+        done
+        exit $overall_exit
+    else
+        # Single word lookup
+        [[ "$SHORT_MODE" != true && "$SHOW_JSON" != true ]] && info "Looking up (Russian): ${BOLD}$WORD${NC}"
+        lookup_russian "$WORD"
+        exit_code=$?
+        
+        # Add to history if successful
+        if [[ $exit_code -eq 0 ]]; then
+            cyrillic=$(transliterate_to_cyrillic "$WORD")
+            add_to_history "$cyrillic ($WORD)"
+        fi
+        
+        echo
+        exit $exit_code
+    fi
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# English Lookup
+# ─────────────────────────────────────────────────────────────────────────────
+
+[[ "$SHORT_MODE" != true && "$SHOW_JSON" != true ]] && info "Looking up: ${BOLD}$WORD${NC}"
+
+# Check cache first
+RESPONSE=""
+if RESPONSE=$(cache_get "$WORD" "en"); then
+    [[ "$SHORT_MODE" != true && "$SHOW_JSON" != true ]] && info "(cached)"
+else
+    # Offline mode check
+    if [[ "$OFFLINE_MODE" == true ]]; then
+        error "No cached definition for '$WORD' (offline mode)"
+        exit 1
+    fi
+    
+    # Fetch with proper timeout and error handling
+    HTTP_CODE=""
+    
+    FULL_RESPONSE=$(curl -s -w "\n%{http_code}" --connect-timeout 5 --max-time 10 "$API_URL/$WORD" 2>/dev/null)
+    CURL_EXIT=$?
+    
+    if [[ $CURL_EXIT -ne 0 ]]; then
+        case $CURL_EXIT in
+            6)  error "Could not resolve host. Check your DNS." ;;
+            7)  error "Could not connect to server." ;;
+            28) error "Connection timed out." ;;
+            *)  error "Connection failed (code: $CURL_EXIT)." ;;
+        esac
+        info "Check your internet connection and try again."
+        exit 1
+    fi
+    
+    HTTP_CODE=$(echo "$FULL_RESPONSE" | tail -n1)
+    RESPONSE=$(echo "$FULL_RESPONSE" | sed '$d')
+    
+    if [[ -z "$RESPONSE" ]]; then
+        error "Empty response from API."
+        exit 1
+    fi
+    
+    if [[ "$HTTP_CODE" -ge 400 ]]; then
+        if [[ "$HTTP_CODE" == "404" ]]; then
+            error "No definitions found for '$WORD'."
+        else
+            error "API error (HTTP $HTTP_CODE)."
+        fi
+        
+        # Suggest similar words (if we have history)
+        if [[ -f "$HISTORY_FILE" ]]; then
+            similar=$(cut -d'|' -f2 "$HISTORY_FILE" | grep -i "^${WORD:0:3}" | head -3 | tr '\n' ', ' | sed 's/,$//')
+            [[ -n "$similar" ]] && echo -e "${DIM}Did you mean: $similar${NC}"
+        fi
+        exit 1
+    fi
+    
+    if [[ "$RESPONSE" == *"No Definitions Found"* ]]; then
+        error "No definitions found for '$WORD'."
+        
+        # Suggest similar words (if we have history)
+        if [[ -f "$HISTORY_FILE" ]]; then
+            similar=$(cut -d'|' -f2 "$HISTORY_FILE" | grep -i "^${WORD:0:3}" | head -3 | tr '\n' ', ' | sed 's/,$//')
+            [[ -n "$similar" ]] && echo -e "${DIM}Did you mean: $similar${NC}"
+        fi
+        exit 1
+    fi
+    
+    # Validate JSON
+    if ! echo "$RESPONSE" | jq -e '.' &>/dev/null; then
+        error "Invalid response from API."
+        exit 1
+    fi
+    
+    # Cache the response
+    cache_set "$WORD" "$RESPONSE" "en"
+fi
+
+# Add to history
+add_to_history "$WORD"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Output: JSON Mode
+# ─────────────────────────────────────────────────────────────────────────────
+
+if [[ "$SHOW_JSON" == true ]]; then
+    echo "$RESPONSE" | jq .
+    exit 0
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Output: Short Mode (early exit)
+# ─────────────────────────────────────────────────────────────────────────────
+
+if [[ "$SHORT_MODE" == true ]]; then
+    short_def=$(echo "$RESPONSE" | jq -r '.[0].meanings[0] | "\(.partOfSpeech): \(.definitions[0].definition)"')
+    echo -e "${BOLD}$WORD${NC} — $short_def"
+    exit 0
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Output: Formatted (Full)
+# ─────────────────────────────────────────────────────────────────────────────
+
+echo
+echo -e "${BOLD}${UNDERLINE}$WORD${NC}"
+
+# Phonetic (IPA)
+phonetic=$(echo "$RESPONSE" | jq -r '.[0].phonetic // .[0].phonetics[0].text // empty')
+[[ -n "$phonetic" ]] && echo -e "${DIM}$phonetic${NC}"
+
+# Audio - only show/play if requested, don't clutter output
+audio_url=$(echo "$RESPONSE" | jq -r '[.[0].phonetics[] | select(.audio != "" and .audio != null) | .audio] | first // empty' 2>/dev/null)
+if [[ -n "$audio_url" && "$PLAY_AUDIO" == true ]]; then
+    play_audio "$audio_url"
+    echo -e "${DIM}🔊 Playing...${NC}"
+fi
+
+echo
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Definitions
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Determine how many definitions to show per part of speech
+def_limit=3
+[[ "$SHOW_ALL" == true ]] && def_limit=99
+
+echo "$RESPONSE" | jq -r --argjson limit "$def_limit" '
+    .[].meanings[] |
+    .partOfSpeech as $pos |
+    .definitions[:$limit][] |
+    "\($pos)|\(.definition)|\(.example // "")"
+' 2>/dev/null | {
+    current_pos=""
+    count=0
+    while IFS='|' read -r pos def example; do
+        [[ -z "$def" ]] && continue
+        
+        if [[ "$pos" != "$current_pos" ]]; then
+            [[ -n "$current_pos" ]] && echo
+            echo -e "${GREEN}${BOLD}$pos${NC}"
+            current_pos="$pos"
+            count=0
+        fi
+        ((count++))
+        echo -e "  ${BOLD}$count.${NC} $def"
+        
+        # Show examples if requested and available
+        if [[ "$SHOW_EXAMPLES" == true && -n "$example" ]]; then
+            echo -e "     ${ITALIC}${DIM}\"$example\"${NC}"
+        fi
+    done
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Synonyms & Antonyms
+# ─────────────────────────────────────────────────────────────────────────────
+
+if [[ "$SHOW_SYNONYMS" == true ]]; then
+    synonyms=$(echo "$RESPONSE" | jq -r '[.[].meanings[].synonyms[] // empty] | unique | .[:10] | join(", ")' 2>/dev/null)
+    antonyms=$(echo "$RESPONSE" | jq -r '[.[].meanings[].antonyms[] // empty] | unique | .[:10] | join(", ")' 2>/dev/null)
+    
+    # Also check definition-level synonyms (some APIs nest them there)
+    if [[ -z "$synonyms" ]]; then
+        synonyms=$(echo "$RESPONSE" | jq -r '[.[].meanings[].definitions[].synonyms[]? // empty] | unique | .[:10] | join(", ")' 2>/dev/null)
+    fi
+    if [[ -z "$antonyms" ]]; then
+        antonyms=$(echo "$RESPONSE" | jq -r '[.[].meanings[].definitions[].antonyms[]? // empty] | unique | .[:10] | join(", ")' 2>/dev/null)
+    fi
+    
+    if [[ -n "$synonyms" && "$synonyms" != "null" ]] || [[ -n "$antonyms" && "$antonyms" != "null" ]]; then
+        echo
+        [[ -n "$synonyms" && "$synonyms" != "null" ]] && echo -e "${YELLOW}Synonyms:${NC} $synonyms"
+        [[ -n "$antonyms" && "$antonyms" != "null" ]] && echo -e "${MAGENTA}Antonyms:${NC} $antonyms"
+    fi
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Etymology / Origin
+# ─────────────────────────────────────────────────────────────────────────────
+
+if [[ "$SHOW_ETYMOLOGY" == true ]]; then
+    origin=$(echo "$RESPONSE" | jq -r '.[0].origin // empty' 2>/dev/null)
+    
+    if [[ -n "$origin" && "$origin" != "null" ]]; then
+        echo
+        echo -e "${BLUE}Etymology:${NC}"
+        # Word wrap long etymologies
+        echo "$origin" | fold -s -w 70 | sed 's/^/  /'
+    fi
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Source & Tips
+# ─────────────────────────────────────────────────────────────────────────────
+
+if [[ "$SHORT_MODE" != true ]]; then
+    source_url=$(echo "$RESPONSE" | jq -r '.[0].sourceUrls[0] // empty' 2>/dev/null)
+    
+    echo
+    # Show audio tip if available but not played
+    if [[ -n "$audio_url" && "$PLAY_AUDIO" != true ]]; then
+        echo -e "${DIM}Tip: Use -p to hear pronunciation${NC}"
+    fi
+    
+    [[ -n "$source_url" && "$source_url" != "null" ]] && echo -e "${DIM}Source: $source_url${NC}"
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Save Word
+# ─────────────────────────────────────────────────────────────────────────────
+
+if [[ "$SAVE_WORD" == true ]]; then
+    echo
+    save_word "$WORD" "$RESPONSE"
+fi
+
+echo
