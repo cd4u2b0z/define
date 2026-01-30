@@ -87,6 +87,8 @@ Examples / Примеры:
                      help="Force Russian lookup / Принудительно русский")
     lang.add_argument("-E", "--english", action="store_true",
                      help="Force English lookup / Принудительно английский")
+    lang.add_argument("-T", "--translate", action="store_true",
+                     help="Translate mode (show translation, not definition) / Режим перевода")
     
     # Audio
     parser.add_argument("-p", "--pronounce", action="store_true",
@@ -198,7 +200,8 @@ def main() -> int:
     result = dictionary.lookup(
         word,
         force_lang=force_lang,
-        offline=args.offline
+        offline=args.offline,
+        translate=args.translate
     )
     
     if not result:

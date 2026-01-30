@@ -173,7 +173,7 @@ class TestEnglishSlang(unittest.TestCase):
     def test_slang_has_russian_translation(self):
         """Test that slang entries have Russian translations."""
         if "awesome" in self.english.phrases:
-            result = self.english.lookup("awesome")
+            result = self.english.lookup("awesome", translate=True)
             self.assertIsNotNone(result)
             
             # Check that definition contains Cyrillic (Russian translation)
@@ -183,7 +183,7 @@ class TestEnglishSlang(unittest.TestCase):
                 # Should contain Cyrillic characters (Russian translation)
                 import re
                 has_cyrillic = bool(re.search(r'[\u0400-\u04FF]', definition))
-                self.assertTrue(has_cyrillic, "Slang should have Russian translation")
+                self.assertTrue(has_cyrillic, "Slang should have Russian translation in translate mode")
 
 
 class TestIdioms(unittest.TestCase):

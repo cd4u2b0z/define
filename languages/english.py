@@ -86,11 +86,18 @@ class English(Language):
         """Normalize English input (lowercase, strip)."""
         return text.lower().strip()
     
-    def lookup(self, word: str) -> Optional[dict]:
-        """Look up an English word or phrase."""
-        # Check phrases database first
-        if word in self.phrases:
+    def lookup(self, word: str, translate: bool = False) -> Optional[dict]:
+        """Look up an English word or phrase.
+        
+        Args:
+            word: The word to look up
+            translate: If True, return translation to Russian instead of definition
+        """
+        # Translation mode: check phrases database for Russian translation
+        if translate and word in self.phrases:
             return self._format_phrase(word, self.phrases[word])
+        
+        # Dictionary mode: skip phrase translations, get actual definition
         
         # Check if it's an abbreviation/text speak
         abbrev_result = self._lookup_abbreviation(word)

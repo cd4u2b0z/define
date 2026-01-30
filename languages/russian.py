@@ -205,13 +205,22 @@ class Russian(Language):
         
         return result
     
-    def lookup(self, word: str) -> Optional[dict]:
-        """Look up a Russian word or phrase."""
-        # Check local definitions first (has richer grammar data)
+    def lookup(self, word: str, translate: bool = False) -> Optional[dict]:
+        """Look up a Russian word or phrase.
+        
+        Args:
+            word: The word to look up
+            translate: If True, prioritize translation to English
+        """
+        # Translation mode: check phrases database first for English translation
+        if translate and word in self.phrases:
+            return self._format_phrase(word, self.phrases[word])
+        
+        # Dictionary mode: check local definitions first (has richer grammar data)
         if word in self.local_definitions:
             return self._format_local(word, self.local_definitions[word])
         
-        # Check phrases database (for translations)
+        # If not in definitions, check phrases database
         if word in self.phrases:
             return self._format_phrase(word, self.phrases[word])
         

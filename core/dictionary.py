@@ -34,7 +34,7 @@ class Dictionary:
         return "en"  # Default to English
     
     def lookup(self, word: str, force_lang: Optional[str] = None,
-               offline: bool = False) -> Optional[dict]:
+               offline: bool = False, translate: bool = False) -> Optional[dict]:
         """
         Look up a word in the dictionary.
         
@@ -42,6 +42,7 @@ class Dictionary:
             word: The word to look up
             force_lang: Force a specific language code
             offline: Only use cached results
+            translate: Use translation mode (show translation, not definition)
             
         Returns:
             Dictionary result or None if not found
@@ -59,8 +60,9 @@ class Dictionary:
         # Normalize word (e.g., transliterate Russian)
         normalized = lang.normalize(word)
         
-        # Check cache first
-        cached = self.cache.get(normalized, lang_code)
+        # Check cache first (different cache key for translate mode)
+        cache_key = f"{normalized}:translate" if translate else normalized
+        cached = self.cache.get(cache_key, lang_code)
         if cached:
             return cached
         
@@ -68,7 +70,7 @@ class Dictionary:
             return None
         
         # Look up in language module
-        result = lang.lookup(normalized)
+        result = lang.lookup(normalized, translate=translate)
         
         if result:
             # Add metadata
@@ -78,7 +80,7 @@ class Dictionary:
                 result["normalized"] = normalized
             
             # Cache the result
-            self.cache.set(normalized, lang_code, result)
+            self.cache.set(cache_key, lang_code, result)
         
         return result
     

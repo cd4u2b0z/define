@@ -140,8 +140,8 @@ class TestDictionaryIntegration(TestDictionary):
     """Integration tests for full lookup flow."""
     
     def test_english_slang_with_russian_translation(self):
-        """Test that English slang returns Russian translations."""
-        result = self.dictionary.lookup("awesome")
+        """Test that English slang returns Russian translations in translate mode."""
+        result = self.dictionary.lookup("awesome", translate=True)
         
         if result:
             self.assertEqual(result.get("language"), "en")
@@ -152,7 +152,7 @@ class TestDictionaryIntegration(TestDictionary):
                 definition = meanings[0].get("definitions", [{}])[0].get("definition", "")
                 import re
                 has_cyrillic = bool(re.search(r'[\u0400-\u04FF]', definition))
-                self.assertTrue(has_cyrillic, "Should have Russian translation")
+                self.assertTrue(has_cyrillic, "Should have Russian translation in translate mode")
     
     def test_russian_phrase_transliterated_input(self):
         """Test looking up Russian phrase via transliteration."""

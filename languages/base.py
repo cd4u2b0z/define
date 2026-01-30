@@ -42,12 +42,13 @@ class Language(ABC):
         pass
     
     @abstractmethod
-    def lookup(self, word: str) -> Optional[dict]:
+    def lookup(self, word: str, translate: bool = False) -> Optional[dict]:
         """
         Look up a word in this language.
         
         Args:
             word: Word to look up (should be normalized)
+            translate: If True, return translation instead of definition
             
         Returns:
             Dictionary result or None if not found
