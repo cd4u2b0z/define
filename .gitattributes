@@ -1,0 +1,9 @@
+# Mark JSON data files as data, not code
+languages/data/*.json linguist-detectable=false
+languages/data/*.json linguist-vendored=true
+
+# Mark bash scripts in bash/ as Shell
+bash/* linguist-language=Shell
+
+# Ensure Python files are detected
+*.py linguist-language=Python
