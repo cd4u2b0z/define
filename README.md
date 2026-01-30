@@ -1,46 +1,46 @@
-# 󰗊 define
+# define
 
 A terminal dictionary with deep grammatical support. Currently supports **English** and **Russian**, with more languages planned.
 
 ![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white) ![Bash](https://img.shields.io/badge/Bash-4.0+-4EAA25?style=flat&logo=gnu-bash&logoColor=white) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-blue)
 
-> **Two versions available:** [Python](#-installation) (recommended, with grammar) | [Bash](bash/) (lightweight, single-file)
+> **Two versions available:** [Python](#installation) (recommended, with grammar) | [Bash](bash/) (lightweight, single-file)
 
 ---
 
-## 󰐕 Features
+## Features
 
 ### Core Features
 
 | Feature | Description |
 |---------|-------------|
-| 󰗊 Multi-language | English + Russian (more planned) |
-| 󰌌 Transliteration | Type Russian in Latin (`privet` → `привет`) |
-| 󰎈 Offline Mode | 1,780+ words cached locally |
-| 󰕾 Audio | Pronunciation playback |
-| 󰃀 Learning | Save, review, quiz, Anki export |
-| 󰇦 SM-2 | Spaced repetition for optimal review |
+| Multi-language | English + Russian (more planned) |
+| Transliteration | Type Russian in Latin (`privet` → `привет`) |
+| Offline Mode | 1,780+ words cached locally |
+| Audio | Pronunciation playback |
+| Learning | Save, review, quiz, Anki export |
+| SM-2 | Spaced repetition for optimal review |
 
 ### Grammar Features (v2.0+)
 
 | Feature | Example |
 |---------|---------|
-| 󰚹 Noun Gender | `дом` → masculine |
-| 󰆥 Noun Cases | All 6 Russian cases with prompts |
-| 󱗃 Verb Aspects | `писать` (impf) ↔ `написать` (pf) |
-| 󰛺 Conjugation | Full tense tables (present, past, future) |
-| 󰏪 Idioms | 50+ English, 25+ Russian idioms |
-| 󰖚 Register | Formal/informal/colloquial markers |
+| Noun Gender | `дом` → masculine |
+| Noun Cases | All 6 Russian cases with prompts |
+| Verb Aspects | `писать` (impf) ↔ `написать` (pf) |
+| Conjugation | Full tense tables (present, past, future) |
+| Idioms | 50+ English, 25+ Russian idioms |
+| Register | Formal/informal/colloquial markers |
 
 ### Enhanced Grammar (v2.2)
 
 | Feature | Description |
 |---------|-------------|
-| 󱗃 Past/Future Tense | Full verb conjugation across all tenses |
-| 󰛺 Imperative | Command forms (`пиши!`, `напишите!`) |
-| 󰎁 Participles | Active, passive, present, past forms |
-| 󰆥 Plural Cases | All 6 cases in singular and plural |
-| 󰗊 Stress Marks | Automatic stress placement |
+| Past/Future Tense | Full verb conjugation across all tenses |
+| Imperative | Command forms (`пиши!`, `напишите!`) |
+| Participles | Active, passive, present, past forms |
+| Plural Cases | All 6 cases in singular and plural |
+| Stress Marks | Automatic stress placement |
 
 ### Vocabulary Database
 
@@ -53,7 +53,7 @@ A terminal dictionary with deep grammatical support. Currently supports **Englis
 
 ---
 
-## 󰏗 Installation
+## Installation
 
 ### Quick Start (Linux/macOS)
 
@@ -112,7 +112,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ---
 
-## 󰙨 Usage
+## Usage
 
 ### Basic Commands
 
@@ -185,7 +185,7 @@ Built-in algorithm for optimal vocabulary learning:
 
 ---
 
-## 󰏪 Example Output
+## Example Output
 
 ### English Word
 
@@ -259,7 +259,7 @@ Imperative: пиши́! / пиши́те!
 
 ---
 
-## 󰉋 Data Files
+## Data Files
 
 | File | Location |
 |------|----------|
@@ -269,7 +269,7 @@ Imperative: пиши́! / пиши́те!
 
 ---
 
-## 󰙨 Testing
+## Testing
 
 Run the test suite to verify dictionary health after making changes:
 
@@ -297,7 +297,7 @@ python3 tests/test_cache.py -v       # Cache tests (8)
 
 ---
 
-## 󰙅 Documentation
+## Documentation
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) — Technical architecture
 - [ROADMAP.md](ROADMAP.md) — Future plans
@@ -305,7 +305,7 @@ python3 tests/test_cache.py -v       # Cache tests (8)
 
 ---
 
-## 󰋗 Troubleshooting
+## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
@@ -316,7 +316,7 @@ python3 tests/test_cache.py -v       # Cache tests (8)
 
 ---
 
-## 󱗗 Credits
+## Credits
 
 Based on the original [define script](https://github.com/BreadOnPenguins/scripts/blob/master/shortcuts-menus/define) by [BreadOnPenguins](https://github.com/BreadOnPenguins)
 
@@ -327,71 +327,10 @@ Based on the original [define script](https://github.com/BreadOnPenguins/scripts
 
 ---
 
-## 󰿃 License
+## License
 
 MIT License — See [LICENSE](LICENSE) for details.
 
 ---
 
 Original work by Dr. Baklava • [github.com/cd4u2b0z](https://github.com/cd4u2b0z) • 2026
-
----
-
-<details>
-<summary><h2>🇷🇺 Русский</h2></summary>
-
-### Возможности
-
-- **Двуязычный словарь** — английский и русский
-- **Транслитерация** — вводите русские слова латиницей (`privet` → `привет`)
-- **Офлайн режим** — 1,780+ слов в локальном кэше
-- **Произношение** — аудио для английских слов
-- **Обучение** — сохранение, повторение, викторина, экспорт в Anki
-- **SM-2** — интервальное повторение для оптимального запоминания
-
-### Грамматика
-
-- **Род существительных** — м.р., ж.р., ср.р.
-- **Падежи** — все 6 падежей с вопросами
-- **Вид глагола** — совершенный/несовершенный с видовыми парами
-- **Спряжение** — все времена (настоящее, прошедшее, будущее)
-- **Повелительное наклонение** — пиши!, напишите!
-- **Множественное число** — все падежи во мн. ч.
-- **Ударения** — автоматическая расстановка
-
-### Установка
-
-```bash
-git clone https://github.com/cd4u2b0z/define.git ~/projects/define
-export PATH="$HOME/projects/define:$PATH"
-source ~/.zshrc
-```
-
-### Использование
-
-```bash
-# Кириллица
-определить любовь
-словарь -f дом
-слово привет
-
-# Транслитерация
-define lyubov
-define privet
-
-# Грамматика
-define -g писать    # спряжение всех времён
-define -g книга     # род, падежи, множественное число
-```
-
-### Команды на русском
-
-| Команда | Описание |
-|---------|----------|
-| `определить` | Найти определение |
-| `словарь` | Словарь |
-| `слово` | Слово |
-
-Все команды принимают одинаковые опции.
-
-</details>
