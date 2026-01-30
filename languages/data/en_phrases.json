@@ -1391,5 +1391,3332 @@
       "After three hours, they called it quits."
     ],
     "register": "informal"
+  },
+  "awesome": {
+    "transliteration": "kruto, ofigenno, potryasayushche",
+    "type": "slang",
+    "definition": "круто, офигенно, потрясающе"
+  },
+  "cool": {
+    "transliteration": "kruto, klassno, klyovo",
+    "type": "slang",
+    "definition": "круто, классно, клёво"
+  },
+  "sick": {
+    "transliteration": "kruto, ofigenno",
+    "type": "slang",
+    "definition": "круто, офигенно (positive slang)"
+  },
+  "dope": {
+    "transliteration": "krutoy, klyovyy",
+    "type": "slang",
+    "definition": "крутой, клёвый"
+  },
+  "fire": {
+    "transliteration": "ogon, kruto",
+    "type": "slang",
+    "definition": "огонь, круто"
+  },
+  "shady": {
+    "transliteration": "podozritelnyy, mutnyy",
+    "type": "slang",
+    "definition": "подозрительный, мутный"
+  },
+  "sketchy": {
+    "transliteration": "podozritelnyy, stryomnyy",
+    "type": "slang",
+    "definition": "подозрительный, стрёмный"
+  },
+  "vibing": {
+    "transliteration": "kayfuyu, chillyu",
+    "type": "slang",
+    "definition": "кайфую, чиллю"
+  },
+  "chill": {
+    "transliteration": "rasslablyatsya, chillit",
+    "type": "slang",
+    "definition": "расслабляться, чиллить"
+  },
+  "hang out": {
+    "transliteration": "tusovatsya, zavisat",
+    "type": "slang",
+    "definition": "тусоваться, зависать"
+  },
+  "crash": {
+    "transliteration": "zavalitsya spat",
+    "type": "slang",
+    "definition": "завалиться спать"
+  },
+  "bail": {
+    "transliteration": "svalit, slinyat",
+    "type": "slang",
+    "definition": "свалить, слинять"
+  },
+  "bounce": {
+    "transliteration": "ukhodit, svalivat",
+    "type": "slang",
+    "definition": "уходить, сваливать"
+  },
+  "bro": {
+    "transliteration": "brat, bratan, bro",
+    "type": "slang",
+    "definition": "брат, братан, бро"
+  },
+  "dude": {
+    "transliteration": "chuvak",
+    "type": "slang",
+    "definition": "чувак"
+  },
+  "homie": {
+    "transliteration": "koresh, drugan",
+    "type": "slang",
+    "definition": "кореш, друган"
+  },
+  "fam": {
+    "transliteration": "semya, svoi",
+    "type": "slang",
+    "definition": "семья, свои"
+  },
+  "squad": {
+    "transliteration": "kompaniya, banda",
+    "type": "slang",
+    "definition": "компания, банда"
+  },
+  "crew": {
+    "transliteration": "komanda, tusovka",
+    "type": "slang",
+    "definition": "команда, тусовка"
+  },
+  "bestie": {
+    "transliteration": "luchshaya podruga / luchshiy drug",
+    "type": "slang",
+    "definition": "лучшая подруга / лучший друг"
+  },
+  "bae": {
+    "transliteration": "malysh, lyubimyy/aya",
+    "type": "slang",
+    "definition": "малыш, любимый/ая"
+  },
+  "lol": {
+    "transliteration": "lol, rzhu",
+    "type": "internet slang",
+    "definition": "лол, ржу"
+  },
+  "lmao": {
+    "transliteration": "umirayu so smekhu",
+    "type": "internet slang",
+    "definition": "умираю со смеху"
+  },
+  "rofl": {
+    "transliteration": "katayus po polu",
+    "type": "internet slang",
+    "definition": "катаюсь по полу"
+  },
+  "omg": {
+    "transliteration": "o bozhe, ofiget",
+    "type": "internet slang",
+    "definition": "о боже, офигеть"
+  },
+  "wtf": {
+    "transliteration": "kakogo khrena, chto za fignya",
+    "type": "internet slang",
+    "definition": "какого хрена, что за фигня"
+  },
+  "idk": {
+    "transliteration": "ne znayu, khz",
+    "type": "internet slang",
+    "definition": "не знаю, хз"
+  },
+  "imo": {
+    "transliteration": "po-moyemu, imkho",
+    "type": "internet slang",
+    "definition": "по-моему, имхо"
+  },
+  "tbh": {
+    "transliteration": "chestno govorya",
+    "type": "internet slang",
+    "definition": "честно говоря"
+  },
+  "ngl": {
+    "transliteration": "ne budu vrat",
+    "type": "internet slang",
+    "definition": "не буду врать"
+  },
+  "irl": {
+    "transliteration": "v realnoy zhizni",
+    "type": "internet slang",
+    "definition": "в реальной жизни"
+  },
+  "dm": {
+    "transliteration": "lichnoye soobshcheniye, lichka",
+    "type": "internet slang",
+    "definition": "личное сообщение, личка"
+  },
+  "afk": {
+    "transliteration": "otoshyol",
+    "type": "internet slang",
+    "definition": "отошёл"
+  },
+  "brb": {
+    "transliteration": "skoro vernus",
+    "type": "internet slang",
+    "definition": "скоро вернусь"
+  },
+  "gtg": {
+    "transliteration": "mne pora",
+    "type": "internet slang",
+    "definition": "мне пора"
+  },
+  "ttyl": {
+    "transliteration": "do svyazi",
+    "type": "internet slang",
+    "definition": "до связи"
+  },
+  "fyi": {
+    "transliteration": "k svedeniyu",
+    "type": "internet slang",
+    "definition": "к сведению"
+  },
+  "asap": {
+    "transliteration": "kak mozhno skoreye",
+    "type": "internet slang",
+    "definition": "как можно скорее"
+  },
+  "tldr": {
+    "transliteration": "koroche, vkrattse",
+    "type": "internet slang",
+    "definition": "короче, вкратце"
+  },
+  "meme": {
+    "transliteration": "mem",
+    "type": "internet slang",
+    "definition": "мем"
+  },
+  "viral": {
+    "transliteration": "virusnyy",
+    "type": "internet slang",
+    "definition": "вирусный"
+  },
+  "trending": {
+    "transliteration": "v trende",
+    "type": "internet slang",
+    "definition": "в тренде"
+  },
+  "catfish": {
+    "transliteration": "feykovyy profil",
+    "type": "internet slang",
+    "definition": "фейковый профиль"
+  },
+  "troll": {
+    "transliteration": "troll",
+    "type": "internet slang",
+    "definition": "тролль"
+  },
+  "clickbait": {
+    "transliteration": "klikbeyt",
+    "type": "internet slang",
+    "definition": "кликбейт"
+  },
+  "spam": {
+    "transliteration": "spam",
+    "type": "internet slang",
+    "definition": "спам"
+  },
+  "noob": {
+    "transliteration": "nub, novichok",
+    "type": "internet slang",
+    "definition": "нуб, новичок"
+  },
+  "pro": {
+    "transliteration": "pro, profi",
+    "type": "internet slang",
+    "definition": "про, профи"
+  },
+  "hacker": {
+    "transliteration": "khaker",
+    "type": "internet slang",
+    "definition": "хакер"
+  },
+  "i can't even": {
+    "transliteration": "ya ne mogu, u menya net slov",
+    "type": "slang",
+    "definition": "я не могу, у меня нет слов"
+  },
+  "i'm dying": {
+    "transliteration": "umirayu",
+    "type": "slang",
+    "definition": "умираю"
+  },
+  "that's crazy": {
+    "transliteration": "eto bezumiye, ofiget",
+    "type": "slang",
+    "definition": "это безумие, офигеть"
+  },
+  "insane": {
+    "transliteration": "bezumnyy, dikiy",
+    "type": "slang",
+    "definition": "безумный, дикий"
+  },
+  "wild": {
+    "transliteration": "dikiy, bezumnyy",
+    "type": "slang",
+    "definition": "дикий, безумный"
+  },
+  "nuts": {
+    "transliteration": "sumasshedshiy, choknutyy",
+    "type": "slang",
+    "definition": "сумасшедший, чокнутый"
+  },
+  "bruh": {
+    "transliteration": "blin, chuvak",
+    "type": "slang",
+    "definition": "блин, чувак"
+  },
+  "damn": {
+    "transliteration": "blin, chyort",
+    "type": "slang",
+    "definition": "блин, чёрт"
+  },
+  "yikes": {
+    "transliteration": "oy, ups",
+    "type": "slang",
+    "definition": "ой, упс"
+  },
+  "oof": {
+    "transliteration": "oy, blin",
+    "type": "slang",
+    "definition": "ой, блин"
+  },
+  "awkward": {
+    "transliteration": "nelovko",
+    "type": "slang",
+    "definition": "неловко"
+  },
+  "relatable": {
+    "transliteration": "zhiza, znakomo",
+    "type": "slang",
+    "definition": "жиза, знакомо"
+  },
+  "lame": {
+    "transliteration": "otstoy, fignya",
+    "type": "slang",
+    "definition": "отстой, фигня"
+  },
+  "bogus": {
+    "transliteration": "lipovyy, falshivyy",
+    "type": "slang",
+    "definition": "липовый, фальшивый"
+  },
+  "wack": {
+    "transliteration": "otstoy, fignya",
+    "type": "slang",
+    "definition": "отстой, фигня"
+  },
+  "trash": {
+    "transliteration": "otstoy, musor",
+    "type": "slang",
+    "definition": "отстой, мусор"
+  },
+  "garbage": {
+    "transliteration": "otstoy, musor",
+    "type": "slang",
+    "definition": "отстой, мусор"
+  },
+  "basic": {
+    "transliteration": "banalnyy, prostoy",
+    "type": "slang",
+    "definition": "банальный, простой"
+  },
+  "corny": {
+    "transliteration": "banalnyy, soplivyy",
+    "type": "slang",
+    "definition": "банальный, сопливый"
+  },
+  "cheesy": {
+    "transliteration": "soplivyy, poshlyy",
+    "type": "slang",
+    "definition": "сопливый, пошлый"
+  },
+  "cringy": {
+    "transliteration": "stryomnyy, krinzhovyy",
+    "type": "slang",
+    "definition": "стрёмный, кринжовый"
+  },
+  "toxic": {
+    "transliteration": "toksichnyy",
+    "type": "slang",
+    "definition": "токсичный"
+  },
+  "fake": {
+    "transliteration": "feykovyy, nenastoyashchiy",
+    "type": "slang",
+    "definition": "фейковый, ненастоящий"
+  },
+  "phony": {
+    "transliteration": "lipovyy, falshivyy",
+    "type": "slang",
+    "definition": "липовый, фальшивый"
+  },
+  "shitty": {
+    "transliteration": "khrenovyy, dermovyy",
+    "type": "slang",
+    "definition": "хреновый, дерьмовый"
+  },
+  "crappy": {
+    "transliteration": "dermovyy, parshivyy",
+    "type": "slang",
+    "definition": "дерьмовый, паршивый"
+  },
+  "sucks": {
+    "transliteration": "otstoy",
+    "type": "slang",
+    "definition": "отстой"
+  },
+  "blows": {
+    "transliteration": "otstoy",
+    "type": "slang",
+    "definition": "отстой"
+  },
+  "bummer": {
+    "transliteration": "oblom",
+    "type": "slang",
+    "definition": "облом"
+  },
+  "drag": {
+    "transliteration": "toska, oblom",
+    "type": "slang",
+    "definition": "тоска, облом"
+  },
+  "cash": {
+    "transliteration": "nal, babki",
+    "type": "slang",
+    "definition": "нал, бабки"
+  },
+  "dough": {
+    "transliteration": "babki, bablo",
+    "type": "slang",
+    "definition": "бабки, бабло"
+  },
+  "bread": {
+    "transliteration": "babki",
+    "type": "slang",
+    "definition": "бабки"
+  },
+  "bucks": {
+    "transliteration": "baksy",
+    "type": "slang",
+    "definition": "баксы"
+  },
+  "grand": {
+    "transliteration": "shtuka (tysyacha)",
+    "type": "slang",
+    "definition": "штука (тысяча)"
+  },
+  "broke": {
+    "transliteration": "bez deneg, na meli",
+    "type": "slang",
+    "definition": "без денег, на мели"
+  },
+  "loaded": {
+    "transliteration": "pri dengakh, bogatyy",
+    "type": "slang",
+    "definition": "при деньгах, богатый"
+  },
+  "ballin": {
+    "transliteration": "bogatyy, pri babkakh",
+    "type": "slang",
+    "definition": "богатый, при бабках"
+  },
+  "rip-off": {
+    "transliteration": "obdiralovka, razvod",
+    "type": "slang",
+    "definition": "обдираловка, развод"
+  },
+  "cheap": {
+    "transliteration": "deshyovyy, zhadnyy",
+    "type": "slang",
+    "definition": "дешёвый, жадный"
+  },
+  "pricey": {
+    "transliteration": "dorogoy",
+    "type": "slang",
+    "definition": "дорогой"
+  },
+  "a piece of cake": {
+    "transliteration": "proshche parenoy repy",
+    "type": "idiom",
+    "definition": "проще пареной репы"
+  },
+  "easy as pie": {
+    "transliteration": "raz plyunut",
+    "type": "idiom",
+    "definition": "раз плюнуть"
+  },
+  "walk in the park": {
+    "transliteration": "plyovoye delo",
+    "type": "idiom",
+    "definition": "плёвое дело"
+  },
+  "child's play": {
+    "transliteration": "detskiye igrushki",
+    "type": "idiom",
+    "definition": "детские игрушки"
+  },
+  "not rocket science": {
+    "transliteration": "ne binom Nyutona",
+    "type": "idiom",
+    "definition": "не бином Ньютона"
+  },
+  "easier said than done": {
+    "transliteration": "legche skazat, chem sdelat",
+    "type": "idiom",
+    "definition": "легче сказать, чем сделать"
+  },
+  "uphill battle": {
+    "transliteration": "tyazhyolaya borba",
+    "type": "idiom",
+    "definition": "тяжёлая борьба"
+  },
+  "knock on wood": {
+    "transliteration": "postuchi po derevu",
+    "type": "idiom",
+    "definition": "постучи по дереву"
+  },
+  "fingers crossed": {
+    "transliteration": "derzhu kulaki",
+    "type": "idiom",
+    "definition": "держу кулаки"
+  },
+  "touch wood": {
+    "transliteration": "tfu-tfu-tfu",
+    "type": "idiom",
+    "definition": "тьфу-тьфу-тьфу"
+  },
+  "lucky break": {
+    "transliteration": "povezlo",
+    "type": "idiom",
+    "definition": "повезло"
+  },
+  "stroke of luck": {
+    "transliteration": "vezeniye",
+    "type": "idiom",
+    "definition": "везение"
+  },
+  "blessing in disguise": {
+    "transliteration": "net khuda bez dobra",
+    "type": "idiom",
+    "definition": "нет худа без добра"
+  },
+  "every cloud has a silver lining": {
+    "transliteration": "net khuda bez dobra",
+    "type": "idiom",
+    "definition": "нет худа без добра"
+  },
+  "couch potato": {
+    "transliteration": "lezheboka, divannyy ovoshch",
+    "type": "idiom",
+    "definition": "лежебока, диванный овощ"
+  },
+  "party animal": {
+    "transliteration": "tusovshchik",
+    "type": "idiom",
+    "definition": "тусовщик"
+  },
+  "bookworm": {
+    "transliteration": "knizhnyy cherv",
+    "type": "idiom",
+    "definition": "книжный червь"
+  },
+  "early bird": {
+    "transliteration": "rannyaya ptashka",
+    "type": "idiom",
+    "definition": "ранняя пташка"
+  },
+  "night owl": {
+    "transliteration": "sova",
+    "type": "idiom",
+    "definition": "сова"
+  },
+  "busybody": {
+    "transliteration": "lyubopytnaya Varvara",
+    "type": "idiom",
+    "definition": "любопытная Варвара"
+  },
+  "smart cookie": {
+    "transliteration": "umnik, smyshlyonyy",
+    "type": "idiom",
+    "definition": "умник, смышлёный"
+  },
+  "tough cookie": {
+    "transliteration": "krepkiy oreshek",
+    "type": "idiom",
+    "definition": "крепкий орешек"
+  },
+  "bad apple": {
+    "transliteration": "parshivaya ovtsa",
+    "type": "idiom",
+    "definition": "паршивая овца"
+  },
+  "black sheep": {
+    "transliteration": "belaya vorona",
+    "type": "idiom",
+    "definition": "белая ворона"
+  },
+  "big shot": {
+    "transliteration": "bolshaya shishka",
+    "type": "idiom",
+    "definition": "большая шишка"
+  },
+  "big cheese": {
+    "transliteration": "bolshaya shishka",
+    "type": "idiom",
+    "definition": "большая шишка"
+  },
+  "wet blanket": {
+    "transliteration": "zanuda",
+    "type": "idiom",
+    "definition": "зануда"
+  },
+  "cheapskate": {
+    "transliteration": "skryaga, zhmot",
+    "type": "idiom",
+    "definition": "скряга, жмот"
+  },
+  "make ends meet": {
+    "transliteration": "svodit kontsy s kontsami",
+    "type": "idiom",
+    "definition": "сводить концы с концами"
+  },
+  "penny pincher": {
+    "transliteration": "skryaga",
+    "type": "idiom",
+    "definition": "скряга"
+  },
+  "money doesn't grow on trees": {
+    "transliteration": "dengi na doroge ne valyayutsya",
+    "type": "idiom",
+    "definition": "деньги на дороге не валяются"
+  },
+  "rags to riches": {
+    "transliteration": "iz gryazi v knyazi",
+    "type": "idiom",
+    "definition": "из грязи в князи"
+  },
+  "filthy rich": {
+    "transliteration": "kupayetsya v dengakh",
+    "type": "idiom",
+    "definition": "купается в деньгах"
+  },
+  "rolling in money": {
+    "transliteration": "deneg kury ne klyuyut",
+    "type": "idiom",
+    "definition": "денег куры не клюют"
+  },
+  "time flies": {
+    "transliteration": "vremya letit",
+    "type": "idiom",
+    "definition": "время летит"
+  },
+  "kill time": {
+    "transliteration": "ubivat vremya",
+    "type": "idiom",
+    "definition": "убивать время"
+  },
+  "in the nick of time": {
+    "transliteration": "v posledniy moment",
+    "type": "idiom",
+    "definition": "в последний момент"
+  },
+  "around the clock": {
+    "transliteration": "kruglosutochno",
+    "type": "idiom",
+    "definition": "круглосуточно"
+  },
+  "at the eleventh hour": {
+    "transliteration": "v posledniy moment",
+    "type": "idiom",
+    "definition": "в последний момент"
+  },
+  "time is money": {
+    "transliteration": "vremya — dengi",
+    "type": "idiom",
+    "definition": "время — деньги"
+  },
+  "beat around the bush": {
+    "transliteration": "khodit vokrug da okolo",
+    "type": "idiom",
+    "definition": "ходить вокруг да около"
+  },
+  "get to the point": {
+    "transliteration": "perekhodit k delu",
+    "type": "idiom",
+    "definition": "переходить к делу"
+  },
+  "spill the beans": {
+    "transliteration": "proboltatsya",
+    "type": "idiom",
+    "definition": "проболтаться"
+  },
+  "break the ice": {
+    "transliteration": "rastopit lyod",
+    "type": "idiom",
+    "definition": "растопить лёд"
+  },
+  "word of mouth": {
+    "transliteration": "sarafannoye radio",
+    "type": "idiom",
+    "definition": "сарафанное радио"
+  },
+  "get it off your chest": {
+    "transliteration": "vygovoritsya",
+    "type": "idiom",
+    "definition": "выговориться"
+  },
+  "bite off more than you can chew": {
+    "transliteration": "otkusit bolshe, chem mozhesh proglotit",
+    "type": "idiom",
+    "definition": "откусить больше, чем можешь проглотить"
+  },
+  "burn the midnight oil": {
+    "transliteration": "zasizhivatsya dopozdna",
+    "type": "idiom",
+    "definition": "засиживаться допоздна"
+  },
+  "hit the nail on the head": {
+    "transliteration": "popast v tochku",
+    "type": "idiom",
+    "definition": "попасть в точку"
+  },
+  "miss the boat": {
+    "transliteration": "upustit shans",
+    "type": "idiom",
+    "definition": "упустить шанс"
+  },
+  "jump the gun": {
+    "transliteration": "potoropitsya",
+    "type": "idiom",
+    "definition": "поторопиться"
+  },
+  "cut corners": {
+    "transliteration": "srezat ugly, khalturit",
+    "type": "idiom",
+    "definition": "срезать углы, халтурить"
+  },
+  "pull someone's leg": {
+    "transliteration": "razygrivat kogo-to",
+    "type": "idiom",
+    "definition": "разыгрывать кого-то"
+  },
+  "give someone the cold shoulder": {
+    "transliteration": "ignorirovat",
+    "type": "idiom",
+    "definition": "игнорировать"
+  },
+  "turn a blind eye": {
+    "transliteration": "zakryvat glaza na",
+    "type": "idiom",
+    "definition": "закрывать глаза на"
+  },
+  "stab in the back": {
+    "transliteration": "udarit v spinu",
+    "type": "idiom",
+    "definition": "ударить в спину"
+  },
+  "throw under the bus": {
+    "transliteration": "podstavit",
+    "type": "idiom",
+    "definition": "подставить"
+  },
+  "hit the jackpot": {
+    "transliteration": "sorvat kush",
+    "type": "idiom",
+    "definition": "сорвать куш"
+  },
+  "strike gold": {
+    "transliteration": "napast na zolotuyu zhilu",
+    "type": "idiom",
+    "definition": "напасть на золотую жилу"
+  },
+  "go down in flames": {
+    "transliteration": "provalitsya s treskom",
+    "type": "idiom",
+    "definition": "провалиться с треском"
+  },
+  "fall flat on your face": {
+    "transliteration": "sest v luzhu",
+    "type": "idiom",
+    "definition": "сесть в лужу"
+  },
+  "the ball is in your court": {
+    "transliteration": "khod za toboy",
+    "type": "idiom",
+    "definition": "ход за тобой"
+  },
+  "up in the air": {
+    "transliteration": "yeshchyo ne resheno",
+    "type": "idiom",
+    "definition": "ещё не решено"
+  },
+  "over the moon": {
+    "transliteration": "na sedmom nebe",
+    "type": "idiom",
+    "definition": "на седьмом небе"
+  },
+  "on cloud nine": {
+    "transliteration": "na sedmom nebe",
+    "type": "idiom",
+    "definition": "на седьмом небе"
+  },
+  "walking on air": {
+    "transliteration": "letat ot schastya",
+    "type": "idiom",
+    "definition": "летать от счастья"
+  },
+  "down in the dumps": {
+    "transliteration": "v podavlennom nastroenii",
+    "type": "idiom",
+    "definition": "в подавленном настроении"
+  },
+  "blow off steam": {
+    "transliteration": "vypustit par",
+    "type": "idiom",
+    "definition": "выпустить пар"
+  },
+  "lose your cool": {
+    "transliteration": "vyyti iz sebya",
+    "type": "idiom",
+    "definition": "выйти из себя"
+  },
+  "butterflies in stomach": {
+    "transliteration": "babochki v zhivote",
+    "type": "idiom",
+    "definition": "бабочки в животе"
+  },
+  "get cold feet": {
+    "transliteration": "strusit",
+    "type": "idiom",
+    "definition": "струсить"
+  },
+  "burn the candle at both ends": {
+    "transliteration": "rabotat na iznos",
+    "type": "idiom",
+    "definition": "работать на износ"
+  },
+  "work like a dog": {
+    "transliteration": "rabotat kak vol",
+    "type": "idiom",
+    "definition": "работать как вол"
+  },
+  "the last straw": {
+    "transliteration": "poslednyaya kaplya",
+    "type": "idiom",
+    "definition": "последняя капля"
+  },
+  "learn the ropes": {
+    "transliteration": "osvoitsya",
+    "type": "idiom",
+    "definition": "освоиться"
+  },
+  "get the hang of it": {
+    "transliteration": "osvoitsya, vrubitsya",
+    "type": "idiom",
+    "definition": "освоиться, врубиться"
+  },
+  "the tip of the iceberg": {
+    "transliteration": "vershina aysberga",
+    "type": "idiom",
+    "definition": "вершина айсберга"
+  },
+  "see eye to eye": {
+    "transliteration": "skhoditsya vo mnenii",
+    "type": "idiom",
+    "definition": "сходиться во мнении"
+  },
+  "actions speak louder than words": {
+    "transliteration": "dela govoryat gromche slov",
+    "type": "idiom",
+    "definition": "дела говорят громче слов"
+  },
+  "don't judge a book by its cover": {
+    "transliteration": "ne sudi po vneshnosti",
+    "type": "idiom",
+    "definition": "не суди по внешности"
+  },
+  "two wrongs don't make a right": {
+    "transliteration": "zlom zla ne ispravish",
+    "type": "idiom",
+    "definition": "злом зла не исправишь"
+  },
+  "hello": {
+    "transliteration": "zdravstvuyte / privet",
+    "definition": "здравствуйте (formal) / привет (informal)"
+  },
+  "hi": {
+    "transliteration": "privet",
+    "definition": "привет"
+  },
+  "hey": {
+    "transliteration": "ey, privet",
+    "definition": "эй, привет"
+  },
+  "good morning": {
+    "transliteration": "dobroye utro",
+    "definition": "доброе утро"
+  },
+  "good afternoon": {
+    "transliteration": "dobryy den",
+    "definition": "добрый день"
+  },
+  "good evening": {
+    "transliteration": "dobryy vecher",
+    "definition": "добрый вечер"
+  },
+  "i'm fine": {
+    "transliteration": "u menya vsyo khorosho",
+    "definition": "у меня всё хорошо"
+  },
+  "i'm good": {
+    "transliteration": "khorosho",
+    "definition": "хорошо"
+  },
+  "great": {
+    "transliteration": "otlichno",
+    "definition": "отлично"
+  },
+  "not bad": {
+    "transliteration": "neploho",
+    "definition": "неплохо"
+  },
+  "so-so": {
+    "transliteration": "tak sebe",
+    "definition": "так себе"
+  },
+  "could be better": {
+    "transliteration": "byvalo i luchshe",
+    "definition": "бывало и лучше"
+  },
+  "terrible": {
+    "transliteration": "uzhasno",
+    "definition": "ужасно"
+  },
+  "goodbye": {
+    "transliteration": "do svidaniya",
+    "definition": "до свидания"
+  },
+  "bye": {
+    "transliteration": "poka",
+    "definition": "пока"
+  },
+  "see you": {
+    "transliteration": "uvidimsya",
+    "definition": "увидимся"
+  },
+  "see you tomorrow": {
+    "transliteration": "do zavtra",
+    "definition": "до завтра"
+  },
+  "have a nice day": {
+    "transliteration": "khoroshego dnya",
+    "definition": "хорошего дня"
+  },
+  "good night": {
+    "transliteration": "spokoynoy nochi",
+    "definition": "спокойной ночи"
+  },
+  "good luck": {
+    "transliteration": "udachi",
+    "definition": "удачи"
+  },
+  "please": {
+    "transliteration": "pozhaluysta",
+    "definition": "пожалуйста"
+  },
+  "thank you": {
+    "transliteration": "spasibo",
+    "definition": "спасибо"
+  },
+  "thank you very much": {
+    "transliteration": "bolshoye spasibo",
+    "definition": "большое спасибо"
+  },
+  "sorry": {
+    "transliteration": "prostite / izvinite",
+    "definition": "простите / извините"
+  },
+  "my pleasure": {
+    "transliteration": "s udovolstviyem",
+    "definition": "с удовольствием"
+  },
+  "don't mention it": {
+    "transliteration": "ne stoit",
+    "definition": "не стоит"
+  },
+  "yes": {
+    "transliteration": "da",
+    "definition": "да"
+  },
+  "no": {
+    "transliteration": "net",
+    "definition": "нет"
+  },
+  "maybe": {
+    "transliteration": "mozhet byt",
+    "definition": "может быть"
+  },
+  "of course": {
+    "transliteration": "konechno",
+    "definition": "конечно"
+  },
+  "sure": {
+    "transliteration": "konechno",
+    "definition": "конечно"
+  },
+  "absolutely": {
+    "transliteration": "absolyutno",
+    "definition": "абсолютно"
+  },
+  "definitely": {
+    "transliteration": "opredelyonno",
+    "definition": "определённо"
+  },
+  "i agree": {
+    "transliteration": "soglasen / soglasna",
+    "definition": "согласен / согласна"
+  },
+  "i disagree": {
+    "transliteration": "ne soglasen / ne soglasna",
+    "definition": "не согласен / не согласна"
+  },
+  "i think so": {
+    "transliteration": "dumayu, da",
+    "definition": "думаю, да"
+  },
+  "i don't think so": {
+    "transliteration": "dumayu, net",
+    "definition": "думаю, нет"
+  },
+  "that's right": {
+    "transliteration": "pravilno",
+    "definition": "правильно"
+  },
+  "that's wrong": {
+    "transliteration": "nepravilno",
+    "definition": "неправильно"
+  },
+  "exactly": {
+    "transliteration": "imenno",
+    "definition": "именно"
+  },
+  "not exactly": {
+    "transliteration": "ne sovsem",
+    "definition": "не совсем"
+  },
+  "who": {
+    "transliteration": "kto?",
+    "definition": "кто?"
+  },
+  "what": {
+    "transliteration": "chto?",
+    "definition": "что?"
+  },
+  "where": {
+    "transliteration": "gde?",
+    "definition": "где?"
+  },
+  "where to": {
+    "transliteration": "kuda?",
+    "definition": "куда?"
+  },
+  "where from": {
+    "transliteration": "otkuda?",
+    "definition": "откуда?"
+  },
+  "when": {
+    "transliteration": "kogda?",
+    "definition": "когда?"
+  },
+  "why": {
+    "transliteration": "pochemu?",
+    "definition": "почему?"
+  },
+  "how": {
+    "transliteration": "kak?",
+    "definition": "как?"
+  },
+  "how much": {
+    "transliteration": "skolko?",
+    "definition": "сколько?"
+  },
+  "which": {
+    "transliteration": "kakoy?",
+    "definition": "какой?"
+  },
+  "what's your name": {
+    "transliteration": "kak vas zovut?",
+    "definition": "как вас зовут?"
+  },
+  "where are you from": {
+    "transliteration": "otkuda vy?",
+    "definition": "откуда вы?"
+  },
+  "do you speak english": {
+    "transliteration": "vy govorite po-angliyski?",
+    "definition": "вы говорите по-английски?"
+  },
+  "what time is it": {
+    "transliteration": "kotoryy chas?",
+    "definition": "который час?"
+  },
+  "how old are you": {
+    "transliteration": "skolko vam let?",
+    "definition": "сколько вам лет?"
+  },
+  "i understand": {
+    "transliteration": "ya ponimayu",
+    "definition": "я понимаю"
+  },
+  "i don't understand": {
+    "transliteration": "ya ne ponimayu",
+    "definition": "я не понимаю"
+  },
+  "can you repeat that": {
+    "transliteration": "mozhete povtorit?",
+    "definition": "можете повторить?"
+  },
+  "speak slower please": {
+    "transliteration": "govorite medlenneye, pozhaluysta",
+    "definition": "говорите медленнее, пожалуйста"
+  },
+  "what does this mean": {
+    "transliteration": "chto eto znachit?",
+    "definition": "что это значит?"
+  },
+  "how do you say": {
+    "transliteration": "kak skazat...?",
+    "definition": "как сказать...?"
+  },
+  "i don't know": {
+    "transliteration": "ya ne znayu",
+    "definition": "я не знаю"
+  },
+  "i forgot": {
+    "transliteration": "ya zabyl / zabyla",
+    "definition": "я забыл / забыла"
+  },
+  "got it": {
+    "transliteration": "ponyal / ponyala",
+    "definition": "понял / поняла"
+  },
+  "can you help me": {
+    "transliteration": "mozhete pomoch?",
+    "definition": "можете помочь?"
+  },
+  "i need": {
+    "transliteration": "mne nuzhno...",
+    "definition": "мне нужно..."
+  },
+  "i would like": {
+    "transliteration": "ya khotel by... / ya khotela by...",
+    "definition": "я хотел бы... / я хотела бы..."
+  },
+  "may i": {
+    "transliteration": "mozhno...?",
+    "definition": "можно...?"
+  },
+  "do you have": {
+    "transliteration": "u vas yest...?",
+    "definition": "у вас есть...?"
+  },
+  "can i get": {
+    "transliteration": "mozhno mne...?",
+    "definition": "можно мне...?"
+  },
+  "wow": {
+    "transliteration": "ogo! / nichego sebe!",
+    "definition": "ого! / ничего себе!"
+  },
+  "really": {
+    "transliteration": "pravda? / seryozno?",
+    "definition": "правда? / серьёзно?"
+  },
+  "are you serious": {
+    "transliteration": "ty seryozno?",
+    "definition": "ты серьёзно?"
+  },
+  "that's amazing": {
+    "transliteration": "eto potryasayushche!",
+    "definition": "это потрясающе!"
+  },
+  "that's terrible": {
+    "transliteration": "eto uzhasno!",
+    "definition": "это ужасно!"
+  },
+  "i'm so happy": {
+    "transliteration": "ya tak rad / rada!",
+    "definition": "я так рад / рада!"
+  },
+  "i'm so sorry": {
+    "transliteration": "mne ochen zhal",
+    "definition": "мне очень жаль"
+  },
+  "congratulations": {
+    "transliteration": "pozdravlyayu!",
+    "definition": "поздравляю!"
+  },
+  "beautiful": {
+    "transliteration": "krasivyy",
+    "synonyms": [
+      "pretty",
+      "gorgeous",
+      "stunning"
+    ],
+    "definition": "красивый"
+  },
+  "pretty": {
+    "transliteration": "simpatichnyy, khoroshenkiy",
+    "definition": "симпатичный, хорошенький"
+  },
+  "gorgeous": {
+    "transliteration": "velikolepnyy, shikarnyy",
+    "definition": "великолепный, шикарный"
+  },
+  "stunning": {
+    "transliteration": "potryasayushchiy, snogshibatelnyy",
+    "definition": "потрясающий, сногсшибательный"
+  },
+  "lovely": {
+    "transliteration": "prelestnyy, milyy",
+    "definition": "прелестный, милый"
+  },
+  "attractive": {
+    "transliteration": "privlekatelnyy",
+    "definition": "привлекательный"
+  },
+  "handsome": {
+    "transliteration": "krasivyy (o muzhchine)",
+    "definition": "красивый (о мужчине)"
+  },
+  "cute": {
+    "transliteration": "milyy, simpatichnyy",
+    "definition": "милый, симпатичный"
+  },
+  "happy": {
+    "transliteration": "schastlivyy",
+    "synonyms": [
+      "glad",
+      "pleased",
+      "delighted"
+    ],
+    "definition": "счастливый"
+  },
+  "glad": {
+    "transliteration": "rad",
+    "definition": "рад"
+  },
+  "pleased": {
+    "transliteration": "dovolen",
+    "definition": "доволен"
+  },
+  "delighted": {
+    "transliteration": "v vostorge",
+    "definition": "в восторге"
+  },
+  "thrilled": {
+    "transliteration": "v vostorge",
+    "definition": "в восторге"
+  },
+  "ecstatic": {
+    "transliteration": "v ekstaze",
+    "definition": "в экстазе"
+  },
+  "overjoyed": {
+    "transliteration": "vne sebya ot radosti",
+    "definition": "вне себя от радости"
+  },
+  "content": {
+    "transliteration": "dovolnyy",
+    "definition": "довольный"
+  },
+  "cheerful": {
+    "transliteration": "vesyolyy",
+    "definition": "весёлый"
+  },
+  "joyful": {
+    "transliteration": "radostnyy",
+    "definition": "радостный"
+  },
+  "sad": {
+    "transliteration": "grustnyy",
+    "synonyms": [
+      "unhappy",
+      "depressed",
+      "miserable"
+    ],
+    "definition": "грустный"
+  },
+  "unhappy": {
+    "transliteration": "neschastnyy",
+    "definition": "несчастный"
+  },
+  "depressed": {
+    "transliteration": "podavlennyy",
+    "definition": "подавленный"
+  },
+  "miserable": {
+    "transliteration": "neschastnyy",
+    "definition": "несчастный"
+  },
+  "gloomy": {
+    "transliteration": "mrachnyy",
+    "definition": "мрачный"
+  },
+  "melancholy": {
+    "transliteration": "melankholichnyy",
+    "definition": "меланхоличный"
+  },
+  "heartbroken": {
+    "transliteration": "ubityy gorem",
+    "definition": "убитый горем"
+  },
+  "devastated": {
+    "transliteration": "opustoshyonnyy",
+    "definition": "опустошённый"
+  },
+  "down": {
+    "transliteration": "v plokhom nastroenii",
+    "definition": "в плохом настроении"
+  },
+  "blue": {
+    "transliteration": "v toske",
+    "definition": "в тоске"
+  },
+  "angry": {
+    "transliteration": "zloy, serdityy",
+    "synonyms": [
+      "mad",
+      "furious",
+      "enraged"
+    ],
+    "definition": "злой, сердитый"
+  },
+  "mad": {
+    "transliteration": "zloy, beshenyy",
+    "definition": "злой, бешеный"
+  },
+  "furious": {
+    "transliteration": "v yarosti",
+    "definition": "в ярости"
+  },
+  "enraged": {
+    "transliteration": "razyaryonnyy",
+    "definition": "разъярённый"
+  },
+  "annoyed": {
+    "transliteration": "razdrazhyonnyy",
+    "definition": "раздражённый"
+  },
+  "irritated": {
+    "transliteration": "razdrazhyonnyy",
+    "definition": "раздражённый"
+  },
+  "upset": {
+    "transliteration": "rasstroyennyy",
+    "definition": "расстроенный"
+  },
+  "pissed off": {
+    "transliteration": "vzbeshyonnyy",
+    "type": "colloquial",
+    "definition": "взбешённый"
+  },
+  "big": {
+    "transliteration": "bolshoy",
+    "synonyms": [
+      "large",
+      "huge",
+      "enormous"
+    ],
+    "definition": "большой"
+  },
+  "large": {
+    "transliteration": "bolshoy, krupnyy",
+    "definition": "большой, крупный"
+  },
+  "huge": {
+    "transliteration": "ogromnyy",
+    "definition": "огромный"
+  },
+  "enormous": {
+    "transliteration": "gromadnyy",
+    "definition": "громадный"
+  },
+  "massive": {
+    "transliteration": "massivnyy",
+    "definition": "массивный"
+  },
+  "gigantic": {
+    "transliteration": "gigantskiy",
+    "definition": "гигантский"
+  },
+  "vast": {
+    "transliteration": "obshirnyy",
+    "definition": "обширный"
+  },
+  "immense": {
+    "transliteration": "neobyatnyy",
+    "definition": "необъятный"
+  },
+  "small": {
+    "transliteration": "malenkiy",
+    "synonyms": [
+      "little",
+      "tiny",
+      "miniature"
+    ],
+    "definition": "маленький"
+  },
+  "little": {
+    "transliteration": "malenkiy",
+    "definition": "маленький"
+  },
+  "tiny": {
+    "transliteration": "kroshechnyy",
+    "definition": "крошечный"
+  },
+  "miniature": {
+    "transliteration": "miniatyurnyy",
+    "definition": "миниатюрный"
+  },
+  "petite": {
+    "transliteration": "miniatyurnyy",
+    "definition": "миниатюрный"
+  },
+  "compact": {
+    "transliteration": "kompaktnyy",
+    "definition": "компактный"
+  },
+  "minute": {
+    "transliteration": "melchayshiy",
+    "definition": "мельчайший"
+  },
+  "good": {
+    "transliteration": "khoroshiy",
+    "synonyms": [
+      "great",
+      "excellent",
+      "wonderful"
+    ],
+    "definition": "хороший"
+  },
+  "excellent": {
+    "transliteration": "prevoskhodnyy",
+    "definition": "превосходный"
+  },
+  "wonderful": {
+    "transliteration": "chudesnyy",
+    "definition": "чудесный"
+  },
+  "fantastic": {
+    "transliteration": "fantasticheskiy",
+    "definition": "фантастический"
+  },
+  "amazing": {
+    "transliteration": "udivitelnyy",
+    "definition": "удивительный"
+  },
+  "outstanding": {
+    "transliteration": "vydayushchiysya",
+    "definition": "выдающийся"
+  },
+  "superb": {
+    "transliteration": "velikolepnyy",
+    "definition": "великолепный"
+  },
+  "terrific": {
+    "transliteration": "potryasayushchiy",
+    "definition": "потрясающий"
+  },
+  "bad": {
+    "transliteration": "plokhoy",
+    "synonyms": [
+      "terrible",
+      "awful",
+      "horrible"
+    ],
+    "definition": "плохой"
+  },
+  "awful": {
+    "transliteration": "uzhasnyy",
+    "definition": "ужасный"
+  },
+  "horrible": {
+    "transliteration": "uzhasnyy",
+    "definition": "ужасный"
+  },
+  "dreadful": {
+    "transliteration": "uzhasnyy",
+    "definition": "ужасный"
+  },
+  "poor": {
+    "transliteration": "plokhoy",
+    "definition": "плохой"
+  },
+  "lousy": {
+    "transliteration": "parshivyy",
+    "definition": "паршивый"
+  },
+  "fast": {
+    "transliteration": "bystryy",
+    "synonyms": [
+      "quick",
+      "rapid",
+      "swift"
+    ],
+    "definition": "быстрый"
+  },
+  "quick": {
+    "transliteration": "bystryy",
+    "definition": "быстрый"
+  },
+  "rapid": {
+    "transliteration": "bystryy, stremitelnyy",
+    "definition": "быстрый, стремительный"
+  },
+  "swift": {
+    "transliteration": "bystryy",
+    "definition": "быстрый"
+  },
+  "speedy": {
+    "transliteration": "skorostnoy",
+    "definition": "скоростной"
+  },
+  "hasty": {
+    "transliteration": "pospeshnyy",
+    "definition": "поспешный"
+  },
+  "prompt": {
+    "transliteration": "operativnyy",
+    "definition": "оперативный"
+  },
+  "slow": {
+    "transliteration": "medlennyy",
+    "synonyms": [
+      "sluggish",
+      "gradual",
+      "leisurely"
+    ],
+    "definition": "медленный"
+  },
+  "sluggish": {
+    "transliteration": "vyalyy",
+    "definition": "вялый"
+  },
+  "gradual": {
+    "transliteration": "postepennyy",
+    "definition": "постепенный"
+  },
+  "leisurely": {
+    "transliteration": "netoroplivyy",
+    "definition": "неторопливый"
+  },
+  "unhurried": {
+    "transliteration": "nespeshnyy",
+    "definition": "неспешный"
+  },
+  "think": {
+    "transliteration": "dumat",
+    "synonyms": [
+      "believe",
+      "consider",
+      "assume"
+    ],
+    "definition": "думать"
+  },
+  "believe": {
+    "transliteration": "verit, schitat",
+    "definition": "верить, считать"
+  },
+  "consider": {
+    "transliteration": "schitat, rassmatrivat",
+    "definition": "считать, рассматривать"
+  },
+  "assume": {
+    "transliteration": "predpolagat",
+    "definition": "предполагать"
+  },
+  "suppose": {
+    "transliteration": "polagat",
+    "definition": "полагать"
+  },
+  "guess": {
+    "transliteration": "dogadyvatsya",
+    "definition": "догадываться"
+  },
+  "reckon": {
+    "transliteration": "schitat",
+    "definition": "считать"
+  },
+  "figure": {
+    "transliteration": "dumat, polagat",
+    "definition": "думать, полагать"
+  },
+  "ponder": {
+    "transliteration": "obdumyvat",
+    "definition": "обдумывать"
+  },
+  "contemplate": {
+    "transliteration": "razmyshlyat",
+    "definition": "размышлять"
+  },
+  "say": {
+    "transliteration": "govorit, skazat",
+    "synonyms": [
+      "tell",
+      "speak",
+      "state"
+    ],
+    "definition": "говорить, сказать"
+  },
+  "tell": {
+    "transliteration": "rasskazyvat",
+    "definition": "рассказывать"
+  },
+  "speak": {
+    "transliteration": "govorit",
+    "definition": "говорить"
+  },
+  "state": {
+    "transliteration": "zayavlyat",
+    "definition": "заявлять"
+  },
+  "declare": {
+    "transliteration": "obyavlyat",
+    "definition": "объявлять"
+  },
+  "announce": {
+    "transliteration": "obyavlyat",
+    "definition": "объявлять"
+  },
+  "mention": {
+    "transliteration": "upominat",
+    "definition": "упоминать"
+  },
+  "remark": {
+    "transliteration": "zamechat",
+    "definition": "замечать"
+  },
+  "claim": {
+    "transliteration": "utverzhdat",
+    "definition": "утверждать"
+  },
+  "assert": {
+    "transliteration": "utverzhdat",
+    "definition": "утверждать"
+  },
+  "walk": {
+    "transliteration": "idti, khodit",
+    "synonyms": [
+      "stroll",
+      "wander",
+      "march"
+    ],
+    "definition": "идти, ходить"
+  },
+  "stroll": {
+    "transliteration": "progulivatsya",
+    "definition": "прогуливаться"
+  },
+  "wander": {
+    "transliteration": "brodit",
+    "definition": "бродить"
+  },
+  "march": {
+    "transliteration": "marshirovat",
+    "definition": "маршировать"
+  },
+  "stride": {
+    "transliteration": "shagat",
+    "definition": "шагать"
+  },
+  "pace": {
+    "transliteration": "raskhazhivat",
+    "definition": "расхаживать"
+  },
+  "trudge": {
+    "transliteration": "tashchitsya",
+    "definition": "тащиться"
+  },
+  "limp": {
+    "transliteration": "khromat",
+    "definition": "хромать"
+  },
+  "sneak": {
+    "transliteration": "krastsya",
+    "definition": "красться"
+  },
+  "look": {
+    "transliteration": "smotret",
+    "synonyms": [
+      "see",
+      "watch",
+      "observe"
+    ],
+    "definition": "смотреть"
+  },
+  "see": {
+    "transliteration": "videt",
+    "definition": "видеть"
+  },
+  "watch": {
+    "transliteration": "smotret, nablyudat",
+    "definition": "смотреть, наблюдать"
+  },
+  "observe": {
+    "transliteration": "nablyudat",
+    "definition": "наблюдать"
+  },
+  "gaze": {
+    "transliteration": "pristalno smotret",
+    "definition": "пристально смотреть"
+  },
+  "stare": {
+    "transliteration": "ustavitsya",
+    "definition": "уставиться"
+  },
+  "glance": {
+    "transliteration": "brosit vzglyad",
+    "definition": "бросить взгляд"
+  },
+  "peek": {
+    "transliteration": "podglyadyvat",
+    "definition": "подглядывать"
+  },
+  "glimpse": {
+    "transliteration": "melkom uvidet",
+    "definition": "мельком увидеть"
+  },
+  "hot": {
+    "transliteration": "goryachiy",
+    "antonyms": [
+      "cold"
+    ],
+    "definition": "горячий"
+  },
+  "cold": {
+    "transliteration": "kholodnyy",
+    "antonyms": [
+      "hot"
+    ],
+    "definition": "холодный"
+  },
+  "new": {
+    "transliteration": "novyy",
+    "antonyms": [
+      "old"
+    ],
+    "definition": "новый"
+  },
+  "old": {
+    "transliteration": "staryy",
+    "antonyms": [
+      "new",
+      "young"
+    ],
+    "definition": "старый"
+  },
+  "young": {
+    "transliteration": "molodoy",
+    "antonyms": [
+      "old"
+    ],
+    "definition": "молодой"
+  },
+  "high": {
+    "transliteration": "vysokiy",
+    "antonyms": [
+      "low"
+    ],
+    "definition": "высокий"
+  },
+  "low": {
+    "transliteration": "nizkiy",
+    "antonyms": [
+      "high"
+    ],
+    "definition": "низкий"
+  },
+  "long": {
+    "transliteration": "dlinnyy",
+    "antonyms": [
+      "short"
+    ],
+    "definition": "длинный"
+  },
+  "short": {
+    "transliteration": "korotkiy",
+    "antonyms": [
+      "long"
+    ],
+    "definition": "короткий"
+  },
+  "wide": {
+    "transliteration": "shirokiy",
+    "antonyms": [
+      "narrow"
+    ],
+    "definition": "широкий"
+  },
+  "narrow": {
+    "transliteration": "uzkiy",
+    "antonyms": [
+      "wide"
+    ],
+    "definition": "узкий"
+  },
+  "thick": {
+    "transliteration": "tolstyy",
+    "antonyms": [
+      "thin"
+    ],
+    "definition": "толстый"
+  },
+  "thin": {
+    "transliteration": "tonkiy",
+    "antonyms": [
+      "thick"
+    ],
+    "definition": "тонкий"
+  },
+  "heavy": {
+    "transliteration": "tyazhyolyy",
+    "antonyms": [
+      "light"
+    ],
+    "definition": "тяжёлый"
+  },
+  "light": {
+    "transliteration": "lyogkiy / svetlyy",
+    "antonyms": [
+      "heavy",
+      "dark"
+    ],
+    "definition": "лёгкий / светлый"
+  },
+  "hard": {
+    "transliteration": "tvyordyy / trudnyy",
+    "antonyms": [
+      "soft",
+      "easy"
+    ],
+    "definition": "твёрдый / трудный"
+  },
+  "soft": {
+    "transliteration": "myagkiy",
+    "antonyms": [
+      "hard"
+    ],
+    "definition": "мягкий"
+  },
+  "dry": {
+    "transliteration": "sukhoy",
+    "antonyms": [
+      "wet"
+    ],
+    "definition": "сухой"
+  },
+  "wet": {
+    "transliteration": "mokryy",
+    "antonyms": [
+      "dry"
+    ],
+    "definition": "мокрый"
+  },
+  "clean": {
+    "transliteration": "chistyy",
+    "antonyms": [
+      "dirty"
+    ],
+    "definition": "чистый"
+  },
+  "dirty": {
+    "transliteration": "gryaznyy",
+    "antonyms": [
+      "clean"
+    ],
+    "definition": "грязный"
+  },
+  "dark": {
+    "transliteration": "tyomnyy",
+    "antonyms": [
+      "light"
+    ],
+    "definition": "тёмный"
+  },
+  "loud": {
+    "transliteration": "gromkiy",
+    "antonyms": [
+      "quiet"
+    ],
+    "definition": "громкий"
+  },
+  "quiet": {
+    "transliteration": "tikhiy",
+    "antonyms": [
+      "loud"
+    ],
+    "definition": "тихий"
+  },
+  "strong": {
+    "transliteration": "silnyy",
+    "antonyms": [
+      "weak"
+    ],
+    "definition": "сильный"
+  },
+  "weak": {
+    "transliteration": "slabyy",
+    "antonyms": [
+      "strong"
+    ],
+    "definition": "слабый"
+  },
+  "rich": {
+    "transliteration": "bogatyy",
+    "antonyms": [
+      "poor"
+    ],
+    "definition": "богатый"
+  },
+  "expensive": {
+    "transliteration": "dorogoy",
+    "antonyms": [
+      "cheap"
+    ],
+    "definition": "дорогой"
+  },
+  "full": {
+    "transliteration": "polnyy",
+    "antonyms": [
+      "empty"
+    ],
+    "definition": "полный"
+  },
+  "empty": {
+    "transliteration": "pustoy",
+    "antonyms": [
+      "full"
+    ],
+    "definition": "пустой"
+  },
+  "alive": {
+    "transliteration": "zhivoy",
+    "antonyms": [
+      "dead"
+    ],
+    "definition": "живой"
+  },
+  "healthy": {
+    "transliteration": "zdorovyy",
+    "antonyms": [
+      "sick"
+    ],
+    "definition": "здоровый"
+  },
+  "easy": {
+    "transliteration": "lyogkiy",
+    "antonyms": [
+      "difficult"
+    ],
+    "definition": "лёгкий"
+  },
+  "difficult": {
+    "transliteration": "trudnyy",
+    "antonyms": [
+      "easy"
+    ],
+    "definition": "трудный"
+  },
+  "simple": {
+    "transliteration": "prostoy",
+    "antonyms": [
+      "complex"
+    ],
+    "definition": "простой"
+  },
+  "complex": {
+    "transliteration": "slozhnyy",
+    "antonyms": [
+      "simple"
+    ],
+    "definition": "сложный"
+  },
+  "right": {
+    "transliteration": "pravilnyy / pravyy",
+    "antonyms": [
+      "wrong",
+      "left"
+    ],
+    "definition": "правильный / правый"
+  },
+  "wrong": {
+    "transliteration": "nepravilnyy",
+    "antonyms": [
+      "right"
+    ],
+    "definition": "неправильный"
+  },
+  "left": {
+    "transliteration": "levyy",
+    "antonyms": [
+      "right"
+    ],
+    "definition": "левый"
+  },
+  "true": {
+    "transliteration": "istinnyy, pravdivyy",
+    "antonyms": [
+      "false"
+    ],
+    "definition": "истинный, правдивый"
+  },
+  "false": {
+    "transliteration": "lozhnyy",
+    "antonyms": [
+      "true"
+    ],
+    "definition": "ложный"
+  },
+  "safe": {
+    "transliteration": "bezopasnyy",
+    "antonyms": [
+      "dangerous"
+    ],
+    "definition": "безопасный"
+  },
+  "dangerous": {
+    "transliteration": "opasnyy",
+    "antonyms": [
+      "safe"
+    ],
+    "definition": "опасный"
+  },
+  "ugly": {
+    "transliteration": "urodlivyy",
+    "antonyms": [
+      "beautiful"
+    ],
+    "definition": "уродливый"
+  },
+  "smart": {
+    "transliteration": "umnyy",
+    "antonyms": [
+      "stupid"
+    ],
+    "definition": "умный"
+  },
+  "stupid": {
+    "transliteration": "glupyy",
+    "antonyms": [
+      "smart"
+    ],
+    "definition": "глупый"
+  },
+  "brave": {
+    "transliteration": "khrabryy",
+    "antonyms": [
+      "cowardly"
+    ],
+    "definition": "храбрый"
+  },
+  "cowardly": {
+    "transliteration": "truslivyy",
+    "antonyms": [
+      "brave"
+    ],
+    "definition": "трусливый"
+  },
+  "polite": {
+    "transliteration": "vezhlivyy",
+    "antonyms": [
+      "rude"
+    ],
+    "definition": "вежливый"
+  },
+  "rude": {
+    "transliteration": "grubyy",
+    "antonyms": [
+      "polite"
+    ],
+    "definition": "грубый"
+  },
+  "honest": {
+    "transliteration": "chestnyy",
+    "antonyms": [
+      "dishonest"
+    ],
+    "definition": "честный"
+  },
+  "dishonest": {
+    "transliteration": "nechestnyy",
+    "antonyms": [
+      "honest"
+    ],
+    "definition": "нечестный"
+  },
+  "come": {
+    "transliteration": "prikhodit",
+    "antonyms": [
+      "go"
+    ],
+    "definition": "приходить"
+  },
+  "go": {
+    "transliteration": "idti, ukhodit",
+    "antonyms": [
+      "come"
+    ],
+    "definition": "идти, уходить"
+  },
+  "enter": {
+    "transliteration": "vkhodit",
+    "antonyms": [
+      "exit"
+    ],
+    "definition": "входить"
+  },
+  "exit": {
+    "transliteration": "vykhodit",
+    "antonyms": [
+      "enter"
+    ],
+    "definition": "выходить"
+  },
+  "open": {
+    "transliteration": "otkryvat",
+    "antonyms": [
+      "close"
+    ],
+    "definition": "открывать"
+  },
+  "close": {
+    "transliteration": "zakryvat",
+    "antonyms": [
+      "open"
+    ],
+    "definition": "закрывать"
+  },
+  "start": {
+    "transliteration": "nachinat",
+    "antonyms": [
+      "finish"
+    ],
+    "definition": "начинать"
+  },
+  "finish": {
+    "transliteration": "zakanchivat",
+    "antonyms": [
+      "start"
+    ],
+    "definition": "заканчивать"
+  },
+  "love": {
+    "transliteration": "lyubit",
+    "antonyms": [
+      "hate"
+    ],
+    "definition": "любить"
+  },
+  "hate": {
+    "transliteration": "nenavidet",
+    "antonyms": [
+      "love"
+    ],
+    "definition": "ненавидеть"
+  },
+  "remember": {
+    "transliteration": "pomnit",
+    "antonyms": [
+      "forget"
+    ],
+    "definition": "помнить"
+  },
+  "forget": {
+    "transliteration": "zabyvat",
+    "antonyms": [
+      "remember"
+    ],
+    "definition": "забывать"
+  },
+  "give": {
+    "transliteration": "davat",
+    "antonyms": [
+      "take"
+    ],
+    "definition": "давать"
+  },
+  "take": {
+    "transliteration": "brat",
+    "antonyms": [
+      "give"
+    ],
+    "definition": "брать"
+  },
+  "buy": {
+    "transliteration": "pokupat",
+    "antonyms": [
+      "sell"
+    ],
+    "definition": "покупать"
+  },
+  "sell": {
+    "transliteration": "prodavat",
+    "antonyms": [
+      "buy"
+    ],
+    "definition": "продавать"
+  },
+  "ask": {
+    "transliteration": "sprashivat",
+    "antonyms": [
+      "answer"
+    ],
+    "definition": "спрашивать"
+  },
+  "answer": {
+    "transliteration": "otvechat",
+    "antonyms": [
+      "ask"
+    ],
+    "definition": "отвечать"
+  },
+  "win": {
+    "transliteration": "vyigryvat",
+    "antonyms": [
+      "lose"
+    ],
+    "definition": "выигрывать"
+  },
+  "lose": {
+    "transliteration": "teryat, proigryvat",
+    "antonyms": [
+      "win",
+      "find"
+    ],
+    "definition": "терять, проигрывать"
+  },
+  "find": {
+    "transliteration": "nakhodit",
+    "antonyms": [
+      "lose"
+    ],
+    "definition": "находить"
+  },
+  "build": {
+    "transliteration": "stroit",
+    "antonyms": [
+      "destroy"
+    ],
+    "definition": "строить"
+  },
+  "destroy": {
+    "transliteration": "razrushat",
+    "antonyms": [
+      "build"
+    ],
+    "definition": "разрушать"
+  },
+  "accept": {
+    "transliteration": "prinimat",
+    "antonyms": [
+      "refuse"
+    ],
+    "definition": "принимать"
+  },
+  "refuse": {
+    "transliteration": "otkazyvatsya",
+    "antonyms": [
+      "accept"
+    ],
+    "definition": "отказываться"
+  },
+  "push": {
+    "transliteration": "tolkat",
+    "antonyms": [
+      "pull"
+    ],
+    "definition": "толкать"
+  },
+  "pull": {
+    "transliteration": "tyanut",
+    "antonyms": [
+      "push"
+    ],
+    "definition": "тянуть"
+  },
+  "rise": {
+    "transliteration": "podnimatsya",
+    "antonyms": [
+      "fall"
+    ],
+    "definition": "подниматься"
+  },
+  "fall": {
+    "transliteration": "padat",
+    "antonyms": [
+      "rise"
+    ],
+    "definition": "падать"
+  },
+  "laugh": {
+    "transliteration": "smeyatsya",
+    "antonyms": [
+      "cry"
+    ],
+    "definition": "смеяться"
+  },
+  "cry": {
+    "transliteration": "plakat",
+    "antonyms": [
+      "laugh"
+    ],
+    "definition": "плакать"
+  },
+  "wake": {
+    "transliteration": "prosypatsya",
+    "antonyms": [
+      "sleep"
+    ],
+    "definition": "просыпаться"
+  },
+  "sleep": {
+    "transliteration": "spat",
+    "antonyms": [
+      "wake"
+    ],
+    "definition": "спать"
+  },
+  "live": {
+    "transliteration": "zhit",
+    "antonyms": [
+      "die"
+    ],
+    "definition": "жить"
+  },
+  "die": {
+    "transliteration": "umirat",
+    "antonyms": [
+      "live"
+    ],
+    "definition": "умирать"
+  },
+  "day": {
+    "transliteration": "den",
+    "antonyms": [
+      "night"
+    ],
+    "definition": "день"
+  },
+  "night": {
+    "transliteration": "noch",
+    "antonyms": [
+      "day"
+    ],
+    "definition": "ночь"
+  },
+  "morning": {
+    "transliteration": "utro",
+    "antonyms": [
+      "evening"
+    ],
+    "definition": "утро"
+  },
+  "evening": {
+    "transliteration": "vecher",
+    "antonyms": [
+      "morning"
+    ],
+    "definition": "вечер"
+  },
+  "summer": {
+    "transliteration": "leto",
+    "antonyms": [
+      "winter"
+    ],
+    "definition": "лето"
+  },
+  "winter": {
+    "transliteration": "zima",
+    "antonyms": [
+      "summer"
+    ],
+    "definition": "зима"
+  },
+  "north": {
+    "transliteration": "sever",
+    "antonyms": [
+      "south"
+    ],
+    "definition": "север"
+  },
+  "south": {
+    "transliteration": "yug",
+    "antonyms": [
+      "north"
+    ],
+    "definition": "юг"
+  },
+  "east": {
+    "transliteration": "vostok",
+    "antonyms": [
+      "west"
+    ],
+    "definition": "восток"
+  },
+  "west": {
+    "transliteration": "zapad",
+    "antonyms": [
+      "east"
+    ],
+    "definition": "запад"
+  },
+  "beginning": {
+    "transliteration": "nachalo",
+    "antonyms": [
+      "end"
+    ],
+    "definition": "начало"
+  },
+  "end": {
+    "transliteration": "konets",
+    "antonyms": [
+      "beginning"
+    ],
+    "definition": "конец"
+  },
+  "question": {
+    "transliteration": "vopros",
+    "antonyms": [
+      "answer"
+    ],
+    "definition": "вопрос"
+  },
+  "war": {
+    "transliteration": "voyna",
+    "antonyms": [
+      "peace"
+    ],
+    "definition": "война"
+  },
+  "peace": {
+    "transliteration": "mir",
+    "antonyms": [
+      "war"
+    ],
+    "definition": "мир"
+  },
+  "friend": {
+    "transliteration": "drug",
+    "antonyms": [
+      "enemy"
+    ],
+    "definition": "друг"
+  },
+  "enemy": {
+    "transliteration": "vrag",
+    "antonyms": [
+      "friend"
+    ],
+    "definition": "враг"
+  },
+  "success": {
+    "transliteration": "uspekh",
+    "antonyms": [
+      "failure"
+    ],
+    "definition": "успех"
+  },
+  "failure": {
+    "transliteration": "neudacha",
+    "antonyms": [
+      "success"
+    ],
+    "definition": "неудача"
+  },
+  "life": {
+    "transliteration": "zhizn",
+    "antonyms": [
+      "death"
+    ],
+    "definition": "жизнь"
+  },
+  "death": {
+    "transliteration": "smert",
+    "antonyms": [
+      "life"
+    ],
+    "definition": "смерть"
+  },
+  "joy": {
+    "transliteration": "radost",
+    "antonyms": [
+      "sorrow"
+    ],
+    "definition": "радость"
+  },
+  "sorrow": {
+    "transliteration": "gore",
+    "antonyms": [
+      "joy"
+    ],
+    "definition": "горе"
+  },
+  "truth": {
+    "transliteration": "pravda",
+    "antonyms": [
+      "lie"
+    ],
+    "definition": "правда"
+  },
+  "lie": {
+    "transliteration": "lozh",
+    "antonyms": [
+      "truth"
+    ],
+    "definition": "ложь"
+  },
+  "entrance": {
+    "transliteration": "vkhod",
+    "antonyms": [
+      "exit"
+    ],
+    "definition": "вход"
+  },
+  "heaven": {
+    "transliteration": "ray",
+    "antonyms": [
+      "hell"
+    ],
+    "definition": "рай"
+  },
+  "hell": {
+    "transliteration": "ad",
+    "antonyms": [
+      "heaven"
+    ],
+    "definition": "ад"
+  },
+  "man": {
+    "transliteration": "muzhchina",
+    "antonyms": [
+      "woman"
+    ],
+    "definition": "мужчина"
+  },
+  "woman": {
+    "transliteration": "zhenshchina",
+    "antonyms": [
+      "man"
+    ],
+    "definition": "женщина"
+  },
+  "boy": {
+    "transliteration": "malchik",
+    "antonyms": [
+      "girl"
+    ],
+    "definition": "мальчик"
+  },
+  "girl": {
+    "transliteration": "devochka",
+    "antonyms": [
+      "boy"
+    ],
+    "definition": "девочка"
+  },
+  "father": {
+    "transliteration": "otets",
+    "antonyms": [
+      "mother"
+    ],
+    "definition": "отец"
+  },
+  "mother": {
+    "transliteration": "mat",
+    "antonyms": [
+      "father"
+    ],
+    "definition": "мать"
+  },
+  "husband": {
+    "transliteration": "muzh",
+    "antonyms": [
+      "wife"
+    ],
+    "definition": "муж"
+  },
+  "wife": {
+    "transliteration": "zhena",
+    "antonyms": [
+      "husband"
+    ],
+    "definition": "жена"
+  },
+  "son": {
+    "transliteration": "syn",
+    "antonyms": [
+      "daughter"
+    ],
+    "definition": "сын"
+  },
+  "daughter": {
+    "transliteration": "doch",
+    "antonyms": [
+      "son"
+    ],
+    "definition": "дочь"
+  },
+  "brother": {
+    "transliteration": "brat",
+    "antonyms": [
+      "sister"
+    ],
+    "definition": "брат"
+  },
+  "sister": {
+    "transliteration": "sestra",
+    "antonyms": [
+      "brother"
+    ],
+    "definition": "сестра"
+  },
+  "here": {
+    "transliteration": "zdes",
+    "antonyms": [
+      "there"
+    ],
+    "definition": "здесь"
+  },
+  "there": {
+    "transliteration": "tam",
+    "antonyms": [
+      "here"
+    ],
+    "definition": "там"
+  },
+  "now": {
+    "transliteration": "seychas",
+    "antonyms": [
+      "then"
+    ],
+    "definition": "сейчас"
+  },
+  "then": {
+    "transliteration": "togda",
+    "antonyms": [
+      "now"
+    ],
+    "definition": "тогда"
+  },
+  "always": {
+    "transliteration": "vsegda",
+    "antonyms": [
+      "never"
+    ],
+    "definition": "всегда"
+  },
+  "never": {
+    "transliteration": "nikogda",
+    "antonyms": [
+      "always"
+    ],
+    "definition": "никогда"
+  },
+  "often": {
+    "transliteration": "chasto",
+    "antonyms": [
+      "rarely"
+    ],
+    "definition": "часто"
+  },
+  "rarely": {
+    "transliteration": "redko",
+    "antonyms": [
+      "often"
+    ],
+    "definition": "редко"
+  },
+  "everywhere": {
+    "transliteration": "vezde",
+    "antonyms": [
+      "nowhere"
+    ],
+    "definition": "везде"
+  },
+  "nowhere": {
+    "transliteration": "nigde",
+    "antonyms": [
+      "everywhere"
+    ],
+    "definition": "нигде"
+  },
+  "together": {
+    "transliteration": "vmeste",
+    "antonyms": [
+      "separately"
+    ],
+    "definition": "вместе"
+  },
+  "separately": {
+    "transliteration": "otdelno",
+    "antonyms": [
+      "together"
+    ],
+    "definition": "отдельно"
+  },
+  "inside": {
+    "transliteration": "vnutri",
+    "antonyms": [
+      "outside"
+    ],
+    "definition": "внутри"
+  },
+  "outside": {
+    "transliteration": "snaruzhi",
+    "antonyms": [
+      "inside"
+    ],
+    "definition": "снаружи"
+  },
+  "up": {
+    "transliteration": "vverkh",
+    "antonyms": [
+      "down"
+    ],
+    "definition": "вверх"
+  },
+  "forward": {
+    "transliteration": "vperyod",
+    "antonyms": [
+      "backward"
+    ],
+    "definition": "вперёд"
+  },
+  "backward": {
+    "transliteration": "nazad",
+    "antonyms": [
+      "forward"
+    ],
+    "definition": "назад"
+  },
+  "more": {
+    "transliteration": "bolshe",
+    "antonyms": [
+      "less"
+    ],
+    "definition": "больше"
+  },
+  "less": {
+    "transliteration": "menshe",
+    "antonyms": [
+      "more"
+    ],
+    "definition": "меньше"
+  },
+  "early": {
+    "transliteration": "rano",
+    "antonyms": [
+      "late"
+    ],
+    "definition": "рано"
+  },
+  "late": {
+    "transliteration": "pozdno",
+    "antonyms": [
+      "early"
+    ],
+    "definition": "поздно"
+  },
+  "quickly": {
+    "transliteration": "bystro",
+    "antonyms": [
+      "slowly"
+    ],
+    "definition": "быстро"
+  },
+  "slowly": {
+    "transliteration": "medlenno",
+    "antonyms": [
+      "quickly"
+    ],
+    "definition": "медленно"
+  },
+  "the early bird catches the worm": {
+    "transliteration": "kto rano vstayot, tomu Bog podayot",
+    "type": "proverb",
+    "definition": "кто рано встаёт, тому Бог подаёт"
+  },
+  "practice makes perfect": {
+    "transliteration": "povtoreniye — mat ucheniya",
+    "type": "proverb",
+    "definition": "повторение — мать учения"
+  },
+  "all that glitters is not gold": {
+    "transliteration": "ne vsyo to zoloto, chto blestit",
+    "type": "proverb",
+    "definition": "не всё то золото, что блестит"
+  },
+  "where there's a will there's a way": {
+    "transliteration": "bylo by zhelaniye",
+    "type": "proverb",
+    "definition": "было бы желание"
+  },
+  "a friend in need is a friend indeed": {
+    "transliteration": "drug poznayotsya v bede",
+    "type": "proverb",
+    "definition": "друг познаётся в беде"
+  },
+  "when in rome do as the romans do": {
+    "transliteration": "v chuzhoy monastyr so svoim ustavom ne khodyat",
+    "type": "proverb",
+    "definition": "в чужой монастырь со своим уставом не ходят"
+  },
+  "there's no place like home": {
+    "transliteration": "v gostyakh khorosho, a doma luchshe",
+    "type": "proverb",
+    "definition": "в гостях хорошо, а дома лучше"
+  },
+  "the apple doesn't fall far from the tree": {
+    "transliteration": "yabloko ot yabloni nedaleko padayet",
+    "type": "proverb",
+    "definition": "яблоко от яблони недалеко падает"
+  },
+  "don't count your chickens before they hatch": {
+    "transliteration": "tsyplyat po oseni schitayut",
+    "type": "proverb",
+    "definition": "цыплят по осени считают"
+  },
+  "a penny saved is a penny earned": {
+    "transliteration": "kopeyka rubl berezhyot",
+    "type": "proverb",
+    "definition": "копейка рубль бережёт"
+  },
+  "the grass is always greener on the other side": {
+    "transliteration": "khorosho tam, gde nas net",
+    "type": "proverb",
+    "definition": "хорошо там, где нас нет"
+  },
+  "you can't have your cake and eat it too": {
+    "transliteration": "i volki syty, i ovtsy tsely",
+    "type": "proverb",
+    "definition": "и волки сыты, и овцы целы"
+  },
+  "two heads are better than one": {
+    "transliteration": "um khorosho, a dva luchshe",
+    "type": "proverb",
+    "definition": "ум хорошо, а два лучше"
+  },
+  "rome wasn't built in a day": {
+    "transliteration": "Moskva ne srazu stroilas",
+    "type": "proverb",
+    "definition": "Москва не сразу строилась"
+  },
+  "once bitten twice shy": {
+    "transliteration": "obzhyogshis na moloke, duyesh na vodu",
+    "type": "proverb",
+    "definition": "обжёгшись на молоке, дуешь на воду"
+  },
+  "what goes around comes around": {
+    "transliteration": "kak auknetsya, tak i otkliknetsya",
+    "type": "proverb",
+    "definition": "как аукнется, так и откликнется"
+  },
+  "when the cat's away the mice will play": {
+    "transliteration": "bez kota mysham razdolye",
+    "type": "proverb",
+    "definition": "без кота мышам раздолье"
+  },
+  "too many cooks spoil the broth": {
+    "transliteration": "u semi nyanek ditya bez glaza",
+    "type": "proverb",
+    "definition": "у семи нянек дитя без глаза"
+  },
+  "look before you leap": {
+    "transliteration": "sem raz otmer, odin raz otrezh",
+    "type": "proverb",
+    "definition": "семь раз отмерь, один раз отрежь"
+  },
+  "a rolling stone gathers no moss": {
+    "transliteration": "pod lezhachiy kamen voda ne techyot",
+    "type": "proverb",
+    "definition": "под лежачий камень вода не течёт"
+  },
+  "an eye for an eye": {
+    "transliteration": "oko za oko",
+    "type": "proverb",
+    "definition": "око за око"
+  },
+  "curiosity killed the cat": {
+    "transliteration": "lyubopytstvo sgubilo koshku",
+    "type": "proverb",
+    "definition": "любопытство сгубило кошку"
+  },
+  "you can lead a horse to water but you can't make it drink": {
+    "transliteration": "siloy mil ne budesh",
+    "type": "proverb",
+    "definition": "силой мил не будешь"
+  },
+  "time heals all wounds": {
+    "transliteration": "vremya lechit",
+    "type": "proverb",
+    "definition": "время лечит"
+  },
+  "if you chase two rabbits you will catch neither": {
+    "transliteration": "za dvumya zaytsami pogonishsya — ni odnogo ne poymayesh",
+    "type": "proverb",
+    "definition": "за двумя зайцами погонишься — ни одного не поймаешь"
+  },
+  "damn it": {
+    "transliteration": "chyort vozmi",
+    "type": "profanity",
+    "definition": "чёрт возьми"
+  },
+  "for fuck's sake": {
+    "transliteration": "yob tvoyu mat, da blyad",
+    "type": "profanity",
+    "definition": "ёб твою мать, да блядь"
+  },
+  "goddamn": {
+    "transliteration": "chyort poberi",
+    "type": "profanity",
+    "definition": "чёрт побери"
+  },
+  "fuck": {
+    "transliteration": "blyad",
+    "type": "profanity",
+    "definition": "блядь"
+  },
+  "shit": {
+    "transliteration": "blyad, dermo",
+    "type": "profanity",
+    "definition": "блядь, дерьмо"
+  },
+  "asshole": {
+    "transliteration": "mudak",
+    "type": "profanity",
+    "definition": "мудак"
+  },
+  "bitch": {
+    "transliteration": "suka",
+    "type": "profanity",
+    "definition": "сука"
+  },
+  "bastard": {
+    "transliteration": "ublyudok",
+    "type": "profanity",
+    "definition": "ублюдок"
+  },
+  "idiot": {
+    "transliteration": "idiot, durak",
+    "type": "profanity",
+    "definition": "идиот, дурак"
+  },
+  "moron": {
+    "transliteration": "debil",
+    "type": "profanity",
+    "definition": "дебил"
+  },
+  "fucking idiot": {
+    "transliteration": "dolboyob",
+    "type": "profanity",
+    "definition": "долбоёб"
+  },
+  "dumbass": {
+    "transliteration": "yeblan, tupitsa",
+    "type": "profanity",
+    "definition": "еблан, тупица"
+  },
+  "piece of shit": {
+    "transliteration": "kusok derma, uyobok",
+    "type": "profanity",
+    "definition": "кусок дерьма, уёбок"
+  },
+  "scumbag": {
+    "transliteration": "mraz",
+    "type": "profanity",
+    "definition": "мразь"
+  },
+  "jerk": {
+    "transliteration": "kozyol",
+    "type": "profanity",
+    "definition": "козёл"
+  },
+  "dick": {
+    "transliteration": "kher, chlen",
+    "type": "profanity",
+    "definition": "хер, член"
+  },
+  "prick": {
+    "transliteration": "khuy, mudak",
+    "type": "profanity",
+    "definition": "хуй, мудак"
+  },
+  "loser": {
+    "transliteration": "neudachnik, luzer",
+    "type": "profanity",
+    "definition": "неудачник, лузер"
+  },
+  "go fuck yourself": {
+    "transliteration": "idi nakhuy",
+    "type": "profanity",
+    "definition": "иди нахуй"
+  },
+  "shut the fuck up": {
+    "transliteration": "zakroy yebalo",
+    "type": "profanity",
+    "definition": "закрой ебало"
+  },
+  "leave me alone": {
+    "transliteration": "otstan",
+    "type": "profanity",
+    "definition": "отстань"
+  },
+  "leave me the fuck alone": {
+    "transliteration": "otyebis",
+    "type": "profanity",
+    "definition": "отъебись"
+  },
+  "get out": {
+    "transliteration": "ubiraisa",
+    "type": "profanity",
+    "definition": "убирайся"
+  },
+  "get lost": {
+    "transliteration": "provalivay",
+    "type": "profanity",
+    "definition": "проваливай"
+  },
+  "don't bullshit me": {
+    "transliteration": "ne pizdi",
+    "type": "profanity",
+    "definition": "не пизди"
+  },
+  "stop talking shit": {
+    "transliteration": "ne nesi khuynu",
+    "type": "profanity",
+    "definition": "не неси хуйню"
+  },
+  "fuck yeah": {
+    "transliteration": "akhuyenno",
+    "type": "profanity",
+    "definition": "ахуенно"
+  },
+  "no fucking way": {
+    "transliteration": "nu nakhuy",
+    "type": "profanity",
+    "definition": "ну нахуй"
+  },
+  "i don't give a fuck": {
+    "transliteration": "mne pokhuy, mne poyebat",
+    "type": "profanity",
+    "definition": "мне похуй, мне поебать"
+  },
+  "i don't give a shit": {
+    "transliteration": "mne nasrat",
+    "type": "profanity",
+    "definition": "мне насрать"
+  },
+  "this is bullshit": {
+    "transliteration": "eto khuynya",
+    "type": "profanity",
+    "definition": "это хуйня"
+  },
+  "total disaster": {
+    "transliteration": "polnyy pizdets",
+    "type": "profanity",
+    "definition": "полный пиздец"
+  },
+  "i feel like shit": {
+    "transliteration": "mne khuyovo",
+    "type": "profanity",
+    "definition": "мне хуёво"
+  },
+  "to fuck up": {
+    "transliteration": "oblazhat'sya, zaporot",
+    "type": "profanity",
+    "definition": "облажаться, запороть"
+  },
+  "to screw up": {
+    "transliteration": "oblazhat'sya",
+    "type": "profanity",
+    "definition": "облажаться"
+  },
+  "to bullshit": {
+    "transliteration": "pizdet",
+    "type": "profanity",
+    "definition": "пиздеть"
+  },
+  "to talk shit": {
+    "transliteration": "khuynu nesti",
+    "type": "profanity",
+    "definition": "хуйню нести"
+  },
+  "to be fucked": {
+    "transliteration": "popast",
+    "type": "profanity",
+    "definition": "попасть"
+  },
+  "to work hard": {
+    "transliteration": "yebashit, khuyarit",
+    "type": "profanity",
+    "definition": "ебашить, хуярить"
+  },
+  "fucked up": {
+    "transliteration": "zaporotyy",
+    "type": "profanity",
+    "definition": "запоротый"
+  },
+  "ass-backwards": {
+    "transliteration": "cherez zhopu",
+    "type": "profanity",
+    "definition": "через жопу"
+  },
+  "zero": {
+    "transliteration": "nol",
+    "definition": "ноль"
+  },
+  "one": {
+    "transliteration": "odin",
+    "definition": "один"
+  },
+  "two": {
+    "transliteration": "dva",
+    "definition": "два"
+  },
+  "three": {
+    "transliteration": "tri",
+    "definition": "три"
+  },
+  "four": {
+    "transliteration": "chetyre",
+    "definition": "четыре"
+  },
+  "five": {
+    "transliteration": "pyat",
+    "definition": "пять"
+  },
+  "six": {
+    "transliteration": "shest",
+    "definition": "шесть"
+  },
+  "seven": {
+    "transliteration": "sem",
+    "definition": "семь"
+  },
+  "eight": {
+    "transliteration": "vosem",
+    "definition": "восемь"
+  },
+  "nine": {
+    "transliteration": "devyat",
+    "definition": "девять"
+  },
+  "ten": {
+    "transliteration": "desyat",
+    "definition": "десять"
+  },
+  "eleven": {
+    "transliteration": "odinnadtsat",
+    "definition": "одиннадцать"
+  },
+  "twelve": {
+    "transliteration": "dvenadtsat",
+    "definition": "двенадцать"
+  },
+  "twenty": {
+    "transliteration": "dvadtsat",
+    "definition": "двадцать"
+  },
+  "thirty": {
+    "transliteration": "tridtsat",
+    "definition": "тридцать"
+  },
+  "forty": {
+    "transliteration": "sorok",
+    "definition": "сорок"
+  },
+  "fifty": {
+    "transliteration": "pyatdesyat",
+    "definition": "пятьдесят"
+  },
+  "hundred": {
+    "transliteration": "sto",
+    "definition": "сто"
+  },
+  "thousand": {
+    "transliteration": "tysyacha",
+    "definition": "тысяча"
+  },
+  "million": {
+    "transliteration": "million",
+    "definition": "миллион"
+  },
+  "first": {
+    "transliteration": "pervyy",
+    "definition": "первый"
+  },
+  "second": {
+    "transliteration": "vtoroy",
+    "definition": "второй"
+  },
+  "third": {
+    "transliteration": "tretiy",
+    "definition": "третий"
+  },
+  "fourth": {
+    "transliteration": "chetvyortyy",
+    "definition": "четвёртый"
+  },
+  "fifth": {
+    "transliteration": "pyatyy",
+    "definition": "пятый"
+  },
+  "last": {
+    "transliteration": "posledniy",
+    "definition": "последний"
+  },
+  "monday": {
+    "transliteration": "ponedelnik",
+    "definition": "понедельник"
+  },
+  "tuesday": {
+    "transliteration": "vtornik",
+    "definition": "вторник"
+  },
+  "wednesday": {
+    "transliteration": "sreda",
+    "definition": "среда"
+  },
+  "thursday": {
+    "transliteration": "chetverg",
+    "definition": "четверг"
+  },
+  "friday": {
+    "transliteration": "pyatnitsa",
+    "definition": "пятница"
+  },
+  "saturday": {
+    "transliteration": "subbota",
+    "definition": "суббота"
+  },
+  "sunday": {
+    "transliteration": "voskresenye",
+    "definition": "воскресенье"
+  },
+  "january": {
+    "transliteration": "yanvar",
+    "definition": "январь"
+  },
+  "february": {
+    "transliteration": "fevral",
+    "definition": "февраль"
+  },
+  "april": {
+    "transliteration": "aprel",
+    "definition": "апрель"
+  },
+  "may": {
+    "transliteration": "may",
+    "definition": "май"
+  },
+  "june": {
+    "transliteration": "iyun",
+    "definition": "июнь"
+  },
+  "july": {
+    "transliteration": "iyul",
+    "definition": "июль"
+  },
+  "august": {
+    "transliteration": "avgust",
+    "definition": "август"
+  },
+  "september": {
+    "transliteration": "sentyabr",
+    "definition": "сентябрь"
+  },
+  "october": {
+    "transliteration": "oktyabr",
+    "definition": "октябрь"
+  },
+  "november": {
+    "transliteration": "noyabr",
+    "definition": "ноябрь"
+  },
+  "december": {
+    "transliteration": "dekabr",
+    "definition": "декабрь"
+  },
+  "spring": {
+    "transliteration": "vesna",
+    "definition": "весна"
+  },
+  "autumn": {
+    "transliteration": "osen",
+    "definition": "осень"
+  },
+  "today": {
+    "transliteration": "segodnya",
+    "definition": "сегодня"
+  },
+  "tomorrow": {
+    "transliteration": "zavtra",
+    "definition": "завтра"
+  },
+  "yesterday": {
+    "transliteration": "vchera",
+    "definition": "вчера"
+  },
+  "this week": {
+    "transliteration": "na etoy nedele",
+    "definition": "на этой неделе"
+  },
+  "next week": {
+    "transliteration": "na sleduyushchey nedele",
+    "definition": "на следующей неделе"
+  },
+  "last week": {
+    "transliteration": "na proshloy nedele",
+    "definition": "на прошлой неделе"
+  },
+  "in the morning": {
+    "transliteration": "utrom",
+    "definition": "утром"
+  },
+  "in the afternoon": {
+    "transliteration": "dnyom",
+    "definition": "днём"
+  },
+  "in the evening": {
+    "transliteration": "vecherom",
+    "definition": "вечером"
+  },
+  "at night": {
+    "transliteration": "nochyu",
+    "definition": "ночью"
+  },
+  "hour": {
+    "transliteration": "chas",
+    "definition": "час"
+  },
+  "week": {
+    "transliteration": "nedelya",
+    "definition": "неделя"
+  },
+  "month": {
+    "transliteration": "mesyats",
+    "definition": "месяц"
+  },
+  "year": {
+    "transliteration": "god",
+    "definition": "год"
   }
 }
