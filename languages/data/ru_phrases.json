@@ -3,7 +3,6 @@
     "description": "Russian phrases and expressions with translations",
     "format": "phrase (cyrillic) -> translation data"
   },
-  
   "я не знаю": {
     "translation": "I don't know",
     "transliteration": "ya ne znayu",
@@ -661,5 +660,586 @@
     "literal": "not know",
     "register": "neutral",
     "usage": "expressing uncertainty (short form)"
+  },
+  "вот это да": {
+    "translation": "wow! / how about that!",
+    "transliteration": "vot eto da",
+    "literal": "here this yes",
+    "register": "informal",
+    "usage": "expression of astonishment"
+  },
+  "ничего себе": {
+    "translation": "wow!",
+    "transliteration": "nichego sebe",
+    "literal": "nothing to oneself",
+    "register": "informal",
+    "usage": "expression of amazement (colloquial)"
+  },
+  "не может быть": {
+    "translation": "no way! / it can't be! / impossible!",
+    "transliteration": "ne mozhet byt",
+    "literal": "not can be",
+    "register": "neutral",
+    "usage": "expression of disbelief"
+  },
+  "здравствуй": {
+    "translation": "hello (informal)",
+    "transliteration": "zdravstvuy",
+    "literal": "be healthy",
+    "register": "informal",
+    "usage": "greeting to one person (informal)"
+  },
+  "здравствуйте": {
+    "translation": "hello (formal/plural)",
+    "transliteration": "zdravstvuyte",
+    "literal": "be healthy",
+    "register": "formal",
+    "usage": "greeting (formal or to multiple people)"
+  },
+  "здорово": {
+    "translation": "hey! / hi!",
+    "transliteration": "zdorovo",
+    "literal": "healthily",
+    "register": "informal",
+    "usage": "casual greeting between friends"
+  },
+  "прощай": {
+    "translation": "farewell / goodbye (final)",
+    "transliteration": "proshchay",
+    "literal": "forgive",
+    "register": "neutral",
+    "usage": "saying goodbye (may not see again)"
+  },
+  "прощайте": {
+    "translation": "farewell (formal/plural)",
+    "transliteration": "proshchayte",
+    "literal": "forgive",
+    "register": "formal",
+    "usage": "formal farewell"
+  },
+  "до встречи": {
+    "translation": "see you / until we meet",
+    "transliteration": "do vstrechi",
+    "literal": "until meeting",
+    "register": "neutral",
+    "usage": "casual farewell"
+  },
+  "до скорой встречи": {
+    "translation": "see you soon",
+    "transliteration": "do skoroy vstrechi",
+    "literal": "until soon meeting",
+    "register": "neutral",
+    "usage": "farewell expecting to meet soon"
+  },
+  "всего доброго": {
+    "translation": "all the best / take care",
+    "transliteration": "vsego dobrogo",
+    "literal": "of all good",
+    "register": "neutral",
+    "usage": "farewell wishing well"
+  },
+  "всего хорошего": {
+    "translation": "all the best",
+    "transliteration": "vsego khoroshego",
+    "literal": "of all good",
+    "register": "neutral",
+    "usage": "farewell"
+  },
+  "всего наилучшего": {
+    "translation": "all the very best",
+    "transliteration": "vsego nailuchshego",
+    "literal": "of all the best",
+    "register": "formal",
+    "usage": "formal farewell"
+  },
+  "приятно познакомиться": {
+    "translation": "nice to meet you",
+    "transliteration": "priyatno poznakomitsya",
+    "literal": "pleasant to get acquainted",
+    "register": "neutral",
+    "usage": "when meeting someone"
+  },
+  "откуда вы родом": {
+    "translation": "where are you from (formal)",
+    "transliteration": "otkuda vy rodom",
+    "literal": "from where you origin",
+    "register": "formal",
+    "usage": "asking origin"
+  },
+  "откуда ты родом": {
+    "translation": "where are you from (informal)",
+    "transliteration": "otkuda ty rodom",
+    "literal": "from where you origin",
+    "register": "informal",
+    "usage": "asking origin"
+  },
+  "как вы поживаете": {
+    "translation": "how are you (formal)",
+    "transliteration": "kak vy pozhivayete",
+    "literal": "how you living",
+    "register": "formal",
+    "usage": "formal inquiry about wellbeing"
+  },
+  "как поживаешь": {
+    "translation": "how are you doing (informal)",
+    "transliteration": "kak pozhivayesh",
+    "literal": "how living",
+    "register": "informal",
+    "usage": "casual inquiry"
+  },
+  "как поживаете": {
+    "translation": "how are you doing",
+    "transliteration": "kak pozhivayete",
+    "literal": "how living",
+    "register": "neutral",
+    "usage": "inquiry about wellbeing"
+  },
+  "на здоровье": {
+    "translation": "you're welcome / to your health",
+    "transliteration": "na zdorovye",
+    "literal": "to health",
+    "register": "neutral",
+    "usage": "response to thanks or toast"
+  },
+  "не стоит благодарности": {
+    "translation": "don't mention it / no need to thank",
+    "transliteration": "ne stoit blagodarnosti",
+    "literal": "not worth gratitude",
+    "register": "formal",
+    "usage": "formal response to thanks"
+  },
+  "с удовольствием": {
+    "translation": "with pleasure / gladly",
+    "transliteration": "s udovolstviyem",
+    "literal": "with pleasure",
+    "register": "neutral",
+    "usage": "agreeing to do something"
+  },
+  "с радостью": {
+    "translation": "with joy / gladly",
+    "transliteration": "s radostyu",
+    "literal": "with joy",
+    "register": "neutral",
+    "usage": "agreeing enthusiastically"
+  },
+  "будьте добры": {
+    "translation": "would you be so kind / please",
+    "transliteration": "budte dobry",
+    "literal": "be kind",
+    "register": "formal",
+    "usage": "polite request"
+  },
+  "будь другом": {
+    "translation": "be a friend / do me a favor",
+    "transliteration": "bud drugom",
+    "literal": "be friend",
+    "register": "informal",
+    "usage": "asking for favor"
+  },
+  "можно войти": {
+    "translation": "may I come in",
+    "transliteration": "mozhno voyti",
+    "literal": "possible to enter",
+    "register": "neutral",
+    "usage": "asking permission to enter"
+  },
+  "у меня есть вопрос": {
+    "translation": "I have a question",
+    "transliteration": "u menya yest vopros",
+    "literal": "at me is question",
+    "register": "neutral",
+    "usage": "before asking something"
+  },
+  "что значит": {
+    "translation": "what does ... mean",
+    "transliteration": "chto znachit",
+    "literal": "what means",
+    "register": "neutral",
+    "usage": "asking for meaning"
+  },
+  "как по-русски": {
+    "translation": "how do you say in Russian",
+    "transliteration": "kak po-russki",
+    "literal": "how in-Russian",
+    "register": "neutral",
+    "usage": "asking for translation"
+  },
+  "как произносится это слово": {
+    "translation": "how is this word pronounced",
+    "transliteration": "kak proiznositsya eto slovo",
+    "literal": "how pronounces this word",
+    "register": "neutral",
+    "usage": "asking pronunciation"
+  },
+  "мне жарко": {
+    "translation": "I'm hot",
+    "transliteration": "mne zharko",
+    "literal": "to-me hot",
+    "register": "neutral",
+    "usage": "expressing being hot"
+  },
+  "мне холодно": {
+    "translation": "I'm cold",
+    "transliteration": "mne kholodno",
+    "literal": "to-me cold",
+    "register": "neutral",
+    "usage": "expressing being cold"
+  },
+  "мне стыдно": {
+    "translation": "I'm ashamed",
+    "transliteration": "mne stydno",
+    "literal": "to-me shameful",
+    "register": "neutral",
+    "usage": "expressing shame"
+  },
+  "у меня нет денег": {
+    "translation": "I have no money",
+    "transliteration": "u menya net deneg",
+    "literal": "at me no money",
+    "register": "neutral",
+    "usage": "stating lack of money"
+  },
+  "будь здоров": {
+    "translation": "bless you / be healthy",
+    "transliteration": "bud zdorov",
+    "literal": "be healthy",
+    "register": "informal",
+    "usage": "after sneeze or farewell"
+  },
+  "будьте здоровы": {
+    "translation": "bless you / be healthy (formal)",
+    "transliteration": "budte zdorovy",
+    "literal": "be healthy",
+    "register": "formal",
+    "usage": "after sneeze or farewell"
+  },
+  "будь что будет": {
+    "translation": "come what may / whatever will be",
+    "transliteration": "bud chto budet",
+    "literal": "be what will-be",
+    "register": "neutral",
+    "usage": "accepting fate"
+  },
+  "дело в том что": {
+    "translation": "the thing is / the point is",
+    "transliteration": "delo v tom chto",
+    "literal": "matter in that that",
+    "register": "neutral",
+    "usage": "explaining situation"
+  },
+  "тогда ладно": {
+    "translation": "okay then / alright then",
+    "transliteration": "togda ladno",
+    "literal": "then okay",
+    "register": "informal",
+    "usage": "accepting or agreeing"
+  },
+  "я так думаю": {
+    "translation": "I think so",
+    "transliteration": "ya tak dumayu",
+    "literal": "I so think",
+    "register": "neutral",
+    "usage": "expressing opinion"
+  },
+  "не думаю": {
+    "translation": "I don't think so",
+    "transliteration": "ne dumayu",
+    "literal": "not think",
+    "register": "neutral",
+    "usage": "expressing disagreement"
+  },
+  "за ваше здоровье": {
+    "translation": "to your health (formal)",
+    "transliteration": "za vashe zdorovye",
+    "literal": "for your health",
+    "register": "formal",
+    "usage": "toast"
+  },
+  "за твоё здоровье": {
+    "translation": "to your health (informal)",
+    "transliteration": "za tvoyo zdorovye",
+    "literal": "for your health",
+    "register": "informal",
+    "usage": "toast"
+  },
+  "пей до дна": {
+    "translation": "bottoms up / drink to the bottom",
+    "transliteration": "pey do dna",
+    "literal": "drink to bottom",
+    "register": "informal",
+    "usage": "drinking toast"
+  },
+  "с днём рождения": {
+    "translation": "happy birthday",
+    "transliteration": "s dnyom rozhdeniya",
+    "literal": "with day of-birth",
+    "register": "neutral",
+    "usage": "birthday greeting"
+  },
+  "поздравляю с днём рождения": {
+    "translation": "congratulations on your birthday",
+    "transliteration": "pozdravlyayu s dnyom rozhdeniya",
+    "literal": "congratulate with day of-birth",
+    "register": "neutral",
+    "usage": "birthday greeting"
+  },
+  "с Новым годом": {
+    "translation": "happy New Year",
+    "transliteration": "s Novym godom",
+    "literal": "with New year",
+    "register": "neutral",
+    "usage": "New Year greeting"
+  },
+  "с Рождеством": {
+    "translation": "merry Christmas",
+    "transliteration": "s Rozhdestvom",
+    "literal": "with Christmas",
+    "register": "neutral",
+    "usage": "Christmas greeting"
+  },
+  "с праздником": {
+    "translation": "happy holiday",
+    "transliteration": "s prazdnikom",
+    "literal": "with holiday",
+    "register": "neutral",
+    "usage": "general holiday greeting"
+  },
+  "счастливого пути": {
+    "translation": "have a good trip / bon voyage",
+    "transliteration": "schastlivogo puti",
+    "literal": "happy path",
+    "register": "neutral",
+    "usage": "wishing safe travels"
+  },
+  "доброго пути": {
+    "translation": "have a good journey",
+    "transliteration": "dobrogo puti",
+    "literal": "good path",
+    "register": "neutral",
+    "usage": "farewell to traveler"
+  },
+  "с приездом": {
+    "translation": "welcome (to someone arriving)",
+    "transliteration": "s priyezdom",
+    "literal": "with arrival",
+    "register": "neutral",
+    "usage": "welcoming an arrival"
+  },
+  "добро пожаловать": {
+    "translation": "welcome",
+    "transliteration": "dobro pozhalovat",
+    "literal": "good to-welcome",
+    "register": "neutral",
+    "usage": "welcoming someone"
+  },
+  "мне нужен врач": {
+    "translation": "I need a doctor",
+    "transliteration": "mne nuzhen vrach",
+    "literal": "to-me needed doctor",
+    "register": "neutral",
+    "usage": "medical emergency"
+  },
+  "мне нужен переводчик": {
+    "translation": "I need a translator",
+    "transliteration": "mne nuzhen perevodchik",
+    "literal": "to-me needed translator",
+    "register": "neutral",
+    "usage": "requesting translator"
+  },
+  "мне нужна ваша помощь": {
+    "translation": "I need your help (formal)",
+    "transliteration": "mne nuzhna vasha pomoshch",
+    "literal": "to-me needed your help",
+    "register": "formal",
+    "usage": "asking for help"
+  },
+  "мне нужна твоя помощь": {
+    "translation": "I need your help (informal)",
+    "transliteration": "mne nuzhna tvoya pomoshch",
+    "literal": "to-me needed your help",
+    "register": "informal",
+    "usage": "asking for help"
+  },
+  "что за чёрт": {
+    "translation": "what the hell / what the devil",
+    "transliteration": "chto za chyort",
+    "literal": "what for devil",
+    "register": "informal",
+    "usage": "expression of frustration"
+  },
+  "кто там": {
+    "translation": "who's there",
+    "transliteration": "kto tam",
+    "literal": "who there",
+    "register": "neutral",
+    "usage": "asking who is at door"
+  },
+  "что это такое": {
+    "translation": "what is this / what is that",
+    "transliteration": "chto eto takoye",
+    "literal": "what this such",
+    "register": "neutral",
+    "usage": "asking about something"
+  },
+  "сколько времени": {
+    "translation": "what time is it",
+    "transliteration": "skolko vremeni",
+    "literal": "how-much time",
+    "register": "neutral",
+    "usage": "asking the time"
+  },
+  "я вас люблю": {
+    "translation": "I love you (formal)",
+    "transliteration": "ya vas lyublyu",
+    "literal": "I you love",
+    "register": "formal",
+    "usage": "expressing love (formal)"
+  },
+  "ты мне нравишься": {
+    "translation": "I like you",
+    "transliteration": "ty mne nravishsya",
+    "literal": "you to-me pleasing",
+    "register": "informal",
+    "usage": "expressing attraction"
+  },
+  "вы мне нравитесь": {
+    "translation": "I like you (formal)",
+    "transliteration": "vy mne nravites",
+    "literal": "you to-me pleasing",
+    "register": "formal",
+    "usage": "expressing attraction (formal)"
+  },
+  "выходи за меня замуж": {
+    "translation": "marry me (to a woman)",
+    "transliteration": "vykhodi za menya zamuzh",
+    "literal": "go-out for me married",
+    "register": "informal",
+    "usage": "marriage proposal to woman"
+  },
+  "любовь с первого взгляда": {
+    "translation": "love at first sight",
+    "transliteration": "lyubov s pervogo vzglyada",
+    "literal": "love from first glance",
+    "register": "neutral",
+    "usage": "describing instant love"
+  },
+  "я тебя ненавижу": {
+    "translation": "I hate you",
+    "transliteration": "ya tebya nenavizhu",
+    "literal": "I you hate",
+    "register": "informal",
+    "usage": "expressing hatred"
+  },
+  "сколько вам лет": {
+    "translation": "how old are you (formal)",
+    "transliteration": "skolko vam let",
+    "literal": "how-many to-you years",
+    "register": "formal",
+    "usage": "asking age"
+  },
+  "сколько тебе лет": {
+    "translation": "how old are you (informal)",
+    "transliteration": "skolko tebe let",
+    "literal": "how-many to-you years",
+    "register": "informal",
+    "usage": "asking age"
+  },
+  "ты женат": {
+    "translation": "are you married (to a man)",
+    "transliteration": "ty zhenat",
+    "literal": "you married",
+    "register": "informal",
+    "usage": "asking if man is married"
+  },
+  "вы женаты": {
+    "translation": "are you married (formal, to a man)",
+    "transliteration": "vy zhenaty",
+    "literal": "you married",
+    "register": "formal",
+    "usage": "asking if man is married"
+  },
+  "ты замужем": {
+    "translation": "are you married (to a woman)",
+    "transliteration": "ty zamuzhem",
+    "literal": "you behind-husband",
+    "register": "informal",
+    "usage": "asking if woman is married"
+  },
+  "вы замужем": {
+    "translation": "are you married (formal, to a woman)",
+    "transliteration": "vy zamuzhem",
+    "literal": "you behind-husband",
+    "register": "formal",
+    "usage": "asking if woman is married"
+  },
+  "давно не виделись": {
+    "translation": "long time no see",
+    "transliteration": "davno ne videlis",
+    "literal": "long not saw",
+    "register": "informal",
+    "usage": "greeting after long absence"
+  },
+  "сколько лет сколько зим": {
+    "translation": "long time no see / it's been ages",
+    "transliteration": "skolko let skolko zim",
+    "literal": "how-many years how-many winters",
+    "register": "informal",
+    "usage": "greeting after long absence"
+  },
+  "приятного аппетита": {
+    "translation": "bon appetit / enjoy your meal",
+    "transliteration": "priyatnogo appetita",
+    "literal": "pleasant appetite",
+    "register": "neutral",
+    "usage": "before eating"
+  },
+  "сладких снов": {
+    "translation": "sweet dreams",
+    "transliteration": "sladkikh snov",
+    "literal": "sweet dreams",
+    "register": "neutral",
+    "usage": "saying goodnight"
+  },
+  "я русский": {
+    "translation": "I am Russian (male)",
+    "transliteration": "ya russkiy",
+    "literal": "I Russian",
+    "register": "neutral",
+    "usage": "stating nationality (male)"
+  },
+  "я русская": {
+    "translation": "I am Russian (female)",
+    "transliteration": "ya russkaya",
+    "literal": "I Russian",
+    "register": "neutral",
+    "usage": "stating nationality (female)"
+  },
+  "удачи": {
+    "translation": "good luck",
+    "transliteration": "udachi",
+    "literal": "of luck",
+    "register": "neutral",
+    "usage": "wishing luck"
+  },
+  "и вам того же": {
+    "translation": "same to you (formal)",
+    "transliteration": "i vam togo zhe",
+    "literal": "and to-you of-that same",
+    "register": "formal",
+    "usage": "returning a wish"
+  },
+  "и тебе того же": {
+    "translation": "same to you (informal)",
+    "transliteration": "i tebe togo zhe",
+    "literal": "and to-you of-that same",
+    "register": "informal",
+    "usage": "returning a wish"
+  },
+  "с лёгким паром": {
+    "translation": "enjoy your bath (said after sauna/bath)",
+    "transliteration": "s lyogkim parom",
+    "literal": "with light steam",
+    "register": "neutral",
+    "usage": "traditional greeting after bathing"
   }
 }

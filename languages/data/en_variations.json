@@ -3,7 +3,6 @@
     "description": "English text speak, abbreviations, and common variations",
     "format": "Maps informal/abbreviated forms to standard phrases"
   },
-
   "abbreviations": {
     "lol": "laughing out loud",
     "lmao": "laughing my ass off",
@@ -113,7 +112,6 @@
     "dm": "direct message",
     "pm": "private message"
   },
-
   "text_speak": {
     "u": "you",
     "ur": "your / you're",
@@ -181,9 +179,7 @@
     "imma": "I'm going to",
     "finna": "fixing to / about to"
   },
-
   "british_american": {
-    "colour": "color",
     "colour": "color",
     "favour": "favor",
     "honour": "honor",
@@ -259,7 +255,6 @@
     "lass": "girl",
     "innit": "isn't it"
   },
-
   "common_misspellings": {
     "definately": "definitely",
     "definatly": "definitely",
@@ -339,6 +334,56 @@
     "should of": "should have",
     "could of": "could have",
     "would of": "would have",
-    "alot": "a lot"
+    "alot": "a lot",
+    "acommodate": "accommodate",
+    "acheive": "achieve",
+    "aquire": "acquire",
+    "belive": "believe",
+    "definate": "definite",
+    "embarras": "embarrass",
+    "enviorment": "environment",
+    "excercise": "exercise",
+    "existance": "existence",
+    "necessery": "necessary",
+    "occassion": "occasion",
+    "occuring": "occurring",
+    "personnell": "personnel",
+    "potatos": "potatoes",
+    "preceed": "precede",
+    "privledge": "privilege",
+    "reciept": "receipt",
+    "religous": "religious",
+    "repitition": "repetition",
+    "similiar": "similar",
+    "successfull": "successful",
+    "supercede": "supersede",
+    "tommorow": "tomorrow",
+    "noone": "no one",
+    "everytime": "every time",
+    "eachother": "each other",
+    "infact": "in fact",
+    "aswell": "as well",
+    "incase": "in case",
+    "inspite": "in spite",
+    "atleast": "at least",
+    "irregardless": "regardless",
+    "supposably": "supposedly",
+    "expresso": "espresso",
+    "excape": "escape",
+    "expecially": "especially",
+    "jewlery": "jewelry",
+    "mischevious": "mischievous",
+    "nucular": "nuclear",
+    "probly": "probably",
+    "prolly": "probably",
+    "thier": "their",
+    "teh": "the",
+    "taht": "that",
+    "adn": "and",
+    "hte": "the",
+    "waht": "what",
+    "yuor": "your",
+    "becuase": "because",
+    "beacuse": "because"
   }
 }

@@ -3,32 +3,45 @@
     "description": "English phrases, expressions, and colloquialisms",
     "format": "phrase -> translation/explanation data"
   },
-
   "how are you": {
     "definition": "a greeting asking about someone's wellbeing",
     "register": "neutral",
     "usage": "greeting",
-    "responses": ["I'm fine, thanks", "Good, and you?", "Not bad"],
-    "variants": ["how are you doing", "how's it going", "how ya doin"]
+    "responses": [
+      "I'm fine, thanks",
+      "Good, and you?",
+      "Not bad"
+    ],
+    "variants": [
+      "how are you doing",
+      "how's it going",
+      "how ya doin"
+    ]
   },
   "what's up": {
-    "definition": "informal greeting; what is happening",
-    "register": "informal",
-    "usage": "greeting/question",
-    "responses": ["Not much", "Nothing much", "Hey"],
-    "variants": ["wassup", "sup", "whaddup"]
+    "definition": "informal greeting; asking how someone is",
+    "examples": [
+      "Hey, what's up?",
+      "What's up with you lately?"
+    ],
+    "register": "informal"
   },
   "how's it going": {
-    "definition": "informal greeting asking about someone's situation",
-    "register": "informal",
-    "usage": "greeting",
-    "responses": ["Good", "It's going", "Can't complain"]
+    "definition": "informal greeting asking how someone is",
+    "examples": [
+      "Hey, how's it going?"
+    ],
+    "register": "informal"
   },
   "nice to meet you": {
     "definition": "polite phrase when meeting someone for the first time",
     "register": "neutral",
     "usage": "introduction",
-    "responses": ["Nice to meet you too", "Likewise", "The pleasure is mine"]
+    "responses": [
+      "Nice to meet you too",
+      "Likewise",
+      "The pleasure is mine"
+    ]
   },
   "long time no see": {
     "definition": "greeting used when you haven't seen someone in a while",
@@ -37,60 +50,86 @@
     "origin": "pidgin English calque from Chinese"
   },
   "see you later": {
-    "definition": "casual farewell",
-    "register": "informal",
-    "usage": "farewell",
-    "variants": ["see ya", "catch you later", "later"]
+    "definition": "casual goodbye",
+    "examples": [
+      "See you later!"
+    ],
+    "register": "informal"
   },
   "take care": {
-    "definition": "farewell expressing concern for someone's wellbeing",
-    "register": "neutral",
-    "usage": "farewell"
+    "definition": "farewell wishing someone well",
+    "examples": [
+      "Goodbye, take care!"
+    ],
+    "register": "neutral"
   },
   "have a good one": {
-    "definition": "casual farewell wishing someone a good day",
-    "register": "informal",
-    "usage": "farewell"
+    "definition": "casual farewell wishing a good day",
+    "examples": [
+      "See you tomorrow. Have a good one!"
+    ],
+    "register": "informal"
   },
   "what do you mean": {
     "definition": "asking for clarification",
     "register": "neutral",
     "usage": "question",
-    "variants": ["what does that mean", "I don't understand"]
+    "variants": [
+      "what does that mean",
+      "I don't understand"
+    ]
   },
   "I don't know": {
     "definition": "expressing lack of knowledge",
     "register": "neutral",
     "usage": "response",
-    "variants": ["I dunno", "dunno", "no idea", "beats me"]
+    "variants": [
+      "I dunno",
+      "dunno",
+      "no idea",
+      "beats me"
+    ]
   },
   "I don't care": {
     "definition": "expressing indifference",
     "register": "neutral",
     "usage": "response",
-    "variants": ["I don't give a damn", "whatever", "who cares"]
+    "variants": [
+      "I don't give a damn",
+      "whatever",
+      "who cares"
+    ]
   },
   "never mind": {
     "definition": "dismissing something as unimportant; forget about it",
     "register": "neutral",
     "usage": "dismissal",
-    "variants": ["nevermind", "forget it", "don't worry about it"]
+    "variants": [
+      "nevermind",
+      "forget it",
+      "don't worry about it"
+    ]
   },
   "no worries": {
-    "definition": "it's okay; don't be concerned; you're welcome",
-    "register": "informal",
-    "usage": "reassurance/response to thanks",
-    "origin": "Australian English"
+    "definition": "it's okay; don't mention it",
+    "examples": [
+      "No worries, happy to help."
+    ],
+    "register": "informal"
   },
   "my bad": {
-    "definition": "acknowledging a mistake; my fault",
-    "register": "informal",
-    "usage": "apology"
+    "definition": "my mistake; informal apology",
+    "examples": [
+      "Oh, my bad. I didn't see you there."
+    ],
+    "register": "slang"
   },
   "no problem": {
-    "definition": "you're welcome; it was easy",
-    "register": "informal",
-    "usage": "response to thanks"
+    "definition": "you're welcome; it's easy",
+    "examples": [
+      "'Thanks for your help!' 'No problem.'"
+    ],
+    "register": "informal"
   },
   "you're welcome": {
     "definition": "polite response to thanks",
@@ -116,25 +155,38 @@
     "definition": "said after someone sneezes",
     "register": "neutral",
     "usage": "social convention",
-    "responses": ["Thank you", "Thanks"]
+    "responses": [
+      "Thank you",
+      "Thanks"
+    ]
   },
   "that's cool": {
     "definition": "expressing approval or acceptance",
     "register": "informal",
     "usage": "approval",
-    "variants": ["that's awesome", "that's great", "nice"]
+    "variants": [
+      "that's awesome",
+      "that's great",
+      "nice"
+    ]
   },
   "no way": {
-    "definition": "expressing disbelief or refusal",
-    "register": "informal",
-    "usage": "disbelief/refusal",
-    "variants": ["no way!", "get out of here", "you're kidding"]
+    "definition": "expression of disbelief or amazement",
+    "examples": [
+      "No way! You got the job?",
+      "No way that's real."
+    ],
+    "register": "informal"
   },
   "for real": {
     "definition": "seriously; is that true?",
     "register": "informal",
     "usage": "emphasis/question",
-    "variants": ["for real?", "fr", "seriously?"]
+    "variants": [
+      "for real?",
+      "fr",
+      "seriously?"
+    ]
   },
   "I feel you": {
     "definition": "I understand and empathize with you",
@@ -145,7 +197,10 @@
     "definition": "I understand; I'll help you",
     "register": "informal",
     "usage": "understanding/support",
-    "variants": ["gotcha", "I got your back"]
+    "variants": [
+      "gotcha",
+      "I got your back"
+    ]
   },
   "it is what it is": {
     "definition": "accepting an unchangeable situation",
@@ -154,32 +209,46 @@
   },
   "at the end of the day": {
     "definition": "ultimately; when all is considered",
-    "register": "neutral",
-    "usage": "concluding thought"
+    "examples": [
+      "At the end of the day, family is what matters."
+    ],
+    "register": "neutral"
   },
   "to be honest": {
     "definition": "speaking frankly",
     "register": "neutral",
     "usage": "preface to honest statement",
-    "variants": ["tbh", "honestly", "to be fair"]
+    "variants": [
+      "tbh",
+      "honestly",
+      "to be fair"
+    ]
   },
   "by the way": {
     "definition": "incidentally; introducing a related topic",
     "register": "neutral",
     "usage": "topic change",
-    "variants": ["btw"]
+    "variants": [
+      "btw"
+    ]
   },
   "in my opinion": {
     "definition": "expressing personal view",
     "register": "neutral",
     "usage": "preface to opinion",
-    "variants": ["imo", "I think", "if you ask me"]
+    "variants": [
+      "imo",
+      "I think",
+      "if you ask me"
+    ]
   },
   "as far as I know": {
     "definition": "to the best of my knowledge",
     "register": "neutral",
     "usage": "qualifier",
-    "variants": ["afaik"]
+    "variants": [
+      "afaik"
+    ]
   },
   "I couldn't care less": {
     "definition": "I have absolutely no interest",
@@ -193,28 +262,36 @@
     "usage": "sympathy/disappointment"
   },
   "what the hell": {
-    "definition": "expressing shock, confusion, or frustration",
-    "register": "informal",
-    "usage": "exclamation",
-    "variants": ["what the heck", "wth"]
+    "definition": "expression of surprise, frustration, or disbelief",
+    "examples": [
+      "What the hell happened here?"
+    ],
+    "register": "informal"
   },
   "what the fuck": {
     "definition": "expressing strong shock, confusion, or frustration",
     "register": "vulgar",
     "usage": "exclamation",
-    "variants": ["wtf", "what the actual fuck"]
+    "variants": [
+      "wtf",
+      "what the actual fuck"
+    ]
   },
   "holy shit": {
     "definition": "exclamation of surprise or amazement",
     "register": "vulgar",
     "usage": "exclamation",
-    "variants": ["holy crap", "holy cow"]
+    "variants": [
+      "holy crap",
+      "holy cow"
+    ]
   },
   "oh my god": {
-    "definition": "exclamation of surprise, shock, or excitement",
-    "register": "informal",
-    "usage": "exclamation",
-    "variants": ["omg", "oh my gosh", "oh my goodness"]
+    "definition": "exclamation of surprise, shock, or emphasis",
+    "examples": [
+      "Oh my God, I can't believe it!"
+    ],
+    "register": "informal"
   },
   "fuck off": {
     "definition": "go away; leave me alone (rude)",
@@ -233,25 +310,34 @@
     "usage": "insult"
   },
   "shut up": {
-    "definition": "stop talking; also used to express disbelief",
-    "register": "informal",
-    "usage": "command/disbelief"
+    "definition": "expression of surprise/disbelief (informal); also command to be quiet",
+    "examples": [
+      "Shut up! She's dating him?"
+    ],
+    "register": "informal"
   },
   "give me a break": {
-    "definition": "stop being ridiculous; I need relief",
-    "register": "informal",
-    "usage": "frustration/request"
+    "definition": "expression of exasperation or disbelief",
+    "examples": [
+      "Give me a break! That's ridiculous."
+    ],
+    "register": "informal"
   },
   "get out of here": {
-    "definition": "expressing disbelief; or literal command to leave",
-    "register": "informal",
-    "usage": "disbelief/command"
+    "definition": "expression of disbelief; also literal command to leave",
+    "examples": [
+      "Get out of here! You won the lottery?"
+    ],
+    "register": "informal"
   },
   "are you kidding me": {
     "definition": "expressing disbelief",
     "register": "informal",
     "usage": "disbelief",
-    "variants": ["you're kidding", "you gotta be kidding"]
+    "variants": [
+      "you're kidding",
+      "you gotta be kidding"
+    ]
   },
   "I can't even": {
     "definition": "unable to process/deal with something (often humorous)",
@@ -315,7 +401,10 @@
     "register": "informal",
     "usage": "request",
     "origin": "LGBTQ+/ballroom culture",
-    "variants": ["what's the tea", "tea"]
+    "variants": [
+      "what's the tea",
+      "tea"
+    ]
   },
   "that's fire": {
     "definition": "that's really good/cool",
@@ -364,7 +453,10 @@
     "definition": "extremely amused (dying of laughter)",
     "register": "informal",
     "usage": "reaction",
-    "variants": ["I'm dead", "deadass"]
+    "variants": [
+      "I'm dead",
+      "deadass"
+    ]
   },
   "rent free": {
     "definition": "constantly thinking about something without wanting to",
@@ -424,7 +516,9 @@
     "definition": "end of discussion; emphasizing a point",
     "register": "informal",
     "usage": "emphasis",
-    "variants": ["periodt"]
+    "variants": [
+      "periodt"
+    ]
   },
   "say less": {
     "definition": "I understand; you don't need to explain more",
@@ -490,9 +584,11 @@
     "usage": "description"
   },
   "break a leg": {
-    "definition": "good luck (especially in theater)",
-    "register": "informal",
-    "usage": "encouragement"
+    "definition": "good luck (especially before a performance)",
+    "examples": [
+      "You're performing tonight? Break a leg!"
+    ],
+    "register": "informal"
   },
   "bite the bullet": {
     "definition": "accept something difficult",
@@ -501,14 +597,17 @@
   },
   "cost an arm and a leg": {
     "definition": "very expensive",
-    "register": "informal",
-    "usage": "description"
+    "examples": [
+      "That car cost an arm and a leg."
+    ],
+    "register": "informal"
   },
   "hit the sack": {
     "definition": "go to bed",
-    "register": "informal",
-    "usage": "description",
-    "variants": ["hit the hay"]
+    "examples": [
+      "It's late, I'm going to hit the sack."
+    ],
+    "register": "informal"
   },
   "under the weather": {
     "definition": "feeling sick or unwell",
@@ -517,18 +616,24 @@
   },
   "on the same page": {
     "definition": "in agreement; having the same understanding",
-    "register": "neutral",
-    "usage": "description"
+    "examples": [
+      "Let's make sure we're on the same page."
+    ],
+    "register": "neutral"
   },
   "back to square one": {
     "definition": "starting over from the beginning",
-    "register": "neutral",
-    "usage": "description"
+    "examples": [
+      "That didn't work. Back to square one."
+    ],
+    "register": "informal"
   },
   "when pigs fly": {
-    "definition": "never; something that will never happen",
-    "register": "informal",
-    "usage": "disbelief"
+    "definition": "never; something that won't happen",
+    "examples": [
+      "He'll apologize when pigs fly."
+    ],
+    "register": "informal"
   },
   "speak of the devil": {
     "definition": "said when someone you were just talking about appears",
@@ -552,8 +657,10 @@
   },
   "once in a blue moon": {
     "definition": "very rarely",
-    "register": "neutral",
-    "usage": "description"
+    "examples": [
+      "He visits once in a blue moon."
+    ],
+    "register": "informal"
   },
   "the elephant in the room": {
     "definition": "obvious problem no one wants to discuss",
@@ -564,5 +671,725 @@
     "definition": "reveal a secret",
     "register": "informal",
     "usage": "description"
+  },
+  "you're kidding": {
+    "definition": "expression of disbelief",
+    "examples": [
+      "You're kidding! She really said that?"
+    ],
+    "register": "informal"
+  },
+  "you're joking": {
+    "definition": "expression of disbelief",
+    "examples": [
+      "You're joking! That can't be true."
+    ],
+    "register": "informal"
+  },
+  "holy cow": {
+    "definition": "exclamation of surprise",
+    "examples": [
+      "Holy cow! Look at the size of that fish!"
+    ],
+    "register": "informal"
+  },
+  "holy smokes": {
+    "definition": "exclamation of surprise",
+    "examples": [
+      "Holy smokes! That was close!"
+    ],
+    "register": "informal"
+  },
+  "oh my gosh": {
+    "definition": "exclamation of surprise (milder than 'oh my god')",
+    "examples": [
+      "Oh my gosh, that's amazing!"
+    ],
+    "register": "informal"
+  },
+  "what the heck": {
+    "definition": "expression of surprise or frustration (mild)",
+    "examples": [
+      "What the heck is going on here?"
+    ],
+    "register": "informal"
+  },
+  "what on earth": {
+    "definition": "expression of surprise or puzzlement",
+    "examples": [
+      "What on earth are you doing?"
+    ],
+    "register": "neutral"
+  },
+  "for crying out loud": {
+    "definition": "expression of frustration or exasperation",
+    "examples": [
+      "For crying out loud, just pick one!"
+    ],
+    "register": "informal"
+  },
+  "good grief": {
+    "definition": "expression of dismay or exasperation",
+    "examples": [
+      "Good grief! Another meeting?"
+    ],
+    "register": "informal"
+  },
+  "good heavens": {
+    "definition": "exclamation of surprise or dismay",
+    "examples": [
+      "Good heavens! What happened to you?"
+    ],
+    "register": "neutral"
+  },
+  "blimey": {
+    "definition": "British exclamation of surprise",
+    "examples": [
+      "Blimey! That's expensive!"
+    ],
+    "register": "informal",
+    "variant": "British"
+  },
+  "crikey": {
+    "definition": "British/Australian exclamation of surprise",
+    "examples": [
+      "Crikey! Look at that spider!"
+    ],
+    "register": "informal",
+    "variant": "British/Australian"
+  },
+  "bloody hell": {
+    "definition": "British exclamation of surprise, frustration, or emphasis",
+    "examples": [
+      "Bloody hell! That was close!"
+    ],
+    "register": "informal",
+    "variant": "British"
+  },
+  "what's going on": {
+    "definition": "asking about the current situation or greeting",
+    "examples": [
+      "What's going on?",
+      "What's going on with you?"
+    ],
+    "register": "informal"
+  },
+  "how are you doing": {
+    "definition": "asking about someone's wellbeing",
+    "examples": [
+      "How are you doing today?"
+    ],
+    "register": "neutral"
+  },
+  "what have you been up to": {
+    "definition": "asking about recent activities",
+    "examples": [
+      "Long time no see! What have you been up to?"
+    ],
+    "register": "informal"
+  },
+  "same old same old": {
+    "definition": "nothing new; the usual routine",
+    "examples": [
+      "'How's work?' 'Same old same old.'"
+    ],
+    "register": "informal"
+  },
+  "not much": {
+    "definition": "response indicating nothing significant",
+    "examples": [
+      "'What's up?' 'Not much, just hanging out.'"
+    ],
+    "register": "informal"
+  },
+  "can't complain": {
+    "definition": "things are going reasonably well",
+    "examples": [
+      "'How are you?' 'Can't complain.'"
+    ],
+    "register": "informal"
+  },
+  "keeping busy": {
+    "definition": "staying occupied with work or activities",
+    "examples": [
+      "Just keeping busy with work."
+    ],
+    "register": "neutral"
+  },
+  "hanging in there": {
+    "definition": "managing despite difficulties",
+    "examples": [
+      "How are you? Hanging in there."
+    ],
+    "register": "informal"
+  },
+  "catch you later": {
+    "definition": "very casual goodbye",
+    "examples": [
+      "Gotta go, catch you later!"
+    ],
+    "register": "informal"
+  },
+  "take it easy": {
+    "definition": "farewell wishing someone to relax",
+    "examples": [
+      "Alright, take it easy!"
+    ],
+    "register": "informal"
+  },
+  "peace out": {
+    "definition": "very casual farewell",
+    "examples": [
+      "Alright, peace out!"
+    ],
+    "register": "slang"
+  },
+  "later": {
+    "definition": "very casual farewell",
+    "examples": [
+      "Okay, later!"
+    ],
+    "register": "slang"
+  },
+  "cheers": {
+    "definition": "British farewell; also toast; also thanks",
+    "examples": [
+      "Cheers, see you next week!"
+    ],
+    "register": "informal",
+    "variant": "British"
+  },
+  "ta-ta": {
+    "definition": "British informal goodbye",
+    "examples": [
+      "Ta-ta for now!"
+    ],
+    "register": "informal",
+    "variant": "British"
+  },
+  "I hear you": {
+    "definition": "I understand; I empathize",
+    "examples": [
+      "I hear you, that sounds frustrating."
+    ],
+    "register": "informal"
+  },
+  "you bet": {
+    "definition": "certainly; definitely",
+    "examples": [
+      "'Can you help?' 'You bet!'"
+    ],
+    "register": "informal"
+  },
+  "you got it": {
+    "definition": "expression of agreement to do something",
+    "examples": [
+      "'Can you send that file?' 'You got it!'"
+    ],
+    "register": "informal"
+  },
+  "sure thing": {
+    "definition": "certainly; of course",
+    "examples": [
+      "'Can you pick me up?' 'Sure thing.'"
+    ],
+    "register": "informal"
+  },
+  "fair enough": {
+    "definition": "that's reasonable; I accept that",
+    "examples": [
+      "Fair enough, we'll do it your way."
+    ],
+    "register": "informal"
+  },
+  "sounds good": {
+    "definition": "expression of agreement",
+    "examples": [
+      "'Meet at 7?' 'Sounds good.'"
+    ],
+    "register": "informal"
+  },
+  "works for me": {
+    "definition": "I agree; that suits me",
+    "examples": [
+      "Friday works for me."
+    ],
+    "register": "informal"
+  },
+  "you can say that again": {
+    "definition": "emphatic agreement",
+    "examples": [
+      "'That was exhausting.' 'You can say that again!'"
+    ],
+    "register": "informal"
+  },
+  "tell me about it": {
+    "definition": "emphatic agreement (expressing shared experience)",
+    "examples": [
+      "'This traffic is awful.' 'Tell me about it!'"
+    ],
+    "register": "informal"
+  },
+  "I'll say": {
+    "definition": "emphatic agreement",
+    "examples": [
+      "'She's talented.' 'I'll say!'"
+    ],
+    "register": "informal"
+  },
+  "no way jose": {
+    "definition": "emphatic refusal or disagreement",
+    "examples": [
+      "No way Jose, I'm not doing that!"
+    ],
+    "register": "slang"
+  },
+  "fat chance": {
+    "definition": "very unlikely; sarcastic denial",
+    "examples": [
+      "Fat chance of that happening!"
+    ],
+    "register": "informal"
+  },
+  "in your dreams": {
+    "definition": "that will never happen",
+    "examples": [
+      "'I'll beat you.' 'In your dreams!'"
+    ],
+    "register": "informal"
+  },
+  "not on your life": {
+    "definition": "absolutely not; never",
+    "examples": [
+      "'Will you lend him money?' 'Not on your life!'"
+    ],
+    "register": "informal"
+  },
+  "over my dead body": {
+    "definition": "emphatic refusal (I'll prevent it at all costs)",
+    "examples": [
+      "Over my dead body will he get that promotion!"
+    ],
+    "register": "informal"
+  },
+  "yeah right": {
+    "definition": "sarcastic expression of disbelief",
+    "examples": [
+      "'I can run a marathon.' 'Yeah, right.'"
+    ],
+    "register": "informal"
+  },
+  "get real": {
+    "definition": "be realistic; stop being foolish",
+    "examples": [
+      "Get real, that plan will never work."
+    ],
+    "register": "informal"
+  },
+  "dream on": {
+    "definition": "that won't happen; keep dreaming",
+    "examples": [
+      "'I'll be rich someday.' 'Dream on!'"
+    ],
+    "register": "informal"
+  },
+  "go for it": {
+    "definition": "encouragement to try something",
+    "examples": [
+      "You should apply for that job. Go for it!"
+    ],
+    "register": "informal"
+  },
+  "you've got this": {
+    "definition": "expression of confidence in someone",
+    "examples": [
+      "Don't worry about the interview. You've got this!"
+    ],
+    "register": "informal"
+  },
+  "you can do it": {
+    "definition": "encouragement expressing belief in someone's ability",
+    "examples": [
+      "Come on, you can do it!"
+    ],
+    "register": "neutral"
+  },
+  "hang in there": {
+    "definition": "encouragement to persevere",
+    "examples": [
+      "Things will get better. Hang in there!"
+    ],
+    "register": "informal"
+  },
+  "keep it up": {
+    "definition": "encouragement to continue doing well",
+    "examples": [
+      "Great work! Keep it up!"
+    ],
+    "register": "informal"
+  },
+  "keep your chin up": {
+    "definition": "stay positive despite difficulties",
+    "examples": [
+      "Don't get discouraged. Keep your chin up!"
+    ],
+    "register": "informal"
+  },
+  "knock 'em dead": {
+    "definition": "encouragement to impress greatly",
+    "examples": [
+      "Your presentation will be great. Knock 'em dead!"
+    ],
+    "register": "informal"
+  },
+  "I screwed up": {
+    "definition": "I made a mistake",
+    "examples": [
+      "I screwed up, I'm sorry."
+    ],
+    "register": "informal"
+  },
+  "I messed up": {
+    "definition": "I made a mistake",
+    "examples": [
+      "I really messed up this time."
+    ],
+    "register": "informal"
+  },
+  "my mistake": {
+    "definition": "acknowledgment of error",
+    "examples": [
+      "My mistake, I'll fix it."
+    ],
+    "register": "neutral"
+  },
+  "I owe you one": {
+    "definition": "I'm indebted to you for a favor",
+    "examples": [
+      "Thanks for covering my shift. I owe you one."
+    ],
+    "register": "informal"
+  },
+  "beats me": {
+    "definition": "I don't know",
+    "examples": [
+      "'Why did she leave?' 'Beats me.'"
+    ],
+    "register": "informal"
+  },
+  "search me": {
+    "definition": "I don't know",
+    "examples": [
+      "'Where did he go?' 'Search me.'"
+    ],
+    "register": "informal"
+  },
+  "your guess is as good as mine": {
+    "definition": "I don't know either",
+    "examples": [
+      "'What's going to happen?' 'Your guess is as good as mine.'"
+    ],
+    "register": "informal"
+  },
+  "who knows": {
+    "definition": "it's uncertain; nobody knows",
+    "examples": [
+      "Who knows what will happen next?"
+    ],
+    "register": "neutral"
+  },
+  "god only knows": {
+    "definition": "nobody knows; it's completely uncertain",
+    "examples": [
+      "God only knows where he went."
+    ],
+    "register": "informal"
+  },
+  "heaven knows": {
+    "definition": "nobody knows; emphasis on uncertainty",
+    "examples": [
+      "Heaven knows I tried my best."
+    ],
+    "register": "neutral"
+  },
+  "it depends": {
+    "definition": "the answer varies based on circumstances",
+    "examples": [
+      "'Will you come?' 'It depends on the weather.'"
+    ],
+    "register": "neutral"
+  },
+  "we'll see": {
+    "definition": "noncommittal response; undecided",
+    "examples": [
+      "'Can we go?' 'We'll see.'"
+    ],
+    "register": "neutral"
+  },
+  "don't quote me on that": {
+    "definition": "I'm not certain; don't hold me to this",
+    "examples": [
+      "I think it's Tuesday, but don't quote me on that."
+    ],
+    "register": "informal"
+  },
+  "if memory serves": {
+    "definition": "if I remember correctly",
+    "examples": [
+      "If memory serves, we met in 2010."
+    ],
+    "register": "neutral"
+  },
+  "do you mind": {
+    "definition": "polite way to ask if something bothers someone or to make a request",
+    "examples": [
+      "Do you mind if I sit here?"
+    ],
+    "register": "neutral"
+  },
+  "would you mind": {
+    "definition": "very polite request",
+    "examples": [
+      "Would you mind closing the door?"
+    ],
+    "register": "formal"
+  },
+  "could you please": {
+    "definition": "polite request",
+    "examples": [
+      "Could you please help me with this?"
+    ],
+    "register": "neutral"
+  },
+  "if you don't mind": {
+    "definition": "polite way to make a request",
+    "examples": [
+      "I'll take the window seat, if you don't mind."
+    ],
+    "register": "neutral"
+  },
+  "if it's not too much trouble": {
+    "definition": "very polite request prefix",
+    "examples": [
+      "If it's not too much trouble, could you review this?"
+    ],
+    "register": "formal"
+  },
+  "in no time": {
+    "definition": "very quickly",
+    "examples": [
+      "I'll be there in no time."
+    ],
+    "register": "informal"
+  },
+  "in a jiffy": {
+    "definition": "very quickly",
+    "examples": [
+      "I'll fix that in a jiffy."
+    ],
+    "register": "informal"
+  },
+  "just a sec": {
+    "definition": "wait a moment",
+    "examples": [
+      "Just a sec, I'll be right there."
+    ],
+    "register": "informal"
+  },
+  "hold on": {
+    "definition": "wait a moment",
+    "examples": [
+      "Hold on, let me check."
+    ],
+    "register": "informal"
+  },
+  "hang on": {
+    "definition": "wait a moment",
+    "examples": [
+      "Hang on, I'm almost done."
+    ],
+    "register": "informal"
+  },
+  "give me a minute": {
+    "definition": "wait briefly",
+    "examples": [
+      "Give me a minute to finish this."
+    ],
+    "register": "neutral"
+  },
+  "when push comes to shove": {
+    "definition": "when a situation becomes critical",
+    "examples": [
+      "When push comes to shove, she always comes through."
+    ],
+    "register": "informal"
+  },
+  "sooner or later": {
+    "definition": "eventually",
+    "examples": [
+      "Sooner or later, the truth will come out."
+    ],
+    "register": "neutral"
+  },
+  "better late than never": {
+    "definition": "it's better to do something late than not at all",
+    "examples": [
+      "You finally called! Better late than never."
+    ],
+    "register": "neutral"
+  },
+  "at the drop of a hat": {
+    "definition": "immediately; without hesitation",
+    "examples": [
+      "She'd help you at the drop of a hat."
+    ],
+    "register": "informal"
+  },
+  "break the bank": {
+    "definition": "cost a lot of money; exhaust one's funds",
+    "examples": [
+      "We want a nice dinner, but nothing that will break the bank."
+    ],
+    "register": "informal"
+  },
+  "a dime a dozen": {
+    "definition": "very common and therefore not valuable",
+    "examples": [
+      "Those souvenirs are a dime a dozen."
+    ],
+    "register": "informal"
+  },
+  "penny for your thoughts": {
+    "definition": "asking what someone is thinking about",
+    "examples": [
+      "You look thoughtful. Penny for your thoughts?"
+    ],
+    "register": "informal"
+  },
+  "two cents": {
+    "definition": "one's opinion (usually unwanted)",
+    "examples": [
+      "Here's my two cents: don't do it."
+    ],
+    "register": "informal"
+  },
+  "put your money where your mouth is": {
+    "definition": "back up your words with action",
+    "examples": [
+      "You say you're good? Put your money where your mouth is."
+    ],
+    "register": "informal"
+  },
+  "back to the grind": {
+    "definition": "returning to work (especially tedious work)",
+    "examples": [
+      "Break's over. Back to the grind."
+    ],
+    "register": "informal"
+  },
+  "the bottom line": {
+    "definition": "the final result; the most important point",
+    "examples": [
+      "The bottom line is we need more sales."
+    ],
+    "register": "neutral"
+  },
+  "get the ball rolling": {
+    "definition": "start a process or activity",
+    "examples": [
+      "Let's get the ball rolling on this project."
+    ],
+    "register": "informal"
+  },
+  "think outside the box": {
+    "definition": "think creatively; find unconventional solutions",
+    "examples": [
+      "We need to think outside the box on this one."
+    ],
+    "register": "neutral"
+  },
+  "the whole nine yards": {
+    "definition": "everything; the full extent",
+    "examples": [
+      "She went the whole nine yards for the wedding."
+    ],
+    "register": "informal"
+  },
+  "by the book": {
+    "definition": "following the rules exactly",
+    "examples": [
+      "He does everything by the book."
+    ],
+    "register": "neutral"
+  },
+  "get out of hand": {
+    "definition": "become uncontrollable",
+    "examples": [
+      "The party got out of hand."
+    ],
+    "register": "informal"
+  },
+  "get carried away": {
+    "definition": "become overly enthusiastic; lose control",
+    "examples": [
+      "I got carried away with the shopping."
+    ],
+    "register": "informal"
+  },
+  "pull yourself together": {
+    "definition": "regain composure; calm down",
+    "examples": [
+      "Pull yourself together and focus."
+    ],
+    "register": "informal"
+  },
+  "cut it out": {
+    "definition": "stop doing that",
+    "examples": [
+      "Cut it out, you're being annoying."
+    ],
+    "register": "informal"
+  },
+  "knock it off": {
+    "definition": "stop doing that (more emphatic)",
+    "examples": [
+      "Knock it off! I'm trying to work."
+    ],
+    "register": "informal"
+  },
+  "give it a shot": {
+    "definition": "try something",
+    "examples": [
+      "I've never tried sushi, but I'll give it a shot."
+    ],
+    "register": "informal"
+  },
+  "give it a go": {
+    "definition": "try something",
+    "examples": [
+      "Let me give it a go."
+    ],
+    "register": "informal"
+  },
+  "hit the hay": {
+    "definition": "go to bed",
+    "examples": [
+      "I'm tired. Time to hit the hay."
+    ],
+    "register": "informal"
+  },
+  "call it a day": {
+    "definition": "stop working; finish for the day",
+    "examples": [
+      "Let's call it a day and go home."
+    ],
+    "register": "informal"
+  },
+  "call it quits": {
+    "definition": "stop doing something; give up",
+    "examples": [
+      "After three hours, they called it quits."
+    ],
+    "register": "informal"
   }
 }
