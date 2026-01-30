@@ -48,8 +48,73 @@ class Russian(Language):
         # Local definitions
         self.local_definitions = self._load_json(data_dir / "ru_definitions.json")
         
+        # Phrases database
+        self.phrases = self._load_json(data_dir / "ru_phrases.json")
+        # Remove meta key if present
+        self.phrases.pop("_meta", None)
+        
+        # Build reverse transliteration lookup for phrases
+        self._phrase_translit_map = self._build_phrase_translit_map()
+        
         # Idioms
         self._idioms = None
+    
+    def _build_phrase_translit_map(self) -> dict:
+        """Build a map from transliterated phrases to Cyrillic."""
+        mapping = {}
+        for cyrillic, data in self.phrases.items():
+            translit = data.get("transliteration", "").lower()
+            if translit:
+                # Store original transliteration
+                mapping[translit] = cyrillic
+                
+                # Handle common variations for vowels
+                variations = [translit]
+                
+                # yo/o variations (ё)
+                if "yo" in translit:
+                    variations.append(translit.replace("yo", "o"))
+                if "o" in translit and "yo" not in translit:
+                    variations.append(translit.replace("o", "yo"))
+                
+                # ye/e variations (е at start or after vowel)
+                for v in list(variations):
+                    if "ye" in v:
+                        variations.append(v.replace("ye", "e"))
+                    if "e" in v and "ye" not in v:
+                        variations.append(v.replace("e", "ye"))
+                
+                # ya/ia variations (я)
+                for v in list(variations):
+                    if "ya" in v:
+                        variations.append(v.replace("ya", "ia"))
+                    if "ia" in v:
+                        variations.append(v.replace("ia", "ya"))
+                
+                # yu/iu variations (ю)
+                for v in list(variations):
+                    if "yu" in v:
+                        variations.append(v.replace("yu", "iu"))
+                    if "iu" in v:
+                        variations.append(v.replace("iu", "yu"))
+                
+                # vsyo/vse variation specifically
+                for v in list(variations):
+                    if "vsyo" in v:
+                        variations.append(v.replace("vsyo", "vse"))
+                    if "vse" in v and "vsyo" not in v:
+                        variations.append(v.replace("vse", "vsyo"))
+                
+                # kh/h variations (х)
+                for v in list(variations):
+                    if "kh" in v:
+                        variations.append(v.replace("kh", "h"))
+                
+                # Store all variations
+                for var in set(variations):
+                    mapping[var] = cyrillic
+        
+        return mapping
     
     @property
     def idioms(self) -> dict:
@@ -78,6 +143,10 @@ class Russian(Language):
         if re.search(r'[\u0400-\u04FF]', text):
             return True
         
+        # Check phrase lookup (transliterated phrases)
+        if text in self._phrase_translit_map:
+            return True
+        
         # Check word lookup
         if text in self.word_lookup:
             return True
@@ -96,30 +165,120 @@ class Russian(Language):
         
         text = text.lower().strip()
         
-        # Check word lookup first
+        # Check phrase lookup first (for multi-word input)
+        if text in self._phrase_translit_map:
+            return self._phrase_translit_map[text]
+        
+        # Check word lookup
         if text in self.word_lookup:
             return self.word_lookup[text]
         
-        # Apply transliteration rules
+        # For multi-word input, try to transliterate each word
+        if ' ' in text:
+            words = text.split()
+            transliterated = []
+            for word in words:
+                if word in self.word_lookup:
+                    transliterated.append(self.word_lookup[word])
+                else:
+                    # Apply transliteration rules
+                    transliterated.append(self._transliterate_word(word))
+            return ' '.join(transliterated)
+        
+        # Single word: apply transliteration rules
+        return self._transliterate_word(text)
+    
+    def _transliterate_word(self, word: str) -> str:
+        """Transliterate a single word from Latin to Cyrillic."""
         rules = self.translit_rules.get("rules", {})
         
         # Sort by length (longest first) to handle multi-char patterns
         sorted_rules = sorted(rules.items(), key=lambda x: -len(x[0]))
         
-        result = text
+        result = word
         for latin, cyrillic in sorted_rules:
             result = result.replace(latin, cyrillic)
         
         return result
     
     def lookup(self, word: str) -> Optional[dict]:
-        """Look up a Russian word."""
-        # Check local definitions first
+        """Look up a Russian word or phrase."""
+        # Check phrases database first (for translations)
+        if word in self.phrases:
+            return self._format_phrase(word, self.phrases[word])
+        
+        # Check local definitions
         if word in self.local_definitions:
             return self._format_local(word, self.local_definitions[word])
         
-        # Fall back to Wiktionary
-        return self._lookup_wiktionary(word)
+        # Fall back to Wiktionary for single words
+        if ' ' not in word:
+            return self._lookup_wiktionary(word)
+        
+        # For multi-word that's not in phrases, try to break down
+        return self._lookup_phrase_words(word)
+    
+    def _format_phrase(self, phrase: str, data: dict) -> dict:
+        """Format phrase data to standard format."""
+        return {
+            "word": phrase,
+            "phonetic": data.get("transliteration", ""),
+            "audio": None,
+            "is_phrase": True,
+            "meanings": [{
+                "partOfSpeech": "phrase",
+                "definitions": [{
+                    "definition": data.get("translation", ""),
+                    "example": None,
+                    "synonyms": [],
+                    "antonyms": []
+                }],
+                "synonyms": [],
+                "antonyms": [],
+                "register": data.get("register", "neutral")
+            }],
+            "literal": data.get("literal"),
+            "usage": data.get("usage"),
+            "source": "local phrase database"
+        }
+    
+    def _lookup_phrase_words(self, phrase: str) -> Optional[dict]:
+        """For unknown phrases, return definitions of individual words."""
+        words = phrase.split()
+        word_defs = []
+        
+        for w in words:
+            if w in self.local_definitions:
+                defn = self.local_definitions[w]
+                word_defs.append({
+                    "word": w,
+                    "definition": defn.get("definition", ""),
+                    "pos": defn.get("pos", "")
+                })
+        
+        if not word_defs:
+            return None
+        
+        return {
+            "word": phrase,
+            "phonetic": "",
+            "audio": None,
+            "is_phrase": True,
+            "is_breakdown": True,
+            "meanings": [{
+                "partOfSpeech": "phrase (breakdown)",
+                "definitions": [{
+                    "definition": f"Individual words: {'; '.join(f'{w['word']} ({w['pos']}): {w['definition']}' for w in word_defs)}",
+                    "example": None,
+                    "synonyms": [],
+                    "antonyms": []
+                }],
+                "synonyms": [],
+                "antonyms": []
+            }],
+            "word_breakdown": word_defs,
+            "source": "local dictionary (word breakdown)"
+        }
     
     def _format_local(self, word: str, data: dict) -> dict:
         """Format local definition to standard format."""

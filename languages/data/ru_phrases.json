@@ -1,0 +1,665 @@
+{
+  "_meta": {
+    "description": "Russian phrases and expressions with translations",
+    "format": "phrase (cyrillic) -> translation data"
+  },
+  
+  "я не знаю": {
+    "translation": "I don't know",
+    "transliteration": "ya ne znayu",
+    "literal": "I not know",
+    "register": "neutral",
+    "usage": "common phrase"
+  },
+  "мне всё равно": {
+    "translation": "I don't care / it's all the same to me",
+    "transliteration": "mne vsyo ravno",
+    "literal": "to-me all equal",
+    "register": "neutral",
+    "usage": "expressing indifference"
+  },
+  "как дела": {
+    "translation": "how are you? / how's it going?",
+    "transliteration": "kak dela",
+    "literal": "how affairs",
+    "register": "informal",
+    "usage": "greeting"
+  },
+  "что такое": {
+    "translation": "what is / what's that",
+    "transliteration": "chto takoye",
+    "literal": "what such",
+    "register": "neutral",
+    "usage": "asking for explanation"
+  },
+  "что это": {
+    "translation": "what is this",
+    "transliteration": "chto eto",
+    "literal": "what this",
+    "register": "neutral",
+    "usage": "pointing at something"
+  },
+  "где ты": {
+    "translation": "where are you",
+    "transliteration": "gde ty",
+    "literal": "where you",
+    "register": "informal",
+    "usage": "asking location"
+  },
+  "кто это": {
+    "translation": "who is this",
+    "transliteration": "kto eto",
+    "literal": "who this",
+    "register": "neutral",
+    "usage": "asking identity"
+  },
+  "как тебя зовут": {
+    "translation": "what is your name",
+    "transliteration": "kak tebya zovut",
+    "literal": "how you call",
+    "register": "informal",
+    "usage": "asking name (informal)"
+  },
+  "как вас зовут": {
+    "translation": "what is your name",
+    "transliteration": "kak vas zovut",
+    "literal": "how you call",
+    "register": "formal",
+    "usage": "asking name (formal/polite)"
+  },
+  "меня зовут": {
+    "translation": "my name is",
+    "transliteration": "menya zovut",
+    "literal": "me call",
+    "register": "neutral",
+    "usage": "introducing yourself"
+  },
+  "доброе утро": {
+    "translation": "good morning",
+    "transliteration": "dobroye utro",
+    "literal": "good morning",
+    "register": "neutral",
+    "usage": "greeting"
+  },
+  "добрый день": {
+    "translation": "good afternoon / good day",
+    "transliteration": "dobryy den",
+    "literal": "good day",
+    "register": "neutral",
+    "usage": "greeting"
+  },
+  "добрый вечер": {
+    "translation": "good evening",
+    "transliteration": "dobryy vecher",
+    "literal": "good evening",
+    "register": "neutral",
+    "usage": "greeting"
+  },
+  "спокойной ночи": {
+    "translation": "good night",
+    "transliteration": "spokoynoy nochi",
+    "literal": "peaceful night",
+    "register": "neutral",
+    "usage": "saying goodnight"
+  },
+  "до свидания": {
+    "translation": "goodbye",
+    "transliteration": "do svidaniya",
+    "literal": "until meeting",
+    "register": "neutral",
+    "usage": "formal farewell"
+  },
+  "пока пока": {
+    "translation": "bye bye",
+    "transliteration": "poka poka",
+    "literal": "bye bye",
+    "register": "informal",
+    "usage": "casual farewell"
+  },
+  "я тебя люблю": {
+    "translation": "I love you",
+    "transliteration": "ya tebya lyublyu",
+    "literal": "I you love",
+    "register": "informal",
+    "usage": "romantic expression"
+  },
+  "я люблю тебя": {
+    "translation": "I love you",
+    "transliteration": "ya lyublyu tebya",
+    "literal": "I love you",
+    "register": "informal",
+    "usage": "romantic expression (alternative word order)"
+  },
+  "очень приятно": {
+    "translation": "nice to meet you / very pleasant",
+    "transliteration": "ochen priyatno",
+    "literal": "very pleasant",
+    "register": "neutral",
+    "usage": "meeting someone"
+  },
+  "пожалуйста": {
+    "translation": "please / you're welcome",
+    "transliteration": "pozhaluysta",
+    "literal": "please",
+    "register": "neutral",
+    "usage": "polite request or response to thanks"
+  },
+  "большое спасибо": {
+    "translation": "thank you very much",
+    "transliteration": "bolshoye spasibo",
+    "literal": "big thanks",
+    "register": "neutral",
+    "usage": "expressing gratitude"
+  },
+  "спасибо большое": {
+    "translation": "thank you very much",
+    "transliteration": "spasibo bolshoye",
+    "literal": "thanks big",
+    "register": "neutral",
+    "usage": "expressing gratitude (alternative word order)"
+  },
+  "извините": {
+    "translation": "excuse me / sorry",
+    "transliteration": "izvinite",
+    "literal": "excuse",
+    "register": "formal",
+    "usage": "apologizing or getting attention"
+  },
+  "извини": {
+    "translation": "sorry",
+    "transliteration": "izvini",
+    "literal": "excuse",
+    "register": "informal",
+    "usage": "casual apology"
+  },
+  "простите": {
+    "translation": "forgive me / I'm sorry",
+    "transliteration": "prostite",
+    "literal": "forgive",
+    "register": "formal",
+    "usage": "apologizing (formal)"
+  },
+  "прости": {
+    "translation": "forgive me / sorry",
+    "transliteration": "prosti",
+    "literal": "forgive",
+    "register": "informal",
+    "usage": "apologizing (informal)"
+  },
+  "ничего страшного": {
+    "translation": "no problem / it's nothing",
+    "transliteration": "nichego strashnogo",
+    "literal": "nothing terrible",
+    "register": "neutral",
+    "usage": "accepting apology"
+  },
+  "не за что": {
+    "translation": "don't mention it / you're welcome",
+    "transliteration": "ne za chto",
+    "literal": "not for what",
+    "register": "neutral",
+    "usage": "response to thanks"
+  },
+  "конечно": {
+    "translation": "of course / certainly",
+    "transliteration": "konechno",
+    "literal": "of course",
+    "register": "neutral",
+    "usage": "agreement"
+  },
+  "я понимаю": {
+    "translation": "I understand",
+    "transliteration": "ya ponimayu",
+    "literal": "I understand",
+    "register": "neutral",
+    "usage": "indicating comprehension"
+  },
+  "я не понимаю": {
+    "translation": "I don't understand",
+    "transliteration": "ya ne ponimayu",
+    "literal": "I not understand",
+    "register": "neutral",
+    "usage": "indicating confusion"
+  },
+  "не понимаю": {
+    "translation": "I don't understand",
+    "transliteration": "ne ponimayu",
+    "literal": "not understand",
+    "register": "neutral",
+    "usage": "indicating confusion (shorter form)"
+  },
+  "ты говоришь по-английски": {
+    "translation": "do you speak English",
+    "transliteration": "ty govorish po-angliyski",
+    "literal": "you speak in-English",
+    "register": "informal",
+    "usage": "asking about language"
+  },
+  "вы говорите по-английски": {
+    "translation": "do you speak English",
+    "transliteration": "vy govorite po-angliyski",
+    "literal": "you speak in-English",
+    "register": "formal",
+    "usage": "asking about language (polite)"
+  },
+  "я говорю по-русски": {
+    "translation": "I speak Russian",
+    "transliteration": "ya govoryu po-russki",
+    "literal": "I speak in-Russian",
+    "register": "neutral",
+    "usage": "stating language ability"
+  },
+  "немного": {
+    "translation": "a little",
+    "transliteration": "nemnogo",
+    "literal": "not-much",
+    "register": "neutral",
+    "usage": "quantity or ability level"
+  },
+  "помогите": {
+    "translation": "help!",
+    "transliteration": "pomogite",
+    "literal": "help",
+    "register": "formal",
+    "usage": "asking for help (urgent)"
+  },
+  "помоги": {
+    "translation": "help!",
+    "transliteration": "pomogi",
+    "literal": "help",
+    "register": "informal",
+    "usage": "asking for help (casual)"
+  },
+  "мне нужна помощь": {
+    "translation": "I need help",
+    "transliteration": "mne nuzhna pomoshch",
+    "literal": "to-me needed help",
+    "register": "neutral",
+    "usage": "requesting assistance"
+  },
+  "сколько стоит": {
+    "translation": "how much does it cost",
+    "transliteration": "skolko stoit",
+    "literal": "how-much costs",
+    "register": "neutral",
+    "usage": "asking price"
+  },
+  "сколько это стоит": {
+    "translation": "how much does this cost",
+    "transliteration": "skolko eto stoit",
+    "literal": "how-much this costs",
+    "register": "neutral",
+    "usage": "asking price (pointing)"
+  },
+  "который час": {
+    "translation": "what time is it",
+    "transliteration": "kotoryy chas",
+    "literal": "which hour",
+    "register": "neutral",
+    "usage": "asking time"
+  },
+  "где туалет": {
+    "translation": "where is the toilet",
+    "transliteration": "gde tualet",
+    "literal": "where toilet",
+    "register": "neutral",
+    "usage": "asking directions"
+  },
+  "где находится": {
+    "translation": "where is located",
+    "transliteration": "gde nakhoditsya",
+    "literal": "where located",
+    "register": "neutral",
+    "usage": "asking location"
+  },
+  "налево": {
+    "translation": "to the left",
+    "transliteration": "nalevo",
+    "literal": "to-left",
+    "register": "neutral",
+    "usage": "directions"
+  },
+  "направо": {
+    "translation": "to the right",
+    "transliteration": "napravo",
+    "literal": "to-right",
+    "register": "neutral",
+    "usage": "directions"
+  },
+  "прямо": {
+    "translation": "straight ahead",
+    "transliteration": "pryamo",
+    "literal": "straight",
+    "register": "neutral",
+    "usage": "directions"
+  },
+  "что случилось": {
+    "translation": "what happened",
+    "transliteration": "chto sluchilos",
+    "literal": "what happened",
+    "register": "neutral",
+    "usage": "asking about events"
+  },
+  "в чём дело": {
+    "translation": "what's the matter",
+    "transliteration": "v chom delo",
+    "literal": "in what matter",
+    "register": "neutral",
+    "usage": "asking what's wrong"
+  },
+  "всё в порядке": {
+    "translation": "everything is fine / it's okay",
+    "transliteration": "vsyo v poryadke",
+    "literal": "all in order",
+    "register": "neutral",
+    "usage": "reassurance"
+  },
+  "всё хорошо": {
+    "translation": "everything is good",
+    "transliteration": "vsyo khorosho",
+    "literal": "all good",
+    "register": "neutral",
+    "usage": "reassurance"
+  },
+  "мне плохо": {
+    "translation": "I feel bad / I'm not well",
+    "transliteration": "mne plokho",
+    "literal": "to-me bad",
+    "register": "neutral",
+    "usage": "expressing discomfort"
+  },
+  "мне хорошо": {
+    "translation": "I feel good / I'm fine",
+    "transliteration": "mne khorosho",
+    "literal": "to-me good",
+    "register": "neutral",
+    "usage": "expressing wellbeing"
+  },
+  "я устал": {
+    "translation": "I'm tired (male speaker)",
+    "transliteration": "ya ustal",
+    "literal": "I tired",
+    "register": "neutral",
+    "usage": "expressing tiredness (masculine)"
+  },
+  "я устала": {
+    "translation": "I'm tired (female speaker)",
+    "transliteration": "ya ustala",
+    "literal": "I tired",
+    "register": "neutral",
+    "usage": "expressing tiredness (feminine)"
+  },
+  "я хочу": {
+    "translation": "I want",
+    "transliteration": "ya khochu",
+    "literal": "I want",
+    "register": "neutral",
+    "usage": "expressing desire"
+  },
+  "я хочу есть": {
+    "translation": "I'm hungry / I want to eat",
+    "transliteration": "ya khochu yest",
+    "literal": "I want to-eat",
+    "register": "neutral",
+    "usage": "expressing hunger"
+  },
+  "я хочу пить": {
+    "translation": "I'm thirsty / I want to drink",
+    "transliteration": "ya khochu pit",
+    "literal": "I want to-drink",
+    "register": "neutral",
+    "usage": "expressing thirst"
+  },
+  "я хочу спать": {
+    "translation": "I'm sleepy / I want to sleep",
+    "transliteration": "ya khochu spat",
+    "literal": "I want to-sleep",
+    "register": "neutral",
+    "usage": "expressing tiredness"
+  },
+  "мне нравится": {
+    "translation": "I like",
+    "transliteration": "mne nravitsya",
+    "literal": "to-me pleasing",
+    "register": "neutral",
+    "usage": "expressing preference"
+  },
+  "мне не нравится": {
+    "translation": "I don't like",
+    "transliteration": "mne ne nravitsya",
+    "literal": "to-me not pleasing",
+    "register": "neutral",
+    "usage": "expressing dislike"
+  },
+  "давай": {
+    "translation": "let's go / come on / okay",
+    "transliteration": "davay",
+    "literal": "give",
+    "register": "informal",
+    "usage": "suggestion or agreement"
+  },
+  "пошли": {
+    "translation": "let's go",
+    "transliteration": "poshli",
+    "literal": "went",
+    "register": "informal",
+    "usage": "invitation to leave"
+  },
+  "идём": {
+    "translation": "let's go / we're going",
+    "transliteration": "idyom",
+    "literal": "going",
+    "register": "neutral",
+    "usage": "suggesting movement"
+  },
+  "подожди": {
+    "translation": "wait",
+    "transliteration": "podozhdi",
+    "literal": "wait",
+    "register": "informal",
+    "usage": "asking to wait"
+  },
+  "подождите": {
+    "translation": "wait",
+    "transliteration": "podozhdite",
+    "literal": "wait",
+    "register": "formal",
+    "usage": "asking to wait (polite)"
+  },
+  "минутку": {
+    "translation": "just a minute",
+    "transliteration": "minutku",
+    "literal": "minute",
+    "register": "neutral",
+    "usage": "asking for time"
+  },
+  "одну секунду": {
+    "translation": "one second",
+    "transliteration": "odnu sekundu",
+    "literal": "one second",
+    "register": "neutral",
+    "usage": "asking for brief time"
+  },
+  "ещё раз": {
+    "translation": "one more time / again",
+    "transliteration": "yeshcho raz",
+    "literal": "more time",
+    "register": "neutral",
+    "usage": "asking for repetition"
+  },
+  "повторите": {
+    "translation": "please repeat",
+    "transliteration": "povtorite",
+    "literal": "repeat",
+    "register": "formal",
+    "usage": "asking for repetition (polite)"
+  },
+  "говорите медленнее": {
+    "translation": "speak more slowly",
+    "transliteration": "govorite medlenneye",
+    "literal": "speak slower",
+    "register": "formal",
+    "usage": "asking to slow down"
+  },
+  "что это значит": {
+    "translation": "what does this mean",
+    "transliteration": "chto eto znachit",
+    "literal": "what this means",
+    "register": "neutral",
+    "usage": "asking for meaning"
+  },
+  "как это сказать": {
+    "translation": "how do you say this",
+    "transliteration": "kak eto skazat",
+    "literal": "how this to-say",
+    "register": "neutral",
+    "usage": "asking for translation"
+  },
+  "ни фига себе": {
+    "translation": "holy crap / wow",
+    "transliteration": "ni figa sebe",
+    "literal": "not fig self",
+    "register": "informal",
+    "usage": "expressing surprise (mild)"
+  },
+  "ни хрена себе": {
+    "translation": "holy shit / damn",
+    "transliteration": "ni khrena sebe",
+    "literal": "not horseradish self",
+    "register": "vulgar",
+    "usage": "expressing surprise (vulgar)"
+  },
+  "блин": {
+    "translation": "darn / shoot",
+    "transliteration": "blin",
+    "literal": "pancake",
+    "register": "informal",
+    "usage": "mild expletive (euphemism for blyat)"
+  },
+  "чёрт": {
+    "translation": "damn / hell",
+    "transliteration": "chyort",
+    "literal": "devil",
+    "register": "informal",
+    "usage": "expressing frustration"
+  },
+  "чёрт возьми": {
+    "translation": "damn it",
+    "transliteration": "chyort vozmi",
+    "literal": "devil take",
+    "register": "informal",
+    "usage": "expressing frustration"
+  },
+  "иди на хуй": {
+    "translation": "fuck off / go fuck yourself",
+    "transliteration": "idi na khuy",
+    "literal": "go to dick",
+    "register": "vulgar",
+    "usage": "strong insult"
+  },
+  "какого хуя": {
+    "translation": "what the fuck",
+    "transliteration": "kakogo khuya",
+    "literal": "of-what dick",
+    "register": "vulgar",
+    "usage": "expressing frustration or confusion"
+  },
+  "пиздец": {
+    "translation": "holy fuck / fucked up",
+    "transliteration": "pizdets",
+    "literal": "cunt-end",
+    "register": "vulgar",
+    "usage": "expressing that something is extremely bad or amazing"
+  },
+  "охуеть": {
+    "translation": "holy shit / to be amazed",
+    "transliteration": "okhuyet",
+    "literal": "to be dicked",
+    "register": "vulgar",
+    "usage": "expressing extreme surprise"
+  },
+  "заебись": {
+    "translation": "fucking awesome",
+    "transliteration": "zayebis",
+    "literal": "to-fuck-self",
+    "register": "vulgar",
+    "usage": "expressing something is great"
+  },
+  "мне похуй": {
+    "translation": "I don't give a fuck",
+    "transliteration": "mne pokhuy",
+    "literal": "to-me on-dick",
+    "register": "vulgar",
+    "usage": "expressing indifference (vulgar)"
+  },
+  "по фиг": {
+    "translation": "don't care / whatever",
+    "transliteration": "po fig",
+    "literal": "on fig",
+    "register": "informal",
+    "usage": "expressing indifference (mild)"
+  },
+  "мне по фиг": {
+    "translation": "I don't care",
+    "transliteration": "mne po fig",
+    "literal": "to-me on fig",
+    "register": "informal",
+    "usage": "expressing indifference"
+  },
+  "с ума сойти": {
+    "translation": "unbelievable / crazy",
+    "transliteration": "s uma soyti",
+    "literal": "from mind to-go",
+    "register": "neutral",
+    "usage": "expressing disbelief"
+  },
+  "ты с ума сошёл": {
+    "translation": "are you crazy (to male)",
+    "transliteration": "ty s uma soshyol",
+    "literal": "you from mind went",
+    "register": "informal",
+    "usage": "expressing disbelief at someone's actions"
+  },
+  "ты с ума сошла": {
+    "translation": "are you crazy (to female)",
+    "transliteration": "ty s uma soshla",
+    "literal": "you from mind went",
+    "register": "informal",
+    "usage": "expressing disbelief at someone's actions"
+  },
+  "я думаю": {
+    "translation": "I think",
+    "transliteration": "ya dumayu",
+    "literal": "I think",
+    "register": "neutral",
+    "usage": "expressing opinion"
+  },
+  "по-моему": {
+    "translation": "in my opinion",
+    "transliteration": "po-moyemu",
+    "literal": "by-mine",
+    "register": "neutral",
+    "usage": "expressing opinion"
+  },
+  "наверное": {
+    "translation": "probably / I guess",
+    "transliteration": "navernoye",
+    "literal": "probably",
+    "register": "neutral",
+    "usage": "expressing uncertainty"
+  },
+  "может быть": {
+    "translation": "maybe / perhaps",
+    "transliteration": "mozhet byt",
+    "literal": "can be",
+    "register": "neutral",
+    "usage": "expressing possibility"
+  },
+  "не знаю": {
+    "translation": "I don't know",
+    "transliteration": "ne znayu",
+    "literal": "not know",
+    "register": "neutral",
+    "usage": "expressing uncertainty (short form)"
+  }
+}
