@@ -1,0 +1,1513 @@
+{
+  "я": {
+    "pos": "pronoun",
+    "definition": "I (first person singular)",
+    "example": "Я не знаю — I don't know",
+    "register": "neutral",
+    "cases": {
+      "nominative": "я",
+      "genitive": "меня́",
+      "dative": "мне",
+      "accusative": "меня́",
+      "instrumental": "мной/мно́ю",
+      "prepositional": "мне"
+    }
+  },
+  "ты": {
+    "pos": "pronoun",
+    "definition": "you (informal singular, like French 'tu')",
+    "example": "Ты где? — Where are you?",
+    "register": "informal",
+    "cases": {
+      "nominative": "ты",
+      "genitive": "тебя́",
+      "dative": "тебе́",
+      "accusative": "тебя́",
+      "instrumental": "тобо́й/тобо́ю",
+      "prepositional": "тебе́"
+    }
+  },
+  "вы": {
+    "pos": "pronoun",
+    "definition": "you (formal or plural)",
+    "example": "Вы готовы? — Are you ready?"
+  },
+  "он": {
+    "pos": "pronoun",
+    "definition": "he",
+    "example": "Он здесь — He's here"
+  },
+  "она": {
+    "pos": "pronoun",
+    "definition": "she",
+    "example": "Она дома — She's at home"
+  },
+  "оно": {
+    "pos": "pronoun",
+    "definition": "it",
+    "example": "Оно работает — It works"
+  },
+  "мы": {
+    "pos": "pronoun",
+    "definition": "we",
+    "example": "Мы идём — We're going"
+  },
+  "они": {
+    "pos": "pronoun",
+    "definition": "they",
+    "example": "Они знают — They know"
+  },
+  "мне": {
+    "pos": "pronoun",
+    "definition": "to me, for me (dative of я)",
+    "example": "Мне похуй — I don't give a fuck"
+  },
+  "тебе": {
+    "pos": "pronoun",
+    "definition": "to you, for you (dative of ты)",
+    "example": "Тебе нравится? — Do you like it?"
+  },
+  "меня": {
+    "pos": "pronoun",
+    "definition": "me (accusative/genitive of я)",
+    "example": "Меня зовут... — My name is..."
+  },
+  "тебя": {
+    "pos": "pronoun",
+    "definition": "you (accusative/genitive of ты)",
+    "example": "Я тебя люблю — I love you"
+  },
+  "это": {
+    "pos": "pronoun",
+    "definition": "this, it",
+    "example": "Это хорошо — This is good"
+  },
+  "что": {
+    "pos": "pronoun",
+    "definition": "what; that",
+    "example": "Что это? — What is this?"
+  },
+  "кто": {
+    "pos": "pronoun",
+    "definition": "who",
+    "example": "Кто там? — Who's there?"
+  },
+  "да": {
+    "pos": "particle",
+    "definition": "yes",
+    "example": "Да, конечно — Yes, of course"
+  },
+  "нет": {
+    "pos": "particle",
+    "definition": "no",
+    "example": "Нет, спасибо — No, thanks"
+  },
+  "не": {
+    "pos": "particle",
+    "definition": "not",
+    "example": "Я не знаю — I don't know"
+  },
+  "хорошо": {
+    "pos": "adverb",
+    "definition": "good, well, okay",
+    "example": "Всё хорошо — Everything is fine"
+  },
+  "плохо": {
+    "pos": "adverb",
+    "definition": "bad, badly",
+    "example": "Мне плохо — I feel bad"
+  },
+  "очень": {
+    "pos": "adverb",
+    "definition": "very",
+    "example": "Очень хорошо — Very good"
+  },
+  "сейчас": {
+    "pos": "adverb",
+    "definition": "now, right now",
+    "example": "Я сейчас приду — I'll come right now"
+  },
+  "здесь": {
+    "pos": "adverb",
+    "definition": "here",
+    "example": "Я здесь — I'm here"
+  },
+  "там": {
+    "pos": "adverb",
+    "definition": "there",
+    "example": "Он там — He's there"
+  },
+  "тут": {
+    "pos": "adverb",
+    "definition": "here (colloquial)",
+    "example": "Я тут — I'm here"
+  },
+  "ещё": {
+    "pos": "adverb",
+    "definition": "still, yet, more",
+    "example": "Ещё раз — One more time"
+  },
+  "уже": {
+    "pos": "adverb",
+    "definition": "already",
+    "example": "Уже поздно — It's already late"
+  },
+  "всё": {
+    "pos": "pronoun",
+    "definition": "everything, all",
+    "example": "Всё понятно — Everything is clear"
+  },
+  "ничего": {
+    "pos": "pronoun",
+    "definition": "nothing; it's okay",
+    "example": "Ничего страшного — It's nothing serious"
+  },
+  "почему": {
+    "pos": "adverb",
+    "definition": "why",
+    "example": "Почему нет? — Why not?"
+  },
+  "потому что": {
+    "pos": "conjunction",
+    "definition": "because",
+    "example": "Потому что я так хочу — Because I want to"
+  },
+  "как": {
+    "pos": "adverb",
+    "definition": "how; like, as",
+    "example": "Как дела? — How are you?"
+  },
+  "где": {
+    "pos": "adverb",
+    "definition": "where",
+    "example": "Где ты? — Where are you?"
+  },
+  "когда": {
+    "pos": "adverb",
+    "definition": "when",
+    "example": "Когда ты придёшь? — When will you come?"
+  },
+  "знать": {
+    "pos": "verb",
+    "definition": "to know",
+    "example": "Я хочу знать — I want to know",
+    "aspect": "imperfective",
+    "pair": "узнать",
+    "conjugation": {
+      "я": "зна́ю",
+      "ты": "зна́ешь",
+      "он/она": "зна́ет",
+      "мы": "зна́ем",
+      "вы": "зна́ете",
+      "они": "зна́ют"
+    }
+  },
+  "знаю": {
+    "pos": "verb",
+    "definition": "I know",
+    "example": "Я знаю — I know"
+  },
+  "знаешь": {
+    "pos": "verb",
+    "definition": "you know",
+    "example": "Ты знаешь? — Do you know?"
+  },
+  "знает": {
+    "pos": "verb",
+    "definition": "he/she knows",
+    "example": "Он знает — He knows"
+  },
+  "делать": {
+    "pos": "verb",
+    "definition": "to do, to make",
+    "example": "Что делать? — What to do?",
+    "aspect": "imperfective",
+    "pair": "сделать",
+    "conjugation": {
+      "я": "де́лаю",
+      "ты": "де́лаешь",
+      "он/она": "де́лает",
+      "мы": "де́лаем",
+      "вы": "де́лаете",
+      "они": "де́лают"
+    }
+  },
+  "делаю": {
+    "pos": "verb",
+    "definition": "I do, I'm doing",
+    "example": "Я делаю — I'm doing"
+  },
+  "делаешь": {
+    "pos": "verb",
+    "definition": "you do, you're doing",
+    "example": "Что ты делаешь? — What are you doing?"
+  },
+  "делает": {
+    "pos": "verb",
+    "definition": "he/she does",
+    "example": "Он делает — He's doing"
+  },
+  "хотеть": {
+    "pos": "verb",
+    "definition": "to want",
+    "example": "Я хочу знать — I want to know",
+    "aspect": "imperfective",
+    "pair": "захотеть",
+    "conjugation": {
+      "я": "хочу́",
+      "ты": "хо́чешь",
+      "он/она": "хо́чет",
+      "мы": "хоти́м",
+      "вы": "хоти́те",
+      "они": "хотя́т"
+    }
+  },
+  "хочу": {
+    "pos": "verb",
+    "definition": "I want",
+    "example": "Я хочу — I want"
+  },
+  "хочешь": {
+    "pos": "verb",
+    "definition": "you want",
+    "example": "Ты хочешь? — Do you want?"
+  },
+  "хочет": {
+    "pos": "verb",
+    "definition": "he/she wants",
+    "example": "Она хочет — She wants"
+  },
+  "мочь": {
+    "pos": "verb",
+    "definition": "to be able, can",
+    "example": "Я могу помочь — I can help",
+    "aspect": "imperfective",
+    "pair": "смочь",
+    "conjugation": {
+      "я": "могу́",
+      "ты": "мо́жешь",
+      "он/она": "мо́жет",
+      "мы": "мо́жем",
+      "вы": "мо́жете",
+      "они": "мо́гут"
+    }
+  },
+  "могу": {
+    "pos": "verb",
+    "definition": "I can",
+    "example": "Я могу — I can"
+  },
+  "можешь": {
+    "pos": "verb",
+    "definition": "you can",
+    "example": "Ты можешь? — Can you?"
+  },
+  "может": {
+    "pos": "verb",
+    "definition": "he/she can; maybe",
+    "example": "Может быть — Maybe"
+  },
+  "идти": {
+    "pos": "verb",
+    "definition": "to go (on foot)",
+    "example": "Куда ты идёшь? — Where are you going?",
+    "aspect": "imperfective (unidirectional)",
+    "pair": "пойти",
+    "conjugation": {
+      "я": "иду́",
+      "ты": "идёшь",
+      "он/она": "идёт",
+      "мы": "идём",
+      "вы": "идёте",
+      "они": "иду́т"
+    }
+  },
+  "иду": {
+    "pos": "verb",
+    "definition": "I'm going",
+    "example": "Я иду — I'm going"
+  },
+  "идёшь": {
+    "pos": "verb",
+    "definition": "you're going",
+    "example": "Куда идёшь? — Where are you going?"
+  },
+  "понимать": {
+    "pos": "verb",
+    "definition": "to understand",
+    "example": "Я не понимаю — I don't understand",
+    "aspect": "imperfective",
+    "pair": "понять",
+    "conjugation": {
+      "я": "понима́ю",
+      "ты": "понима́ешь",
+      "он/она": "понима́ет",
+      "мы": "понима́ем",
+      "вы": "понима́ете",
+      "они": "понима́ют"
+    }
+  },
+  "понимаю": {
+    "pos": "verb",
+    "definition": "I understand",
+    "example": "Я понимаю — I understand"
+  },
+  "понимаешь": {
+    "pos": "verb",
+    "definition": "you understand",
+    "example": "Ты понимаешь? — Do you understand?"
+  },
+  "говорить": {
+    "pos": "verb",
+    "definition": "to speak, to say",
+    "example": "Говори! — Speak!",
+    "aspect": "imperfective",
+    "pair": "сказать",
+    "conjugation": {
+      "я": "говорю́",
+      "ты": "говори́шь",
+      "он/она": "говори́т",
+      "мы": "говори́м",
+      "вы": "говори́те",
+      "они": "говоря́т"
+    }
+  },
+  "говорю": {
+    "pos": "verb",
+    "definition": "I say, I speak",
+    "example": "Я говорю — I'm speaking"
+  },
+  "говоришь": {
+    "pos": "verb",
+    "definition": "you say",
+    "example": "Что ты говоришь? — What are you saying?"
+  },
+  "любить": {
+    "pos": "verb",
+    "definition": "to love",
+    "example": "Я тебя люблю — I love you",
+    "aspect": "imperfective",
+    "pair": "полюбить",
+    "conjugation": {
+      "я": "люблю́",
+      "ты": "лю́бишь",
+      "он/она": "лю́бит",
+      "мы": "лю́бим",
+      "вы": "лю́бите",
+      "они": "лю́бят"
+    }
+  },
+  "люблю": {
+    "pos": "verb",
+    "definition": "I love",
+    "example": "Я люблю — I love"
+  },
+  "любишь": {
+    "pos": "verb",
+    "definition": "you love",
+    "example": "Ты любишь? — Do you love?"
+  },
+  "блядь": {
+    "pos": "noun",
+    "definition": "whore, slut (vulgar insult)",
+    "example": "Она блядь — She's a whore",
+    "gender": "feminine",
+    "cases": {
+      "nom": "блядь",
+      "gen": "бля́ди",
+      "dat": "бля́ди",
+      "acc": "блядь",
+      "ins": "бля́дью",
+      "prep": "бля́ди"
+    }
+  },
+  "блять": {
+    "pos": "interjection",
+    "definition": "fuck, damn, shit (emotional emphasis)",
+    "example": "Блять, ну серьёзно? — Fuck, seriously?"
+  },
+  "блин": {
+    "pos": "interjection",
+    "definition": "damn (euphemism for блять)",
+    "example": "Блин, я забыл — Damn, I forgot"
+  },
+  "сука": {
+    "pos": "interjection/noun",
+    "definition": "bitch; damn (pain/frustration)",
+    "example": "Сука, больно! — Shit, that hurts!",
+    "gender": "feminine",
+    "cases": {
+      "nom": "су́ка",
+      "gen": "су́ки",
+      "dat": "су́ке",
+      "acc": "су́ку",
+      "ins": "су́кой",
+      "prep": "су́ке"
+    }
+  },
+  "ёб твою мать": {
+    "pos": "interjection",
+    "definition": "fuck! motherfucker! (extreme frustration)",
+    "example": "Ёб твою мать, опять! — For fuck's sake, again!"
+  },
+  "твою мать": {
+    "pos": "interjection",
+    "definition": "damn it, for fuck's sake",
+    "example": "Твою мать, я забыл — Damn it, I forgot"
+  },
+  "какого хера": {
+    "pos": "phrase",
+    "definition": "what the hell, what the fuck",
+    "example": "Какого хера это не работает? — Why the hell isn't this working?"
+  },
+  "какого хуя": {
+    "pos": "phrase",
+    "definition": "what the fuck (stronger)",
+    "example": "Какого хуя ты это сделал? — What the fuck did you do that for?"
+  },
+  "нахера": {
+    "pos": "adverb",
+    "definition": "why the fuck, what for",
+    "example": "Нахера ты туда полез? — Why the fuck did you go there?"
+  },
+  "нахуя": {
+    "pos": "adverb",
+    "definition": "why the fuck (rougher)",
+    "example": "Нахуя ты это купил? — Why the fuck did you buy that?"
+  },
+  "нахуй": {
+    "pos": "adverb",
+    "definition": "the fuck (direction/emphasis)",
+    "example": "Иди нахуй — Go fuck yourself"
+  },
+  "что за херня": {
+    "pos": "phrase",
+    "definition": "what the hell is this, what bullshit",
+    "example": "Что за херня происходит? — What the hell is going on?"
+  },
+  "что за хуйня": {
+    "pos": "phrase",
+    "definition": "what kind of shit is this (rough)",
+    "example": "Что за хуйню ты несёшь? — What shit are you saying?"
+  },
+  "охуеть": {
+    "pos": "verb",
+    "definition": "to be shocked/amazed, holy shit",
+    "example": "Я просто охуел — I was just fucking shocked"
+  },
+  "охуел": {
+    "pos": "verb",
+    "definition": "was shocked, holy shit (past, masc)",
+    "example": "Я охуел — I was fucking shocked"
+  },
+  "охуела": {
+    "pos": "verb",
+    "definition": "was shocked (past, fem)",
+    "example": "Она охуела — She was fucking shocked"
+  },
+  "охуели": {
+    "pos": "verb",
+    "definition": "were shocked (past, plural)",
+    "example": "Они охуели — They were fucking shocked"
+  },
+  "охуенно": {
+    "pos": "adverb",
+    "definition": "fucking great, amazingly",
+    "example": "Охуенно получилось — It turned out fucking great"
+  },
+  "охуенный": {
+    "pos": "adjective",
+    "definition": "fucking awesome",
+    "example": "Охуенный фильм — Awesome fucking movie"
+  },
+  "заебись": {
+    "pos": "adverb",
+    "definition": "awesome, fucking great",
+    "example": "Заебись! — Fucking awesome!"
+  },
+  "ну нахуй": {
+    "pos": "phrase",
+    "definition": "fuck that, no fucking way",
+    "example": "Ну нахуй, я туда не пойду — Fuck that, I'm not going there"
+  },
+  "да ну нахуй": {
+    "pos": "phrase",
+    "definition": "no fucking way (disbelief)",
+    "example": "Да ну нахуй, серьёзно? — No fucking way, seriously?"
+  },
+  "хуя себе": {
+    "pos": "interjection",
+    "definition": "holy shit, wow",
+    "example": "Хуя себе! — Holy shit!"
+  },
+  "ни хуя себе": {
+    "pos": "interjection",
+    "definition": "holy fucking shit",
+    "example": "Ни хуя себе! — Holy fucking shit!"
+  },
+  "пиздец": {
+    "pos": "noun/interjection",
+    "definition": "total disaster, we're fucked, holy shit",
+    "example": "Вот это пиздец — This is a total disaster"
+  },
+  "ебать": {
+    "pos": "verb/interjection",
+    "definition": "to fuck; holy fuck (exclamation)",
+    "example": "Ебать, вот это скорость — Holy fuck, that's fast",
+    "aspect": "imperfective",
+    "pair": "выебать",
+    "conjugation": {
+      "я": "ебу́",
+      "ты": "ебёшь",
+      "он/она": "ебёт",
+      "мы": "ебём",
+      "вы": "ебёте",
+      "они": "ебу́т"
+    },
+    "register": "vulgar"
+  },
+  "ебаный": {
+    "pos": "adjective",
+    "definition": "fucking, goddamn",
+    "example": "Этот ебаный принтер — This fucking printer"
+  },
+  "ёбаный": {
+    "pos": "adjective",
+    "definition": "fucking, goddamn",
+    "example": "Ёбаный насос — The fucking pump"
+  },
+  "пиздеть": {
+    "pos": "verb",
+    "definition": "to lie, to bullshit, to talk nonsense",
+    "example": "Хватит пиздеть — Stop bullshitting"
+  },
+  "пиздит": {
+    "pos": "verb",
+    "definition": "he/she lies, bullshits",
+    "example": "Он опять пиздит — He's bullshitting again"
+  },
+  "пиздишь": {
+    "pos": "verb",
+    "definition": "you're lying/bullshitting",
+    "example": "Ты пиздишь! — You're bullshitting!"
+  },
+  "хуярить": {
+    "pos": "verb",
+    "definition": "to hit hard, to work intensely",
+    "example": "Он хуярит по клаве — He's pounding the keyboard"
+  },
+  "ебашить": {
+    "pos": "verb",
+    "definition": "to work/hit relentlessly",
+    "example": "Он ебашит без остановки — He works nonstop"
+  },
+  "разъебать": {
+    "pos": "verb",
+    "definition": "to wreck, to destroy",
+    "example": "Он разъебал телефон — He wrecked the phone"
+  },
+  "заебал": {
+    "pos": "verb",
+    "definition": "you've pissed me off, I'm sick of you (past)",
+    "example": "Ты меня заебал — I'm fucking sick of you"
+  },
+  "заебала": {
+    "pos": "verb",
+    "definition": "she's pissed me off (past, fem)",
+    "example": "Она меня заебала — I'm fucking sick of her"
+  },
+  "заебали": {
+    "pos": "verb",
+    "definition": "they've pissed me off (past, pl)",
+    "example": "Они заебали — They're pissing me off"
+  },
+  "заебался": {
+    "pos": "verb",
+    "definition": "I'm fucking exhausted (past, masc)",
+    "example": "Я заебался — I'm fucking exhausted"
+  },
+  "заебалась": {
+    "pos": "verb",
+    "definition": "I'm fucking exhausted (past, fem)",
+    "example": "Я заебалась — I'm fucking exhausted"
+  },
+  "наебать": {
+    "pos": "verb",
+    "definition": "to scam, to deceive, to fuck over",
+    "example": "Меня наебали — I got fucked over"
+  },
+  "проебать": {
+    "pos": "verb",
+    "definition": "to fuck up, to miss/lose",
+    "example": "Я проебал дедлайн — I fucked up the deadline"
+  },
+  "хуйню нести": {
+    "pos": "phrase",
+    "definition": "to talk nonsense, verbal diarrhea",
+    "example": "Ты хуйню несёшь — You're talking shit"
+  },
+  "несёшь": {
+    "pos": "verb",
+    "definition": "you're carrying; you're spouting (nonsense)",
+    "example": "Что ты несёшь? — What are you on about?"
+  },
+  "втираешь": {
+    "pos": "verb",
+    "definition": "you're trying to convince/sell (bullshit)",
+    "example": "Ты мне втираешь дичь — You're feeding me nonsense"
+  },
+  "гонишь": {
+    "pos": "verb",
+    "definition": "you're spouting (nonsense)",
+    "example": "Ты пургу гонишь — You're spouting nonsense"
+  },
+  "пиздобол": {
+    "pos": "noun",
+    "definition": "bullshitter, someone who talks shit (often comedic)",
+    "example": "Он полный пиздобол — He's a total bullshitter"
+  },
+  "пиздун": {
+    "pos": "noun",
+    "definition": "bullshitter, liar (cruder)",
+    "example": "Ну ты и пиздун! — You're such a bullshitter!"
+  },
+  "херня": {
+    "pos": "noun",
+    "definition": "nonsense, crap, bullshit",
+    "example": "Это полная херня — This is total crap"
+  },
+  "хуйня": {
+    "pos": "noun",
+    "definition": "bullshit, crap (stronger)",
+    "example": "Какая-то хуйня — Some bullshit"
+  },
+  "хуй": {
+    "pos": "noun",
+    "definition": "dick, cock; nothing (in phrases)",
+    "example": "Хуй знает — Who the fuck knows",
+    "gender": "masculine",
+    "cases": {
+      "nom": "хуй",
+      "gen": "ху́я",
+      "dat": "ху́ю",
+      "acc": "хуй",
+      "ins": "ху́ем",
+      "prep": "ху́е"
+    }
+  },
+  "пизда": {
+    "pos": "noun",
+    "definition": "cunt, pussy; disaster (in phrases)",
+    "example": "Пизда рулю — The steering is fucked",
+    "gender": "feminine",
+    "cases": {
+      "nom": "пизда́",
+      "gen": "пизды́",
+      "dat": "пизде́",
+      "acc": "пизду́",
+      "ins": "пиздо́й",
+      "prep": "пизде́"
+    }
+  },
+  "жопа": {
+    "pos": "noun",
+    "definition": "ass; deep trouble",
+    "example": "Теперь у нас жопа — Now we're in deep shit",
+    "gender": "feminine",
+    "cases": {
+      "nom": "жо́па",
+      "gen": "жо́пы",
+      "dat": "жо́пе",
+      "acc": "жо́пу",
+      "ins": "жо́пой",
+      "prep": "жо́пе"
+    }
+  },
+  "мудак": {
+    "pos": "noun",
+    "definition": "asshole",
+    "example": "Он полный мудак — He's a total asshole"
+  },
+  "дичь": {
+    "pos": "noun",
+    "definition": "nonsense, wild bullshit",
+    "example": "Это какая-то дичь — This is some wild shit"
+  },
+  "чушь": {
+    "pos": "noun",
+    "definition": "nonsense, rubbish (milder)",
+    "example": "Это чушь — That's nonsense"
+  },
+  "пурга": {
+    "pos": "noun",
+    "definition": "nonsense, bullshit (lit: blizzard)",
+    "example": "Не гони пургу — Don't talk nonsense"
+  },
+  "хуёвый": {
+    "pos": "adjective",
+    "definition": "shitty, crappy",
+    "example": "Хуёвый план — A shitty plan"
+  },
+  "хуёво": {
+    "pos": "adverb",
+    "definition": "shitty, badly",
+    "example": "Мне хуёво — I feel like shit"
+  },
+  "пиздатый": {
+    "pos": "adjective",
+    "definition": "fucking great, awesome",
+    "example": "Пиздатая тачка — Awesome car"
+  },
+  "пиздато": {
+    "pos": "adverb",
+    "definition": "fucking great",
+    "example": "Всё пиздато — Everything's fucking great"
+  },
+  "пиздос": {
+    "pos": "noun",
+    "definition": "catastrophic mess, doom",
+    "example": "После этого был пиздос — After that it was chaos"
+  },
+  "пипец": {
+    "pos": "noun",
+    "definition": "disaster (softened form of пиздец)",
+    "example": "Ну всё, пипец — Well, we're screwed"
+  },
+  "капец": {
+    "pos": "noun",
+    "definition": "disaster (very softened)",
+    "example": "Капец, что делать — Crap, what to do"
+  },
+  "жесть": {
+    "pos": "noun",
+    "definition": "brutal, intense, wild (slang)",
+    "example": "Жесть, как холодно — Damn, it's cold"
+  },
+  "похуй": {
+    "pos": "predicate",
+    "definition": "I don't give a fuck, don't care",
+    "example": "Мне похуй — I don't give a fuck"
+  },
+  "насрать": {
+    "pos": "predicate",
+    "definition": "I don't give a shit",
+    "example": "Мне насрать — I don't give a shit"
+  },
+  "поебать": {
+    "pos": "predicate",
+    "definition": "I don't give a fuck (crude)",
+    "example": "Мне поебать — I don't give a fuck"
+  },
+  "пофиг": {
+    "pos": "predicate",
+    "definition": "I don't care (milder)",
+    "example": "Мне пофиг — I don't care"
+  },
+  "в падлу": {
+    "pos": "phrase",
+    "definition": "can't be bothered, too lazy",
+    "example": "Мне в падлу — I can't be bothered"
+  },
+  "иди нахуй": {
+    "pos": "phrase",
+    "definition": "go fuck yourself",
+    "example": "Иди нахуй со своими советами — Go fuck yourself with your advice"
+  },
+  "пошёл нахуй": {
+    "pos": "phrase",
+    "definition": "fuck off",
+    "example": "Пошёл нахуй — Fuck off"
+  },
+  "пошла нахуй": {
+    "pos": "phrase",
+    "definition": "fuck off (to female)",
+    "example": "Пошла нахуй — Fuck off"
+  },
+  "отъебись": {
+    "pos": "verb",
+    "definition": "leave me the fuck alone",
+    "example": "Отъебись от меня — Leave me the fuck alone"
+  },
+  "отстань": {
+    "pos": "verb",
+    "definition": "leave me alone (milder)",
+    "example": "Отстань, я занят — Leave me alone, I'm busy"
+  },
+  "закрой ебало": {
+    "pos": "phrase",
+    "definition": "shut your fucking mouth",
+    "example": "Закрой ебало — Shut your fucking mouth"
+  },
+  "заткнись": {
+    "pos": "verb",
+    "definition": "shut up",
+    "example": "Заткнись на секунду — Shut up for a second"
+  },
+  "не пизди": {
+    "pos": "phrase",
+    "definition": "don't bullshit me",
+    "example": "Не пизди, я всё знаю — Don't bullshit me, I know everything"
+  },
+  "вали": {
+    "pos": "verb",
+    "definition": "get out, scram",
+    "example": "Вали отсюда — Get out of here"
+  },
+  "долбоёб": {
+    "pos": "noun",
+    "definition": "fucking idiot",
+    "example": "Ты долбоёб? — Are you a fucking idiot?"
+  },
+  "еблан": {
+    "pos": "noun",
+    "definition": "idiot, dumbass",
+    "example": "Ну ты еблан — Man, you're an idiot"
+  },
+  "уёбок": {
+    "pos": "noun",
+    "definition": "piece of shit, fucker",
+    "example": "Он конченый уёбок — He's a complete piece of shit"
+  },
+  "мразь": {
+    "pos": "noun",
+    "definition": "scum, scumbag",
+    "example": "Какая мразь — What scum"
+  },
+  "урод": {
+    "pos": "noun",
+    "definition": "freak, ugly person",
+    "example": "Он моральный урод — He's morally repugnant"
+  },
+  "гандон": {
+    "pos": "noun",
+    "definition": "condom; asshole (insult)",
+    "example": "Ну ты гандон — You're a real asshole"
+  },
+  "козёл": {
+    "pos": "noun",
+    "definition": "goat; asshole (insult)",
+    "example": "Ты козёл — You're an asshole"
+  },
+  "сволочь": {
+    "pos": "noun",
+    "definition": "bastard, scoundrel",
+    "example": "Он сволочь — He's a bastard"
+  },
+  "тварь": {
+    "pos": "noun",
+    "definition": "creature; bitch/bastard",
+    "example": "Тварь! — You bastard!"
+  },
+  "дебил": {
+    "pos": "noun",
+    "definition": "moron, retard",
+    "example": "Ты дебил? — Are you a moron?"
+  },
+  "идиот": {
+    "pos": "noun",
+    "definition": "idiot",
+    "example": "Полный идиот — Complete idiot"
+  },
+  "дурак": {
+    "pos": "noun",
+    "definition": "fool, idiot",
+    "example": "Ты дурак — You're a fool"
+  },
+  "дура": {
+    "pos": "noun",
+    "definition": "fool, idiot (feminine)",
+    "example": "Ты дура — You're a fool"
+  },
+  "лох": {
+    "pos": "noun",
+    "definition": "sucker, loser",
+    "example": "Он лох — He's a sucker"
+  },
+  "терпила": {
+    "pos": "noun",
+    "definition": "pushover, someone who takes abuse",
+    "example": "Не будь терпилой — Don't be a pushover"
+  },
+  "чмо": {
+    "pos": "noun",
+    "definition": "loser, pathetic person",
+    "example": "Он чмо — He's pathetic"
+  },
+  "сказочник": {
+    "pos": "noun",
+    "definition": "storyteller; friendly term for liar",
+    "example": "Да ты сказочник — You're such a storyteller"
+  },
+  "врун": {
+    "pos": "noun",
+    "definition": "liar (light, teasing)",
+    "example": "Ты врун — You're a liar"
+  },
+  "родной": {
+    "pos": "adjective/noun",
+    "definition": "dear, darling (term of endearment)",
+    "example": "Ты опять хуйню несёшь, родной — You're talking shit again, dear"
+  },
+  "дурачок": {
+    "pos": "noun",
+    "definition": "silly, dummy (affectionate)",
+    "example": "Ну ты дурачок — You silly thing"
+  },
+  "через жопу": {
+    "pos": "phrase",
+    "definition": "ass-backwards, done badly",
+    "example": "Он всё сделал через жопу — He did everything ass-backwards"
+  },
+  "хуй знает": {
+    "pos": "phrase",
+    "definition": "who the fuck knows, no idea",
+    "example": "Хуй знает где это — Who the fuck knows where it is"
+  },
+  "до пизды": {
+    "pos": "phrase",
+    "definition": "don't care, couldn't care less",
+    "example": "Мне до пизды — I couldn't care less"
+  },
+  "ни хуя": {
+    "pos": "phrase",
+    "definition": "nothing, fuck all",
+    "example": "Ни хуя не понял — Didn't understand shit"
+  },
+  "по хую": {
+    "pos": "phrase",
+    "definition": "don't give a fuck",
+    "example": "Мне по хую — I don't give a fuck"
+  },
+  "типа": {
+    "pos": "particle",
+    "definition": "like, kinda, sort of",
+    "example": "Я типа не успел — I kinda didn't make it"
+  },
+  "короче": {
+    "pos": "particle",
+    "definition": "anyway, basically, long story short",
+    "example": "Короче, я пошёл — Anyway, I'm leaving"
+  },
+  "прикол": {
+    "pos": "noun",
+    "definition": "joke, funny thing",
+    "example": "Это прикол — That's funny"
+  },
+  "прикольно": {
+    "pos": "adverb",
+    "definition": "cool, funny",
+    "example": "Прикольно! — Cool!"
+  },
+  "круто": {
+    "pos": "adverb",
+    "definition": "cool, awesome",
+    "example": "Круто! — Cool!"
+  },
+  "классно": {
+    "pos": "adverb",
+    "definition": "great, nice",
+    "example": "Классно! — Great!"
+  },
+  "фигня": {
+    "pos": "noun",
+    "definition": "stuff, nonsense (mild)",
+    "example": "Это фигня — That's nothing"
+  },
+  "ладно": {
+    "pos": "particle",
+    "definition": "okay, alright",
+    "example": "Ладно, пойдём — Okay, let's go"
+  },
+  "давай": {
+    "pos": "particle",
+    "definition": "come on, let's go; okay bye",
+    "example": "Давай! — Let's go! / See ya!"
+  },
+  "конечно": {
+    "pos": "adverb",
+    "definition": "of course",
+    "example": "Конечно! — Of course!"
+  },
+  "вообще": {
+    "pos": "adverb",
+    "definition": "in general, at all",
+    "example": "Вообще не понимаю — I don't understand at all"
+  },
+  "нормально": {
+    "pos": "adverb",
+    "definition": "normal, fine, okay",
+    "example": "Всё нормально — Everything's fine"
+  },
+  "дом": {
+    "pos": "noun",
+    "definition": "house, home",
+    "gender": "masculine",
+    "cases": {
+      "nom": "дом",
+      "gen": "до́ма",
+      "dat": "до́му",
+      "acc": "дом",
+      "ins": "до́мом",
+      "prep": "до́ме"
+    }
+  },
+  "книга": {
+    "pos": "noun",
+    "definition": "book",
+    "gender": "feminine",
+    "cases": {
+      "nom": "кни́га",
+      "gen": "кни́ги",
+      "dat": "кни́ге",
+      "acc": "кни́гу",
+      "ins": "кни́гой",
+      "prep": "кни́ге"
+    }
+  },
+  "окно": {
+    "pos": "noun",
+    "definition": "window",
+    "gender": "neuter",
+    "cases": {
+      "nom": "окно́",
+      "gen": "окна́",
+      "dat": "окну́",
+      "acc": "окно́",
+      "ins": "окно́м",
+      "prep": "окне́"
+    }
+  },
+  "любовь": {
+    "pos": "noun",
+    "definition": "love",
+    "gender": "feminine",
+    "cases": {
+      "nom": "любо́вь",
+      "gen": "любви́",
+      "dat": "любви́",
+      "acc": "любо́вь",
+      "ins": "любо́вью",
+      "prep": "любви́"
+    },
+    "example": "Любовь с первого взгляда — Love at first sight"
+  },
+  "душа": {
+    "pos": "noun",
+    "definition": "soul",
+    "gender": "feminine",
+    "cases": {
+      "nom": "душа́",
+      "gen": "души́",
+      "dat": "душе́",
+      "acc": "ду́шу",
+      "ins": "душо́й",
+      "prep": "душе́"
+    }
+  },
+  "сердце": {
+    "pos": "noun",
+    "definition": "heart",
+    "gender": "neuter",
+    "cases": {
+      "nom": "се́рдце",
+      "gen": "се́рдца",
+      "dat": "се́рдцу",
+      "acc": "се́рдце",
+      "ins": "се́рдцем",
+      "prep": "се́рдце"
+    }
+  },
+  "слово": {
+    "pos": "noun",
+    "definition": "word",
+    "gender": "neuter",
+    "cases": {
+      "nom": "сло́во",
+      "gen": "сло́ва",
+      "dat": "сло́ву",
+      "acc": "сло́во",
+      "ins": "сло́вом",
+      "prep": "сло́ве"
+    }
+  },
+  "человек": {
+    "pos": "noun",
+    "definition": "person, human",
+    "gender": "masculine",
+    "cases": {
+      "nom": "челове́к",
+      "gen": "челове́ка",
+      "dat": "челове́ку",
+      "acc": "челове́ка",
+      "ins": "челове́ком",
+      "prep": "челове́ке"
+    }
+  },
+  "друг": {
+    "pos": "noun",
+    "definition": "friend",
+    "gender": "masculine",
+    "cases": {
+      "nom": "друг",
+      "gen": "дру́га",
+      "dat": "дру́гу",
+      "acc": "дру́га",
+      "ins": "дру́гом",
+      "prep": "дру́ге"
+    }
+  },
+  "жизнь": {
+    "pos": "noun",
+    "definition": "life",
+    "gender": "feminine",
+    "cases": {
+      "nom": "жизнь",
+      "gen": "жи́зни",
+      "dat": "жи́зни",
+      "acc": "жизнь",
+      "ins": "жи́знью",
+      "prep": "жи́зни"
+    }
+  },
+  "время": {
+    "pos": "noun",
+    "definition": "time",
+    "gender": "neuter",
+    "cases": {
+      "nom": "вре́мя",
+      "gen": "вре́мени",
+      "dat": "вре́мени",
+      "acc": "вре́мя",
+      "ins": "вре́менем",
+      "prep": "вре́мени"
+    }
+  },
+  "мать": {
+    "pos": "noun",
+    "definition": "mother",
+    "gender": "feminine",
+    "cases": {
+      "nom": "мать",
+      "gen": "ма́тери",
+      "dat": "ма́тери",
+      "acc": "мать",
+      "ins": "ма́терью",
+      "prep": "ма́тери"
+    }
+  },
+  "дочь": {
+    "pos": "noun",
+    "definition": "daughter",
+    "gender": "feminine",
+    "cases": {
+      "nom": "дочь",
+      "gen": "до́чери",
+      "dat": "до́чери",
+      "acc": "дочь",
+      "ins": "до́черью",
+      "prep": "до́чери"
+    }
+  },
+  "ночь": {
+    "pos": "noun",
+    "definition": "night",
+    "gender": "feminine",
+    "cases": {
+      "nom": "ночь",
+      "gen": "но́чи",
+      "dat": "но́чи",
+      "acc": "ночь",
+      "ins": "но́чью",
+      "prep": "но́чи"
+    }
+  },
+  "день": {
+    "pos": "noun",
+    "definition": "day",
+    "gender": "masculine",
+    "cases": {
+      "nom": "день",
+      "gen": "дня",
+      "dat": "дню",
+      "acc": "день",
+      "ins": "днём",
+      "prep": "дне"
+    }
+  },
+  "вода": {
+    "pos": "noun",
+    "definition": "water",
+    "gender": "feminine",
+    "cases": {
+      "nom": "вода́",
+      "gen": "воды́",
+      "dat": "воде́",
+      "acc": "во́ду",
+      "ins": "водо́й",
+      "prep": "воде́"
+    }
+  },
+  "рука": {
+    "pos": "noun",
+    "definition": "hand, arm",
+    "gender": "feminine",
+    "cases": {
+      "nom": "рука́",
+      "gen": "руки́",
+      "dat": "руке́",
+      "acc": "ру́ку",
+      "ins": "руко́й",
+      "prep": "руке́"
+    }
+  },
+  "нога": {
+    "pos": "noun",
+    "definition": "leg, foot",
+    "gender": "feminine",
+    "cases": {
+      "nom": "нога́",
+      "gen": "ноги́",
+      "dat": "ноге́",
+      "acc": "но́гу",
+      "ins": "ного́й",
+      "prep": "ноге́"
+    }
+  },
+  "голова": {
+    "pos": "noun",
+    "definition": "head",
+    "gender": "feminine",
+    "cases": {
+      "nom": "голова́",
+      "gen": "головы́",
+      "dat": "голове́",
+      "acc": "го́лову",
+      "ins": "голово́й",
+      "prep": "голове́"
+    }
+  },
+  "глаз": {
+    "pos": "noun",
+    "definition": "eye",
+    "gender": "masculine",
+    "cases": {
+      "nom": "глаз",
+      "gen": "гла́за",
+      "dat": "гла́зу",
+      "acc": "глаз",
+      "ins": "гла́зом",
+      "prep": "гла́зе"
+    }
+  },
+  "сделать": {
+    "pos": "verb",
+    "definition": "to do, to make (perfective)",
+    "aspect": "perfective",
+    "pair": "делать",
+    "conjugation": {
+      "я": "сде́лаю",
+      "ты": "сде́лаешь",
+      "он/она": "сде́лает",
+      "мы": "сде́лаем",
+      "вы": "сде́лаете",
+      "они": "сде́лают"
+    }
+  },
+  "сказать": {
+    "pos": "verb",
+    "definition": "to say, to tell (perfective)",
+    "aspect": "perfective",
+    "pair": "говорить",
+    "conjugation": {
+      "я": "скажу́",
+      "ты": "ска́жешь",
+      "он/она": "ска́жет",
+      "мы": "ска́жем",
+      "вы": "ска́жете",
+      "они": "ска́жут"
+    }
+  },
+  "ходить": {
+    "pos": "verb",
+    "definition": "to walk, to go (on foot)",
+    "aspect": "imperfective (multidirectional)",
+    "pair": "пойти",
+    "conjugation": {
+      "я": "хожу́",
+      "ты": "хо́дишь",
+      "он/она": "хо́дит",
+      "мы": "хо́дим",
+      "вы": "хо́дите",
+      "они": "хо́дят"
+    }
+  },
+  "писать": {
+    "pos": "verb",
+    "definition": "to write",
+    "aspect": "imperfective",
+    "pair": "написать",
+    "conjugation": {
+      "я": "пишу́",
+      "ты": "пи́шешь",
+      "он/она": "пи́шет",
+      "мы": "пи́шем",
+      "вы": "пи́шете",
+      "они": "пи́шут"
+    }
+  },
+  "читать": {
+    "pos": "verb",
+    "definition": "to read",
+    "aspect": "imperfective",
+    "pair": "прочитать",
+    "conjugation": {
+      "я": "чита́ю",
+      "ты": "чита́ешь",
+      "он/она": "чита́ет",
+      "мы": "чита́ем",
+      "вы": "чита́ете",
+      "они": "чита́ют"
+    }
+  },
+  "есть": {
+    "pos": "verb",
+    "definition": "to eat",
+    "aspect": "imperfective",
+    "pair": "съесть",
+    "conjugation": {
+      "я": "ем",
+      "ты": "ешь",
+      "он/она": "ест",
+      "мы": "еди́м",
+      "вы": "еди́те",
+      "они": "едя́т"
+    }
+  },
+  "пить": {
+    "pos": "verb",
+    "definition": "to drink",
+    "aspect": "imperfective",
+    "pair": "выпить",
+    "conjugation": {
+      "я": "пью",
+      "ты": "пьёшь",
+      "он/она": "пьёт",
+      "мы": "пьём",
+      "вы": "пьёте",
+      "они": "пьют"
+    }
+  },
+  "жить": {
+    "pos": "verb",
+    "definition": "to live",
+    "aspect": "imperfective",
+    "pair": "прожить",
+    "conjugation": {
+      "я": "живу́",
+      "ты": "живёшь",
+      "он/она": "живёт",
+      "мы": "живём",
+      "вы": "живёте",
+      "они": "живу́т"
+    }
+  },
+  "работать": {
+    "pos": "verb",
+    "definition": "to work",
+    "aspect": "imperfective",
+    "conjugation": {
+      "я": "рабо́таю",
+      "ты": "рабо́таешь",
+      "он/она": "рабо́тает",
+      "мы": "рабо́таем",
+      "вы": "рабо́таете",
+      "они": "рабо́тают"
+    }
+  },
+  "понять": {
+    "pos": "verb",
+    "definition": "to understand (perfective)",
+    "aspect": "perfective",
+    "pair": "понимать",
+    "conjugation": {
+      "я": "пойму́",
+      "ты": "поймёшь",
+      "он/она": "поймёт",
+      "мы": "поймём",
+      "вы": "поймёте",
+      "они": "пойму́т"
+    }
+  },
+  "думать": {
+    "pos": "verb",
+    "definition": "to think",
+    "aspect": "imperfective",
+    "pair": "подумать",
+    "conjugation": {
+      "я": "ду́маю",
+      "ты": "ду́маешь",
+      "он/она": "ду́мает",
+      "мы": "ду́маем",
+      "вы": "ду́маете",
+      "они": "ду́мают"
+    }
+  },
+  "видеть": {
+    "pos": "verb",
+    "definition": "to see",
+    "aspect": "imperfective",
+    "pair": "увидеть",
+    "conjugation": {
+      "я": "ви́жу",
+      "ты": "ви́дишь",
+      "он/она": "ви́дит",
+      "мы": "ви́дим",
+      "вы": "ви́дите",
+      "они": "ви́дят"
+    }
+  },
+  "слышать": {
+    "pos": "verb",
+    "definition": "to hear",
+    "aspect": "imperfective",
+    "pair": "услышать",
+    "conjugation": {
+      "я": "слы́шу",
+      "ты": "слы́шишь",
+      "он/она": "слы́шит",
+      "мы": "слы́шим",
+      "вы": "слы́шите",
+      "они": "слы́шат"
+    }
+  },
+  "трахать": {
+    "pos": "verb",
+    "definition": "to fuck (vulgar)",
+    "aspect": "imperfective",
+    "pair": "трахнуть",
+    "conjugation": {
+      "я": "тра́хаю",
+      "ты": "тра́хаешь",
+      "он/она": "тра́хает",
+      "мы": "тра́хаем",
+      "вы": "тра́хаете",
+      "они": "тра́хают"
+    },
+    "register": "vulgar"
+  },
+  "срать": {
+    "pos": "verb",
+    "definition": "to shit (vulgar)",
+    "aspect": "imperfective",
+    "pair": "насрать",
+    "conjugation": {
+      "я": "сру",
+      "ты": "срёшь",
+      "он/она": "срёт",
+      "мы": "срём",
+      "вы": "срёте",
+      "они": "срут"
+    },
+    "register": "vulgar"
+  }
+}

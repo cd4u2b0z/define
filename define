@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+# ═══════════════════════════════════════════════════════════════════════════════
+# определить / define - Terminal dictionary for English and Russian
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Based on the original define script by BreadOnPenguins
+# https://github.com/BreadOnPenguins/scripts/blob/master/shortcuts-menus/define
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+import sys
+import os
+
+# Add project root to path for imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from cli import main
+
+if __name__ == "__main__":
+    sys.exit(main())

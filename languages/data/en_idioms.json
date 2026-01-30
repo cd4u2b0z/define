@@ -1,0 +1,408 @@
+{
+  "break": {
+    "idioms": [
+      {"phrase": "break a leg", "meaning": "good luck (informal, theatrical)", "register": "informal"},
+      {"phrase": "break the ice", "meaning": "make people feel more comfortable", "register": "neutral"},
+      {"phrase": "break the bank", "meaning": "cost too much money", "register": "informal"},
+      {"phrase": "break even", "meaning": "neither profit nor lose", "register": "neutral"},
+      {"phrase": "break ground", "meaning": "begin construction; do something innovative", "register": "neutral"},
+      {"phrase": "break one's heart", "meaning": "cause emotional pain", "register": "neutral"},
+      {"phrase": "break the mold", "meaning": "do something in a new way", "register": "neutral"}
+    ]
+  },
+  "bite": {
+    "idioms": [
+      {"phrase": "bite the bullet", "meaning": "accept something difficult", "register": "informal"},
+      {"phrase": "bite off more than you can chew", "meaning": "take on too much", "register": "informal"},
+      {"phrase": "bite the dust", "meaning": "die; fail", "register": "informal"},
+      {"phrase": "bite one's tongue", "meaning": "stop oneself from speaking", "register": "neutral"}
+    ]
+  },
+  "kick": {
+    "idioms": [
+      {"phrase": "kick the bucket", "meaning": "die (humorous/informal)", "register": "informal"},
+      {"phrase": "kick the habit", "meaning": "stop an addiction", "register": "neutral"},
+      {"phrase": "kick back", "meaning": "relax", "register": "informal"},
+      {"phrase": "kick off", "meaning": "begin; start", "register": "informal"}
+    ]
+  },
+  "hit": {
+    "idioms": [
+      {"phrase": "hit the nail on the head", "meaning": "be exactly right", "register": "neutral"},
+      {"phrase": "hit the sack/hay", "meaning": "go to bed", "register": "informal"},
+      {"phrase": "hit the road", "meaning": "leave; depart", "register": "informal"},
+      {"phrase": "hit it off", "meaning": "get along well immediately", "register": "informal"},
+      {"phrase": "hit rock bottom", "meaning": "reach the lowest point", "register": "neutral"}
+    ]
+  },
+  "cut": {
+    "idioms": [
+      {"phrase": "cut corners", "meaning": "do something cheaply or carelessly", "register": "neutral"},
+      {"phrase": "cut to the chase", "meaning": "get to the point", "register": "informal"},
+      {"phrase": "cut one's losses", "meaning": "stop before losing more", "register": "neutral"},
+      {"phrase": "cut the mustard", "meaning": "meet the required standard", "register": "informal"}
+    ]
+  },
+  "ball": {
+    "idioms": [
+      {"phrase": "the ball is in your court", "meaning": "it's your decision/turn", "register": "neutral"},
+      {"phrase": "have a ball", "meaning": "have a great time", "register": "informal"},
+      {"phrase": "drop the ball", "meaning": "make a mistake; fail", "register": "informal"},
+      {"phrase": "keep the ball rolling", "meaning": "maintain momentum", "register": "neutral"}
+    ]
+  },
+  "piece": {
+    "idioms": [
+      {"phrase": "piece of cake", "meaning": "very easy", "register": "informal"},
+      {"phrase": "give someone a piece of your mind", "meaning": "criticize angrily", "register": "informal"},
+      {"phrase": "go to pieces", "meaning": "lose emotional control", "register": "neutral"}
+    ]
+  },
+  "water": {
+    "idioms": [
+      {"phrase": "water under the bridge", "meaning": "past events no longer important", "register": "neutral"},
+      {"phrase": "in hot water", "meaning": "in trouble", "register": "informal"},
+      {"phrase": "test the waters", "meaning": "try something cautiously", "register": "neutral"},
+      {"phrase": "hold water", "meaning": "be valid or logical", "register": "neutral"}
+    ]
+  },
+  "time": {
+    "idioms": [
+      {"phrase": "time flies", "meaning": "time passes quickly", "register": "neutral"},
+      {"phrase": "kill time", "meaning": "do something to pass time", "register": "informal"},
+      {"phrase": "in the nick of time", "meaning": "just in time", "register": "neutral"},
+      {"phrase": "time is money", "meaning": "time is valuable", "register": "neutral"},
+      {"phrase": "once in a blue moon", "meaning": "very rarely", "register": "neutral"}
+    ]
+  },
+  "mind": {
+    "idioms": [
+      {"phrase": "bear in mind", "meaning": "remember; consider", "register": "formal"},
+      {"phrase": "keep in mind", "meaning": "remember", "register": "neutral"},
+      {"phrase": "blow one's mind", "meaning": "amaze; shock", "register": "informal"},
+      {"phrase": "make up one's mind", "meaning": "decide", "register": "neutral"},
+      {"phrase": "speak one's mind", "meaning": "say what one thinks", "register": "neutral"},
+      {"phrase": "out of one's mind", "meaning": "crazy; irrational", "register": "informal"}
+    ]
+  },
+  "heart": {
+    "idioms": [
+      {"phrase": "learn by heart", "meaning": "memorize completely", "register": "neutral"},
+      {"phrase": "have a heart", "meaning": "be compassionate", "register": "informal"},
+      {"phrase": "heart of gold", "meaning": "very kind nature", "register": "neutral"},
+      {"phrase": "wear one's heart on one's sleeve", "meaning": "show emotions openly", "register": "neutral"},
+      {"phrase": "from the bottom of one's heart", "meaning": "with complete sincerity", "register": "neutral"}
+    ]
+  },
+  "hand": {
+    "idioms": [
+      {"phrase": "hands down", "meaning": "easily; without doubt", "register": "informal"},
+      {"phrase": "hand in hand", "meaning": "together; closely connected", "register": "neutral"},
+      {"phrase": "on the other hand", "meaning": "alternatively; conversely", "register": "neutral"},
+      {"phrase": "get out of hand", "meaning": "become uncontrollable", "register": "neutral"},
+      {"phrase": "lend a hand", "meaning": "help", "register": "neutral"},
+      {"phrase": "firsthand", "meaning": "directly; personally", "register": "neutral"}
+    ]
+  },
+  "head": {
+    "idioms": [
+      {"phrase": "head over heels", "meaning": "completely (in love)", "register": "informal"},
+      {"phrase": "keep one's head", "meaning": "stay calm", "register": "neutral"},
+      {"phrase": "lose one's head", "meaning": "panic; lose control", "register": "neutral"},
+      {"phrase": "over one's head", "meaning": "too complex to understand", "register": "neutral"},
+      {"phrase": "head and shoulders above", "meaning": "much better than", "register": "neutral"}
+    ]
+  },
+  "foot": {
+    "idioms": [
+      {"phrase": "get cold feet", "meaning": "become nervous/scared", "register": "informal"},
+      {"phrase": "put one's foot down", "meaning": "be firm; insist", "register": "neutral"},
+      {"phrase": "put one's foot in one's mouth", "meaning": "say something embarrassing", "register": "informal"},
+      {"phrase": "on foot", "meaning": "walking", "register": "neutral"}
+    ]
+  },
+  "eye": {
+    "idioms": [
+      {"phrase": "see eye to eye", "meaning": "agree", "register": "neutral"},
+      {"phrase": "turn a blind eye", "meaning": "ignore deliberately", "register": "neutral"},
+      {"phrase": "keep an eye on", "meaning": "watch; monitor", "register": "neutral"},
+      {"phrase": "in the blink of an eye", "meaning": "very quickly", "register": "neutral"},
+      {"phrase": "eye-opening", "meaning": "surprisingly informative", "register": "neutral"}
+    ]
+  },
+  "back": {
+    "idioms": [
+      {"phrase": "back to square one", "meaning": "start over", "register": "neutral"},
+      {"phrase": "behind one's back", "meaning": "secretly; without knowledge", "register": "neutral"},
+      {"phrase": "get off one's back", "meaning": "stop bothering someone", "register": "informal"},
+      {"phrase": "stab in the back", "meaning": "betray", "register": "neutral"},
+      {"phrase": "back to the drawing board", "meaning": "start again with new approach", "register": "neutral"}
+    ]
+  },
+  "take": {
+    "idioms": [
+      {"phrase": "take it easy", "meaning": "relax; calm down", "register": "informal"},
+      {"phrase": "take for granted", "meaning": "assume without appreciation", "register": "neutral"},
+      {"phrase": "take the plunge", "meaning": "do something bold", "register": "neutral"},
+      {"phrase": "take with a grain of salt", "meaning": "be skeptical", "register": "neutral"}
+    ]
+  },
+  "give": {
+    "idioms": [
+      {"phrase": "give it a shot", "meaning": "try", "register": "informal"},
+      {"phrase": "give or take", "meaning": "approximately", "register": "informal"},
+      {"phrase": "give the benefit of the doubt", "meaning": "assume innocence", "register": "neutral"},
+      {"phrase": "give someone the cold shoulder", "meaning": "ignore deliberately", "register": "neutral"}
+    ]
+  },
+  "get": {
+    "idioms": [
+      {"phrase": "get the hang of", "meaning": "learn how to do", "register": "informal"},
+      {"phrase": "get over it", "meaning": "move past; recover", "register": "informal"},
+      {"phrase": "get one's act together", "meaning": "organize oneself", "register": "informal"},
+      {"phrase": "get to the bottom of", "meaning": "find the truth", "register": "neutral"}
+    ]
+  },
+  "make": {
+    "idioms": [
+      {"phrase": "make ends meet", "meaning": "have enough money to survive", "register": "neutral"},
+      {"phrase": "make a long story short", "meaning": "summarize", "register": "informal"},
+      {"phrase": "make waves", "meaning": "cause trouble/change", "register": "informal"},
+      {"phrase": "make or break", "meaning": "determine success or failure", "register": "neutral"}
+    ]
+  },
+  "run": {
+    "idioms": [
+      {"phrase": "run of the mill", "meaning": "ordinary; average", "register": "neutral"},
+      {"phrase": "in the long run", "meaning": "eventually; over time", "register": "neutral"},
+      {"phrase": "run out of steam", "meaning": "lose energy/enthusiasm", "register": "informal"},
+      {"phrase": "run into", "meaning": "encounter unexpectedly", "register": "neutral"}
+    ]
+  },
+  "pull": {
+    "idioms": [
+      {"phrase": "pull one's leg", "meaning": "joke with someone", "register": "informal"},
+      {"phrase": "pull strings", "meaning": "use influence", "register": "neutral"},
+      {"phrase": "pull the plug", "meaning": "end; stop", "register": "informal"},
+      {"phrase": "pull oneself together", "meaning": "regain composure", "register": "neutral"}
+    ]
+  },
+  "throw": {
+    "idioms": [
+      {"phrase": "throw in the towel", "meaning": "give up", "register": "informal"},
+      {"phrase": "throw a curveball", "meaning": "surprise with something unexpected", "register": "informal"},
+      {"phrase": "throw under the bus", "meaning": "betray for personal gain", "register": "informal"}
+    ]
+  },
+  "let": {
+    "idioms": [
+      {"phrase": "let the cat out of the bag", "meaning": "reveal a secret", "register": "informal"},
+      {"phrase": "let sleeping dogs lie", "meaning": "avoid stirring up trouble", "register": "neutral"},
+      {"phrase": "let off the hook", "meaning": "release from responsibility", "register": "informal"}
+    ]
+  },
+  "turn": {
+    "idioms": [
+      {"phrase": "turn over a new leaf", "meaning": "start fresh; change behavior", "register": "neutral"},
+      {"phrase": "turn the tables", "meaning": "reverse the situation", "register": "neutral"},
+      {"phrase": "turn a deaf ear", "meaning": "refuse to listen", "register": "neutral"}
+    ]
+  },
+  "speak": {
+    "idioms": [
+      {"phrase": "speak volumes", "meaning": "communicate a lot without words", "register": "neutral"},
+      {"phrase": "speak of the devil", "meaning": "person mentioned just arrived", "register": "informal"},
+      {"phrase": "so to speak", "meaning": "in a manner of speaking", "register": "neutral"}
+    ]
+  },
+  "sit": {
+    "idioms": [
+      {"phrase": "sit on the fence", "meaning": "remain neutral; not decide", "register": "neutral"},
+      {"phrase": "sit tight", "meaning": "wait patiently", "register": "informal"}
+    ]
+  },
+  "stand": {
+    "idioms": [
+      {"phrase": "stand one's ground", "meaning": "maintain position; not retreat", "register": "neutral"},
+      {"phrase": "stand out", "meaning": "be noticeable", "register": "neutral"},
+      {"phrase": "stand the test of time", "meaning": "remain valid/popular over time", "register": "neutral"}
+    ]
+  },
+  "weather": {
+    "idioms": [
+      {"phrase": "under the weather", "meaning": "feeling sick", "register": "informal"},
+      {"phrase": "weather the storm", "meaning": "survive difficulties", "register": "neutral"}
+    ]
+  },
+  "rock": {
+    "idioms": [
+      {"phrase": "between a rock and a hard place", "meaning": "in a difficult situation", "register": "neutral"},
+      {"phrase": "rock the boat", "meaning": "cause trouble", "register": "informal"},
+      {"phrase": "hit rock bottom", "meaning": "reach lowest point", "register": "neutral"}
+    ]
+  },
+  "bird": {
+    "idioms": [
+      {"phrase": "kill two birds with one stone", "meaning": "accomplish two things at once", "register": "neutral"},
+      {"phrase": "the early bird catches the worm", "meaning": "being early gives advantage", "register": "neutral"},
+      {"phrase": "a little bird told me", "meaning": "heard from secret source", "register": "informal"},
+      {"phrase": "birds of a feather", "meaning": "similar people", "register": "neutral"}
+    ]
+  },
+  "cat": {
+    "idioms": [
+      {"phrase": "let the cat out of the bag", "meaning": "reveal a secret", "register": "informal"},
+      {"phrase": "curiosity killed the cat", "meaning": "being nosy can cause trouble", "register": "neutral"},
+      {"phrase": "cat got your tongue", "meaning": "why are you silent?", "register": "informal"},
+      {"phrase": "raining cats and dogs", "meaning": "raining heavily", "register": "informal"}
+    ]
+  },
+  "dog": {
+    "idioms": [
+      {"phrase": "every dog has its day", "meaning": "everyone gets a chance", "register": "neutral"},
+      {"phrase": "let sleeping dogs lie", "meaning": "don't stir up trouble", "register": "neutral"},
+      {"phrase": "dog eat dog", "meaning": "ruthlessly competitive", "register": "neutral"},
+      {"phrase": "in the doghouse", "meaning": "in trouble (with someone)", "register": "informal"}
+    ]
+  },
+  "horse": {
+    "idioms": [
+      {"phrase": "hold your horses", "meaning": "wait; slow down", "register": "informal"},
+      {"phrase": "straight from the horse's mouth", "meaning": "from the original source", "register": "informal"},
+      {"phrase": "beat a dead horse", "meaning": "pursue a lost cause", "register": "informal"},
+      {"phrase": "dark horse", "meaning": "unexpected competitor", "register": "neutral"}
+    ]
+  },
+  "fish": {
+    "idioms": [
+      {"phrase": "fish out of water", "meaning": "uncomfortable in unfamiliar situation", "register": "neutral"},
+      {"phrase": "bigger fish to fry", "meaning": "more important things to do", "register": "informal"},
+      {"phrase": "fishing for compliments", "meaning": "trying to get praise", "register": "informal"}
+    ]
+  },
+  "end": {
+    "idioms": [
+      {"phrase": "at the end of the day", "meaning": "ultimately; in conclusion", "register": "neutral"},
+      {"phrase": "make ends meet", "meaning": "have enough money", "register": "neutral"},
+      {"phrase": "the end of the line", "meaning": "final point; no more options", "register": "neutral"},
+      {"phrase": "loose ends", "meaning": "unfinished details", "register": "neutral"}
+    ]
+  },
+  "day": {
+    "idioms": [
+      {"phrase": "call it a day", "meaning": "stop working", "register": "informal"},
+      {"phrase": "day in, day out", "meaning": "every day; continuously", "register": "neutral"},
+      {"phrase": "save the day", "meaning": "rescue a situation", "register": "neutral"},
+      {"phrase": "at the end of the day", "meaning": "ultimately", "register": "neutral"}
+    ]
+  },
+  "night": {
+    "idioms": [
+      {"phrase": "night owl", "meaning": "person who stays up late", "register": "informal"},
+      {"phrase": "call it a night", "meaning": "stop for the evening", "register": "informal"}
+    ]
+  },
+  "money": {
+    "idioms": [
+      {"phrase": "money talks", "meaning": "wealth gives influence", "register": "neutral"},
+      {"phrase": "put your money where your mouth is", "meaning": "back up words with action", "register": "informal"},
+      {"phrase": "a penny for your thoughts", "meaning": "what are you thinking?", "register": "informal"},
+      {"phrase": "cost an arm and a leg", "meaning": "very expensive", "register": "informal"}
+    ]
+  },
+  "shit": {
+    "idioms": [
+      {"phrase": "shit hit the fan", "meaning": "situation became chaotic (vulgar)", "register": "vulgar"},
+      {"phrase": "no shit", "meaning": "obviously (vulgar)", "register": "vulgar"},
+      {"phrase": "get one's shit together", "meaning": "organize oneself (vulgar)", "register": "vulgar"},
+      {"phrase": "shit out of luck", "meaning": "unfortunate; no options (vulgar)", "register": "vulgar"},
+      {"phrase": "up shit creek", "meaning": "in serious trouble (vulgar)", "register": "vulgar"}
+    ]
+  },
+  "fuck": {
+    "idioms": [
+      {"phrase": "fuck around and find out", "meaning": "face consequences of reckless actions (vulgar)", "register": "vulgar"},
+      {"phrase": "not give a fuck", "meaning": "not care at all (vulgar)", "register": "vulgar"},
+      {"phrase": "what the fuck", "meaning": "expression of shock/confusion (vulgar)", "register": "vulgar"},
+      {"phrase": "fuck all", "meaning": "nothing (vulgar)", "register": "vulgar"}
+    ]
+  },
+  "ass": {
+    "idioms": [
+      {"phrase": "pain in the ass", "meaning": "annoying person/thing (vulgar)", "register": "vulgar"},
+      {"phrase": "kick ass", "meaning": "be impressive; defeat (vulgar)", "register": "vulgar"},
+      {"phrase": "cover one's ass", "meaning": "protect oneself (vulgar)", "register": "vulgar"},
+      {"phrase": "bust one's ass", "meaning": "work very hard (vulgar)", "register": "vulgar"}
+    ]
+  },
+  "hell": {
+    "idioms": [
+      {"phrase": "what the hell", "meaning": "expression of shock/frustration", "register": "informal"},
+      {"phrase": "hell of a", "meaning": "extreme; impressive", "register": "informal"},
+      {"phrase": "when hell freezes over", "meaning": "never", "register": "informal"},
+      {"phrase": "all hell broke loose", "meaning": "chaos erupted", "register": "informal"}
+    ]
+  },
+  "damn": {
+    "idioms": [
+      {"phrase": "damn right", "meaning": "absolutely correct", "register": "informal"},
+      {"phrase": "not give a damn", "meaning": "not care at all", "register": "informal"},
+      {"phrase": "damn well", "meaning": "certainly; definitely", "register": "informal"}
+    ]
+  },
+  "cold": {
+    "idioms": [
+      {"phrase": "cold feet", "meaning": "nervousness before commitment", "register": "informal"},
+      {"phrase": "cold shoulder", "meaning": "deliberate unfriendliness", "register": "neutral"},
+      {"phrase": "cold turkey", "meaning": "abrupt withdrawal/stopping", "register": "informal"},
+      {"phrase": "in cold blood", "meaning": "deliberately; without emotion", "register": "neutral"}
+    ]
+  },
+  "hot": {
+    "idioms": [
+      {"phrase": "hot water", "meaning": "trouble", "register": "informal"},
+      {"phrase": "hot air", "meaning": "empty talk", "register": "informal"},
+      {"phrase": "hot potato", "meaning": "controversial issue", "register": "neutral"},
+      {"phrase": "hot under the collar", "meaning": "angry", "register": "informal"}
+    ]
+  },
+  "play": {
+    "idioms": [
+      {"phrase": "play it by ear", "meaning": "improvise", "register": "informal"},
+      {"phrase": "play devil's advocate", "meaning": "argue opposite position", "register": "neutral"},
+      {"phrase": "play hardball", "meaning": "be tough in negotiating", "register": "informal"},
+      {"phrase": "play it safe", "meaning": "avoid risk", "register": "neutral"}
+    ]
+  },
+  "world": {
+    "idioms": [
+      {"phrase": "out of this world", "meaning": "amazing; extraordinary", "register": "informal"},
+      {"phrase": "the world is your oyster", "meaning": "unlimited opportunities", "register": "neutral"},
+      {"phrase": "small world", "meaning": "surprising coincidence", "register": "informal"}
+    ]
+  },
+  "word": {
+    "idioms": [
+      {"phrase": "word of mouth", "meaning": "verbal communication", "register": "neutral"},
+      {"phrase": "take someone's word", "meaning": "believe without proof", "register": "neutral"},
+      {"phrase": "in other words", "meaning": "stated differently", "register": "neutral"},
+      {"phrase": "have the last word", "meaning": "make final statement", "register": "neutral"}
+    ]
+  },
+  "thing": {
+    "idioms": [
+      {"phrase": "the thing is", "meaning": "the important point is", "register": "informal"},
+      {"phrase": "first things first", "meaning": "priorities in order", "register": "neutral"},
+      {"phrase": "sure thing", "meaning": "certainly; yes", "register": "informal"},
+      {"phrase": "no such thing", "meaning": "doesn't exist", "register": "neutral"}
+    ]
+  },
+  "life": {
+    "idioms": [
+      {"phrase": "fact of life", "meaning": "unavoidable reality", "register": "neutral"},
+      {"phrase": "get a life", "meaning": "stop being boring (dismissive)", "register": "informal"},
+      {"phrase": "life of the party", "meaning": "most entertaining person", "register": "informal"},
+      {"phrase": "for the life of me", "meaning": "no matter how hard I try", "register": "informal"}
+    ]
+  }
+}

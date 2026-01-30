@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Russian wrapper for define
+exec "$(dirname "$0")/define" "$@"

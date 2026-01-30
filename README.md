@@ -1,0 +1,347 @@
+# 󰗊 определить / define
+
+Terminal dictionary for English and Russian with deep grammatical support.
+
+Терминальный словарь для английского и русского языков с полной грамматической поддержкой.
+
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-blue)
+
+English | [Русский](#русский)
+
+---
+
+## 󰐕 Features / Возможности
+
+### 󰗊 Core Features
+
+| Feature | Description | Функция |
+|---------|-------------|---------|
+| 󰗊 Bilingual | English + Russian support | Английский + русский |
+| 󰌌 Transliteration | Type Russian in Latin (`privet` → `привет`) | Транслитерация |
+| 󰎈 Offline Mode | 640+ Russian words cached locally | Офлайн режим |
+| 󰕾 Audio | Pronunciation playback | Произношение |
+| 󰃀 Learning | Save, review, quiz, Anki export | Обучение |
+
+### 󱗊 Grammar Features (v2.0)
+
+| Feature | Example | Описание |
+|---------|---------|----------|
+| 󰚹 Noun Gender | `дом` → м.р. (masculine) | Род существительных |
+| 󰆥 Noun Cases | All 6 cases with question prompts | Падежи с вопросами |
+| 󱗃 Verb Aspects | `писать` (impf) ↔ `написать` (pf) | Вид глагола |
+| 󰛺 Conjugation | Full present tense tables | Спряжение |
+| 󰏪 Idioms | 180+ English, 25+ Russian idioms | Идиомы |
+| 󰖚 Register | Formal/informal/vulgar markers | Регистр |
+
+### 󰗃 Russian Grammar Display
+
+```
+дом
+Gender: masculine (м.р.)
+
+noun
+  1. house, home
+
+Cases:
+  nominative (кто? что?): дом
+  genitive (кого? чего?): до́ма
+  dative (кому? чему?): до́му
+  accusative (кого? что?): дом
+  instrumental (кем? чем?): до́мом
+  prepositional (о ком? о чём?): до́ме
+```
+
+```
+писать
+Aspect: imperfective (несов.)
+Aspectual pair: написать
+
+verb
+  1. to write
+
+Conjugation (present):
+  я: пишу́
+  ты: пи́шешь
+  он/она: пи́шет
+  мы: пи́шем
+  вы: пи́шете
+  они: пи́шут
+```
+
+---
+
+## 󰏗 Installation / Установка
+
+### 󰈈 Quick Start (Linux/macOS)
+
+```bash
+# Clone the repository / Клонируйте репозиторий
+git clone https://github.com/cd4u2b0z/define.git ~/projects/define
+cd ~/projects/define
+
+# Add to PATH (add to ~/.zshrc or ~/.bashrc)
+# Добавьте в PATH (добавьте в ~/.zshrc или ~/.bashrc)
+export PATH="$HOME/projects/define:$PATH"
+
+# Reload shell / Перезапустите оболочку
+source ~/.zshrc  # or ~/.bashrc
+```
+
+### 󰀵 macOS Specific
+
+```bash
+# No additional dependencies required!
+# Python 3.8+ comes with macOS
+
+# Optional: for audio pronunciation / Для произношения (опционально):
+# macOS uses built-in afplay - no installation needed
+# macOS использует встроенный afplay - установка не требуется
+
+# Verify installation / Проверьте установку:
+define hello
+определить привет
+```
+
+### 󰣇 Linux (Ubuntu/Debian)
+
+```bash
+# Python 3.8+ usually pre-installed
+# Обычно Python 3.8+ уже установлен
+
+# Optional: for audio pronunciation / Для произношения (опционально):
+sudo apt install mpv  # or vlc, ffplay
+```
+
+### 󰣇 Linux (Arch)
+
+```bash
+# Optional: for audio pronunciation
+sudo pacman -S mpv
+```
+
+### 󰆍 Alternative: Symlinks
+
+```bash
+# Create symlinks to ~/.local/bin
+# Создайте символические ссылки в ~/.local/bin
+mkdir -p ~/.local/bin
+ln -sf ~/projects/define/define ~/.local/bin/define
+ln -sf ~/projects/define/определить ~/.local/bin/определить
+ln -sf ~/projects/define/словарь ~/.local/bin/словарь
+ln -sf ~/projects/define/слово ~/.local/bin/слово
+
+# Ensure ~/.local/bin is in PATH
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+### 󰏖 Requirements / Требования
+
+- **Python 3.8+** (stdlib only, no pip install needed)
+- **Terminal with UTF-8** (for Cyrillic display)
+- **Internet** (for API lookups, offline cache available)
+
+---
+
+## 󰙨 Usage / Использование
+
+### 󰌌 Basic Commands / Базовые команды
+
+```bash
+# English words / Английские слова
+define serendipity          # Basic lookup
+define -f love              # Full info (examples, synonyms, etymology)
+define -e run               # With examples
+define -y happy             # With synonyms
+define -t word              # With etymology
+define -i break             # With idioms
+
+# Russian (Cyrillic) / Русский (кириллица)
+define привет
+define -f любовь
+определить счастье
+словарь друг
+слово мир
+
+# Russian (Transliteration) / Русский (транслитерация)
+define privet               # → привет
+define lyubov               # → любовь
+define spasibo              # → спасибо
+```
+
+### 󰘳 All Options / Все опции
+
+| Option | Description | Описание |
+|--------|-------------|----------|
+| `-a` | All definitions | Все определения |
+| `-s` | Short mode | Краткий режим |
+| `-e` | Show examples | С примерами |
+| `-y` | Show synonyms | С синонимами |
+| `-t` | Show etymology | С этимологией |
+| `-i` | Show idioms | С идиомами |
+| `-f` | Full mode (all above) | Полный режим |
+| `-p` | Play pronunciation | Произношение |
+| `-R` | Force Russian | Принудительно русский |
+| `-E` | Force English | Принудительно английский |
+| `-r` | Random word | Случайное слово |
+| `-j` | JSON output | Вывод JSON |
+| `-o` | Offline only | Только офлайн |
+| `--save` | Save to vocabulary | Сохранить в словарь |
+| `--review` | Review vocabulary | Повторение |
+| `--quiz` | Quiz mode | Викторина |
+| `--export-anki FILE` | Export to Anki CSV | Экспорт в Anki |
+| `--clear-cache` | Clear cache | Очистить кэш |
+
+### 󰗊 Russian Commands / Русские команды
+
+| Command | Translation | Description |
+|---------|-------------|-------------|
+| `define` | — | Main command |
+| `определить` | "to define" | Найти определение |
+| `словарь` | "dictionary" | Словарь |
+| `слово` | "word" | Слово |
+
+All commands accept the same options / Все команды принимают одинаковые опции.
+
+---
+
+## 󰏪 Idioms / Идиомы
+
+### English Idioms (180+)
+
+```bash
+$ define -i break
+
+Idioms & Expressions:
+  • break a leg [informal]
+    good luck (theatrical)
+  • break the ice
+    make people feel more comfortable
+  • break the bank [informal]
+    cost too much money
+  • break even
+    neither profit nor lose
+  ...
+```
+
+### Russian Idioms (25+)
+
+```bash
+$ define -f хуй
+
+Idioms & Expressions:
+  • ни хуя себе (ni khuya sebe) [vulgar]
+    holy shit; wow (vulgar)
+  • хуй знает (khuy znayet) [vulgar]
+    who the fuck knows
+  • до хуя (do khuya) [vulgar]
+    a lot; a fuckton
+  ...
+```
+
+---
+
+## 󰉋 Data Files / Файлы данных
+
+| File | Location | Description |
+|------|----------|-------------|
+| Vocabulary | `~/.local/share/define/vocabulary.json` | Saved words |
+| History | `~/.local/share/define/history.txt` | Lookup history |
+| Cache | `~/.cache/define/` | API response cache |
+
+---
+
+## 󰙅 Documentation / Документация
+
+- [ARCHITECTURE.md](ARCHITECTURE.md) - Technical architecture / Техническая архитектура
+- [ROADMAP.md](ROADMAP.md) - Future plans / Планы развития
+
+---
+
+## 󰋗 Troubleshooting / Устранение неполадок
+
+| Issue | Solution |
+|-------|----------|
+| Command not found | Add project to PATH or create symlinks |
+| No audio | Install mpv/vlc (Linux) or use macOS built-in afplay |
+| Russian text garbled | Ensure terminal supports UTF-8 (`echo $LANG`) |
+| API timeout | Use `-o` for offline mode with cached data |
+
+---
+
+## 󱗗 Credits / Благодарности
+
+Based on the original [define script](https://github.com/BreadOnPenguins/scripts/blob/master/shortcuts-menus/define) by [BreadOnPenguins](https://github.com/BreadOnPenguins)
+
+### APIs
+
+- [Free Dictionary API](https://dictionaryapi.dev/) - English definitions
+- [Wiktionary REST API](https://en.wiktionary.org/api/rest_v1/) - Russian definitions
+
+---
+
+## 󰿃 License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+---
+
+Original work by Dr. Baklava • [github.com/cd4u2b0z](https://github.com/cd4u2b0z) • 2026
+
+---
+
+# Русский
+
+## 󰐕 Возможности
+
+### Основные функции
+
+- **Двуязычный словарь** — английский и русский
+- **Транслитерация** — вводите русские слова латиницей (`privet` → `привет`)
+- **Офлайн режим** — 640+ русских слов в локальном кэше
+- **Произношение** — аудио для английских слов
+- **Обучение** — сохранение, повторение, викторина, экспорт в Anki
+
+### Грамматика (v2.0)
+
+- **Род существительных** — м.р., ж.р., ср.р.
+- **Падежи** — все 6 падежей с вопросами (кто? что? кого? чего? и т.д.)
+- **Вид глагола** — совершенный/несовершенный с видовыми парами
+- **Спряжение** — полные таблицы настоящего времени
+- **Идиомы** — 25+ русских идиом включая мат
+- **Регистр** — формальный/неформальный/вульгарный
+
+## 󰏗 Установка
+
+```bash
+# Клонируйте репозиторий
+git clone https://github.com/cd4u2b0z/define.git ~/projects/define
+
+# Добавьте в PATH (~/.zshrc или ~/.bashrc)
+export PATH="$HOME/projects/define:$PATH"
+
+# Перезапустите оболочку
+source ~/.zshrc
+```
+
+## 󰙨 Использование
+
+```bash
+# Кириллица
+определить любовь
+словарь -f дом
+слово привет
+
+# Транслитерация
+define lyubov
+define -f dom
+define privet
+
+# Полная информация
+define -f писать    # спряжение, вид, пара
+define -f книга     # род, падежи
+define -i хуй       # идиомы (мат)
+```
+
+---
+
+"Слово — серебро, молчание — золото." 🗣️

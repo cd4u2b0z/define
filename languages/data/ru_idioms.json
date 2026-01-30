@@ -1,0 +1,164 @@
+{
+  "душа": {
+    "idioms": [
+      {"phrase": "душа в душу", "translit": "dusha v dushu", "meaning": "in perfect harmony (like soul to soul)", "register": "neutral"},
+      {"phrase": "от души", "translit": "ot dushi", "meaning": "from the heart; sincerely", "register": "neutral"},
+      {"phrase": "душа нараспашку", "translit": "dusha naraspashku", "meaning": "open-hearted; candid", "register": "informal"},
+      {"phrase": "за душу берёт", "translit": "za dushu beryot", "meaning": "touches the soul; moving", "register": "neutral"}
+    ]
+  },
+  "рука": {
+    "idioms": [
+      {"phrase": "рука руку моет", "translit": "ruka ruku moyet", "meaning": "one hand washes the other (mutual back-scratching)", "register": "neutral"},
+      {"phrase": "под рукой", "translit": "pod rukoy", "meaning": "at hand; handy", "register": "neutral"},
+      {"phrase": "рукой подать", "translit": "rukoy podat'", "meaning": "very close; a stone's throw away", "register": "informal"},
+      {"phrase": "опустить руки", "translit": "opustit' ruki", "meaning": "give up; lose hope", "register": "neutral"},
+      {"phrase": "золотые руки", "translit": "zolotye ruki", "meaning": "golden hands; skilled craftsman", "register": "neutral"}
+    ]
+  },
+  "глаз": {
+    "idioms": [
+      {"phrase": "глаза разбежались", "translit": "glaza razbezalis'", "meaning": "eyes went in different directions; overwhelmed by choices", "register": "informal"},
+      {"phrase": "с глаз долой", "translit": "s glaz doloy", "meaning": "out of sight (out of mind)", "register": "informal"},
+      {"phrase": "за глаза", "translit": "za glaza", "meaning": "behind one's back", "register": "informal"},
+      {"phrase": "в глаза", "translit": "v glaza", "meaning": "to one's face; directly", "register": "neutral"}
+    ]
+  },
+  "нога": {
+    "idioms": [
+      {"phrase": "встать не с той ноги", "translit": "vstat' ne s toy nogi", "meaning": "got up on the wrong side of bed", "register": "informal"},
+      {"phrase": "на ногах", "translit": "na nogakh", "meaning": "on one's feet; up and about", "register": "neutral"},
+      {"phrase": "со всех ног", "translit": "so vsekh nog", "meaning": "at full speed; running", "register": "informal"}
+    ]
+  },
+  "голова": {
+    "idioms": [
+      {"phrase": "голова идёт кругом", "translit": "golova idyot krugom", "meaning": "head is spinning; overwhelmed", "register": "informal"},
+      {"phrase": "без головы", "translit": "bez golovy", "meaning": "headless; thoughtless", "register": "informal"},
+      {"phrase": "с головой", "translit": "s golovoy", "meaning": "smart; with brains", "register": "informal"},
+      {"phrase": "вбить в голову", "translit": "vbit' v golovu", "meaning": "hammer into one's head; convince", "register": "informal"}
+    ]
+  },
+  "сердце": {
+    "idioms": [
+      {"phrase": "от всего сердца", "translit": "ot vsego serdtsa", "meaning": "from the bottom of one's heart", "register": "neutral"},
+      {"phrase": "сердце кровью обливается", "translit": "serdtse krov'yu oblivayetsya", "meaning": "heart bleeds (feeling great pity)", "register": "neutral"},
+      {"phrase": "принимать близко к сердцу", "translit": "prinimat' blizko k serdtsu", "meaning": "take to heart", "register": "neutral"}
+    ]
+  },
+  "язык": {
+    "idioms": [
+      {"phrase": "держать язык за зубами", "translit": "derzhat' yazyk za zubami", "meaning": "keep your mouth shut; hold your tongue", "register": "informal"},
+      {"phrase": "язык без костей", "translit": "yazyk bez kostey", "meaning": "loose tongue; talks too much", "register": "informal"},
+      {"phrase": "длинный язык", "translit": "dlinnyy yazyk", "meaning": "long tongue; gossip", "register": "informal"}
+    ]
+  },
+  "хуй": {
+    "idioms": [
+      {"phrase": "ни хуя себе", "translit": "ni khuya sebe", "meaning": "holy shit; wow (vulgar)", "register": "vulgar"},
+      {"phrase": "хуй знает", "translit": "khuy znayet", "meaning": "who the fuck knows (vulgar)", "register": "vulgar"},
+      {"phrase": "до хуя", "translit": "do khuya", "meaning": "a lot; a fuckton (vulgar)", "register": "vulgar"},
+      {"phrase": "на хуй", "translit": "na khuy", "meaning": "to hell; fuck off (vulgar)", "register": "vulgar"},
+      {"phrase": "по хую", "translit": "po khuyu", "meaning": "don't give a fuck (vulgar)", "register": "vulgar"}
+    ]
+  },
+  "блядь": {
+    "idioms": [
+      {"phrase": "ёб твою мать", "translit": "yob tvoyu mat'", "meaning": "fuck your mother (extreme frustration)", "register": "vulgar"},
+      {"phrase": "ни хера", "translit": "ni khera", "meaning": "nothing at all (vulgar)", "register": "vulgar"}
+    ]
+  },
+  "пиздец": {
+    "idioms": [
+      {"phrase": "полный пиздец", "translit": "polnyy pizdets", "meaning": "total disaster; clusterfuck (vulgar)", "register": "vulgar"},
+      {"phrase": "пиздец подкрался", "translit": "pizdets podkralsya", "meaning": "shit hit the fan (vulgar)", "register": "vulgar"}
+    ]
+  },
+  "хер": {
+    "idioms": [
+      {"phrase": "ни хера", "translit": "ni khera", "meaning": "nothing at all (mild vulgar)", "register": "vulgar"},
+      {"phrase": "какого хера", "translit": "kakogo khera", "meaning": "what the hell/fuck", "register": "vulgar"},
+      {"phrase": "хер с ним", "translit": "kher s nim", "meaning": "to hell with it/him", "register": "vulgar"}
+    ]
+  },
+  "чёрт": {
+    "idioms": [
+      {"phrase": "чёрт знает", "translit": "chyort znayet", "meaning": "devil knows; who knows (mild)", "register": "informal"},
+      {"phrase": "чёрт побери", "translit": "chyort poberi", "meaning": "damn it", "register": "informal"},
+      {"phrase": "к чёрту", "translit": "k chyortu", "meaning": "to hell (with it)", "register": "informal"},
+      {"phrase": "ни к чёрту", "translit": "ni k chyortu", "meaning": "useless; no good", "register": "informal"}
+    ]
+  },
+  "бог": {
+    "idioms": [
+      {"phrase": "слава богу", "translit": "slava bogu", "meaning": "thank God", "register": "neutral"},
+      {"phrase": "не дай бог", "translit": "ne day bog", "meaning": "God forbid", "register": "neutral"},
+      {"phrase": "ради бога", "translit": "radi boga", "meaning": "for God's sake", "register": "neutral"}
+    ]
+  },
+  "медведь": {
+    "idioms": [
+      {"phrase": "медведь на ухо наступил", "translit": "medved' na ukho nastupil", "meaning": "a bear stepped on his ear (tone deaf)", "register": "informal"},
+      {"phrase": "делить шкуру неубитого медведя", "translit": "delit' shkuru neubitogo medvedya", "meaning": "count chickens before they hatch", "register": "neutral"}
+    ]
+  },
+  "кот": {
+    "idioms": [
+      {"phrase": "кот наплакал", "translit": "kot naplakal", "meaning": "cat cried (very little; almost nothing)", "register": "informal"},
+      {"phrase": "как кот наплакал", "translit": "kak kot naplakal", "meaning": "next to nothing", "register": "informal"},
+      {"phrase": "кошки скребут на душе", "translit": "koshki skrebut na dushe", "meaning": "cats scratching the soul (feeling anxious/worried)", "register": "neutral"}
+    ]
+  },
+  "собака": {
+    "idioms": [
+      {"phrase": "собаку съел", "translit": "sobaku s'yel", "meaning": "ate the dog (is an expert at something)", "register": "informal"},
+      {"phrase": "вот где собака зарыта", "translit": "vot gde sobaka zaryta", "meaning": "that's where the dog is buried (that's the crux)", "register": "informal"}
+    ]
+  },
+  "вода": {
+    "idioms": [
+      {"phrase": "как в воду глядел", "translit": "kak v vodu glyadel", "meaning": "as if looked into water (predicted correctly)", "register": "informal"},
+      {"phrase": "воды в рот набрал", "translit": "vody v rot nabral", "meaning": "took water in mouth (keeping silent)", "register": "informal"},
+      {"phrase": "выйти сухим из воды", "translit": "vyyti sukhim iz vody", "meaning": "come out dry from water (escape unscathed)", "register": "neutral"}
+    ]
+  },
+  "время": {
+    "idioms": [
+      {"phrase": "время летит", "translit": "vremya letit", "meaning": "time flies", "register": "neutral"},
+      {"phrase": "на всякий случай", "translit": "na vsyakiy sluchay", "meaning": "just in case", "register": "neutral"},
+      {"phrase": "в своё время", "translit": "v svoyo vremya", "meaning": "in due time", "register": "neutral"}
+    ]
+  },
+  "дело": {
+    "idioms": [
+      {"phrase": "в чём дело", "translit": "v chyom delo", "meaning": "what's the matter", "register": "neutral"},
+      {"phrase": "дело в шляпе", "translit": "delo v shlyape", "meaning": "it's in the bag; matter settled", "register": "informal"},
+      {"phrase": "не моё дело", "translit": "ne moyo delo", "meaning": "not my business", "register": "neutral"}
+    ]
+  },
+  "жизнь": {
+    "idioms": [
+      {"phrase": "как ни в чём не бывало", "translit": "kak ni v chyom ne byvalo", "meaning": "as if nothing happened", "register": "neutral"},
+      {"phrase": "жизнь бьёт ключом", "translit": "zhizn' b'yot klyuchom", "meaning": "life is in full swing", "register": "neutral"}
+    ]
+  },
+  "ум": {
+    "idioms": [
+      {"phrase": "сойти с ума", "translit": "soyti s uma", "meaning": "go crazy; lose one's mind", "register": "neutral"},
+      {"phrase": "на уме", "translit": "na ume", "meaning": "on one's mind", "register": "neutral"},
+      {"phrase": "без ума", "translit": "bez uma", "meaning": "crazy about; madly", "register": "informal"}
+    ]
+  },
+  "конец": {
+    "idioms": [
+      {"phrase": "в конце концов", "translit": "v kontse kontsov", "meaning": "in the end; after all", "register": "neutral"},
+      {"phrase": "без конца", "translit": "bez kontsa", "meaning": "endlessly", "register": "neutral"}
+    ]
+  },
+  "место": {
+    "idioms": [
+      {"phrase": "на месте", "translit": "na meste", "meaning": "in place; on the spot", "register": "neutral"},
+      {"phrase": "не к месту", "translit": "ne k mestu", "meaning": "out of place; inappropriate", "register": "neutral"}
+    ]
+  }
+}
