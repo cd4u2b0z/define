@@ -100,6 +100,10 @@ Examples / Примеры:
                       help="Review saved vocabulary / Повторить словарь")
     learn.add_argument("--quiz", action="store_true",
                       help="Quiz on saved words / Викторина")
+    learn.add_argument("--study", action="store_true",
+                      help="Spaced repetition study session / Интервальное повторение")
+    learn.add_argument("--stats", action="store_true",
+                      help="Show vocabulary statistics / Статистика словаря")
     learn.add_argument("--export-anki", nargs="?", const="vocabulary.csv",
                       metavar="FILE",
                       help="Export to Anki CSV / Экспорт в Anki")
@@ -115,7 +119,7 @@ Examples / Примеры:
     parser.add_argument("--no-color", action="store_true",
                        help="Disable colors / Отключить цвета")
     parser.add_argument("-v", "--version", action="version",
-                       version="define 2.0.0")
+                       version="define 2.1.0")
     
     return parser.parse_args()
 
@@ -146,6 +150,20 @@ def main() -> int:
     
     if args.quiz:
         vocabulary.quiz(formatter)
+        return 0
+    
+    if args.study:
+        vocabulary.study(formatter)
+        return 0
+    
+    if args.stats:
+        stats = vocabulary.get_stats()
+        formatter.header("Vocabulary Statistics / Статистика словаря")
+        print(f"  Total words:    {stats['total']}")
+        print(f"  Due for review: {stats['due']}")
+        print(f"  Mastered:       {stats['mastered']} (21+ day interval)")
+        print(f"  Learning:       {stats['learning']} (1-20 day interval)")
+        print(f"  New:            {stats['new']} (never reviewed)")
         return 0
     
     if args.export_anki:

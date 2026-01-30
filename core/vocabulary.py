@@ -1,17 +1,74 @@
 """
-Vocabulary management for learning features.
+Vocabulary management for learning features with SM-2 Spaced Repetition.
 """
 
 import json
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List, Dict
 import os
 
 
+class SM2:
+    """
+    SM-2 Spaced Repetition Algorithm.
+    
+    Based on the SuperMemo SM-2 algorithm by Piotr Wozniak.
+    https://www.supermemo.com/en/archives1990-2015/english/ol/sm2
+    
+    Quality ratings:
+        0 - Complete blackout, no recall
+        1 - Incorrect, but upon seeing the answer, remembered
+        2 - Incorrect, but answer seemed easy to recall
+        3 - Correct with serious difficulty
+        4 - Correct after hesitation
+        5 - Perfect response
+    """
+    
+    @staticmethod
+    def calculate(quality: int, repetitions: int, easiness: float, interval: int) -> tuple:
+        """
+        Calculate next review parameters based on quality of recall.
+        
+        Args:
+            quality: Quality of recall (0-5)
+            repetitions: Number of successful repetitions
+            easiness: Easiness factor (starts at 2.5)
+            interval: Current interval in days
+            
+        Returns:
+            Tuple of (new_repetitions, new_easiness, new_interval)
+        """
+        # Clamp quality to valid range
+        quality = max(0, min(5, quality))
+        
+        # Update easiness factor
+        new_easiness = easiness + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
+        
+        # Easiness factor should never go below 1.3
+        new_easiness = max(1.3, new_easiness)
+        
+        if quality < 3:
+            # Failed recall - reset repetitions
+            new_repetitions = 0
+            new_interval = 1
+        else:
+            # Successful recall
+            if repetitions == 0:
+                new_interval = 1
+            elif repetitions == 1:
+                new_interval = 6
+            else:
+                new_interval = round(interval * new_easiness)
+            
+            new_repetitions = repetitions + 1
+        
+        return new_repetitions, new_easiness, new_interval
+
+
 class Vocabulary:
-    """Manage saved vocabulary for learning."""
+    """Manage saved vocabulary for learning with spaced repetition."""
     
     def __init__(self, vocab_file: Optional[Path] = None):
         if vocab_file is None:
@@ -37,6 +94,15 @@ class Vocabulary:
             json.dumps(vocab, ensure_ascii=False, indent=2),
             encoding="utf-8"
         )
+    
+    def _migrate_entry(self, entry: dict) -> dict:
+        """Migrate old entry format to SM-2 format."""
+        if "sm2_easiness" not in entry:
+            entry["sm2_easiness"] = 2.5
+            entry["sm2_interval"] = 0
+            entry["sm2_repetitions"] = 0
+            entry["nextReview"] = datetime.now().isoformat()
+        return entry
     
     def save(self, result: dict) -> None:
         """
@@ -72,14 +138,108 @@ class Vocabulary:
             "phonetic": result.get("phonetic", ""),
             "dateAdded": datetime.now().isoformat(),
             "timesReviewed": 0,
-            "correctCount": 0
+            "correctCount": 0,
+            # SM-2 fields
+            "sm2_easiness": 2.5,
+            "sm2_interval": 0,
+            "sm2_repetitions": 0,
+            "nextReview": datetime.now().isoformat()
         }
         
         vocab.append(entry)
         self._save_vocab(vocab)
     
+    def get_due_words(self) -> List[Dict]:
+        """Get words that are due for review."""
+        vocab = self._load()
+        now = datetime.now()
+        due = []
+        
+        for entry in vocab:
+            entry = self._migrate_entry(entry)
+            next_review = datetime.fromisoformat(entry.get("nextReview", now.isoformat()))
+            if next_review <= now:
+                due.append(entry)
+        
+        # Sort by next review date (oldest first)
+        due.sort(key=lambda x: x.get("nextReview", ""))
+        return due
+    
+    def update_sm2(self, word: str, quality: int) -> None:
+        """
+        Update SM-2 parameters for a word after review.
+        
+        Args:
+            word: The word that was reviewed
+            quality: Quality of recall (0-5)
+        """
+        vocab = self._load()
+        
+        for entry in vocab:
+            if entry.get("word") == word:
+                entry = self._migrate_entry(entry)
+                
+                # Calculate new SM-2 values
+                new_reps, new_ease, new_interval = SM2.calculate(
+                    quality,
+                    entry["sm2_repetitions"],
+                    entry["sm2_easiness"],
+                    entry["sm2_interval"]
+                )
+                
+                entry["sm2_repetitions"] = new_reps
+                entry["sm2_easiness"] = new_ease
+                entry["sm2_interval"] = new_interval
+                
+                # Calculate next review date
+                next_review = datetime.now() + timedelta(days=new_interval)
+                entry["nextReview"] = next_review.isoformat()
+                
+                # Update legacy counters
+                entry["timesReviewed"] = entry.get("timesReviewed", 0) + 1
+                if quality >= 3:
+                    entry["correctCount"] = entry.get("correctCount", 0) + 1
+                
+                break
+        
+        self._save_vocab(vocab)
+    
+    def get_stats(self) -> dict:
+        """Get vocabulary learning statistics."""
+        vocab = self._load()
+        now = datetime.now()
+        
+        total = len(vocab)
+        due = 0
+        mastered = 0  # Words with interval >= 21 days
+        learning = 0  # Words with 0 < interval < 21
+        new = 0       # Words never reviewed
+        
+        for entry in vocab:
+            entry = self._migrate_entry(entry)
+            interval = entry.get("sm2_interval", 0)
+            next_review = datetime.fromisoformat(entry.get("nextReview", now.isoformat()))
+            
+            if next_review <= now:
+                due += 1
+            
+            if interval == 0:
+                new += 1
+            elif interval >= 21:
+                mastered += 1
+            else:
+                learning += 1
+        
+        return {
+            "total": total,
+            "due": due,
+            "mastered": mastered,
+            "learning": learning,
+            "new": new
+        }
+    
     def review(self, formatter) -> None:
-        """Review saved vocabulary."""
+        """Review saved vocabulary (simple list view)."""
         vocab = self._load()
         
         if not vocab:
@@ -87,24 +247,37 @@ class Vocabulary:
             return
         
         formatter.header("Vocabulary Review / Повторение словаря")
-        formatter.info(f"Total words: {len(vocab)} / Всего слов: {len(vocab)}\n")
+        
+        stats = self.get_stats()
+        formatter.info(f"Total: {stats['total']} | Due: {stats['due']} | "
+                      f"Mastered: {stats['mastered']} | Learning: {stats['learning']} | "
+                      f"New: {stats['new']}\n")
         
         for i, entry in enumerate(vocab, 1):
+            entry = self._migrate_entry(entry)
             word = entry.get("word", "")
             definition = entry.get("definition", "")
             pos = entry.get("partOfSpeech", "")
-            lang = entry.get("language", "en")
+            interval = entry.get("sm2_interval", 0)
             
-            lang_flag = "🇷🇺" if lang == "ru" else "🇬🇧"
+            # Status indicator
+            if interval == 0:
+                status = "🆕"
+            elif interval >= 21:
+                status = "✅"
+            else:
+                status = "📚"
             
-            print(f"{i}. {word}")
+            print(f"{i}. {status} {word}")
             if pos:
                 print(f"   [{pos}]")
             print(f"   {definition}")
+            if interval > 0:
+                print(f"   (next review in {interval} days)")
             print()
     
     def quiz(self, formatter) -> None:
-        """Quiz on saved vocabulary."""
+        """Quiz on saved vocabulary (random selection)."""
         vocab = self._load()
         
         if len(vocab) < 4:
@@ -142,16 +315,115 @@ class Vocabulary:
             
             if answer == str(correct_index + 1):
                 formatter.success("Correct! / Правильно!")
-                correct_entry["correctCount"] = correct_entry.get("correctCount", 0) + 1
+                # SM-2: quality 4 (correct after hesitation)
+                self.update_sm2(word, 4)
             else:
                 formatter.error(f"Wrong. The answer was {correct_index + 1} / "
                                f"Неверно. Правильный ответ: {correct_index + 1}")
-            
-            correct_entry["timesReviewed"] = correct_entry.get("timesReviewed", 0) + 1
-            self._save_vocab(vocab)
+                # SM-2: quality 1 (incorrect but remembered upon seeing)
+                self.update_sm2(word, 1)
             
         except (KeyboardInterrupt, EOFError):
             print("\nQuiz cancelled / Викторина отменена")
+    
+    def study(self, formatter) -> None:
+        """
+        Spaced repetition study session.
+        Reviews words that are due, using SM-2 algorithm.
+        """
+        due_words = self.get_due_words()
+        
+        if not due_words:
+            stats = self.get_stats()
+            formatter.success("All caught up! No words due for review. / "
+                            "Всё повторено! Нет слов для повторения.")
+            formatter.info(f"\nStats: {stats['total']} total, {stats['mastered']} mastered, "
+                          f"{stats['learning']} learning")
+            return
+        
+        formatter.header(f"Study Session / Сессия обучения ({len(due_words)} words due)")
+        
+        print("Rate your recall quality after each card:")
+        print("  0 - Complete blackout / Полный провал")
+        print("  1 - Wrong, but recognized answer / Неверно, но узнал ответ")
+        print("  2 - Wrong, but answer felt familiar / Неверно, но знакомо")
+        print("  3 - Correct with difficulty / Верно с трудом")
+        print("  4 - Correct after thinking / Верно после раздумий")
+        print("  5 - Perfect, instant recall / Идеально, сразу вспомнил")
+        print("\nPress Enter to reveal answer, 'q' to quit / "
+              "Enter - показать ответ, 'q' - выйти\n")
+        print("-" * 50)
+        
+        reviewed = 0
+        
+        for entry in due_words:
+            word = entry.get("word", "")
+            definition = entry.get("definition", "")
+            pos = entry.get("partOfSpeech", "")
+            phonetic = entry.get("phonetic", "")
+            lang = entry.get("language", "en")
+            
+            # Show word
+            print(f"\n{'🇷🇺' if lang == 'ru' else '🇬🇧'} {word}")
+            if phonetic:
+                print(f"   {phonetic}")
+            
+            try:
+                response = input("\n[Press Enter to reveal / Enter для ответа] ")
+                if response.lower() == 'q':
+                    break
+                
+                # Show answer
+                print(f"\n   → {definition}")
+                if pos:
+                    print(f"   [{pos}]")
+                
+                # Get quality rating
+                while True:
+                    rating = input("\nQuality (0-5) / Оценка (0-5): ").strip()
+                    if rating.lower() == 'q':
+                        break
+                    try:
+                        quality = int(rating)
+                        if 0 <= quality <= 5:
+                            self.update_sm2(word, quality)
+                            reviewed += 1
+                            
+                            # Show feedback
+                            if quality >= 3:
+                                print("✓ Good! ", end="")
+                            else:
+                                print("✗ Keep practicing! ", end="")
+                            
+                            # Show next review
+                            vocab = self._load()
+                            for e in vocab:
+                                if e.get("word") == word:
+                                    interval = e.get("sm2_interval", 1)
+                                    print(f"Next review in {interval} day(s)")
+                                    break
+                            break
+                        else:
+                            print("Please enter 0-5 / Введите 0-5")
+                    except ValueError:
+                        print("Please enter a number 0-5 / Введите число 0-5")
+                
+                if rating.lower() == 'q':
+                    break
+                    
+                print("-" * 50)
+                
+            except (KeyboardInterrupt, EOFError):
+                print("\n\nSession ended / Сессия завершена")
+                break
+        
+        # Summary
+        print(f"\n{'=' * 50}")
+        formatter.success(f"Session complete! Reviewed {reviewed} word(s) / "
+                         f"Сессия завершена! Повторено {reviewed} слов(а)")
+        
+        stats = self.get_stats()
+        formatter.info(f"Remaining due: {stats['due']} | Mastered: {stats['mastered']}")
     
     def export_anki(self, filename: str) -> int:
         """
