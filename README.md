@@ -20,7 +20,7 @@ English | [Русский](#русский)
 |---------|-------------|---------|
 | 󰗊 Bilingual | English + Russian support | Английский + русский |
 | 󰌌 Transliteration | Type Russian in Latin (`privet` → `привет`) | Транслитерация |
-| 󰎈 Offline Mode | 640+ Russian words cached locally | Офлайн режим |
+| 󰎈 Offline Mode | 1,780+ words cached locally (936 RU + 845 EN) | Офлайн режим |
 | 󰕾 Audio | Pronunciation playback | Произношение |
 | 󰃀 Learning | Save, review, quiz, Anki export | Обучение |
 
@@ -32,8 +32,18 @@ English | [Русский](#русский)
 | 󰆥 Noun Cases | All 6 cases with question prompts | Падежи с вопросами |
 | 󱗃 Verb Aspects | `писать` (impf) ↔ `написать` (pf) | Вид глагола |
 | 󰛺 Conjugation | Full present tense tables | Спряжение |
-| 󰏪 Idioms | 180+ English, 25+ Russian idioms | Идиомы |
+| 󰏪 Idioms | 50+ English, 25+ Russian idioms | Идиомы |
 | 󰖚 Register | Formal/informal/vulgar markers | Регистр |
+
+### 󰗊 Vocabulary Database (v2.1)
+
+| Database | Entries | Content |
+|----------|---------|----------|
+| 󰗃 Russian Phrases | 936 entries | Slang, idioms, proverbs, profanity, common phrases |
+| 󰗊 English Phrases | 845 entries | Slang, idioms, synonyms, antonyms, numbers/time |
+| 󰌌 Transliteration | 640+ mappings | Latin → Cyrillic conversion |
+| 󰏪 English Idioms | 50+ expressions | Break a leg, piece of cake, etc. |
+| 󰏪 Russian Idioms | 25+ expressions | Including мат (vulgar) |
 
 ### 󰗃 Russian Grammar Display
 
@@ -208,7 +218,7 @@ All commands accept the same options / Все команды принимают 
 
 ## 󰏪 Idioms / Идиомы
 
-### English Idioms (180+)
+### English Idioms (50+)
 
 ```bash
 $ define -i break
@@ -225,7 +235,7 @@ Idioms & Expressions:
   ...
 ```
 
-### Russian Idioms (70+)
+### Russian Idioms (25+)
 
 ```bash
 $ define -f душа
@@ -299,7 +309,7 @@ Original work by Dr. Baklava • [github.com/cd4u2b0z](https://github.com/cd4u2b
 
 - **Двуязычный словарь** — английский и русский
 - **Транслитерация** — вводите русские слова латиницей (`privet` → `привет`)
-- **Офлайн режим** — 640+ русских слов в локальном кэше
+- **Офлайн режим** — 1,780+ слов в локальном кэше (936 RU + 845 EN)
 - **Произношение** — аудио для английских слов
 - **Обучение** — сохранение, повторение, викторина, экспорт в Anki
 
@@ -310,6 +320,7 @@ Original work by Dr. Baklava • [github.com/cd4u2b0z](https://github.com/cd4u2b
 - **Вид глагола** — совершенный/несовершенный с видовыми парами
 - **Спряжение** — полные таблицы настоящего времени
 - **Идиомы** — 25+ русских идиом включая мат
+- **Фразы** — 936 русских и 845 английских фраз с переводами
 - **Регистр** — формальный/неформальный/вульгарный
 
 ## 󰏗 Установка

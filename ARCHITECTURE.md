@@ -28,9 +28,12 @@ define/
 │   ├── 󰌠 english.py            # English: Free Dictionary API + idioms
 │   ├── 󰌠 russian.py            # Russian: Wiktionary API + transliteration
 │   └── 󰉋 data/                 # Static data files
-│       ├── 󰘦 ru_translit.json      # 643 transliteration mappings
-│       ├── 󰘦 ru_definitions.json   # 177+ local definitions + grammar
-│       ├── 󰘦 en_idioms.json        # 180+ English idioms
+│       ├── 󰘦 ru_translit.json      # 640+ transliteration mappings
+│       ├── 󰘦 ru_definitions.json   # 212 local definitions + grammar
+│       ├── 󰘦 ru_phrases.json       # 936 Russian→English phrases
+│       ├── 󰘦 en_phrases.json       # 845 English→Russian phrases
+│       ├── 󰘦 en_idioms.json        # 50+ English idioms
+│       ├── 󰘦 en_variations.json    # Text speak, abbreviations
 │       └── 󰘦 ru_idioms.json        # 25+ Russian idioms (including mat)
 │
 ├── 󰉋 ui/                       # User interface

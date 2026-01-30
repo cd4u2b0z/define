@@ -10,7 +10,17 @@ English | [Русский](#русский-1)
 
 ## 󰗡 Version History / История версий
 
-### v2.0.0 — Current / Текущая (January 2026)
+### v2.1.0 — Current / Текущая (January 2026)
+
+**Massive Vocabulary Expansion / Масштабное расширение словаря**
+
+- ✅ 936 Russian→English phrase entries (slang, idioms, proverbs, profanity)
+- ✅ 845 English→Russian phrase entries (slang, idioms, synonyms, antonyms)
+- ✅ Comprehensive coverage: greetings, emotions, time, numbers, body parts
+- ✅ Transliterations included for all Russian translations
+- ✅ Category tagging (slang, idiom, proverb, profanity, etc.)
+
+### v2.0.0 — Grammar Release (January 2026)
 
 **Grammar Expansion / Расширение грамматики**
 
@@ -18,7 +28,7 @@ English | [Русский](#русский-1)
 - ✅ All 6 Russian cases with question prompts
 - ✅ Verb aspects (perfective/imperfective) with pairs
 - ✅ Verb conjugation tables (present tense)
-- ✅ English idioms database (180+ idioms)
+- ✅ English idioms database (50+ idioms)
 - ✅ Russian idioms database (25+ including mat)
 - ✅ Register markers (formal/informal/vulgar)
 
@@ -27,8 +37,8 @@ English | [Русский](#русский-1)
 **Python Rewrite / Переписывание на Python**
 
 - ✅ Modular architecture with language plugins
-- ✅ 643 Russian transliteration mappings
-- ✅ 177+ local Russian definitions
+- ✅ 640+ Russian transliteration mappings
+- ✅ 212 local Russian definitions with grammar
 - ✅ XDG-compliant data directories
 - ✅ Free Dictionary API integration
 - ✅ Wiktionary API integration
@@ -38,7 +48,7 @@ English | [Русский](#русский-1)
 
 ## 󰜎 Planned / Запланировано
 
-### v2.1.0 — Enhanced Grammar
+### v2.2.0 — Enhanced Grammar
 
 **Target: Q1 2026**
 
@@ -50,18 +60,18 @@ English | [Русский](#русский-1)
 | 󰛺 Imperative Mood | Command forms for verbs | Medium |
 | 󰎁 Participles | Verbal adjectives | Low |
 
-### v2.2.0 — Expanded Vocabulary
+### v2.3.0 — Even More Vocabulary
 
 **Target: Q2 2026**
 
 | Feature | Description | Priority |
 |---------|-------------|----------|
-| 󰏪 More Idioms | 500+ English, 100+ Russian | High |
-| 󰗊 Proverbs | Russian and English proverbs | Medium |
-| 󰆥 Slang Dictionary | Colloquial expressions | Medium |
-| 󰎈 False Friends | Cognates that differ in meaning | Low |
+| 󰏪 More Idioms | 200+ English, 100+ Russian idioms | Medium |
+| 󰎈 False Friends | Cognates that differ in meaning | Medium |
+| 󰗊 Regional Variants | British vs American English | Low |
+| 󰆥 Diminutives | Russian diminutive forms | Low |
 
-### v2.3.0 — Learning Features
+### v2.4.0 — Learning Features
 
 **Target: Q2 2026**
 
