@@ -39,11 +39,11 @@ English | [Русский](#русский)
 
 | Database | Entries | Content |
 |----------|---------|----------|
-| 󰗃 Russian Phrases | 936 entries | Slang, idioms, proverbs, profanity, common phrases |
-| 󰗊 English Phrases | 845 entries | Slang, idioms, synonyms, antonyms, numbers/time |
+| 󰗃 Russian Phrases | 936 entries | Idioms, proverbs, common phrases, expressions |
+| 󰗊 English Phrases | 845 entries | Idioms, synonyms, antonyms, numbers/time |
 | 󰌌 Transliteration | 640+ mappings | Latin → Cyrillic conversion |
 | 󰏪 English Idioms | 50+ expressions | Break a leg, piece of cake, etc. |
-| 󰏪 Russian Idioms | 25+ expressions | Including мат (vulgar) |
+| 󰏪 Russian Idioms | 25+ expressions | Common Russian expressions |
 
 ### 󰗃 Russian Grammar Display
 

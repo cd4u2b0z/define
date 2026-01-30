@@ -34,7 +34,7 @@ define/
 │       ├── 󰘦 en_phrases.json       # 845 English→Russian phrases
 │       ├── 󰘦 en_idioms.json        # 50+ English idioms
 │       ├── 󰘦 en_variations.json    # Text speak, abbreviations
-│       └── 󰘦 ru_idioms.json        # 25+ Russian idioms (including mat)
+│       └── 󰘦 ru_idioms.json        # 25+ Russian idioms & expressions
 │
 ├── 󰉋 ui/                       # User interface
 │   ├── 󰌠 __init__.py

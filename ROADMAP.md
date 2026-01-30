@@ -29,7 +29,7 @@ English | [Русский](#русский-1)
 - ✅ Verb aspects (perfective/imperfective) with pairs
 - ✅ Verb conjugation tables (present tense)
 - ✅ English idioms database (50+ idioms)
-- ✅ Russian idioms database (25+ including mat)
+- ✅ Russian idioms database (25+ expressions)
 - ✅ Register markers (formal/informal/vulgar)
 
 ### v1.0.0 — Initial Python Release (January 2026)
