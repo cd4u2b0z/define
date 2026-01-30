@@ -225,18 +225,18 @@ Idioms & Expressions:
   ...
 ```
 
-### Russian Idioms (25+)
+### Russian Idioms (70+)
 
 ```bash
-$ define -f хуй
+$ define -f душа
 
 Idioms & Expressions:
-  • ни хуя себе (ni khuya sebe) [vulgar]
-    holy shit; wow (vulgar)
-  • хуй знает (khuy znayet) [vulgar]
-    who the fuck knows
-  • до хуя (do khuya) [vulgar]
-    a lot; a fuckton
+  • душа в душу (dusha v dushu)
+    in perfect harmony; like two peas in a pod
+  • от души (ot dushi)
+    from the heart; sincerely
+  • душа болит (dusha bolit)
+    the soul aches; feeling deep sorrow
   ...
 ```
 
