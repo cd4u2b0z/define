@@ -12,13 +12,18 @@ English | [Русский](#русский-1)
 
 ### v2.1.0 — Current / Текущая (January 2026)
 
-**Massive Vocabulary Expansion / Масштабное расширение словаря**
+**SM-2 Spaced Repetition + Vocabulary Expansion + Unit Tests**
 
-- ✅ 936 Russian→English phrase entries (slang, idioms, proverbs, profanity)
-- ✅ 845 English→Russian phrase entries (slang, idioms, synonyms, antonyms)
+- ✅ **SM-2 Algorithm** for optimal review scheduling
+- ✅ `--study` command for interactive spaced repetition sessions
+- ✅ `--stats` command for vocabulary statistics
+- ✅ Quality ratings (0-5) for self-assessment
+- ✅ **77 unit tests** covering all core modules
+- ✅ 936 Russian→English phrase entries
+- ✅ 845 English→Russian phrase entries
 - ✅ Comprehensive coverage: greetings, emotions, time, numbers, body parts
 - ✅ Transliterations included for all Russian translations
-- ✅ Category tagging (slang, idiom, proverb, profanity, etc.)
+- ✅ Category tagging (slang, idiom, proverb, etc.)
 
 ### v2.0.0 — Grammar Release (January 2026)
 
@@ -71,14 +76,14 @@ English | [Русский](#русский-1)
 | 󰗊 Regional Variants | British vs American English | Low |
 | 󰆥 Diminutives | Russian diminutive forms | Low |
 
-### v2.4.0 — Learning Features
+### v2.4.0 — Advanced Learning Features
 
 **Target: Q2 2026**
 
 | Feature | Description | Priority |
 |---------|-------------|----------|
-| 󰃀 Spaced Repetition | SM-2 algorithm for review | High |
-| 󰓎 Progress Tracking | Statistics and streaks | High |
+| 󰃀 Spaced Repetition | SM-2 algorithm for review | ✅ Done |
+| 󰄎 Progress Tracking | Statistics and streaks | ✅ Done |
 | 󰙨 Grammar Drills | Practice cases/conjugation | Medium |
 | 󰎈 Word of the Day | Daily vocabulary | Low |
 
@@ -109,7 +114,7 @@ English | [Русский](#русский-1)
 
 | Task | Description | Status |
 |------|-------------|--------|
-| 󰙨 Unit Tests | pytest test suite | Planned |
+| 󰉨 Unit Tests | pytest test suite (77 tests) | ✅ Done |
 | 󰙨 Type Hints | Full mypy compliance | Planned |
 | 󰈙 Man Page | Unix manual page | Planned |
 

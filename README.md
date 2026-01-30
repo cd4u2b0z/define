@@ -23,6 +23,7 @@ English | [Русский](#русский)
 | 󰎈 Offline Mode | 1,780+ words cached locally (936 RU + 845 EN) | Офлайн режим |
 | 󰕾 Audio | Pronunciation playback | Произношение |
 | 󰃀 Learning | Save, review, quiz, Anki export | Обучение |
+| 󰇦 SM-2 | Spaced repetition for optimal review | Интервальное повторение |
 
 ### 󱗊 Grammar Features (v2.0)
 
@@ -44,6 +45,28 @@ English | [Русский](#русский)
 | 󰌌 Transliteration | 640+ mappings | Latin → Cyrillic conversion |
 | 󰏪 English Idioms | 50+ expressions | Break a leg, piece of cake, etc. |
 | 󰏪 Russian Idioms | 25+ expressions | Common Russian expressions |
+
+### 󰇦 Spaced Repetition (v2.1)
+
+Built-in SM-2 algorithm for optimal vocabulary learning:
+
+```bash
+# Start a study session with due words
+./define --study
+
+# Check your learning statistics
+./define --stats
+```
+
+| Status | Meaning | Icon |
+|--------|---------|------|
+| New | Never reviewed | 🆕 |
+| Learning | 1-20 day interval | 📚 |
+| Mastered | 21+ day interval | ✅ |
+
+**Quality Ratings (0-5):**
+- 0-2: Failed recall → Reset to 1 day
+- 3-5: Successful recall → Interval grows
 
 ### 󰗃 Russian Grammar Display
 

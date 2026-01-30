@@ -19,7 +19,7 @@ define/
 │   ├── 󰌠 __init__.py
 │   ├── 󰌠 dictionary.py         # Multi-language dictionary orchestrator
 │   ├── 󰌠 cache.py              # XDG-compliant caching system
-│   ├── 󰌠 vocabulary.py         # Learning features (save, review, quiz)
+│   ├── 󰌠 vocabulary.py         # Learning features + SM-2 spaced repetition
 │   └── 󰌠 audio.py              # Pronunciation playback
 │
 ├── 󰉋 languages/                # Language handlers (plugin architecture)
@@ -39,6 +39,15 @@ define/
 ├── 󰉋 ui/                       # User interface
 │   ├── 󰌠 __init__.py
 │   └── 󰌠 formatter.py          # Terminal output formatting & colors
+│
+├── 󰉋 tests/                    # Unit test suite (77 tests)
+│   ├── 󰌠 __init__.py
+│   ├── 󰌠 run_tests.py          # Test runner script
+│   ├── 󰌠 test_cache.py         # Cache tests (8)
+│   ├── 󰌠 test_data.py          # Data integrity tests (18)
+│   ├── 󰌠 test_dictionary.py    # Dictionary tests (14)
+│   ├── 󰌠 test_languages.py     # Language detection tests (20)
+│   └── 󰌠 test_vocabulary.py    # SM-2 & vocabulary tests (17)
 │
 ├── 󰡯 определить                # Russian command wrapper → define
 ├── 󰡯 словарь                   # Russian command wrapper → define
