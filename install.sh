@@ -58,6 +58,25 @@ esac
 # Check dependencies based on choice
 if [[ "$VERSION_CHOICE" == "2" || "$VERSION_CHOICE" == "3" ]]; then
     echo -e "\n${YELLOW}Checking bash dependencies / Проверка зависимостей bash...${NC}"
+    
+    # Check bash version (need 4.0+ for associative arrays)
+    BASH_VER="${BASH_VERSINFO[0]}"
+    if [[ "$BASH_VER" -lt 4 ]]; then
+        echo -e "${RED}WARNING: Bash version $BASH_VERSION detected${NC}"
+        echo -e "${RED}The bash version requires Bash 4.0+ (for associative arrays)${NC}"
+        if [[ "$OS" == "Darwin" ]]; then
+            echo -e "${YELLOW}macOS ships with Bash 3.2. Install newer bash with:${NC}"
+            echo -e "  ${GREEN}brew install bash${NC}"
+            echo ""
+            echo -e "${CYAN}Recommendation: Use Python version instead (option 1)${NC}"
+            echo -e "${CYAN}Python works out-of-the-box on macOS with no dependencies.${NC}"
+        fi
+        echo ""
+        read -p "Continue with bash version anyway? / Продолжить? [y/N] " -n 1 -r
+        echo
+        [[ ! $REPLY =~ ^[Yy]$ ]] && exit 1
+    fi
+    
     MISSING=()
     command -v curl &>/dev/null || MISSING+=("curl")
     command -v jq &>/dev/null || MISSING+=("jq")

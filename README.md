@@ -62,6 +62,18 @@ A terminal dictionary with deep grammatical support. Currently supports **Englis
 git clone https://github.com/cd4u2b0z/define.git ~/projects/define
 cd ~/projects/define
 
+# Run the installer (recommended)
+./install.sh
+```
+
+The installer will:
+- Let you choose **Python** (recommended) or **Bash** version
+- Install commands to `~/.local/bin`
+- Optionally add to your PATH automatically
+
+### Manual Installation (Alternative)
+
+```bash
 # Add to PATH (add to ~/.zshrc or ~/.bashrc)
 export PATH="$HOME/projects/define:$PATH"
 
@@ -75,9 +87,17 @@ define hello
 ### macOS
 
 ```bash
-# No additional dependencies required - Python 3.8+ comes with macOS
+# Python version (recommended) - no additional dependencies
+# Python 3.8+ comes with macOS
+
+# Bash version requires Bash 4.0+ (macOS ships with 3.2)
+brew install bash  # Install modern bash
+# Then either use /usr/local/bin/bash or add to /etc/shells
+
 # Optional for audio: macOS uses built-in afplay
 ```
+
+> **Note:** The Python version is recommended on macOS as it has no external dependencies.
 
 ### Linux (Ubuntu/Debian)
 

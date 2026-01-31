@@ -37,13 +37,21 @@ sudo apt install curl jq
 # Linux (Arch)
 sudo pacman -S curl jq
 
-# macOS
-brew install curl jq
+# macOS (IMPORTANT: requires Bash 4.0+)
+# macOS ships with Bash 3.2 which doesn't support associative arrays
+brew install bash curl jq
+
+# After installing, either:
+# 1. Run with: /opt/homebrew/bin/bash define  (Apple Silicon)
+#    or: /usr/local/bin/bash define  (Intel Mac)
+# 2. Or use the Python version instead (recommended for macOS)
 
 # Optional for audio / Для аудио (опционально):
 # Linux: mpv, vlc, or ffplay
 # macOS: uses built-in afplay
 ```
+
+> ⚠️ **macOS Users:** The Python version is strongly recommended as it requires no external dependencies and works with the system Python.
 
 ---
 
