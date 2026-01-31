@@ -58,9 +58,9 @@ A terminal dictionary with deep grammatical support. Currently supports **Englis
 ### Quick Start (Linux/macOS)
 
 ```bash
-# Clone the repository
-git clone https://github.com/cd4u2b0z/define.git ~/projects/define
-cd ~/projects/define
+# Clone the repository (anywhere you like)
+git clone https://github.com/cd4u2b0z/define.git
+cd define
 
 # Run the installer (recommended)
 ./install.sh
@@ -75,7 +75,8 @@ The installer will:
 
 ```bash
 # Add to PATH (add to ~/.zshrc or ~/.bashrc)
-export PATH="$HOME/projects/define:$PATH"
+# Replace with wherever you cloned the repo
+export PATH="$HOME/define:$PATH"
 
 # Reload shell
 source ~/.zshrc  # or ~/.bashrc
