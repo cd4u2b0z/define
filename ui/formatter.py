@@ -69,6 +69,7 @@ class Formatter:
     def not_found(self, word: str) -> None:
         """Print not found message."""
         print(f"{self.c.YELLOW}No definition found for '{word}'{self.c.NC}")
+        print(f"{self.c.DIM}Hint: Check your internet connection, or use --offline for cached words{self.c.NC}")
     
     def display_result(
         self,

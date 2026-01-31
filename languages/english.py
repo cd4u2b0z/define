@@ -233,7 +233,18 @@ class English(Language):
             )
             with urllib.request.urlopen(req, timeout=10) as response:
                 data = json.loads(response.read().decode("utf-8"))
-        except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError):
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return None  # Word not found in dictionary
+            # Other HTTP errors - could be rate limiting, server issues
+            return None
+        except urllib.error.URLError as e:
+            # Network error - SSL issues common on macOS
+            import sys
+            print(f"Network error: {e.reason}", file=sys.stderr)
+            print("Hint: If on macOS, try: /Applications/Python\\ 3.*/Install\\ Certificates.command", file=sys.stderr)
+            return None
+        except json.JSONDecodeError:
             return None
         
         if not data or not isinstance(data, list):
