@@ -87,30 +87,28 @@ define hello
 
 ### macOS
 
-```bash
-# Python version (recommended) - no additional dependencies
-# Python 3.8+ comes with macOS
+Just run `./install.sh` and choose **[1] Python** - no dependencies needed!
 
-# Bash version requires Bash 4.0+ (macOS ships with 3.2)
-brew install bash  # Install modern bash
-# Then either use /usr/local/bin/bash or add to /etc/shells
-
-# Optional for audio: macOS uses built-in afplay
-```
-
-> **Note:** The Python version is recommended on macOS as it has no external dependencies.
+> **Note:** If you want the Bash version instead, you'll need `brew install bash curl jq` (macOS ships with Bash 3.2, but the script requires 4.0+).
 
 ### Linux (Ubuntu/Debian)
 
 ```bash
-# Python 3.8+ usually pre-installed
-# Optional for audio:
+# Python version: no dependencies needed
+
+# Bash version requires:
+sudo apt install curl jq
+
+# Optional for audio (both versions):
 sudo apt install mpv  # or vlc, ffplay
 ```
 
 ### Linux (Arch)
 
 ```bash
+# Bash version requires:
+sudo pacman -S curl jq
+
 # Optional for audio:
 sudo pacman -S mpv
 ```
