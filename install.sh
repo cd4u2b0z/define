@@ -131,18 +131,12 @@ install_python() {
     echo -e "\n${YELLOW}Installing Python version...${NC}"
     
     # Create wrapper scripts that call the Python CLI
-    cat > "${INSTALL_DIR}/define${suffix}" << EOF
-#!/bin/bash
-exec python3 "${SCRIPT_DIR}/cli.py" "\$@"
-EOF
+    printf '#!/bin/bash\nexec python3 "%s/cli.py" "$@"\n' "${SCRIPT_DIR}" > "${INSTALL_DIR}/define${suffix}"
     chmod +x "${INSTALL_DIR}/define${suffix}"
     echo -e "${GREEN}*${NC} define${suffix}"
     
     for cmd in определить словарь слово; do
-        cat > "${INSTALL_DIR}/${cmd}${suffix}" << EOF
-#!/bin/bash
-exec python3 "${SCRIPT_DIR}/cli.py" "\$@"
-EOF
+        printf '#!/bin/bash\nexec python3 "%s/cli.py" "$@"\n' "${SCRIPT_DIR}" > "${INSTALL_DIR}/${cmd}${suffix}"
         chmod +x "${INSTALL_DIR}/${cmd}${suffix}"
         echo -e "${GREEN}*${NC} ${cmd}${suffix}"
     done
